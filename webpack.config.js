@@ -4,7 +4,7 @@ let nodeExternals = require('webpack-node-externals');
 
 let config = {
         entry: {
-            'picker': ['./src/main/javascript/picker/index.js'],
+            'react-dxcomponents': './src/main/javascript/index.js'
         },
 
         externals: [

@@ -1,5 +1,5 @@
 {
-  "name": "@jahia/content-picker",
+  "name": "@jahia/react-dxcomponents",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -21,12 +21,16 @@
     "webpack-systemjs-bundle-plugin": "https://github.com/Jahia/webpack-systemjs-bundle-plugin.git"
   },
   "dependencies": {
+    "jss": "^9.0.0",
+    "jss-preset-default": "^4.0.0",
     "lodash": "^4.17.4",
-    "material-ui": "^0.19.2",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
+    "material-ui": "^1.0.0-beta.13",
+    "material-ui-icons": "^1.0.0-beta.15",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
     "react-apollo": "^1.4.15",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
+    "react-jss": "^7.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-extend-reducer": "^0.2.1"

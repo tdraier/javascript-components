@@ -6,11 +6,12 @@ let config = {
                 "lodash",
                 "react",
                 "react-apollo",
+                "react-apollo/index",
                 "react-dom",
+                "react-jss",
                 "redux-extend-reducer",
-                "material-ui",
                 "react-redux/lib/index",
-                "redux"
+                "redux/lib/index",
             ]
         },
 

@@ -1,22 +1,5 @@
 import React from 'react';
-import Checkbox from 'material-ui/Checkbox/index';
 import * as _ from "lodash";
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn,
-} from 'material-ui/Table/index';
-import ExpandLess from 'material-ui/svg-icons/navigation/expand-less'
-import ExpandMore from 'material-ui/svg-icons/navigation/expand-more'
-
-let cellStyle = {
-    'width': '48px',
-    'paddingLeft': '12px',
-    'paddingRight': '12px'
-};
 
 let PickerView = function (props) {
     let Row = function({entry}) {
@@ -24,36 +7,21 @@ let PickerView = function (props) {
             return React.createElement(props.rowRenderComponent, {...props, entry})
         } else {
             return (
-                <div>{entry.name}</div>
+                <span>{entry.name}</span>
             )
         }
     };
 
     return (
-        <Table>
-            <TableHeader displaySelectAll={false}>
-                <TableRow>
-                    <TableHeaderColumn style={cellStyle}></TableHeaderColumn>
-                    <TableHeaderColumn style={cellStyle}></TableHeaderColumn>
-                    <TableHeaderColumn>Name</TableHeaderColumn>
-                </TableRow>
-            </TableHeader>
-            <TableBody displayRowCheckbox={false} showRowHover={true}>
-                {props.pickerEntries.map((entry) => (
-                    <TableRow key={entry.path} selectable={false}>
-                        <TableRowColumn style={cellStyle}>
-                            <Checkbox checked={ entry.open } checkedIcon={<ExpandLess/>} uncheckedIcon={<ExpandMore/>} onCheck={(event, value) => props.onOpenItem(entry.path, value)}/>
-                        </TableRowColumn>
-                        <TableRowColumn style={cellStyle}>
-                            <Checkbox checked={ entry.selected } onCheck={(event, value) => props.onSelectItem(entry.path, value)}/>
-                        </TableRowColumn>
-                        <TableRowColumn>
-                            <Row entry={entry}/>
-                        </TableRowColumn>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
+        <div>
+            {props.pickerEntries.map((entry) => (
+                <div key={entry.path} style={{marginLeft: (10* entry.depth)+'px'}}>
+                    <input type="checkbox" checked={ entry.open } onChange={(event) => props.onOpenItem(entry.path, event.target.checked)}/>
+                    <input type="checkbox" checked={ entry.selected } onChange={(event) => props.onSelectItem(entry.path, event.target.checked)}/>
+                    <Row entry={entry}/>
+                </div>
+            ))}
+        </div>
     )
 };
 
