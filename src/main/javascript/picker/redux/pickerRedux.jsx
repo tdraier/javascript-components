@@ -1,22 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux'
-import createPickerData from '../createPickerData'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
-import {combineReducers} from 'redux';
+import {connect, Provider} from 'react-redux'
+import PickerData from '../pickerData'
+import {reducers, store} from "../../reduxStore";
 import openPaths from './openPaths';
 import selectedPaths from './selectedPaths';
-
-const reducers = combineReducers( {
-    openPaths,
-    selectedPaths,
-});
 
 const mapStateToProps = (state, ownProps) => {
     return {
         ...ownProps,
-        openPaths: state.openPaths ? state.openPaths : ownProps.openPaths,
-        selectedPaths: state.selectedPaths ? state.selectedPaths : ownProps.selectedPaths
+        openPaths: state["openPaths"+ ownProps.id] ? state["openPaths"+ ownProps.id] : ownProps.openPaths,
+        selectedPaths: state["selectedPaths"+ ownProps.id] ? state["selectedPaths"+ ownProps.id] : ownProps.selectedPaths
     }
 };
 
@@ -24,39 +17,39 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onSelectItem(path, select) {
             dispatch({
-                type: select ? 'SELECT_PICKER_ENTRY' : 'UNSELECT_PICKER_ENTRY',
+                type: select ? 'SELECT_PICKER_ENTRY_' + ownProps.id : 'UNSELECT_PICKER_ENTRY_' + ownProps.id,
                 path: path
             })
         },
         onOpenItem(path, open) {
             dispatch({
-                type: open ? 'OPEN_PICKER_ENTRY' : 'CLOSE_PICKER_ENTRY',
+                type: open ? 'OPEN_PICKER_ENTRY_' + ownProps.id : 'CLOSE_PICKER_ENTRY_' + ownProps.id,
                 path: path
             })
         }
     }
 };
 
-
-function PickerRedux(props) {
-    const PickerReduxWithoutStore = connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(createPickerData(props.fragments, props.renderComponent));
-
-    let debugTool;
-    if (typeof window !== 'undefined') {
-        debugTool = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
-            name: props.id,
-            instanceId: props.id
-        });
+class PickerRedux extends React.Component {
+    constructor(props) {
+        super(props);
+        this.PickerReduxWithoutStore = connect(mapStateToProps, mapDispatchToProps)(PickerData);
     }
 
-    return React.createElement(Provider, {
-            store: createStore(reducers, debugTool)
-        },
-        React.createElement(PickerReduxWithoutStore, props));
-}
+    componentWillMount() {
+        reducers["openPaths" + this.props.id] = openPaths(this.props);
+        reducers["selectedPaths" + this.props.id] = selectedPaths(this.props);
+    }
 
+    componentWillUnmount() {
+        delete reducers["openPaths" + this.props.id];
+        delete reducers["selectedPaths" + this.props.id];
+    }
+
+    render() {
+        let PickerReduxWithoutStore = this.PickerReduxWithoutStore;
+        return (<Provider store={ store }><PickerReduxWithoutStore {...this.props}/></Provider>)
+    }
+}
 
 export default PickerRedux;

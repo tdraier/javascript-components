@@ -4,7 +4,7 @@ exports.default = function (context) {
     var id = "picker" + context.currentNode.identifier.replaceAll('-','_');
     var rootPath = context.currentNode.getProperty('rootPath').getString();
 
-    return reactRender('@jahia/react-dxcomponents', 'PickerStandalone', 'react_' + context.currentNode.identifier.replaceAll('-','_'),
+    return reactRender('@jahia/react-dxcomponents', 'Picker', 'react_' + context.currentNode.identifier.replaceAll('-','_'),
         {
             id: id,
             rootPaths: [rootPath],

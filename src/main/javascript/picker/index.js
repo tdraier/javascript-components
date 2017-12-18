@@ -1,6 +1,5 @@
 export {default as PickerState} from './react-state/pickerState.jsx'
 export {default as PickerRedux} from './redux/pickerRedux.jsx'
 export {default as PickerView} from './pickerView.jsx'
-export {default as createPickerData} from './createPickerData.jsx'
+export {default as PickerData} from './pickerData.jsx'
 export {default as Picker} from './picker.jsx'
-export {default as PickerStandalone} from './picker-standalone.jsx'

@@ -21,18 +21,20 @@
     "webpack-systemjs-bundle-plugin": "https://github.com/Jahia/webpack-systemjs-bundle-plugin.git"
   },
   "dependencies": {
-    "jss": "^9.0.0",
-    "jss-preset-default": "^4.0.0",
+    "@jahia/apollo-dx": "^1.0.0",
+    "jss": "^9.4.0",
+    "jss-preset-default": "^4.0.1",
     "lodash": "^4.17.4",
-    "material-ui": "^1.0.0-beta.13",
-    "material-ui-icons": "^1.0.0-beta.15",
+    "material-ui": "^0.20.0",
+    "material-ui-icons": "^1.0.0-beta.17",
     "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-apollo": "^1.4.15",
-    "react-dom": "^16.0.0",
-    "react-jss": "^7.2.0",
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-jss": "^8.1.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-extend-reducer": "^0.2.1"
+    "redux-extend-reducer": "^0.2.1",
+    "theming": "^1.2.1"
   }
 }

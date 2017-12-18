@@ -9,13 +9,16 @@
         var ReactDOM = m[1];
         var dxComponents = m[2];
         var id = "picker${fn:replace(currentNode.identifier,'-','_')}"
-        ReactDOM.render(React.createElement(dxComponents.PickerStandalone, {
+        ReactDOM.render(React.createElement(dxComponents.Picker, {
             id : id,
             rootPaths: ["${currentNode.properties['rootPath'].string}"],
             openPaths: ["${currentNode.properties['rootPath'].string}"],
             openableTypes: ['nt:base'],
             selectableTypes: ['nt:base'],
-            pickerType: "react"
+            pickerType: "redux",
+            fragments: ["displayName"],
+            variables: { lang:"${currentNode.session.locale}" },
+            textRenderer: (entry) => entry.node.displayName
         }), document.getElementById(id));
     });
 </script>

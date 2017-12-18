@@ -1,13 +1,10 @@
 import React from 'react';
-import * as _ from "lodash";
-import {
-    Checkbox,
-    Table,
-    TableBody,
-    TableHead,
-    TableRow,
-    TableCell,
-} from 'material-ui';
+import {Checkbox, List, ListItem} from 'material-ui';
+
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 import ExpandLess from 'material-ui-icons/ExpandLess'
 import ExpandMore from 'material-ui-icons/ExpandMore'
 
@@ -17,44 +14,29 @@ let cellStyle = {
     'paddingRight': '12px'
 };
 
-let PickerView = function (props) {
-    let Row = function({entry}) {
-        if (props.rowRenderComponent) {
-            return React.createElement(props.rowRenderComponent, {...props, entry})
-        } else {
-            return (
-                <div>{entry.name}</div>
-            )
-        }
-    };
+let iconStyles = {
+    fontSize: '16px',
+    height:'24px',
+    width:'24px'
+};
 
+let PickerViewMaterial = function (props) {
     return (
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell style={cellStyle}> </TableCell>
-                    <TableCell style={cellStyle}> </TableCell>
-                    <TableCell>Name</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {props.pickerEntries.map((entry) => (
-                    <TableRow key={entry.path}>
-                        <TableCell style={cellStyle}>
+        <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <div>
+                <List>
 
-                            <Checkbox icon={<ExpandMore/>} checkedIcon={<ExpandLess/>} checked={ entry.open } onChange={(event, value) => props.onOpenItem(entry.path, value)}><ExpandMore /></Checkbox>
-                        </TableCell>
-                        <TableCell style={cellStyle}>
-                            <Checkbox checked={ entry.selected } onChange={(event, value) => props.onSelectItem(entry.path, value)}/>
-                        </TableCell>
-                        <TableCell>
-                            <Row entry={entry}/>
-                        </TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
+                    {props.pickerEntries.map((entry) => {
+                        let select = (<Checkbox checked={ entry.selected } onCheck={(event, value) => props.onSelectItem(entry.path, value)}/>);
+                        let expand = (<Checkbox uncheckedIcon={<ExpandMore/>} checkedIcon={<ExpandLess/>} checked={ entry.open } onCheck={(event, value) => props.onOpenItem(entry.path, value)}/>);
+                        return (<ListItem key={entry.path} nestedLevel={entry.depth+1} primaryText={props['textRenderer'] ? props['textRenderer'].call(this,entry) : entry.name}
+                                          innerDivStyle={{fontWeight:"400"}} leftCheckbox={select} rightToggle={expand} />)
+                    })}
+                </List>
+            </div>
+        </MuiThemeProvider>
+
     )
 };
 
-export default PickerView;
+export default PickerViewMaterial;

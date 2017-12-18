@@ -55,11 +55,11 @@
         <version>7.2.1.1-SNAPSHOT</version>
     </parent>
     <groupId>org.jahia.modules</groupId>
-    <artifactId>content-picker</artifactId>
-    <name>content-picker</name>
+    <artifactId>react-dxcomponents</artifactId>
+    <name>react-dxcomponents</name>
     <version>1.0-SNAPSHOT</version>    
     <packaging>bundle</packaging>
-    <description>This is the custom module (content-picker) for running on a Digital Experience Manager server.</description>
+    <description>This is the custom module (react-dxcomponents) for running on a Digital Experience Manager server.</description>
 
     <scm>
         <connection>scm:dummy:uri</connection>
@@ -91,6 +91,7 @@
                     <instructions>
                         <Jahia-Depends>default</Jahia-Depends>
                         <Jahia-Module-Scripting-Views>jsx,jss</Jahia-Module-Scripting-Views>
+                        <_dsannotations>*</_dsannotations>
                     </instructions>
                 </configuration>
             </plugin>

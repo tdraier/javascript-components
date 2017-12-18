@@ -3,7 +3,11 @@ let SystemJSPlugin = require('webpack-systemjs-bundle-plugin/');
 let config = {
         entry: {
             "vendor-bundle": [
+                "@jahia/apollo-dx",
                 "lodash",
+                "material-ui",
+                "material-ui/styles",
+                "material-ui-icons",
                 "react",
                 "react-apollo",
                 "react-apollo/index",
@@ -44,7 +48,9 @@ let config = {
                 },
             ]
         },
-
+    resolve: {
+        mainFields:["browser", "main"]
+    },
         plugins: [
             new SystemJSPlugin({
                 path: __dirname + "/src/main/resources/javascript/bundles/[name].config.json",
@@ -56,7 +62,7 @@ let config = {
             // }),
         ],
 
-        devtool: 'source-map'
+        devtool: 'eval-source-map'
 
     }
 ;

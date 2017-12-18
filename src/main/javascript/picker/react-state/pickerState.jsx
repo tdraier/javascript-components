@@ -1,5 +1,5 @@
 import React from 'react';
-import createPickerData from '../createPickerData';
+import PickerData from '../pickerData';
 import * as _ from "lodash";
 
 
@@ -11,11 +11,9 @@ class PickerState extends React.Component {
             openPaths: props.openPaths ? props.openPaths : [],
             selectedPaths: props.selectedPaths ? props.selectedPaths : []
         }
-
     }
 
     onSelectItem(state, path, selected) {
-        console.log("state select/unselect " + path);
         this.setState({
             openPaths: state.openPaths,
             selectedPaths: selected ? [
@@ -27,7 +25,6 @@ class PickerState extends React.Component {
     }
 
     onOpenItem(state, path, open) {
-        console.log("state open/close " + path);
         this.setState({
             openPaths: open ? [
                 ...state.openPaths,
@@ -35,12 +32,11 @@ class PickerState extends React.Component {
             ] : _.filter(state.openPaths, (thispath) => thispath !== path),
             selectedPaths: state.selectedPaths
         });
-
     }
 
 
     render() {
-        return React.createElement(createPickerData(this.props.fragments, this.props.renderComponent), {
+        return React.createElement(PickerData, {
             ...this.props,
             openPaths: this.state.openPaths,
             selectedPaths: this.state.selectedPaths,
