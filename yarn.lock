@@ -4,7 +4,7 @@
 
 "@jahia/apollo-dx@^1.0.0":
   version "1.0.0"
-  resolved "https://devtools.jahia.com/nexus3/repository/npm-internal/@jahia/apollo-dx/-/apollo-dx-1.0.0.tgz#eca212787eae34c2412c19288ec3e7a996013750"
+  resolved "https://devtools.jahia.com/nexus3/repository/npm-internal/@jahia/apollo-dx/-/apollo-dx-1.0.0.tgz#790de3fe5482a6d8028e45dcb9b3324b68289cc2"
   dependencies:
     apollo-client "^1.9.3"
     graphql "^0.11.7"

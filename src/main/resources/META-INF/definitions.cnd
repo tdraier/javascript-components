@@ -3,3 +3,8 @@
 
 [jnt:contentPicker] > jnt:content, jmix:basicContent
  - rootPath(string)
+ - storeId(string)
+
+[jnt:contentTable] > jnt:content, jmix:basicContent
+ - storeId(string)
+

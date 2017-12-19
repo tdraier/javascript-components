@@ -4,6 +4,8 @@ exports.default = function (context) {
     var id = "picker" + context.currentNode.identifier.replaceAll('-','_');
     var rootPath = context.currentNode.getProperty('rootPath').getString();
 
+    global.request = context.renderContext.request;
+
     return reactRender('@jahia/react-dxcomponents', 'Picker', 'react_' + context.currentNode.identifier.replaceAll('-','_'),
         {
             id: id,
@@ -11,7 +13,7 @@ exports.default = function (context) {
             openPaths: [rootPath],
             openableTypes: ['nt:base'],
             selectableTypes: ['nt:base'],
-            pickerType: "react"
+            pickerType: "redux"
         }
     );
 };

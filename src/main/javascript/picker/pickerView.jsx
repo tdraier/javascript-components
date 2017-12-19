@@ -14,4 +14,4 @@ let PickerView = function (props) {
     )
 };
 
-export default PickerView;
+export { PickerView };

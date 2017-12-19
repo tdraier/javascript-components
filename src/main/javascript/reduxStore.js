@@ -7,8 +7,8 @@ const store = function () {
     let debugTool;
     if (typeof window !== 'undefined') {
         debugTool = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
-            name: "test",
-            instanceId: "test"
+            name: "DX Redux",
+            instanceId: "dx"
         });
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PickerData from '../pickerData';
+import {PickerData} from './pickerData';
 import * as _ from "lodash";
 
 
@@ -46,4 +46,4 @@ class PickerState extends React.Component {
     }
 }
 
-export default PickerState
+export { PickerState }

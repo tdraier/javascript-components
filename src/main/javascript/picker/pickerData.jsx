@@ -1,9 +1,10 @@
 import React from 'react';
-import PickerViewMaterial from './pickerViewMaterial'
 import {ApolloProvider, graphql} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
-import {client, PredefinedFragments, replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {PickerViewMaterial} from './pickerViewMaterial'
+import {PickerViewMaterialMultiple} from "./pickerViewMaterialMultiple";
 
 class PickerData extends React.Component {
 
@@ -14,7 +15,7 @@ class PickerData extends React.Component {
     }
 
     mapResultsToProps({data, ownProps}) {
-        let selectedPaths = ownProps.selectedPaths;
+        let selectedPaths = ownProps.multipleSelection ? ownProps.selectedPaths : [ownProps.selectedPath];
         let openPaths = ownProps.openPaths;
 
         let pickerEntries = [];
@@ -139,7 +140,7 @@ class PickerData extends React.Component {
             Component = graphql(query, {
                 props: this.mapResultsToProps,
                 options: this.mapPropsToOptions
-            })(renderComponent || PickerViewMaterial);
+            })(renderComponent || this.props.multipleSelection ? PickerViewMaterialMultiple : PickerViewMaterial);
 
             this.componentCache.push({fragments: fragments, renderComponent: renderComponent, dataComponent: Component});
         }
@@ -148,4 +149,4 @@ class PickerData extends React.Component {
     }
 }
 
-export default PickerData;
+export { PickerData };

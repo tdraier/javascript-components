@@ -8,9 +8,11 @@
         var React = m[0];
         var ReactDOM = m[1];
         var dxComponents = m[2];
-        var id = "picker${fn:replace(currentNode.identifier,'-','_')}"
+        var pickerid = "picker${fn:replace(currentNode.identifier,'-','_')}"
+        var storeid = "${currentNode.properties['storeId'].string}";
+
         ReactDOM.render(React.createElement(dxComponents.Picker, {
-            id : id,
+            id : storeid,
             rootPaths: ["${currentNode.properties['rootPath'].string}"],
             openPaths: ["${currentNode.properties['rootPath'].string}"],
             openableTypes: ['nt:base'],
@@ -19,8 +21,8 @@
             fragments: ["displayName"],
             variables: { lang:"${currentNode.session.locale}" },
             textRenderer: (entry) => entry.node.displayName
-        }), document.getElementById(id));
+        }), document.getElementById(pickerid));
     });
 </script>
-
+[Content picker]
 <div id="picker${fn:replace(currentNode.identifier,'-','_')}" ></div>
