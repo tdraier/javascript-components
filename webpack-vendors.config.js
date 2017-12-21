@@ -9,6 +9,8 @@ let config = {
                 "material-ui/styles",
                 "material-ui-icons",
                 "react",
+                "react-router",
+                "react-router-dom",
                 "react-apollo",
                 "react-apollo/index",
                 "react-dom",

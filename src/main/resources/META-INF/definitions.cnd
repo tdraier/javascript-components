@@ -1,10 +1,21 @@
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<react = 'http://www.jahia.org/jahia/react/1.0'>
+<reactnt = 'http://www.jahia.org/jahia/reactnt/1.0'>
+<reactmix = 'http://www.jahia.org/jahia/reactmix/1.0'>
 
-[jnt:contentPicker] > jnt:content, jmix:basicContent
+[reactmix:reactComponent]
+
+[reactnt:baseReactComponent] > jnt:content, jmix:basicContent, reactmix:reactComponent
+  - react:componentRequire (string)
+  - react:componentExport (string)
+
+[react:contentPicker] > jnt:content, jmix:basicContent, reactmix:reactComponent
  - rootPath(string)
  - storeId(string)
 
-[jnt:contentTable] > jnt:content, jmix:basicContent
+[react:contentTable] > jnt:content, jmix:basicContent, reactmix:reactComponent
  - storeId(string)
 
+[react:layout] > jnt:content, jmix:basicContent, reactmix:reactComponent
+ + * (jmix:droppableContent) = jmix:droppableContent
