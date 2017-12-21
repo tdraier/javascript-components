@@ -24,7 +24,20 @@
                 
                 <portlets jcr:primaryType="jnt:portletFolder"/>
                 <files jcr:primaryType="jnt:folder"/>
-                <contents jcr:primaryType="jnt:contentFolder"/>
+                <contents jcr:primaryType="jnt:contentFolder">
+                    <examples jcr:primaryType="jnt:contentFolder">
+                        <j:translation_en jcr:language="en"
+                                 jcr:mixinTypes="mix:title"
+                                 jcr:primaryType="jnt:translation"
+                                 jcr:title="examples"/>
+                        <layout jcr:primaryType="react:layout">
+                            <leftCol jcr:primaryType="react:contentPicker"
+                           rootPath="/sites/digitall"
+                           storeId="xxx"/>
+                            <rightCol jcr:primaryType="react:contentTable" storeId="xxx"/>
+                        </layout>
+                    </examples>
+                </contents>
                 <templates j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
                     <files jcr:primaryType="jnt:folder"/>
                     <contents jcr:primaryType="jnt:contentFolder"/>

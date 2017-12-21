@@ -14,6 +14,7 @@ let config = {
                 "react-apollo",
                 "react-apollo/index",
                 "react-dom",
+                "react-flexbox-grid",
                 "react-jss",
                 "redux-extend-reducer",
                 "react-redux/lib/index",
