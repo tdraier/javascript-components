@@ -8,3 +8,4 @@ target
 src/main/resources/javascript/bundles
 node
 node_modules
+yarn-error.log

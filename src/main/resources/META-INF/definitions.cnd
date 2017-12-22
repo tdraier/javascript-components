@@ -10,12 +10,22 @@
   - react:componentRequire (string)
   - react:componentExport (string)
 
-[react:contentPicker] > jnt:content, jmix:basicContent, reactmix:reactComponent
+[reactnt:contentPicker] > jnt:content, jmix:basicContent, reactmix:reactComponent
  - rootPath(string)
  - storeId(string)
 
-[react:contentTable] > jnt:content, jmix:basicContent, reactmix:reactComponent
+[reactnt:contentTable] > jnt:content, jmix:basicContent, reactmix:reactComponent
  - storeId(string)
 
-[react:layout] > jnt:content, jmix:basicContent, reactmix:reactComponent
+[reactnt:actionBar] > jnt:content, jmix:basicContent, reactmix:reactComponent
+ - react:id(string)
+
+[reactnt:actionUrl] > jnt:content, jmix:basicContent, reactmix:reactComponent
+ - icon(string)
+ - url(string)
+
+[reactnt:layout] > jnt:content, jmix:basicContent, reactmix:reactComponent
  + * (jmix:droppableContent) = jmix:droppableContent
+
+[reactnt:componentsFolder] > jnt:contentFolder
+ - react:id(string)

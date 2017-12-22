@@ -1,5 +1,5 @@
 import React from 'react';
-import {NodesTableData} from './nodesTableData'
+import {NodesTableData} from './NodesTableData'
 import {connect, Provider} from 'react-redux'
 import {reducers, store} from "../reduxStore";
 

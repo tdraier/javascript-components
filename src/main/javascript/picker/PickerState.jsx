@@ -1,5 +1,5 @@
 import React from 'react';
-import {PickerData} from './pickerData';
+import {PickerData} from './PickerData';
 import * as _ from "lodash";
 
 

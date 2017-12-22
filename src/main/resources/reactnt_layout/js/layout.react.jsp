@@ -7,7 +7,7 @@
 <c:if test="${fn:length(children) == 0}">
 {
     getImports: () => ["@jahia/react-dxcomponents"],
-    createElement: function(React, ReactDom, dxComponents) => React.createElement(dxComponents.TestLayout, {}, [])
+    createElement: (React, ReactDom, dxComponents) => React.createElement(dxComponents.TestLayout, {}, [])
 }
 </c:if>
 <c:if test="${fn:length(children) > 0}">
@@ -18,8 +18,8 @@
         Object.keys(this.children).forEach((k) => imports = imports.concat(this.children[k].getImports()));
         return imports
     },
-    createElement: function(React, ReactDom, dxComponent, _, ...rest) {
-        let props = _.mapValues(this.children, c => { let s = c.getImports().length; let r = c.createElement(React,ReactDom, ...rest); rest.splice(s); return r; })
+    createElement: function(React, ReactDOM, dxComponent, _, ...rest) {
+        let props = _.mapValues(this.children, c => { let s = c.getImports().length; let r = c.createElement(React,ReactDOM, ...rest); rest.splice(s); return r; })
         return React.createElement(dxComponent.TestLayout, props)
     }
 }

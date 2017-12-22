@@ -1,5 +1,5 @@
 import React from 'react';
-import {NodesTableViewMaterial} from './nodesTableViewMaterial'
+import {NodesTableViewMaterial} from './NodesTableViewMaterial'
 import {ApolloProvider, graphql} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";

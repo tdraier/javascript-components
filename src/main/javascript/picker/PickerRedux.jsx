@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect, Provider} from 'react-redux'
-import {PickerData} from './pickerData'
+import {PickerData} from './PickerData'
 import {reducers, store} from "../reduxStore";
 
 class PickerRedux extends React.Component {

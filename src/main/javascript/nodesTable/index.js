@@ -1,3 +1,3 @@
-export * from './nodesTable'
-export * from './nodesTableData'
-export * from './nodesTableViewMaterial'
+export * from './NodesTable'
+export * from './NodesTableData'
+export * from './NodesTableViewMaterial'

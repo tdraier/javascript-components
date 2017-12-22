@@ -3,8 +3,8 @@ import {ApolloProvider, graphql} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
 import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
-import {PickerViewMaterial} from './pickerViewMaterial'
-import {PickerViewMaterialMultiple} from "./pickerViewMaterialMultiple";
+import {PickerViewMaterial} from './PickerViewMaterial'
+import {PickerViewMaterialMultiple} from "./PickerViewMaterialMultiple";
 
 class PickerData extends React.Component {
 
