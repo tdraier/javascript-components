@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {SimpleListView} from './SimpleListView'
 import {ApolloProvider, graphql} from 'react-apollo';
 import gql from "graphql-tag";
@@ -22,9 +23,26 @@ class DynamicComponentsList extends React.Component {
             components = _.map(_.flatMap(jcr.nodesByQuery.nodes, "children.nodes"),(n)=> eval("(" + n.renderedView.output + ")"));
         }
 
+        let imports = [];
+        _.each(components, c => {
+            imports = imports.concat(c.getImports())
+        });
+        let promise;
+        if (imports.length > 0) {
+            promise = Promise.all(_.map(imports, (imp) => eval("System.import(imp)"))).then(m => {
+                let reactElements = _.map(components, (c) => {
+                    let s = c.getImports().length;
+                    let r = c.createElement(React, ReactDOM, ...m);
+                    m.splice(s);
+                    return r;
+                });
+                return reactElements;
+            });
+        }
+
         return {
             ...ownProps,
-            components: components,
+            components: promise,
         };
     }
 
