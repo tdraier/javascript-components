@@ -1,11 +1,17 @@
 {
   "name": "@jahia/react-dxcomponents",
   "version": "1.0.0",
-  "main": "index.js",
+  "scripts": {
+    "rollup": "rollup -c",
+    "uglify": "uglifyjs -c -m --source-map 'content=lib/react-dxcomponents.umd.js.map' -o lib/react-dxcomponents.umd.min.js  -- lib/react-dxcomponents.umd.js",
+    "build": "npm run rollup; npm run uglify"
+  },
+  "main": "lib/react-dxcomponents.umd.js",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -15,7 +21,11 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.6",
     "postcss-mixins": "^6.1.0",
+    "rollup": "^0.53.3",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.0.0",
     "style-loader": "^0.18.2",
+    "uglify-js": "^3.3.4",
     "webpack": "^3.6.0",
     "webpack-node-externals": "^1.6.0",
     "webpack-systemjs-bundle-plugin": "https://github.com/Jahia/webpack-systemjs-bundle-plugin.git"

@@ -7,10 +7,9 @@ import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
 
 class NodesTableData extends React.Component {
 
-    componentCache = [];
-
     constructor(props) {
         super(props);
+        this.componentCache = [];
     }
 
     mapResultsToProps({data, ownProps}) {

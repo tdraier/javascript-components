@@ -4,7 +4,7 @@ let nodeExternals = require('webpack-node-externals');
 
 let config = {
         entry: {
-            'react-dxcomponents': './src/main/javascript/index.js'
+            'react-dxcomponents': '.'
         },
 
         externals: [
@@ -16,24 +16,6 @@ let config = {
             filename: "[name].js",
             libraryTarget: "amd",
             library: "[name]_[hash]"
-        },
-
-        module: {
-            loaders: [
-                {
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    loader: 'babel-loader',
-
-                    query: {
-                        presets: ['es2015', 'react', 'stage-2']
-                    }
-                }
-            ]
-        },
-
-        resolve: {
-            extensions: ['.js', '.jsx']
         },
 
         plugins: [

@@ -1,5 +1,4 @@
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import {getMuiTheme, lightBaseTheme} from 'material-ui/styles/index';
 import * as _ from "lodash";
 
 function muiTheme() {

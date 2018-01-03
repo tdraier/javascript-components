@@ -8,19 +8,18 @@ import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
 
 class DynamicComponentsList extends React.Component {
 
-    componentCache = [];
-
     constructor(props) {
         super(props);
+        this.componentCache = [];
     }
 
     mapResultsToProps({data, ownProps}) {
         let components = [];
 
         let jcr = data.jcr;
-
+        let safeEval = eval;
         if (jcr && jcr.nodesByQuery) {
-            components = _.map(_.flatMap(jcr.nodesByQuery.nodes, "children.nodes"),(n)=> eval("(" + n.renderedView.output + ")"));
+            components = _.map(_.flatMap(jcr.nodesByQuery.nodes, "children.nodes"),(n)=> safeEval("(" + n.renderedView.output + ")"));
         }
 
         let imports = [];
@@ -29,7 +28,7 @@ class DynamicComponentsList extends React.Component {
         });
         let promise;
         if (imports.length > 0) {
-            promise = Promise.all(_.map(imports, (imp) => eval("System.import(imp)"))).then(m => {
+            promise = Promise.all(_.map(imports, (imp) => SystemJS.import(imp))).then(m => {
                 let reactElements = _.map(components, (c) => {
                     let s = c.getImports().length;
                     let r = c.createElement(React, ReactDOM, ...m);

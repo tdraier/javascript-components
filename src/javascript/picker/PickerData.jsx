@@ -8,10 +8,9 @@ import {PickerViewMaterialMultiple} from "./PickerViewMaterialMultiple";
 
 class PickerData extends React.Component {
 
-    componentCache = [];
-
     constructor(props) {
         super(props);
+        this.componentCache = [];
     }
 
     mapResultsToProps({data, ownProps}) {

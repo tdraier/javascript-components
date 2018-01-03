@@ -1,10 +1,9 @@
 import React from 'react';
 import {Checkbox, IconButton, List, ListItem} from 'material-ui';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {MuiThemeProvider} from 'material-ui/styles/index';
 import getMuiTheme from '../themeProvider';
 
-import ExpandLess from 'material-ui-icons/ExpandLess'
-import ExpandMore from 'material-ui-icons/ExpandMore'
+import {ExpandLess, ExpandMore} from 'material-ui-icons'
 
 let PickerViewMaterialMultiple = function (props) {
     return (
