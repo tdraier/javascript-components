@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect, Provider} from 'react-redux'
 import {PickerData} from './PickerData'
-import {reducers, store} from "../reduxStore";
+import {reducers, store, resetStateReducer} from "../reduxStore";
 
 class PickerRedux extends React.Component {
     constructor(props) {
@@ -95,6 +95,12 @@ class PickerRedux extends React.Component {
     }
 
     componentWillUnmount() {
+        reducers["openPaths_" + this.props.id] = resetStateReducer;
+        reducers["selectedPath_" + this.props.id] = resetStateReducer;
+        reducers["selectedPaths_" + this.props.id] = resetStateReducer;
+
+        store.dispatch({type:"RESET_STATE"});
+
         delete reducers["openPaths_" + this.props.id];
         delete reducers["selectedPath_" + this.props.id];
         delete reducers["selectedPaths_" + this.props.id];

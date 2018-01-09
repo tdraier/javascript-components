@@ -81,9 +81,30 @@ class PickerData extends React.Component {
     }
 
     mapPropsToOptions(props) {
+        let fullyOpenPath = (props, path) => {
+            let rootFound = false;
+            _.tail(_.split(path, "/")).reduce((acc, it) => {
+                if (!rootFound) {
+                    _.forEach(props.rootPaths, rootPath => {
+                        rootFound = rootFound || _.startsWith(acc, rootPath);
+                    })
+                }
+                if (rootFound && _.indexOf(props.openPaths, acc) === -1) {
+                    props.openPaths.push(acc);
+                }
+                return acc + "/" + it
+            }, "");
+        };
+
+        if (props.multipleSelection) {
+            _.each(props.selectedPaths, path => fullyOpenPath(props, path));
+        } else {
+            fullyOpenPath(props, props.selectedPath);
+        }
+
         let vars = {
             rootPaths: props.rootPaths,
-            types: props.selectableTypes,
+            types: _.union(props.openableTypes, props.selectableTypes),
             selectable: props.selectableTypes,
             openable: props.openableTypes,
             openPaths: props.openPaths,
@@ -126,7 +147,7 @@ class PickerData extends React.Component {
                                     uuid
                                     name
                                     selectable : isNodeType(type: {types:$selectable})
-                                    openable : isNodeType(type: {types:$selectable})
+                                    openable : isNodeType(type: {types:$openable})
                                     ... node
                                 }
                             }

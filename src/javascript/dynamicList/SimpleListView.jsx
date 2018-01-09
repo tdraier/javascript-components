@@ -1,6 +1,6 @@
 import React from 'react';
 import {MuiThemeProvider} from 'material-ui/styles/index';
-import getMuiTheme from '../themeProvider';
+import {muiTheme} from '../themeProvider';
 
 class SimpleListView extends React.Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class SimpleListView extends React.Component {
     }
 
     render() {
-        return this.done ? (<MuiThemeProvider muiTheme={getMuiTheme()}><div>{this.state.reactElements}</div></MuiThemeProvider>) : (<div/>);
+        return this.done ? (<MuiThemeProvider muiTheme={muiTheme()}><div>{this.state.reactElements}</div></MuiThemeProvider>) : (<div/>);
     }
 }
 

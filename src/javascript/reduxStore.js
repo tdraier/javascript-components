@@ -15,4 +15,11 @@ const store = function () {
     return createStore((state = {}, action) => _.mapValues(reducers, (value, key) => value(state[key], action)), debugTool);
 }();
 
-export {reducers, store};
+const resetStateReducer = function(state, action) {
+    if (action.type === 'RESET_STATE') {
+        return undefined;
+    }
+    return state;
+};
+
+export {reducers, store, resetStateReducer};

@@ -50,5 +50,14 @@
     "redux": "^3.7.2",
     "redux-extend-reducer": "^0.2.1",
     "theming": "^1.2.1"
+  },
+  "jahia":{
+    "components": {
+      "reactnt:contentPicker":"Picker",
+      "reactnt:contentTable":"NodesTable",
+      "reactnt:actionBar":"DynamicComponentsList",
+      "reactnt:actionUrl":"NodesTable",
+      "reactnt:layout":"TestLayout"
+    }
   }
 }

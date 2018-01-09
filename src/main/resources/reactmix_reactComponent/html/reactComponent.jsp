@@ -1,10 +1,11 @@
+<%@ page import="org.jahia.modules.react.ReactUtils" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
+<%@ taglib prefix="react" uri="http://www.jahia.org/tags/react" %>
 
-<!-- TODO: Get this dynamically -->
-<jahia-npm-resource name="@jahia/react-dxcomponents"></jahia-npm-resource>
+<jahia-npm-resource name="${react:getPackage(currentNode.primaryNodeType.name)}"></jahia-npm-resource>
 
 <script>
     (function initReactComponent${fn:replace(currentNode.identifier,'-','_')}() {
@@ -24,9 +25,5 @@
         });
     })();
 </script>
-
-<c:if test="${renderContext.editMode}">
-    [React component ${currentNode.path}]
-</c:if>
 
 <div id="reactComponent${fn:replace(currentNode.identifier,'-','_')}" >loading ..</div>

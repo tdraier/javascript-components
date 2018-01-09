@@ -7,42 +7,76 @@ class PickerState extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            openPaths: props.openPaths ? props.openPaths : [],
-            selectedPaths: props.selectedPaths ? props.selectedPaths : []
+        if (props.multipleSelection) {
+            this.state = {
+                openPaths: props.openPaths ? props.openPaths : [],
+                selectedPaths: props.selectedPaths ? props.selectedPaths : []
+            }
+        } else {
+            this.state = {
+                openPaths: props.openPaths ? props.openPaths : [],
+                selectedPath: props.selectedPath ? props.selectedPath : null
+            }
         }
     }
 
     onSelectItem(state, path, selected) {
-        this.setState({
-            openPaths: state.openPaths,
-            selectedPaths: selected ? [
-                ...state.selectedPaths,
-                path
-            ] : _.filter(state.selectedPaths, (thispath) => thispath !== path),
-        });
+        if (this.props.multipleSelection) {
+            this.setState({
+                openPaths: state.openPaths,
+                selectedPaths: selected ? [
+                    ...state.selectedPaths,
+                    path
+                ] : _.filter(state.selectedPaths, (thispath) => thispath !== path),
+            });
+        } else {
+            this.setState({
+                openPaths: state.openPaths,
+                selectedPath: selected ? path : null
+            });
+        }
 
     }
 
     onOpenItem(state, path, open) {
-        this.setState({
-            openPaths: open ? [
-                ...state.openPaths,
-                path
-            ] : _.filter(state.openPaths, (thispath) => thispath !== path),
-            selectedPaths: state.selectedPaths
-        });
+        if (this.props.multipleSelection) {
+            this.setState({
+                openPaths: open ? [
+                    ...state.openPaths,
+                    path
+                ] : _.filter(state.openPaths, (thispath) => thispath !== path),
+                selectedPaths: state.selectedPaths
+            });
+        } else {
+            this.setState({
+                openPaths: open ? [
+                    ...state.openPaths,
+                    path
+                ] : _.filter(state.openPaths, (thispath) => thispath !== path),
+                selectedPath: state.selectedPath
+            });
+        }
     }
 
 
     render() {
-        return React.createElement(PickerData, {
-            ...this.props,
-            openPaths: this.state.openPaths,
-            selectedPaths: this.state.selectedPaths,
-            onOpenItem: this.onOpenItem.bind(this, this.state),
-            onSelectItem: this.onSelectItem.bind(this, this.state)
-        })
+        if (this.props.multipleSelection) {
+            return React.createElement(PickerData, {
+                ...this.props,
+                openPaths: this.state.openPaths,
+                selectedPaths: this.state.selectedPaths,
+                onOpenItem: this.onOpenItem.bind(this, this.state),
+                onSelectItem: this.onSelectItem.bind(this, this.state)
+            })
+        } else {
+            return React.createElement(PickerData, {
+                ...this.props,
+                openPaths: this.state.openPaths,
+                selectedPath: this.state.selectedPath,
+                onOpenItem: this.onOpenItem.bind(this, this.state),
+                onSelectItem: this.onSelectItem.bind(this, this.state)
+            })
+        }
     }
 }
 

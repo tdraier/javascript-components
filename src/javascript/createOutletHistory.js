@@ -8,7 +8,6 @@ function createOutletHistory(baseHistory) {
             return baseHistory.createHref(location);
         },
         push: (path, state) => {
-            debugger;
             return baseHistory.push(path,state);
         },
         replace: (path, state) => {

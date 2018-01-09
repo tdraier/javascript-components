@@ -8,7 +8,7 @@ import {
     TableRowColumn
 } from 'material-ui';
 import {MuiThemeProvider} from 'material-ui/styles/index';
-import getMuiTheme from '../themeProvider';
+import {muiTheme} from '../themeProvider';
 
 let NodesTableViewMaterial = function (props) {
 
@@ -22,7 +22,7 @@ let NodesTableViewMaterial = function (props) {
         </TableRow>);
 
     return (
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <MuiThemeProvider muiTheme={muiTheme()}>
             <Table>
                 <TableHeader >
                     {headers()}

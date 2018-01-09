@@ -3,7 +3,7 @@ import {PickerRedux} from './PickerRedux'
 import {PickerState} from './PickerState'
 
 let Picker = function(props) {
-    let Picker = props.pickerType === "redux" ? PickerRedux : PickerState;
+    let Picker = props.pickerType === "state" ? PickerState : PickerRedux;
     return (<Picker {...props} />);
 };
 

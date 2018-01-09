@@ -14,4 +14,4 @@ function muiTheme() {
     }
 }
 
-export default muiTheme;
+export { muiTheme };
