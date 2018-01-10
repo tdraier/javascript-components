@@ -5,7 +5,7 @@ export default {
     input: 'src/javascript/index.js',
     output: {
         file: 'lib/react-dxcomponents.umd.js',
-        format: 'amd',
+        format: 'umd',
         name:'jahia.reactcomponents',
         sourcemap: true,
         globals: {

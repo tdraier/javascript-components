@@ -57,7 +57,10 @@
       "reactnt:contentTable":"NodesTable",
       "reactnt:actionBar":"DynamicComponentsList",
       "reactnt:actionUrl":"NodesTable",
-      "reactnt:layout":"TestLayout"
+      "reactnt:layout":"TestLayout",
+      "reactnt:engine":"Engine",
+      "reactnt:routerExample":"RouterExample"
+
     }
   }
 }
