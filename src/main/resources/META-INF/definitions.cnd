@@ -32,5 +32,7 @@
 [reactnt:routerExample] > jnt:content, jmix:basicContent, reactmix:reactComponent
  - outletId(string)
 
+[reactnt:mutationExample] > jnt:content, jmix:basicContent, reactmix:reactComponent
+
 [reactnt:componentsFolder] > jnt:contentFolder
  - react:id(string)

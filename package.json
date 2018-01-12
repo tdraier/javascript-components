@@ -62,7 +62,8 @@
       "reactnt:actionUrl": "NodesTable",
       "reactnt:layout": "TestLayout",
       "reactnt:engine": "Engine",
-      "reactnt:routerExample": "RouterExample"
+      "reactnt:routerExample": "RouterExample",
+      "reactnt:mutationExample": "MutationExample"
     }
   }
 }

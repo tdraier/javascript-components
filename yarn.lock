@@ -4,7 +4,7 @@
 
 "@jahia/apollo-dx@^1.0.0":
   version "1.0.0"
-  resolved "https://devtools.jahia.com/nexus3/repository/npm-internal/@jahia/apollo-dx/-/apollo-dx-1.0.0.tgz#0e19c191a472b739c82afc8bb54fc2f77904d838"
+  resolved "https://devtools.jahia.com/nexus3/repository/npm-internal/@jahia/apollo-dx/-/apollo-dx-1.0.0.tgz#ea9043fc66139198bd647dc811eface377322a68"
   dependencies:
     apollo-cache-inmemory "^1.1.5"
     apollo-client "^2.2.0"
