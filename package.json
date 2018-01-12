@@ -32,6 +32,9 @@
   },
   "dependencies": {
     "@jahia/apollo-dx": "^1.0.0",
+    "apollo-client": "^2.2.0",
+    "graphql": "^0.12.3",
+    "graphql-tag": "^2.6.1",
     "history": "^4.7.2",
     "jss": "^9.4.0",
     "jss-preset-default": "^4.0.1",
@@ -51,16 +54,15 @@
     "redux-extend-reducer": "^0.2.1",
     "theming": "^1.2.1"
   },
-  "jahia":{
+  "jahia": {
     "components": {
-      "reactnt:contentPicker":"Picker",
-      "reactnt:contentTable":"NodesTable",
-      "reactnt:actionBar":"DynamicComponentsList",
-      "reactnt:actionUrl":"NodesTable",
-      "reactnt:layout":"TestLayout",
-      "reactnt:engine":"Engine",
-      "reactnt:routerExample":"RouterExample"
-
+      "reactnt:contentPicker": "Picker",
+      "reactnt:contentTable": "NodesTable",
+      "reactnt:actionBar": "DynamicComponentsList",
+      "reactnt:actionUrl": "NodesTable",
+      "reactnt:layout": "TestLayout",
+      "reactnt:engine": "Engine",
+      "reactnt:routerExample": "RouterExample"
     }
   }
 }
