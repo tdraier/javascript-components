@@ -3,6 +3,7 @@ import {IconButton, List, ListItem, makeSelectable} from 'material-ui';
 import {MuiThemeProvider} from 'material-ui/styles/index';
 import {muiTheme} from '../themeProvider';
 import {ExpandLess, ExpandMore} from 'material-ui-icons'
+import PropTypes from 'prop-types';
 
 let SelectableList = makeSelectable(List);
 
@@ -27,6 +28,14 @@ let PickerViewMaterial = function (props) {
             </SelectableList>
         </MuiThemeProvider>
     )
+};
+
+PickerViewMaterial.propTypes = {
+    pickerEntries: PropTypes.array.isRequired,
+    selectedPath: PropTypes.string,
+    onSelectItem:  PropTypes.func,
+    onOpenItem: PropTypes.func,
+    textRenderer: PropTypes.func,
 };
 
 export {PickerViewMaterial};

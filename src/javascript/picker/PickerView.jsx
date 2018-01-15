@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 let PickerView = function (props) {
     return (
@@ -12,6 +13,13 @@ let PickerView = function (props) {
             ))}
         </div>
     )
+};
+
+PickerView.propTypes = {
+    pickerEntries: PropTypes.array.isRequired,
+    onSelectItem:  PropTypes.func,
+    onOpenItem: PropTypes.func,
+    textRenderer: PropTypes.func,
 };
 
 export { PickerView };

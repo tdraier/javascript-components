@@ -5,6 +5,7 @@ import {ApolloProvider, graphql} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
 import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import PropTypes from 'prop-types';
 
 class DynamicComponentsList extends React.Component {
 
@@ -98,6 +99,18 @@ class DynamicComponentsList extends React.Component {
 
         return (<ApolloProvider client={client}><Component {...this.props} /></ApolloProvider>);
     }
+}
+
+DynamicComponentsList.propTypes = {
+    /**
+     * Id of the "componentsFolder" to look for
+     */
+    id: PropTypes.string.isRequired,
+
+    /**
+     * Component to use to do the rendering
+     */
+    renderComponent: PropTypes.element
 }
 
 export {DynamicComponentsList};

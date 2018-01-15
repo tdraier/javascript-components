@@ -9,6 +9,7 @@ import {
 } from 'material-ui';
 import {MuiThemeProvider} from 'material-ui/styles/index';
 import {muiTheme} from '../themeProvider';
+import PropTypes from 'prop-types';
 
 let NodesTableViewMaterial = function (props) {
 
@@ -33,6 +34,13 @@ let NodesTableViewMaterial = function (props) {
             </Table>
         </MuiThemeProvider>
     )
+};
+
+NodesTableViewMaterial.propTypes = {
+    headers: PropTypes.func,
+    row: PropTypes.func,
+    textRenderer: PropTypes.func,
+    nodes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export {NodesTableViewMaterial};

@@ -2,6 +2,7 @@ import React from 'react';
 import {Checkbox, IconButton, List, ListItem} from 'material-ui';
 import {MuiThemeProvider} from 'material-ui/styles/index';
 import {muiTheme} from '../themeProvider';
+import PropTypes from 'prop-types';
 
 import {ExpandLess, ExpandMore} from 'material-ui-icons'
 
@@ -19,6 +20,15 @@ let PickerViewMaterialMultiple = function (props) {
         </MuiThemeProvider>
 
     )
+};
+
+
+PickerViewMaterialMultiple.propTypes = {
+    pickerEntries: PropTypes.array.isRequired,
+    onSelectItem:  PropTypes.func,
+    onOpenItem: PropTypes.func,
+    textRenderer: PropTypes.func,
+
 };
 
 export { PickerViewMaterialMultiple };
