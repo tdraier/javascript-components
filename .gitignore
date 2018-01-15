@@ -5,7 +5,6 @@
 *.iml
 *.ipr
 target
-lib
 src/main/resources/javascript/bundles
 node
 node_modules
