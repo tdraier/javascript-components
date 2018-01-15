@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@jahia/apollo-dx@^1.0.0":
+"@jahia/apollo-dx@git+ssh://git@github.com:Jahia/apollo-dx.git":
   version "1.0.0"
-  resolved "https://devtools.jahia.com/nexus3/repository/npm-internal/@jahia/apollo-dx/-/apollo-dx-1.0.0.tgz#ea9043fc66139198bd647dc811eface377322a68"
+  resolved "git+ssh://git@github.com:Jahia/apollo-dx.git#469c01990c64f2b95336fc4bd4be11f276c588fe"
   dependencies:
     apollo-cache-inmemory "^1.1.5"
     apollo-client "^2.2.0"
