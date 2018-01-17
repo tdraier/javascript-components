@@ -108,7 +108,7 @@ function withPickerModel(fragments, reduxStoreId) {
                 openable: props.openableTypes,
                 openPaths: openPaths,
             };
-            debugger;
+
             if (props.queryVariables) {
                 _.assign(vars, props.queryVariables);
             }
