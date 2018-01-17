@@ -37,7 +37,8 @@ class PickerData extends React.Component {
                 depth: depth,
                 prefix: _.repeat("&nbsp;", depth * 3),
                 node: node,
-                hidden: false
+                hidden: false,
+                hasChildren: node.children.pageInfo.totalCount > 0
             };
             pickerEntries.splice(index, 0, pickerNode);
             nodesById[node.uuid] = pickerNode;
@@ -137,6 +138,11 @@ class PickerData extends React.Component {
                             path
                             uuid
                             name
+                            children(typesFilter:{types:$types}, limit:1) {
+                                pageInfo {
+                                    totalCount
+                                }
+                            }
                             selectable : isNodeType(type: {types:$selectable})
                             openable : isNodeType(type: {types:$openable})
                             ... node
@@ -149,6 +155,11 @@ class PickerData extends React.Component {
                                     path
                                     uuid
                                     name
+                                    children(typesFilter:{types:$types}, limit:1) {
+                                        pageInfo {
+                                            totalCount
+                                        }
+                                    }
                                     selectable : isNodeType(type: {types:$selectable})
                                     openable : isNodeType(type: {types:$openable})
                                     ... node

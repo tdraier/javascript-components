@@ -1,46 +1,33 @@
 import React from 'react';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn
-} from 'material-ui';
-import {MuiThemeProvider} from 'material-ui/styles/index';
-import {muiTheme} from '../themeProvider';
+import {Table, TableBody, TableCell, TableHead, TableRow} from 'material-ui';
 import PropTypes from 'prop-types';
 
 let NodesTableViewMaterial = function (props) {
 
     let headers = props['headers'] ? props['headers'] : () => (
         <TableRow>
-            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableCell>Name</TableCell>
         </TableRow>);
 
     let row = props['row'] ? props['row'] : (node) => (<TableRow key={node.path}>
-            <TableRowColumn>{props['textRenderer'] ? props['textRenderer'].call(this, node) : node.name}</TableRowColumn>
+            <TableCell>{props['textRenderer'] ? props['textRenderer'].call(this, node) : node.name}</TableCell>
         </TableRow>);
 
-    return (
-        <MuiThemeProvider muiTheme={muiTheme()}>
-            <Table>
-                <TableHeader >
+    return (<Table>
+                <TableHead>
                     {headers()}
-                </TableHeader>
-                <TableBody >
+                </TableHead>
+                <TableBody>
                     {props.nodes ? props.nodes.map(row) : []}
                 </TableBody>
-            </Table>
-        </MuiThemeProvider>
-    )
+            </Table>)
 };
 
 NodesTableViewMaterial.propTypes = {
     headers: PropTypes.func,
     row: PropTypes.func,
     textRenderer: PropTypes.func,
-    nodes: PropTypes.arrayOf(PropTypes.object).isRequired
+    nodes: PropTypes.arrayOf(PropTypes.object)
 };
 
 export {NodesTableViewMaterial};

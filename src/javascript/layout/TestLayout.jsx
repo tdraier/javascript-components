@@ -1,13 +1,15 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import {Grid, Paper} from 'material-ui';
 import PropTypes from 'prop-types';
 
-let TestLayout = function(props) {
-    return (<Grid fluid>
-        <Row>
-            <Col xs={6} md={3}>{props.leftCol}</Col>
-            <Col xs={6} md={6}>{props.rightCol}</Col>
-        </Row>
+let TestLayout = function (props) {
+    return (<Grid container>
+        <Grid item xs={12} md={6}>
+            <Paper> {props.leftCol}</Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
+            <Paper>{props.rightCol}</Paper>
+        </Grid>
     </Grid>);
 };
 
@@ -17,4 +19,4 @@ TestLayout.propTypes = {
     rightCol: PropTypes.element
 };
 
-export { TestLayout };
+export {TestLayout};

@@ -43,7 +43,7 @@ NodesTable.propTypes = {
     /**
      * Path of the nodes to display
      */
-    defaultPath: PropTypes.string.isRequired,
+    defaultPath: PropTypes.string,
 
     /**
      * List of node types of nodes to display

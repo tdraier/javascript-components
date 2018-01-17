@@ -91,7 +91,7 @@ NodesTableData.propTypes = {
     /**
      * Path of the nodes to display
      */
-    path: PropTypes.string.isRequired,
+    path: PropTypes.string,
 
     /**
      * List of node types of nodes to display
@@ -116,7 +116,7 @@ NodesTableData.propTypes = {
     /**
      * Component to use to do the full rendering of the table
      */
-    renderComponent: PropTypes.element,
+    renderComponent: PropTypes.func,
 
     /**
      * Optional set of fragments to add to the graphQL query. Can be a string that identify a predefinedFragment or a fragment definition

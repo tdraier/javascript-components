@@ -3,9 +3,7 @@ import {ApolloProvider, graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {client} from "@jahia/apollo-dx";
 import {NodesTableData} from "../nodesTable/NodesTableData";
-import {FlatButton, Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui';
-import {MuiThemeProvider} from 'material-ui/styles/index';
-import {muiTheme} from '../themeProvider';
+import {Button, Table, TableBody, TableCell, TableHead, TableRow} from 'material-ui';
 
 
 class MutationExampleView extends Component {
@@ -52,52 +50,51 @@ class MutationExampleView extends Component {
         }];
 
         let RenderComponent = (props) => (<Table>
-                <TableHeader displaySelectAll={false} >
+                <TableHead>
                     <TableRow>
-                        <TableHeaderColumn>Name</TableHeaderColumn>
-                        <TableHeaderColumn>Value</TableHeaderColumn>
-                        <TableHeaderColumn>Update</TableHeaderColumn>
-                        <TableHeaderColumn>Delete</TableHeaderColumn>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Value</TableCell>
+                        <TableCell>Update</TableCell>
+                        <TableCell>Delete</TableCell>
                     </TableRow>
-                </TableHeader>
-                <TableBody displayRowCheckbox={false} selectable={false}>
+                </TableHead>
+                <TableBody>
                     {props.nodes ? props.nodes.map(node =>
                         <TableRow key={node.uuid}>
-                            <TableRowColumn>{node.name}</TableRowColumn>
-                            <TableRowColumn>{node.myprop.value}</TableRowColumn>
-                            <TableRowColumn><FlatButton label={"Update"} onClick={() => this.props.setPropertyMutation({
+                            <TableCell>{node.name}</TableCell>
+                            <TableCell>{node.myprop.value}</TableCell>
+                            <TableCell><Button onClick={() => this.props.setPropertyMutation({
                                 variables:{
                                     path:node.path,
                                     value:("test:"+new Date())
                                 },
                                 refetchQueries: ["NodesQuery"]
                                 // update: update
-                            })}/></TableRowColumn>
-                            <TableRowColumn><FlatButton label={"Delete"} onClick={() => this.props.removeNodeMutation({
+                            })}>Update</Button></TableCell>
+                            <TableCell><Button onClick={() => this.props.removeNodeMutation({
                                 variables:{
                                     path:node.path,
                                 },
                                 refetchQueries: ["NodesQuery"]
-                            })}/></TableRowColumn>
+                            })}>Delete</Button></TableCell>
                         </TableRow>
                     ) : []}
                 </TableBody>
             </Table>
-        )
+        );
 
         return (
-            <MuiThemeProvider muiTheme={muiTheme()}>
             <div>
-            <FlatButton label="New" onClick={() => this.props.addNodeMutation({
+            <Button onClick={() => this.props.addNodeMutation({
                 variables:{
                     name:("name-"+(new Date().getTime())),
                     value:("test:"+new Date())
                 },
                 refetchQueries: ["NodesQuery"]
-            })} />
+            })} >New</Button>
 
             <NodesTableData path={"/"} types={["nt:unstructured"]} fragments={frags} renderComponent={RenderComponent}/>
-            </div></MuiThemeProvider>
+            </div>
         )
     }
 }
@@ -121,10 +118,8 @@ const addNode = gql`
     mutation addNode($value:String, $name:String!) {
         jcr {
             addNode(parentPathOrId:"/",name:$name,primaryNodeType:"nt:unstructured") {
-                mutation {
-                    mutateProperty(name:"myprop") {
-                        setValue(value:$value)
-                    }
+                mutateProperty(name:"myprop") {
+                    setValue(value:$value)
                 }
             }
         }

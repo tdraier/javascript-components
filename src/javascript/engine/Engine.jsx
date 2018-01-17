@@ -1,7 +1,5 @@
 import React from 'react';
-import {Dialog, FlatButton} from 'material-ui';
-import {MuiThemeProvider} from 'material-ui/styles/index';
-import {muiTheme} from '../themeProvider';
+import {Button, Dialog, DialogTitle , DialogContent, DialogActions} from 'material-ui';
 import * as _ from "lodash";
 import {OutletRouter as Router} from '../router/router'
 import {Link, Route} from 'react-router-dom'
@@ -36,19 +34,15 @@ class Engine extends React.Component {
     };
 
     render() {
-        return (<MuiThemeProvider muiTheme={muiTheme()}>
+        return (
             <div>
-                <FlatButton label="Open" onClick={()=>this.handleOpen()}/>
+                <Button onClick={()=>this.handleOpen()}>Open</Button>
                 <Dialog
-                    title="Dialog With Actions"
-                    actions={[
-                        <FlatButton label="Cancel" primary={true} onClick={()=>this.handleClose()}/>,
-                        <FlatButton label="Submit" primary={true} keyboardFocused={true} onClick={()=>this.handleClose()}/>
-                    ]}
-                    modal={false}
                     open={this.state.open}
-                    onRequestClose={()=>this.handleClose()}
+                    onClose={()=>this.handleClose()}
                 >
+                    <DialogTitle>Dialog</DialogTitle>
+                    <DialogContent>
                     <Router outlet={"outlet1"}>
                         <div>
                             <div>
@@ -69,10 +63,14 @@ class Engine extends React.Component {
                             </div>
                         </div>
                     </Router>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button primary={true} onClick={()=>this.handleClose()}>Cancel</Button>,
+                        <Button primary={true} onClick={()=>this.handleClose()}>Submit</Button>
+                    </DialogActions>
                 </Dialog>
 
-            </div>
-        </MuiThemeProvider>);
+            </div>);
     }
 
 
