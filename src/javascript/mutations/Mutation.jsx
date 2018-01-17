@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ApolloProvider, graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 import {client} from "@jahia/apollo-dx";
-import {NodesTableData} from "../nodesTable/NodesTableData";
+import {withNodesFromPath} from "../nodesTable/withNodesFromPath";
 import {Button, Table, TableBody, TableCell, TableHead, TableRow} from 'material-ui';
 
 
@@ -10,44 +10,6 @@ class MutationExampleView extends Component {
 
     constructor(props) {
         super(props);
-    }
-
-
-    render() {
-        let fragment = gql`fragment Test on JCRNode {
-            myprop:property(name:"myprop") {
-                value
-            }
-        }`;
-
-        // let query = gql`query GetNode($path:String!) {
-        //     jcr {
-        //         nodeByPath(path:$path) {
-        //             uuid
-        //             path
-        //             ...Test
-        //         }
-        //     }
-        // } ${fragment}`;
-        //
-        // let update = (proxy, mutationResult) => {
-        //     let updatedPath = mutationResult.data.jcr.mutateNode.node.path;
-        //
-        //     let variables = {path:updatedPath};
-        //     const data = proxy.readQuery({query, variables});
-        //
-        //     delete data.jcr.nodeByPath.myprop;
-        //
-        //     debugger;
-        //
-        //     proxy.writeQuery({query, variables, data});
-        // }
-
-
-        let frags = [{
-            applyFor: "node",
-            gql: fragment
-        }];
 
         let RenderComponent = (props) => (<Table>
                 <TableHead>
@@ -83,6 +45,19 @@ class MutationExampleView extends Component {
             </Table>
         );
 
+        this.Component = withNodesFromPath([{
+            applyFor: "node",
+            gql: gql`fragment Test on JCRNode {
+            myprop:property(name:"myprop") {
+                value
+            }
+        }`
+        }])(RenderComponent);
+    }
+
+
+    render() {
+        let Component = this.Component;
         return (
             <div>
             <Button onClick={() => this.props.addNodeMutation({
@@ -93,7 +68,7 @@ class MutationExampleView extends Component {
                 refetchQueries: ["NodesQuery"]
             })} >New</Button>
 
-            <NodesTableData path={"/"} types={["nt:unstructured"]} fragments={frags} renderComponent={RenderComponent}/>
+            <Component path={"/"} types={["nt:unstructured"]}/>
             </div>
         )
     }

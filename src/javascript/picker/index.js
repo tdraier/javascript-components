@@ -1,5 +1,3 @@
-export * from './Picker.jsx'
-export * from './PickerData.jsx'
-export * from './PickerView.jsx'
+export * from './withPickerModel.jsx'
 export * from './PickerViewMaterial.jsx'
 export * from './PickerViewMaterialMultiple.jsx'

@@ -7,7 +7,7 @@ let PickerViewMaterialMultiple = function (props) {
     return (<List>
         {props.pickerEntries.map((entry) =>
             (<ListItem button
-                       onClick={() => entry.selectable ? props.onSelectItem(entry.path, !entry.selected) : props.onOpenItem(entry.path, !entry.open)}
+                       onClick={() => entry.selectable ? props.onSelectItem(entry.path, !entry.selected, true) : props.onOpenItem(entry.path, !entry.open)}
                        key={entry.path}
                 >
                     <ListItemIcon style={entry.selectable ? {} : {opacity: 0}}>{entry.selected ? <CheckBox/> :

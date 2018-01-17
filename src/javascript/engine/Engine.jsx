@@ -65,8 +65,8 @@ class Engine extends React.Component {
                     </Router>
                     </DialogContent>
                     <DialogActions>
-                        <Button primary={true} onClick={()=>this.handleClose()}>Cancel</Button>,
-                        <Button primary={true} onClick={()=>this.handleClose()}>Submit</Button>
+                        <Button onClick={()=>this.handleClose()}>Cancel</Button>,
+                        <Button onClick={()=>this.handleClose()}>Submit</Button>
                     </DialogActions>
                 </Dialog>
 
