@@ -4,23 +4,23 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="children" value="${jcr:getChildrenOfType(currentNode, 'reactmix:reactComponent')}"/>
-<c:if test="${fn:length(children) == 0}">
+<c:if test="${fn:length(children) < 2}">
 {
     getImports: () => ["@jahia/react-dxcomponents"],
     createElement: (React, ReactDom, dxComponents) => React.createElement(dxComponents.TestLayout, {}, [])
 }
 </c:if>
-<c:if test="${fn:length(children) > 0}">
+<c:if test="${fn:length(children) >= 2}">
 {
-    children: {<c:forEach items="${children}" var="child" varStatus="status">"${child.name}":<template:module editable="false" node="${child}" view="react"/>${!status.last ? ',':''}</c:forEach>},
+    children: [<c:forEach items="${children}" var="child" varStatus="status"><template:module editable="false" node="${child}" view="react"/>${!status.last ? ',':''}</c:forEach>],
     getImports: function() {
         let imports = ["@jahia/react-dxcomponents", "lodash"];
         Object.keys(this.children).forEach((k) => imports = imports.concat(this.children[k].getImports()));
         return imports
     },
     createElement: function(React, ReactDOM, dxComponent, _, ...rest) {
-        let props = _.mapValues(this.children, c => { let s = c.getImports().length; let r = c.createElement(React,ReactDOM, ...rest); rest.splice(s); return r; })
-        return React.createElement(dxComponent.TestLayout, props)
+        let comps = _.map(this.children, c => { let s = c.getImports().length; let r = c.createElement(React,ReactDOM, ...rest); rest.splice(s); return r; })
+        return React.createElement(dxComponent.TestLayout, { leftCol: comps[0], rightCol: comps[1] } )
     }
 }
 </c:if>
