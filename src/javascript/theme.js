@@ -75,5 +75,5 @@ const theme = createMuiTheme();
 //         error: red.A400,
 //     },
 // });
-console.log(theme);
+
 export { theme }
