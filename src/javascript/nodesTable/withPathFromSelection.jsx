@@ -1,5 +1,5 @@
 import React from 'react';
-import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
 import {connect} from 'react-redux'
 
 function withPathFromSelection(reduxStoreId) {

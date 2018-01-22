@@ -2,7 +2,7 @@ import React from 'react';
 import {graphql} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
-import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
 
 function withNodesFromPath(fragments) {
     return (ViewComponent) => {

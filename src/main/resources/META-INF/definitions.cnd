@@ -27,8 +27,6 @@
 [reactnt:layout] > jnt:content, jmix:basicContent, reactmix:reactComponent
  + * (jmix:droppableContent) = jmix:droppableContent
 
-[reactnt:engine] > jnt:content, jmix:basicContent, reactmix:reactComponent
-
 [reactnt:routerExample] > jnt:content, jmix:basicContent, reactmix:reactComponent
  - outletId(string)
 

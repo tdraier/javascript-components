@@ -1,5 +1,5 @@
 import React from 'react';
-import {OutletRouter as Router} from './router'
+import {OutletRouter as Router} from './OutletRouter'
 import {Link, Route} from 'react-router-dom'
 import {Paper, Typography} from 'material-ui'
 class RouterExample extends React.Component {

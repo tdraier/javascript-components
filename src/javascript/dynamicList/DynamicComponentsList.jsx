@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {SimpleListView} from './SimpleListView'
-import {ApolloProvider, graphql} from 'react-apollo';
+import {graphql} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
-import {client, replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
 import PropTypes from 'prop-types';
 
 class DynamicComponentsList extends React.Component {
@@ -97,7 +97,7 @@ class DynamicComponentsList extends React.Component {
             this.componentCache.push({renderComponent: renderComponent, dataComponent: Component});
         }
 
-        return (<ApolloProvider client={client}><Component {...this.props} /></ApolloProvider>);
+        return (<Component {...this.props} />);
     }
 }
 

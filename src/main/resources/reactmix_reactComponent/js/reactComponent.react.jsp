@@ -3,5 +3,6 @@
     getImports: () => ["${react:getPackage(currentNode.primaryNodeType.name)}"],
     createElement: (React, ReactDom, pack) => React.createElement(pack.${react:getImport(currentNode.primaryNodeType.name)}, {
         id : "${currentNode.identifier}",
+        dxContext : contextJsParameters
     })
 }

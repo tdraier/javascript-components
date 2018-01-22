@@ -4,6 +4,8 @@ let config = {
         entry: {
             "vendor-bundle": [
                 "@jahia/apollo-dx",
+                "i18next",
+                "i18next-xhr-backend",
                 "lodash",
                 "material-ui",
                 "material-ui/styles",
@@ -15,6 +17,7 @@ let config = {
                 "react-apollo/index",
                 "react-dom",
                 "react-flexbox-grid",
+                "react-i18next",
                 "react-jss",
                 "redux-extend-reducer",
                 "react-redux/lib/index",

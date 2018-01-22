@@ -1,3 +1,3 @@
 export * from './createOutletHistory'
-export * from './router'
+export * from './OutletRouter'
 export * from './RouterExample'

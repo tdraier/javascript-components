@@ -10,5 +10,5 @@
 
 <div id="${targetId}" >loading ..</div>
 <script type="text/javascript">
-    window.reactRender('${targetId}');
+    reactRender('${targetId}', "${currentNode.identifier}", contextJsParameters);
 </script>
