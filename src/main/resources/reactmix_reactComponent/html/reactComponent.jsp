@@ -9,6 +9,9 @@
 
 <script>
     (function initReactComponent${fn:replace(currentNode.identifier,'-','_')}() {
+        contextJsParameters['mainResourceId'] = '${renderContext.mainResource.node.identifier}';
+        contextJsParameters['mainResourcePath'] = '${renderContext.mainResource.node.path}';
+        contextJsParameters['siteKey'] = '${renderContext.mainResource.node.resolveSite.name}';
 
         let comp = <template:include view="react" templateType="js"/>;
 

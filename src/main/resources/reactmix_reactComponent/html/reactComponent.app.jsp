@@ -10,5 +10,9 @@
 
 <div id="${targetId}" >loading ..</div>
 <script type="text/javascript">
+    contextJsParameters['mainResourceId'] = '${renderContext.mainResource.node.identifier}';
+    contextJsParameters['mainResourcePath'] = '${renderContext.mainResource.node.path}';
+    contextJsParameters['siteKey'] = '${renderContext.mainResource.node.resolveSite.name}';
+
     reactRender('${targetId}', "${currentNode.identifier}", contextJsParameters);
 </script>
