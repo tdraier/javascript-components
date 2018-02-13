@@ -1,5 +1,5 @@
 # React DX components
-The goal of this module is to be able to provide everything necessary to make other modules containing only javascript.
+The goal of this module is to provide everything necessary to make other modules containing only React components (i.e. No java).
 By everything it means:
 - the views to display the components
 - context information as the current node path, type, user, etc..
