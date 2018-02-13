@@ -2,8 +2,8 @@
 The goal of this module is to be able to provide everything necessary to make other modules containing only javascript.
 By everything it means:
 - the views to display the components
-- context informations as the current node path, type, user, etc..
-- a graphql connection 
+- context information as the current node path, type, user, etc..
+- a GraphQL connection 
 - i18n
 
 ## Setup
