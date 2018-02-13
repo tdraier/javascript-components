@@ -32,6 +32,10 @@ This component wraps any DX React component
 How to use redux in your components
 
 ## i18n
+
+## shared components
+`<LanguageSwitcher/>` this component display a language switcher and change the locale in the context
+
 ### Material UI
 here the material ui library to build components:
 https://material-ui-next.com/getting-started/installation/ 
