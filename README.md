@@ -32,6 +32,33 @@ This component wraps any DX React component
 How to use redux in your components
 
 ## i18n
+i18n support is brought by i18next library (https://www.i18next.com/)
+- i18n file is a json file format
+- i18n files are stored in `main/resources/javascript/locales`
+- file name is `<locale>.json` where `locale` is `en`, `de`, `FR_fr`, etc ..
+
+You have to set your React DX application as i18n in our main class wrapper `<DxContextProvider />`
+
+``` 
+<DxContextProvider i18n>
+<MyCustomComponent {...props} />
+</DxContextProvider>
+```
+
+()Note that this must be done AFTER the declaration of `MyCustomComponent`)
+
+To use i18n in `MyCustomComponent`, you need to wrap it with the translation component:
+
+```
+MyCustomComponent = translate('<moduleName>')(SeoSiteSettingsApp);
+
+```  
+where `moduleName` is the artifact id of the module.
+This will add a function `t` in `props` used to get the translated value from a key define in the `.json` file. 
+You can get it in JSX using:
+
+```{props.t('label.title')}```
+
 
 ## shared components
 `<LanguageSwitcher/>` this component display a language switcher and change the locale in the context
