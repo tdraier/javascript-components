@@ -32,3 +32,6 @@ This component wraps any DX React component
 How to use redux in your components
 
 ## i18n
+### Material UI
+here the material ui library to build components:
+https://material-ui-next.com/getting-started/installation/ 
