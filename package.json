@@ -4,7 +4,7 @@
   "scripts": {
     "rollup": "rollup -c",
     "uglify": "uglifyjs -c -m --source-map 'content=lib/react-dxcomponents.umd.js.map' -o lib/react-dxcomponents.umd.min.js  -- lib/react-dxcomponents.umd.js",
-    "build": "npm run rollup; npm run uglify"
+    "build": "yarn run rollup; yarn run uglify"
   },
   "main": "lib/react-dxcomponents.umd.js",
   "license": "MIT",
