@@ -66,3 +66,12 @@ You can get it in JSX using:
 ### Material UI
 here the material ui library to build components:
 https://material-ui-next.com/getting-started/installation/ 
+
+### Update DX React Component 
+As we are using git as a repository,if you do change in this library, you might want to update the projects that depends of it.
+- First, you need to commit as usual your changes to this project.
+- In your project, update the library dependency using:
+
+```yarn add @jahia/react-dxcomponents```
+
+-  this will update the file `yarn.lock` that you have to commit.
