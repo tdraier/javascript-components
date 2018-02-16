@@ -6,9 +6,9 @@
 <%@ taglib prefix="react" uri="http://www.jahia.org/tags/react" %>
 
 <jahia-npm-resource name="${react:getPackage(currentNode.primaryNodeType.name)}"></jahia-npm-resource>
-
+<c:set var="jsUuid" value="${fn:replace(currentNode.identifier,'-','_')}" />
 <script>
-    (function initReactComponent${fn:replace(currentNode.identifier,'-','_')}() {
+    (function initReactComponent${jsUuid}() {
         contextJsParameters['mainResourceId'] = '${renderContext.mainResource.node.identifier}';
         contextJsParameters['mainResourcePath'] = '${renderContext.mainResource.node.path}';
         contextJsParameters['siteKey'] = '${renderContext.mainResource.node.resolveSite.name}';
@@ -23,10 +23,10 @@
             var ReactDOM = m[1];
             var element = comp.createElement.apply(comp,m);
 
-            var componentId = "reactComponent${fn:replace(currentNode.identifier,'-','_')}";
+            var componentId = "reactComponent${jsUuid}";
             ReactDOM.render(element, document.getElementById(componentId));
         });
     })();
 </script>
 
-<div id="reactComponent${fn:replace(currentNode.identifier,'-','_')}" >loading ..</div>
+<div id="reactComponent${jsUuid}">loading...</div>

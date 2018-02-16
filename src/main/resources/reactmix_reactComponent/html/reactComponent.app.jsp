@@ -8,7 +8,7 @@
 <template:addResources type="javascript" resources="apps/${currentNode.primaryNodeType.localName}.js" />
 <c:set var="targetId" value="reactComponent${fn:replace(currentNode.identifier,'-','_')}"/>
 
-<div id="${targetId}" >loading ..</div>
+<div id="${targetId}">loading..</div>
 <script type="text/javascript">
     contextJsParameters['mainResourceId'] = '${renderContext.mainResource.node.identifier}';
     contextJsParameters['mainResourcePath'] = '${renderContext.mainResource.node.path}';
