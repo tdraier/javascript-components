@@ -4,7 +4,7 @@
 <reactnt = 'http://www.jahia.org/jahia/reactnt/1.0'>
 <reactmix = 'http://www.jahia.org/jahia/reactmix/1.0'>
 
-[reactmix:reactComponent]
+[reactmix:reactComponent] mixin
 
 [reactnt:baseReactComponent] > jnt:content, jmix:basicContent, reactmix:reactComponent
   - react:componentRequire (string)
