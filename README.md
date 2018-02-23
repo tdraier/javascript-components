@@ -1,7 +1,7 @@
 # React DX components
 The goal of this module is to provide everything necessary to make other modules containing only React components (i.e. no Java).
 "Everything" means:
-- views to display components
+- reusable UI components
 - context information like current node path, type, user, etc
 - GraphQL connection
 - i18n
@@ -31,7 +31,7 @@ This component wraps any DX React component
 How to use redux in your components
 
 ## i18n
-i18n support is brought by i18next library (https://www.i18next.com/)
+i18n support is brought by the i18next library (https://www.i18next.com/)
 - i18n file is a JSON file format
 - i18n files are stored in `main/resources/javascript/locales`
 - file name is `<locale>.json` where `locale` is `en`, `de`, `FR_fr`, etc ..
