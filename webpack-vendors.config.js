@@ -9,6 +9,7 @@ let config = {
                 "lodash",
                 "material-ui",
                 "material-ui/styles",
+                "material-ui/colors",
                 "material-ui-icons",
                 "react",
                 "react-router",

@@ -10,6 +10,7 @@ import {I18nextProvider} from 'react-i18next'
 import {HashRouter} from 'react-router-dom'
 import {OutletRouter} from '../router'
 import PropTypes from 'prop-types';
+import * as _ from "lodash";
 
 class DxContextProvider extends React.Component {
     constructor(props) {
@@ -53,7 +54,11 @@ class DxContextProvider extends React.Component {
             Component = React.createElement(Provider, {store:store}, Component);
         }
         if (mui) {
-            Component = React.createElement(MuiThemeProvider, {theme:theme}, Component);
+            let theTheme = theme;
+            if (typeof mui === 'object') {
+                theTheme = _.merge({}, theme, mui);
+            }
+            Component = React.createElement(MuiThemeProvider, {theme:theTheme}, Component);
         }
         return Component;
     }

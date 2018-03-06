@@ -24,6 +24,7 @@ export default {
         "jss-preset-default",
         "lodash",
         "material-ui",
+        "material-ui/colors/index",
         "material-ui/styles/index",
         "material-ui-icons",
         "prop-types",
