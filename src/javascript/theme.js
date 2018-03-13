@@ -1,10 +1,13 @@
 import {createMuiTheme} from 'material-ui';
-import {indigo, pink, red} from 'material-ui/colors/index'
+import {indigo, pink, red, grey} from 'material-ui/colors/index'
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
 let theme = createMuiTheme({
     palette: {
+        background: {
+            global: grey[100]
+        },
         contrastThreshold: 3.1,
         tonalOffset: 0.07,
         primary: {
