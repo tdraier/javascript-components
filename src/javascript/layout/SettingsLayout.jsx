@@ -8,7 +8,8 @@ const styles = theme => ({
     },
     main: {
         minHeight: 'calc(100% - 96px)',
-        marginTop: 64
+        marginTop: 64,
+        padding: 1
     },
     footer: {
         fontSize: '14px',
