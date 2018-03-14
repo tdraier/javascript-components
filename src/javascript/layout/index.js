@@ -1,1 +1,1 @@
-export * from './TestLayout'
+export * from './SettingsLayout'
