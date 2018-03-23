@@ -20,7 +20,7 @@ class DynamicComponentsList extends React.Component {
         let jcr = data.jcr;
         let safeEval = eval;
         if (jcr && jcr.nodesByQuery) {
-            components = _.map(_.flatMap(jcr.nodesByQuery.nodes, "children.nodes"),(n)=> safeEval("(" + n.renderedView.output + ")"));
+            components = _.map(_.flatMap(jcr.nodesByQuery.nodes, "children.nodes"),(n)=> safeEval("(" + n.renderedContent.output + ")"));
         }
 
         let imports = [];
@@ -79,7 +79,7 @@ class DynamicComponentsList extends React.Component {
                                         primaryNodeType {
                                             name
                                         }
-                                        renderedView(templateType:"js", view:"react") {
+                                        renderedContent(templateType:"js", view:"react") {
                                             output
                                         }
                                     }
