@@ -15,6 +15,16 @@ import * as _ from "lodash";
 class DxContextProvider extends React.Component {
     constructor(props) {
         super(props);
+        if (props.mui && typeof props.mui === 'object') {
+            this.state = {
+                theme: props.mui
+            }
+        }
+        props.dxContext.setTheme = (theme) => {
+            this.setState({
+                theme: theme
+            });
+        }
     }
 
     getChildContext() {
@@ -55,8 +65,8 @@ class DxContextProvider extends React.Component {
         }
         if (mui) {
             let theTheme = theme;
-            if (typeof mui === 'object') {
-                theTheme = _.merge({}, theme, mui);
+            if (this.state && this.state.theme) {
+                theTheme = _.merge({}, theme, this.state.theme);
             }
             Component = React.createElement(MuiThemeProvider, {theme:theTheme}, Component);
         }

@@ -18,25 +18,35 @@ const styles = theme => ({
         padding: "8px",
         textAlign: "center",
         color: theme.palette.text.secondary
+    },
+    appBar: {
+        transition: "all 200ms ease-in-out"
     }
 });
 
 
-let SettingsLayout = function (props) {
-    return (
-        <section className={props.classes.root}>
-            <AppBar position="fixed">
-                {props.appBar}
-            </AppBar>
-            <section className={props.classes.main}>
-                {props.children}
+class SettingsLayout extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        let { classes, appBar, children, footer, appBarStyle } = this.props;
+        return (
+            <section className={classes.root} >
+                <AppBar position="fixed" classes={{root:classes.appBar}} style={appBarStyle}>
+                    {appBar}
+                </AppBar>
+                <section className={classes.main}>
+                    {children}
+                </section>
+                <footer className={classes.footer}>
+                    {footer}
+                </footer>
             </section>
-            <footer className={props.classes.footer}>
-                {props.footer}
-            </footer>
-        </section>
-    );
-};
+        );
+    }
+}
 
 
 SettingsLayout.propTypes = {
