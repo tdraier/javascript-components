@@ -1,5 +1,6 @@
 {
   "label": {
-    "languages": "Language"
+    "languages": "Language",
+    "searchPlaceholder": "Search"
   }
 }
