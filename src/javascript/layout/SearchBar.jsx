@@ -57,7 +57,7 @@ class SearchBar extends React.Component {
         this.onFocus = this.onFocus.bind(this);
         this.onBlur = this.onBlur.bind(this);
         this.state = {
-            inputStyle: props.classes.root
+            focus: false
         }
     }
 
@@ -74,14 +74,14 @@ class SearchBar extends React.Component {
 
     onFocus() {
         this.setState({
-            inputStyle: this.props.classes.rootFocus
+            focus: true
         });
         this.props.onFocus();
     }
 
     onBlur() {
         this.setState({
-            inputStyle: this.props.classes.root
+            focus: false
         });
         this.props.onBlur();
     }
@@ -91,7 +91,7 @@ class SearchBar extends React.Component {
         const { classes,t, placeholderLabel } = this.props;
 
         return (
-            <Input classes={{root: this.state.inputStyle, input: classes.input}}
+            <Input classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: classes.input}}
                    onChange={this.handleChange}
                    onBlur={this.onBlur}
                    onFocus={this.onFocus}
