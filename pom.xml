@@ -104,7 +104,6 @@
                 <configuration>
                     <instructions>
                         <Jahia-Depends>default</Jahia-Depends>
-                        <Jahia-Module-Scripting-Views>jsx,jss</Jahia-Module-Scripting-Views>
                         <_dsannotations>*</_dsannotations>
                     </instructions>
                 </configuration>
