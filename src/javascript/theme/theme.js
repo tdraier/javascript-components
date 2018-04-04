@@ -1,5 +1,5 @@
 import {createMuiTheme} from 'material-ui';
-import {blueGrey, lightBlue, red, grey, purple, green} from 'material-ui/colors/index'
+import {blueGrey, lightBlue, red, grey, purple, green, orange} from 'material-ui/colors/index'
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
@@ -24,6 +24,16 @@ let theme = createMuiTheme({
             light: red.A200,
             main: red.A400,
             dark: red.A700
+        },
+        warning: {
+            light: orange.A200,
+            main: orange.A400,
+            dark: orange.A700
+        },
+        success: {
+            light: green.A200,
+            main: green.A400,
+            dark: green.A700
         },
     },
 });
