@@ -1,5 +1,6 @@
 import React from 'react';
 import {MuiThemeProvider} from 'material-ui';
+import {createGenerateClassName} from 'material-ui/styles/index';
 import {getI18n} from "../i18n/getI18n";
 import {store} from '../reduxStore';
 import {theme} from '../theme'
@@ -10,21 +11,42 @@ import {I18nextProvider} from 'react-i18next'
 import {HashRouter} from 'react-router-dom'
 import {OutletRouter} from '../router'
 import PropTypes from 'prop-types';
+import { SheetsRegistry, JssProvider } from 'react-jss';
+
 import * as _ from "lodash";
 
 class DxContextProvider extends React.Component {
     constructor(props) {
         super(props);
-        if (props.mui && typeof props.mui === 'object') {
-            this.state = {
-                theme: props.mui
+        let {dxContext, children, i18n, apollo, redux, mui, router, apolloClient} = this.props;
+        let state = {};
+        if (mui) {
+            if (typeof mui === 'object') {
+                state.currentTheme = mui;
+            } else {
+                state.currentTheme = theme;
             }
+            dxContext.setTheme = (theme) => {
+                // theTheme = _.merge({}, theme, this.state.theme);
+                this.setState({
+                    currentTheme: theme
+                });
+            };
         }
-        props.dxContext.setTheme = (theme) => {
-            this.setState({
-                theme: theme
-            });
+
+        if (dxContext.apolloClient) {
+            state.apolloClient = dxContext.apolloClient;
+        } else if (apolloClient) {
+            state.apolloClient = apolloClient;
+        } else if (apollo) {
+            let options = {contextPath:dxContext.contextPath};
+            if (typeof apollo === 'object') {
+                Object.assign(options, apollo)
+            }
+            state.apolloClient = client(options);
         }
+
+        this.state = state;
     }
 
     getChildContext() {
@@ -33,6 +55,7 @@ class DxContextProvider extends React.Component {
 
     render() {
         let {dxContext, children, i18n, apollo, redux, mui, router} = this.props;
+        let {currentTheme, apolloClient} = this.state;
 
         let Component = React.Children.only(children);
         if (i18n) {
@@ -53,22 +76,20 @@ class DxContextProvider extends React.Component {
             }
             Component = React.createElement(HashRouter, options, Component);
         }
-        if (apollo) {
-            let options = {contextPath:dxContext.contextPath};
-            if (typeof apollo === 'object') {
-                Object.assign(options, apollo)
-            }
-            Component = React.createElement(ApolloProvider, {client:client(options)}, Component);
+        if (apolloClient) {
+            Component = React.createElement(ApolloProvider, {client:apolloClient}, Component);
         }
         if (redux) {
             Component = React.createElement(Provider, {store:store}, Component);
         }
-        if (mui) {
-            let theTheme = theme;
-            if (this.state && this.state.theme) {
-                theTheme = _.merge({}, theme, this.state.theme);
-            }
-            Component = React.createElement(MuiThemeProvider, {theme:theTheme}, Component);
+
+        if (currentTheme) {
+            let generateClassName = dxContext.generateClassName ? dxContext.generateClassName : createGenerateClassName();
+            let sheetsRegistry = dxContext.sheetRegistry ? dxContext.sheetRegistry : new SheetsRegistry();
+            Component = React.createElement(JssProvider, {registry: sheetsRegistry,  generateClassName:generateClassName}, React.createElement(MuiThemeProvider, {theme: currentTheme, sheetsManager:new Map()}, Component));
+            // } else {
+            //     Component = React.createElement(MuiThemeProvider, {theme: currentTheme}, Component);
+            // }
         }
         return Component;
     }
