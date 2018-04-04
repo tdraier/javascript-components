@@ -4,12 +4,11 @@ import {createHashHistory} from "history";
 import {createOutletHistory} from "./createOutletHistory"
 import {Router} from 'react-router'
 
-let baseHistory = createHashHistory();
-
 class OutletRouter extends React.Component {
 
     constructor(props) {
         super(props);
+        let baseHistory = createHashHistory();
         this.outletHistory = createOutletHistory(baseHistory, props.outlet);
     }
 
