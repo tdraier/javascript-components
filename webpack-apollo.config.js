@@ -2,26 +2,8 @@ let SystemJSPlugin = require('webpack-systemjs-bundle-plugin/');
 
 let config = {
         entry: {
-            "vendor-bundle": [
-                "i18next",
-                "i18next-xhr-backend",
-                "lodash",
-                "material-ui",
-                "material-ui/styles",
-                "material-ui/colors",
-                "material-ui-icons",
-                "react",
-                "react-router",
-                "react-router-dom",
-                "react-apollo",
-                "react-apollo/index",
-                "react-dom",
-                "react-flexbox-grid",
-                "react-i18next",
-                "react-jss",
-                "redux-extend-reducer",
-                "react-redux/lib/index",
-                "redux/lib/index",
+            "apollo-bundle": [
+                "@jahia/apollo-dx"
             ]
         },
 
