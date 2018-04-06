@@ -1,5 +1,5 @@
 import {createMuiTheme} from 'material-ui';
-import {blueGrey, lightBlue, red, grey, purple, green, orange} from 'material-ui/colors/index'
+import {blueGrey, lightBlue, red, grey, purple, green, deepOrange} from 'material-ui/colors/index'
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
@@ -17,21 +17,16 @@ let theme = createMuiTheme({
             main: lightBlue[600],
         },
         error: {
-            main: red.A400,
+            main: red[400],
         },
-    },
-    custom: {
         publish: {
-            main: orange.A400,
-            contrastText: "#fff",
+            main: deepOrange[500],
         },
         enabled: {
-            main: green.A400,
-            contrastText: "#fff",
+            main: green[400],
         },
         delete: {
-            main: red.A400,
-            contrastText: "#fff",
+            main: red[600],
         }
     },
     overrides: {
@@ -75,7 +70,38 @@ let darkTheme = createMuiTheme({
         error: {
             main: red[200]
         },
+        publish: {
+            main: deepOrange[500],
+        },
+        enabled: {
+            main: green[400],
+        },
+        delete: {
+            main: red[600],
+        }
     },
+    overrides: {
+        MuiButton: {
+            root: {
+                color: "inherit",
+            }
+        },
+        MuiTableCell: {
+            body: {
+                color: "inherit",
+            }
+        },
+        MuiIconButton: {
+            root: {
+                color: "inherit",
+            }
+        },
+        MuiCheckbox: {
+            default: {
+                color: "inherit",
+            }
+        }
+    }
 });
 
 
