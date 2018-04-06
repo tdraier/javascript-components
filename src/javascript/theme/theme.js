@@ -6,36 +6,56 @@ import {blueGrey, lightBlue, red, grey, purple, green, orange} from 'material-ui
 let theme = createMuiTheme({
     palette: {
         background: {
-            global: grey[200]
+            global: grey[200],
         },
         contrastThreshold: 3.1,
-        tonalOffset: 0.07,
+        tonalOffset: 0.2,
         primary: {
             main: blueGrey[600],
-            light: blueGrey[300],
-            dark: blueGrey[700]
         },
         secondary: {
             main: lightBlue[600],
-            light: lightBlue[300],
-            dark: lightBlue[700]
         },
         error: {
-            light: red.A200,
             main: red.A400,
-            dark: red.A700
-        },
-        warning: {
-            light: orange.A200,
-            main: orange.A400,
-            dark: orange.A700
-        },
-        success: {
-            light: green.A200,
-            main: green.A400,
-            dark: green.A700
         },
     },
+    custom: {
+        publish: {
+            main: orange.A400,
+            contrastText: "#fff",
+        },
+        enabled: {
+            main: green.A400,
+            contrastText: "#fff",
+        },
+        delete: {
+            main: red.A400,
+            contrastText: "#fff",
+        }
+    },
+    overrides: {
+        MuiButton: {
+            root: {
+                color: "inherit",
+            }
+        },
+        MuiTableCell: {
+            body: {
+                color: "inherit",
+            }
+        },
+        MuiIconButton: {
+            root: {
+                color: "inherit",
+            }
+        },
+        MuiCheckbox: {
+            default: {
+                color: "inherit",
+            }
+        }
+    }
 });
 
 let darkTheme = createMuiTheme({
