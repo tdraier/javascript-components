@@ -12,6 +12,7 @@ import {HashRouter} from 'react-router-dom'
 import {OutletRouter} from '../router'
 import PropTypes from 'prop-types';
 import { SheetsRegistry, JssProvider } from 'react-jss';
+import {NotificationProvider} from "../notification/NotificationProvider";
 
 import * as _ from "lodash";
 
@@ -91,6 +92,10 @@ class DxContextProvider extends React.Component {
             //     Component = React.createElement(MuiThemeProvider, {theme: currentTheme}, Component);
             // }
         }
+
+        // add notification
+        Component = React.createElement(NotificationProvider, {notificationContext:{}}, Component);
+
         return Component;
     }
 }
