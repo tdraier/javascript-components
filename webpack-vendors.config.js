@@ -2,26 +2,37 @@ let SystemJSPlugin = require('webpack-systemjs-bundle-plugin/');
 
 let config = {
         entry: {
-            "vendor-bundle": [
-                "i18next",
-                "i18next-xhr-backend",
+            "lodash-bundle": [
                 "lodash",
+            ],
+            "material-bundle": [
                 "material-ui",
                 "material-ui/styles",
                 "material-ui/colors",
                 "material-ui-icons",
+                "react-flexbox-grid",
+                "react-jss",
+            ],
+            "react-bundle": [
                 "react",
                 "react-router",
                 "react-router-dom",
                 "react-apollo",
                 "react-apollo/index",
                 "react-dom",
-                "react-flexbox-grid",
+            ],
+            "i18n-bundle": [
                 "react-i18next",
-                "react-jss",
+                "i18next",
+                "i18next-xhr-backend"
+            ],
+            "redux-bundle": [
                 "redux-extend-reducer",
                 "react-redux/lib/index",
-                "redux/lib/index",
+                "redux/lib/index"
+            ],
+            "apollo-bundle": [
+                "@jahia/apollo-dx"
             ]
         },
 
@@ -44,9 +55,9 @@ let config = {
                             loader: "css-loader",
                             options: {
                                 modules: true,
-                            //     sourceMap: true,
-                            //     importLoaders: 1,
-                            //     localIdentName: "[name]--[local]--[hash:base64:8]"
+                                //     sourceMap: true,
+                                //     importLoaders: 1,
+                                //     localIdentName: "[name]--[local]--[hash:base64:8]"
                             }
                         },
                         // "postcss-loader" // has separate config, see postcss.config.js nearby
@@ -54,9 +65,9 @@ let config = {
                 },
             ]
         },
-    resolve: {
-        mainFields:["browser", "main"]
-    },
+        resolve: {
+            mainFields: ["browser", "main"]
+        },
         plugins: [
             new SystemJSPlugin({
                 path: __dirname + "/src/main/resources/javascript/bundles/[name].config.json",

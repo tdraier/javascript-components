@@ -6,9 +6,8 @@
     "uglify": "uglifyjs -c -m --source-map 'content=lib/react-dxcomponents.umd.js.map' -o lib/react-dxcomponents.umd.min.js  -- lib/react-dxcomponents.umd.js",
     "dist": "yarn run rollup; yarn run uglify",
     "js-bundle-dxcomponent": "webpack",
-    "js-bundle-apollo": "webpack --config webpack-apollo.config.js",
     "js-bundle-vendors": "webpack --config webpack-vendors.config.js",
-    "build": "yarn run dist; yarn run js-bundle-dxcomponent; yarn run js-bundle-apollo; yarn run js-bundle-vendors"
+    "build": "yarn run dist; yarn run js-bundle-dxcomponent; yarn run js-bundle-vendors"
   },
   "main": "lib/react-dxcomponents.umd.js",
   "license": "MIT",
