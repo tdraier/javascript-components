@@ -5,10 +5,7 @@ import {translate} from 'react-i18next';
 
 const styles = theme => ({
     root: {
-        position: 'absolute',
-        margin: '0 auto',
-        left: '0',
-        right: '0',
+        margin: '0',
         color : 'inherit',
         backgroundColor : theme.palette.primary.light,
         width: '720px',
@@ -18,10 +15,7 @@ const styles = theme => ({
         fontWeight: '200'
     },
     rootFocus: {
-        position: 'absolute',
-        margin: '0 auto',
-        left: '0',
-        right: '0',
+        margin: '0',
         color: theme.palette.text.secondary,
         backgroundColor : '#fff',
         width: '720px',
