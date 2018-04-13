@@ -1,6 +1,6 @@
 import React from 'react';
-import {Input, InputAdornment, withStyles } from 'material-ui';
-import { Search } from 'material-ui-icons';
+import {Input, InputAdornment, withStyles} from 'material-ui';
+import {Search} from 'material-ui-icons';
 import {translate} from 'react-i18next';
 
 const styles = theme => ({
@@ -93,6 +93,7 @@ class SearchBar extends React.Component {
                    type="text"
                    placeholder={placeholderLabel || t('label.searchPlaceholder')}
                    startAdornment={<InputAdornment classes={{root: classes.searchIcon}} position="start"><Search/></InputAdornment>}
+                   style={this.props.style}
             />
         )
     }
