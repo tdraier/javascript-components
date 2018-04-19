@@ -26,6 +26,7 @@ export default {
         "material-ui",
         "material-ui/colors/index",
         "material-ui/styles/index",
+        "material-ui/styles/colorManipulator",
         "material-ui-icons",
         "prop-types",
         "react",
