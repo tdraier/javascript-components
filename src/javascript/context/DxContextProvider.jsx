@@ -11,10 +11,8 @@ import {I18nextProvider} from 'react-i18next'
 import {HashRouter} from 'react-router-dom'
 import {OutletRouter} from '../router'
 import PropTypes from 'prop-types';
-import { SheetsRegistry, JssProvider } from 'react-jss';
+import {JssProvider, SheetsRegistry} from 'react-jss';
 import {NotificationProvider} from "../notification/NotificationProvider";
-
-import * as _ from "lodash";
 
 class DxContextProvider extends React.Component {
     constructor(props) {
@@ -91,10 +89,10 @@ class DxContextProvider extends React.Component {
             // } else {
             //     Component = React.createElement(MuiThemeProvider, {theme: currentTheme}, Component);
             // }
-        }
 
-        // add notification
-        Component = React.createElement(NotificationProvider, {notificationContext:{}}, Component);
+            // add notification
+            Component = React.createElement(NotificationProvider, {notificationContext:{}}, Component);
+        }
 
         return Component;
     }

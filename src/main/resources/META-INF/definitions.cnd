@@ -5,32 +5,3 @@
 <reactmix = 'http://www.jahia.org/jahia/reactmix/1.0'>
 
 [reactmix:reactComponent] mixin
-
-[reactnt:baseReactComponent] > jnt:content, jmix:basicContent, reactmix:reactComponent
-  - react:componentRequire (string)
-  - react:componentExport (string)
-
-[reactnt:contentPicker] > jnt:content, jmix:basicContent, reactmix:reactComponent
- - rootPath(string)
- - storeId(string)
-
-[reactnt:contentTable] > jnt:content, jmix:basicContent, reactmix:reactComponent
- - storeId(string)
-
-[reactnt:actionBar] > jnt:content, jmix:basicContent, reactmix:reactComponent
- - react:id(string)
-
-[reactnt:actionUrl] > jnt:content, jmix:basicContent, reactmix:reactComponent
- - icon(string)
- - url(string)
-
-[reactnt:layout] > jnt:content, jmix:basicContent, reactmix:reactComponent
- + * (jmix:droppableContent) = jmix:droppableContent
-
-[reactnt:routerExample] > jnt:content, jmix:basicContent, reactmix:reactComponent
- - outletId(string)
-
-[reactnt:mutationExample] > jnt:content, jmix:basicContent, reactmix:reactComponent
-
-[reactnt:componentsFolder] > jnt:contentFolder
- - react:id(string)
