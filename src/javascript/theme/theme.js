@@ -8,7 +8,7 @@ let theme = createMuiTheme({
         background: {
             global: grey[200],
         },
-        contrastThreshold: 3.1,
+        contrastThreshold: 2.5,
         tonalOffset: 0.2,
         primary: {
             main: blueGrey[600],
