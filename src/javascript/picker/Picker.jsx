@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql} from 'react-apollo';
+import {Query} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
 import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
@@ -10,7 +10,21 @@ class Picker extends React.Component {
     constructor(props) {
         super(props);
 
-        let query = gql`
+        let {
+            fragments, render, rootPaths, queryVariables, hideRoot,
+            openableTypes, selectableTypes,
+            openPaths, onOpenItem,
+            selectedPaths, onSelectItem,
+            defaultSelectedPaths, onSelectionChange,
+            defaultOpenPaths,
+            onLoading,
+            ...otherProps
+        } = props;
+
+        this.isOpenControlled = openPaths != null;
+        this.isSelectionControlled = selectedPaths != null;
+
+        this.query = gql`
             query PickerQuery($rootPaths:[String!]!, $selectable:[String]!, $openable:[String]!, $openPaths:[String!]!, $types:[String]!) {
                 jcr {
                     rootNodes:nodesByPath(paths: $rootPaths) {
@@ -48,66 +62,90 @@ class Picker extends React.Component {
                 }
             }`;
 
-        let { fragments, ...graphqlComponentProps } = props;
 
-        replaceFragmentsInDocument(query, fragments);
+        replaceFragmentsInDocument(this.query, fragments);
 
-        this.graphqlComponentProps = graphqlComponentProps;
+        let eventsHandlers = {};
 
-        let state = {};
-        let that = this;
-        if (!props.openPaths) {
-            state.openPaths = props.defaultOpenPaths ? _.clone(props.defaultOpenPaths) : [];
-            graphqlComponentProps.onOpenItem = (path,open) => {
-                that.setState( (prevState, props) => ({
-                    openPaths: open ? [
-                        ...prevState.openPaths,
-                        path
-                    ] : _.filter(prevState.openPaths, (thispath) => thispath !== path)
+        let state = {
+            renderProps: otherProps,
+            eventsHandlers: eventsHandlers
+        };
+
+
+        if (!this.isOpenControlled) {
+            state.openPaths = defaultOpenPaths ? _.clone(defaultOpenPaths) : [];
+            eventsHandlers.onOpenItem = (path, open) => {
+                this.setState((prevState) => ({
+                    openPaths: open ?
+                        [...prevState.openPaths, path] :
+                        _.filter(prevState.openPaths, (thispath) => thispath !== path)
                 }));
-                if (props.onOpenItem) {
-                    props.onOpenItem(path,open);
-                }
-            }
+            };
+        } else {
+            eventsHandlers.onOpenItem = onOpenItem;
         }
 
-        if (!props.selectedPaths) {
-            state.selectedPaths = props.defaultSelectedPaths ? _.clone(props.defaultSelectedPaths) :  [];
-            graphqlComponentProps.onSelectItem = (path,selected,multiple) => {
-                that.setState((prevState, props)=> ({
-                    selectedPaths: selected ? [
-                        ...(multiple ? prevState.selectedPaths : []),
-                            path
-                        ] : _.filter(prevState.selectedPaths, (thispath) => thispath !== path)
-                }));
-                if (props.onSelectItem) {
-                    props.onSelectItem(path,select,multiple);
-                }
-            }
+        if (!this.isSelectionControlled) {
+            state.selectedPaths = defaultSelectedPaths ? _.clone(defaultSelectedPaths) : [];
+            eventsHandlers.onSelectItem = (path, selected, multiple) => {
+                this.setState((prevState) => {
+                    let newSelectedPaths = selected ?
+                        [...(multiple ? prevState.selectedPaths : []), path] :
+                        _.filter(prevState.selectedPaths, (thispath) => thispath !== path);
+                    onSelectionChange(newSelectedPaths);
+                    return {
+                        selectedPaths: newSelectedPaths
+                    };
+                });
+            };
+        } else {
+            eventsHandlers.onSelectItem = onSelectItem;
         }
+
         this.state = state;
-
-        this.GraphQLComponent = graphql(query, {
-            props: this.mapResultsToProps,
-            options: this.mapPropsToOptions
-        })(this.props.render);
     }
 
-    componentDidUpdate(prevProps, prevState, prevContext) {
-        if (this.props.onSelectionChange && !_.isEqual(this.state.selectedPaths,prevState.selectedPaths)) {
-            this.props.onSelectionChange(this.state.selectedPaths);
+    static getDerivedStateFromProps(nextProps, prevState) {
+        let {
+            fragments, render, rootPaths, queryVariables, hideRoot,
+            openableTypes, selectableTypes,
+            openPaths, onOpenItem,
+            selectedPaths, onSelectItem,
+            defaultSelectedPaths, onSelectionChange,
+            defaultOpenPaths,
+            onLoading,
+            ...otherProps
+        } = nextProps;
+
+        if (!_.isEqual(_.omit(otherProps, _.functions(otherProps)), _.omit(prevState.renderProps, _.functions(prevState.renderProps)))) {
+            return {
+                renderProps: otherProps
+            }
         }
+
+        return null;
     }
 
-    componentWillReceiveProps(nextProps, nextState) {
-        let { fragments, onOpenItem, onSelectItem, ...graphqlComponentProps } = nextProps;
-        _.assign(this.graphqlComponentProps, graphqlComponentProps);
+    getVariables(selectedPaths, openPaths) {
+        let {rootPaths, openableTypes, selectableTypes, queryVariables} = this.props;
+
+        let vars = {
+            rootPaths: rootPaths,
+            types: _.union(openableTypes, selectableTypes),
+            selectable: selectableTypes,
+            openable: openableTypes,
+            openPaths: openPaths,
+        };
+
+        if (queryVariables) {
+            _.assign(vars, queryVariables);
+        }
+
+        return vars;
     }
 
-    mapResultsToProps({data, ownProps}) {
-        let selectedPaths = ownProps.selectedPaths;
-        let openPaths = ownProps.openPaths ? ownProps.openPaths : [];
-
+    getPickerEntries(data, selectedPaths, openPaths) {
         let pickerEntries = [];
         let nodesById = {};
         let jcr = data.jcr;
@@ -139,7 +177,7 @@ class Picker extends React.Component {
             if (jcr.rootNodes) {
                 _.forEach(jcr.rootNodes, rootNode => {
                     let root = addNode(rootNode, 0, 0);
-                    root.hidden = ownProps.hideRoot;
+                    root.hidden = this.props.hideRoot;
                 });
             }
             if (jcr.openNodes) {
@@ -167,20 +205,44 @@ class Picker extends React.Component {
             return !pickerNode.hidden;
         });
 
-        return {
-            ...ownProps,
-            pickerEntries: pickerEntries,
-        };
+        return pickerEntries;
     }
 
-    mapPropsToOptions(props) {
-        let openPaths = props.openPaths ? props.openPaths : [];
+    shouldComponentUpdate(nextProps, nextState) {
+        let {
+            render:nextRender, rootPaths:nextRootPaths, hideRoot:nextHideRoot,
+            openPaths:nextOpenPaths, selectedPaths:nextSelectedPaths, defaultSelectedPaths:nextDefaultSelectedPaths, defaultOpenPaths:nextDefaultOpenPaths,
+            ...nextPropsToCompare
+        } = nextProps;
 
-        let fullyOpenPath = (props, path) => {
+        let {
+            render, rootPaths, hideRoot,
+            openPaths, selectedPaths, defaultSelectedPaths, defaultOpenPaths,
+            ...previousPropsToCompare
+        } = this.props;
+
+        nextPropsToCompare = _.omit(nextPropsToCompare, _.functions(nextPropsToCompare));
+        previousPropsToCompare = _.omit(previousPropsToCompare, _.functions(previousPropsToCompare));
+
+        let changed = (this.isSelectionControlled ? !_.isEqual(selectedPaths, nextSelectedPaths) : !_.isEqual(this.state.selectedPaths,nextState.selectedPaths))
+            || (this.isOpenControlled ? !_.isEqual(openPaths, nextOpenPaths) : !_.isEqual(this.state.openPaths,nextState.openPaths))
+            || !(_.isEqual(nextPropsToCompare, previousPropsToCompare));
+
+        return changed;
+        // return true;
+    }
+
+    render() {
+        let selectedPaths = this.isSelectionControlled ? this.props.selectedPaths : this.state.selectedPaths;
+        let openPaths = this.isOpenControlled ? this.props.openPaths : this.state.openPaths;
+        let {rootPaths, openableTypes, selectableTypes, queryVariables} = this.props;
+
+        openPaths = _.clone(openPaths);
+        let fullyOpenPath = (path) => {
             let rootFound = false;
             _.tail(_.split(path, "/")).reduce((acc, it) => {
                 if (!rootFound) {
-                    _.forEach(props.rootPaths, rootPath => {
+                    _.forEach(rootPaths, rootPath => {
                         rootFound = rootFound || _.startsWith(acc, rootPath);
                     })
                 }
@@ -191,32 +253,36 @@ class Picker extends React.Component {
             }, "");
         };
 
-        if (props.selectedPaths) {
-            _.each(props.selectedPaths, path => fullyOpenPath(props, path));
-        }
+        _.each(selectedPaths, path => fullyOpenPath(path));
 
-        let vars = {
-            rootPaths: props.rootPaths,
-            types: _.union(props.openableTypes, props.selectableTypes),
-            selectable: props.selectableTypes,
-            openable: props.openableTypes,
-            openPaths: openPaths,
-        };
+        let vars = this.getVariables(selectedPaths, openPaths);
 
-        if (props.queryVariables) {
-            _.assign(vars, props.queryVariables);
-        }
-
-        return {
-            variables: vars
-        }
+        return <Query query={this.query} variables={vars} fetchPolicy={"cache-first"} >
+            {
+                ({error, loading, data}) => {
+                    let Render = this.props.render;
+                    if (this.props.onLoading) {
+                        this.props.onLoading(loading);
+                    }
+                    if (loading) {
+                        if (this.previousEntries) {
+                            return <Render {...this.state.eventsHandlers} {...this.state.renderProps}
+                                           pickerEntries={this.previousEntries} loading={true}/>
+                        } else {
+                            return <Render {...this.state.eventsHandlers} {...this.state.renderProps}
+                                           pickerEntries={[]} loading={true}/>
+                        }
+                    }
+                    if (error) return `Error! ${error.message}`;
+                    let pickerEntries = this.getPickerEntries(data, selectedPaths, openPaths);
+                    this.previousEntries = pickerEntries;
+                    return <Render {...this.state.eventsHandlers} {...this.state.renderProps}
+                                   pickerEntries={pickerEntries} loading={false || this.props.loading}/>
+                }
+            }
+        </Query>
     }
 
-    render() {
-        let GraphQLComponent = this.GraphQLComponent;
-
-        return <GraphQLComponent {...this.graphqlComponentProps} {...this.state} />
-    }
 }
 
 Picker.propTypes = {

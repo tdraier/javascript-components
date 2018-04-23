@@ -16,7 +16,12 @@ import {fade} from 'material-ui/styles/colorManipulator'
 
 
 let styles = (theme) => ({
-    root: {},
+    root: {
+        position:"relative"
+    },
+    loading: {
+        opacity:0.8
+    },
     padding: {
         paddingTop:0,
         paddingBottom:0
@@ -29,36 +34,45 @@ let styles = (theme) => ({
     },
     selectedText: {
         color: theme.palette.secondary.contrastText
+    },
+    loadingContainer: {
+        position:"absolute",
+        width:"100%",
+        height:"100%",
+        zIndex:999
     }
 });
 
 let PickerViewMaterial = function (props) {
-    let {theme, classes, pickerEntries, onOpenItem, onSelectItem, textRenderer, iconRenderer} = props;
-    return (<List classes={{root:classes.root, padding:classes.padding}}>
-        {pickerEntries.map((entry) =>
-            (<ListItem button
-                       onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : onOpenItem(entry.path, !entry.open)}
-                       key={entry.path}
-                       divider={true}
-                       classes={entry.selected ? {root:classes.selected} : {} }
-                >
-                    <ListItemIcon classes={entry.selected ? {root:classes.selectedText} : {}}>
-                        {entry.openable && entry.hasChildren ? (
-                            <IconButton onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}}>{entry.open ?
-                                <ExpandLess/> : <ExpandMore/>}</IconButton>) : <ExpandMore style={{opacity:0}}/>}
-                    </ListItemIcon>
+    let {theme, classes, pickerEntries, onOpenItem, onSelectItem, textRenderer, iconRenderer, loading} = props;
+    return (<div className={classes.root}>
+        { loading && <div className={classes.loadingContainer} />}
+        <List classes={{root:loading ? (classes.root + ' ' + classes.loading) : classes.root, padding:classes.padding}}>
+            {pickerEntries.map((entry) =>
+                (<ListItem button
+                           onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : onOpenItem(entry.path, !entry.open)}
+                           key={entry.path}
+                           divider={true}
+                           classes={entry.selected ? {root:classes.selected} : {} }
+                    >
+                        <ListItemIcon classes={entry.selected ? {root:classes.selectedText} : {}}>
+                            {entry.openable && entry.hasChildren ? (
+                                <IconButton onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}}>{entry.open ?
+                                    <ExpandLess/> : <ExpandMore/>}</IconButton>) : <ExpandMore style={{opacity:0}}/>}
+                        </ListItemIcon>
 
-                    <ListItemIcon classes={entry.selected ? {root:classes.selectedText} : {}}
-                                                    style={{paddingLeft: entry.depth * theme.spacing.unit}}>
-                        { iconRenderer && iconRenderer.call(this,entry) }
-                    </ListItemIcon>
+                        <ListItemIcon classes={entry.selected ? {root:classes.selectedText} : {}}
+                                      style={{paddingLeft: entry.depth * theme.spacing.unit}}>
+                            { iconRenderer && iconRenderer.call(this,entry) }
+                        </ListItemIcon>
 
-                    <ListItemText classes={entry.selected ? {primary:classes.selectedText} : {}} inset
-                                  primary={textRenderer ? textRenderer.call(this, entry) : entry.name} />
-                </ListItem>
-            )
-        )}
-    </List>)
+                        <ListItemText classes={entry.selected ? {primary:classes.selectedText} : {}} inset
+                                      primary={textRenderer ? textRenderer.call(this, entry) : entry.name} />
+                    </ListItem>
+                )
+            )}
+        </List>
+    </div>)
 };
 
 PickerViewMaterial.propTypes = {
