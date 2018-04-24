@@ -1,6 +1,6 @@
 import React from 'react';
-import {Input, InputAdornment, withStyles} from 'material-ui';
-import {Search} from 'material-ui-icons';
+import {Input, InputAdornment, withStyles, Icon, IconButton} from 'material-ui';
+import {Search, Close} from 'material-ui-icons';
 import {translate} from 'react-i18next';
 
 const styles = theme => ({
@@ -40,6 +40,18 @@ const styles = theme => ({
         'marginBottom': 'auto',
         'paddingLeft': '14px',
         'opacity': '0.87'
+    },
+    hidden: {
+        opacity: 0,
+        marginTop: 'auto',
+        marginBottom: 'auto',
+        paddingRight: '14px'
+    },
+    closeIcon: {
+        marginTop: 'auto',
+        marginBottom: 'auto',
+        paddingRight: '14px',
+        opacity: 0.87
     }
 });
 
@@ -50,6 +62,7 @@ class SearchBar extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.onFocus = this.onFocus.bind(this);
         this.onBlur = this.onBlur.bind(this);
+        this.onClear = this.onClear.bind(this);
         this.state = {
             focus: false
         }
@@ -64,6 +77,11 @@ class SearchBar extends React.Component {
         this.timeout = setTimeout(function() {
             this.props.onChangeFilter(event.target.value)
         }.bind(this), 1000);
+    }
+
+    onClear() {
+        this.filterText.value = '';
+        this.props.onChangeFilter('');
     }
 
     onFocus() {
@@ -91,10 +109,15 @@ class SearchBar extends React.Component {
                    onFocus={this.onFocus}
                    disableUnderline={true}
                    type="text"
+                   inputRef={(input) => {this.filterText = input;}}
                    placeholder={placeholderLabel || t('label.searchPlaceholder')}
                    startAdornment={<InputAdornment classes={{root: classes.searchIcon}} position="start"><Search/></InputAdornment>}
-                   style={this.props.style}
-            />
+                   endAdornment={<InputAdornment position="end"><IconButton classes={{root: (this.state.focus ? classes.closeIcon : classes.hidden)}}
+                        onClick={this.onClear}>
+                       <Icon><Close/></Icon>
+                   </IconButton></InputAdornment>}
+                   style={this.props.style}>
+            </Input>
         )
     }
 }
