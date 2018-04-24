@@ -80,7 +80,7 @@ class SearchBar extends React.Component {
     }
 
     onClear() {
-        this.filterText.value = '';
+        this.inputSearchBar.value = '';
         this.props.onChangeFilter('');
     }
 
@@ -109,7 +109,7 @@ class SearchBar extends React.Component {
                    onFocus={this.onFocus}
                    disableUnderline={true}
                    type="text"
-                   inputRef={(input) => {this.filterText = input;}}
+                   inputRef={(input) => {this.inputSearchBar = input;}}
                    placeholder={placeholderLabel || t('label.searchPlaceholder')}
                    startAdornment={<InputAdornment classes={{root: classes.searchIcon}} position="start"><Search/></InputAdornment>}
                    endAdornment={<InputAdornment position="end"><IconButton classes={{root: (this.state.focus ? classes.closeIcon : classes.hidden)}}
