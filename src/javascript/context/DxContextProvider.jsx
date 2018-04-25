@@ -58,7 +58,7 @@ class DxContextProvider extends React.Component {
 
         let Component = React.Children.only(children);
         if (i18n) {
-            let options = {currentLanguage:dxContext.uilang, contextPath:dxContext.contextPath};
+            let options = {lng:dxContext.uilang, contextPath:dxContext.contextPath};
             if (typeof i18n === 'object') {
                 Object.assign(options, i18n)
             }
