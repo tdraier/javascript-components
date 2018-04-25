@@ -44,13 +44,11 @@ const styles = theme => ({
     hidden: {
         opacity: 0,
         marginTop: 'auto',
-        marginBottom: 'auto',
-        paddingRight: '14px'
+        marginBottom: 'auto'
     },
     closeIcon: {
         marginTop: 'auto',
         marginBottom: 'auto',
-        paddingRight: '14px',
         opacity: 0.87
     }
 });
@@ -112,8 +110,8 @@ class SearchBar extends React.Component {
                    inputRef={(input) => {this.inputSearchBar = input;}}
                    placeholder={placeholderLabel || t('label.searchPlaceholder')}
                    startAdornment={<InputAdornment classes={{root: classes.searchIcon}} position="start"><Search/></InputAdornment>}
-                   endAdornment={<InputAdornment position="end"><IconButton classes={{root: (this.state.focus ? classes.closeIcon : classes.hidden)}}
-                        onClick={this.onClear}>
+                   endAdornment={<InputAdornment position="end" classes={{root: (this.state.focus ? classes.closeIcon : classes.hidden)}}>
+                       <IconButton onClick={this.onClear}>
                        <Icon><Close/></Icon>
                    </IconButton></InputAdornment>}
                    style={this.props.style}>
