@@ -1,5 +1,5 @@
 import {createMuiTheme} from 'material-ui';
-import {blueGrey, lightBlue, red, grey, purple, green, deepOrange} from 'material-ui/colors/index'
+import {blueGrey, deepOrange, green, grey, lightBlue, purple, red} from 'material-ui/colors/index'
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
@@ -47,11 +47,6 @@ let theme = createMuiTheme({
             root: {
                 color: "inherit",
 				width: '38px'
-            }
-        },
-        MuiCheckbox: {
-            default: {
-                color: "inherit",
             }
         },
 		MuiInput: {
