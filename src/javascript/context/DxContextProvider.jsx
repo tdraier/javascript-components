@@ -85,13 +85,10 @@ class DxContextProvider extends React.Component {
         if (currentTheme) {
             let generateClassName = dxContext.generateClassName ? dxContext.generateClassName : createGenerateClassName();
             let sheetsRegistry = dxContext.sheetRegistry ? dxContext.sheetRegistry : new SheetsRegistry();
-            Component = React.createElement(JssProvider, {registry: sheetsRegistry,  generateClassName:generateClassName}, React.createElement(MuiThemeProvider, {theme: currentTheme, sheetsManager:new Map()}, Component));
-            // } else {
-            //     Component = React.createElement(MuiThemeProvider, {theme: currentTheme}, Component);
-            // }
 
-            // add notification
-            Component = React.createElement(NotificationProvider, {notificationContext:{}}, Component);
+            Component = React.createElement(JssProvider, {registry: sheetsRegistry,  generateClassName:generateClassName},
+                React.createElement(MuiThemeProvider, {theme: currentTheme, sheetsManager:new Map()},
+                    React.createElement(NotificationProvider, {notificationContext:{}}, Component)));
         }
 
         return Component;
