@@ -20,6 +20,7 @@ export default {
         "history",
         "i18next",
         "i18next-xhr-backend",
+        "i18next-chained-backend",
         "jss",
         "jss-preset-default",
         "lodash",
