@@ -123,11 +123,6 @@ let darkTheme = createMuiTheme({
             root: {
                 color: "inherit",
             }
-        },
-        MuiCheckbox: {
-            default: {
-                color: "inherit",
-            }
         }
     }
 });
