@@ -112,10 +112,11 @@ class SearchBar extends React.Component {
                    startAdornment={<InputAdornment classes={{root: classes.searchIcon}} position="start"><Search/></InputAdornment>}
                    endAdornment={<InputAdornment position="end" classes={{root: (this.state.focus ? classes.closeIcon : classes.hidden)}}>
                        <IconButton onClick={this.onClear}>
-                       <Icon><Close/></Icon>
-                   </IconButton></InputAdornment>}
-                   style={this.props.style}>
-            </Input>
+                           <Icon><Close/></Icon>
+                       </IconButton>
+                   </InputAdornment>}
+                   style={this.props.style}
+            />
         )
     }
 }
