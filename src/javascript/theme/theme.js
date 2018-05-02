@@ -132,7 +132,7 @@ let theme = createMuiTheme({
 				borderRadius: '2px',
 				background: 'whitesmoke',
 				padding: '2px 11px 0',
-				boxSizing: 'border-box'
+				boxSizing: 'border-box',
 			},
 			input: {
 				color: '#676767',
@@ -210,9 +210,17 @@ let theme = createMuiTheme({
 			}
 		},
 		MuiSelect: {
-			root: {},
+			root: {
+				color: '#EBEBEB'
+			},
 			select: {},
-			selectMenu: {},
+			selectMenu: {
+				color: 'whitesmoke',
+				paddingRight: '23px',
+				'&:focus': {
+					backgroundColor: 'inherit'
+				}
+			},
 			disabled: {},
 			icon: {},
 		},
