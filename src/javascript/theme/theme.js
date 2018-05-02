@@ -92,8 +92,11 @@ let theme = createMuiTheme({
         },
 		MuiTableRow: {
 			root: {
-				borderBottom: '1px solid rgba(224, 224, 224, 1)'
-			}
+				borderBottom: '1px solid rgba(224, 224, 224, 1)',
+				'&:hover': {
+					backgroundColor: '#F7F7F7!important'
+				}
+			},
 		},
         MuiTableCell: {
             body: {
@@ -125,7 +128,7 @@ let theme = createMuiTheme({
 				'&:after': {
 					display: 'none'
 				},
-				boxShadow: 'inset 0px 1px 3px 0px rgba(38,38,38,0.3)',
+				boxShadow: 'inset 1px 1px 1px 0 rgba(38, 38, 38, 0.3)',
 				borderRadius: '2px',
 				background: 'whitesmoke',
 				padding: '2px 11px 0',
@@ -169,16 +172,17 @@ let theme = createMuiTheme({
 		        },
 		        "& message": {
 					top: '24px',
-					right: '0',
-					width: '280px',
-					display: 'none',
-					padding: '9px',
-					zIndex: '9',
-					position: 'absolute',
-					background: 'blue',
-					border: '1px solid red',
-					boxShadow: '0px 0px 10px 2px rgba(38, 38, 38, 0.7)',
-					borderRadius: '6px',
+				    width: '280px',
+				    right: '0',
+				    padding: '9px',
+				    zIndex: '9',
+				    display: 'none',
+				    position: 'absolute',
+				    background: '#fc922f',
+				    boxShadow: '1px 1px 2px 0px rgba(38, 38, 38, 0.3)',
+				    borderRadius: '2px',
+				    color: 'white',
+				    padding: '14px',
 		        },
 		        "& label": {
 		        }
@@ -203,6 +207,29 @@ let theme = createMuiTheme({
 				fontSize: '0.65rem',
 				fontWeight: '800',
 				textTransform: 'uppercase'
+			}
+		},
+		MuiSelect: {
+			root: {},
+			select: {},
+			selectMenu: {},
+			disabled: {},
+			icon: {},
+		},
+		MuiMenuItem: {
+			root: {
+				backgroundColor: 'transparent!important',
+				padding: '10px',
+				paddingLeft: '10px',
+				paddingRight: '10px',
+			},
+			selected: {
+			}
+
+		},
+		MuiListItemText: {
+			root: {
+				padding: '0',
 			}
 		},
 		MuiPaper: {
