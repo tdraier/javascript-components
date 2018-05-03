@@ -152,12 +152,17 @@ let theme = createMuiTheme({
 		        }
 			}
 		},
+		MuiCollapse: {
+			entered: {
+				overflow: 'visible'
+			}
+		},
 		MuiFormHelperText: {
 			root: {
 				right: '10px',
 				color: 'red',
 				position: 'absolute',
-				background: 'whitesmoke',
+				background: 'white',
 				height: 'calc(100% - 6px)',
 				top: '3px',
 				margin: '0',
@@ -184,6 +189,7 @@ let theme = createMuiTheme({
 				    borderRadius: '2px',
 				    color: 'white',
 				    padding: '14px',
+					lineHeight: 'normal'
 		        },
 		        "& label": {
 		        }
