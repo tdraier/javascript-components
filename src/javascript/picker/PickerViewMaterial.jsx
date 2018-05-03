@@ -92,10 +92,12 @@ let PickerViewMaterial = function (props) {
                            divider={true}
                            className={entry.selected ? (classes.listItem + ' ' + classes.listItemSelected) : classes.listItem }
                     >
-                        <ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle} style={{paddingLeft: (entry.depth + 1) * 20}}>
-                            {entry.openable && entry.hasChildren ? (
-                                <IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}}>{entry.open ?
-                                    <KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} /> : <KeyboardArrowRight className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}</IconButton>) : <KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}
+                        <ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle} style={{paddingLeft: (entry.depth + 1) * 20, opacity:(entry.openable && entry.hasChildren ? 1:0)}} >
+                            <IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}} disabled={!(entry.openable && entry.hasChildren)}>
+                                {entry.open ?
+                                    <KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} /> :
+                                    <KeyboardArrowRight className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}
+                            </IconButton>
                         </ListItemIcon>
 
                         <ListItemIcon className={entry.selected ? (classes.listItemNodeTypeIcon + ' ' + classes.selectedText) : classes.listItemNodeTypeIcon} >
