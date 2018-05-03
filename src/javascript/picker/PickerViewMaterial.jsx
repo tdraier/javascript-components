@@ -10,10 +10,8 @@ import {
     withStyles,
     withTheme
 } from 'material-ui';
-import {ExpandLess, ExpandMore} from 'material-ui-icons'
-import {KeyboardArrowDown, KeyboardArrowRight} from 'material-ui-icons';
+import {KeyboardArrowDown, KeyboardArrowRight} from 'material-ui-icons'
 import PropTypes from 'prop-types';
-import {fade} from 'material-ui/styles/colorManipulator'
 
 
 let styles = (theme) => ({
@@ -31,9 +29,6 @@ let styles = (theme) => ({
 			background: '#00a0e3',
 			color: 'whitesmoke',
 		},
-	},
-	selectedIcon: {
-		color: 'pink'
 	},
 	listItem: {
 		padding: '5px 10px 5px 0'
@@ -54,12 +49,6 @@ let styles = (theme) => ({
 	listItemNodeTypeIcon: {
 		marginRight: '5px'
 	},
-    selected: {
-        backgroundColor: 'pink',
-        '&:hover': {
-            backgroundColor: fade(theme.palette.secondary.light, 0.7)
-        }
-    },
     selectedText: {
         color: 'whitesmoke!important',
     },
