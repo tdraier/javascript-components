@@ -85,10 +85,7 @@ let theme = createMuiTheme({
                 color: "inherit",
 				padding: '8px',
 				minWidth: '68px'
-            },
-			'&:hover': {
-				background: 'red'
-			}
+            }
         },
 		MuiTableRow: {
 			root: {
@@ -111,8 +108,9 @@ let theme = createMuiTheme({
 
         },
         MuiCheckbox: {
-            default: {
-                color: "inherit",
+			root: {
+			    width: '18px',
+			    marginRight: '10px',
             }
         },
 		MuiFormControlLabel: {
@@ -198,9 +196,6 @@ let theme = createMuiTheme({
 		MuiTypography: {
 			root: {
 			},
-			body: {
-				fontSize:'0.8rem'
-			},
 			colorTextSecondary: {
 				color: 'rgba(0, 0, 0, 0.3)'
 			},
@@ -234,9 +229,8 @@ let theme = createMuiTheme({
 		MuiMenuItem: {
 			root: {
 				backgroundColor: 'transparent!important',
-				padding: '10px',
-				paddingLeft: '10px',
-				paddingRight: '10px',
+				padding: '6px 0',
+				fontSize: '0.875rem'
 			},
 			selected: {
 			}
