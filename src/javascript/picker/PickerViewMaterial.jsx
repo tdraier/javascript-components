@@ -47,7 +47,9 @@ let styles = (theme) => ({
 		}
 	},
 	listItemToggle: {
-		marginRight: '10px'
+		marginRight: '10px',
+		borderRadius: '0',
+		width: 'auto',
 	},
 	listItemNodeTypeIcon: {
 		marginRight: '5px'
