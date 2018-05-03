@@ -28,12 +28,15 @@ const styles = theme => ({
         //     width: '300px'
         // }
     },
-    input: {
+	input: {
         transitionProperty: 'width',
         transitionDuration: '300ms',
         transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
         transitionDelay: '0ms',
-
+		color: 'whitesmoke'
+    },
+	inputFocus: {
+		color: '#707070'
     },
     searchIcon: {
         'marginTop': 'auto',
@@ -101,7 +104,7 @@ class SearchBar extends React.Component {
         const { classes,t, placeholderLabel } = this.props;
 
         return (
-            <Input classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: classes.input}}
+            <Input classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: (this.state.focus ? classes.inputFocus : classes.input)}}
                    onChange={this.handleChange}
                    onBlur={this.onBlur}
                    onFocus={this.onFocus}

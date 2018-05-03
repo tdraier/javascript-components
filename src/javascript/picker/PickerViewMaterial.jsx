@@ -25,10 +25,18 @@ let styles = (theme) => ({
     },
 	listItemSelected: {
 		background: '#00a0e3',
-		color: 'whitesmoke'
+		color: 'whitesmoke',
+
+		'&:hover': {
+			background: '#00a0e3',
+			color: 'whitesmoke',
+		},
+	},
+	selectedIcon: {
+		color: 'pink'
 	},
 	listItem: {
-		padding: '5px 10px'
+		padding: '5px 10px 5px 0'
 	},
 	listItemLabel: {
 		padding: '0px',
@@ -39,7 +47,7 @@ let styles = (theme) => ({
 		}
 	},
 	listItemToggle: {
-		marginRight: '6px'
+		marginRight: '10px'
 	},
 	listItemNodeTypeIcon: {
 		marginRight: '5px'
@@ -58,7 +66,18 @@ let styles = (theme) => ({
         width:"100%",
         height:"100%",
         zIndex:999
-    }
+    },
+	toggleUnSelected: {
+		color: '#00a0e3',
+	},
+	toggleSelected: {
+		color: 'whitesmoke',
+	},
+	buttonContainer: {
+		'&:hover':{
+			backgroundColor: 'transparent'
+		}
+	}
 });
 
 let PickerViewMaterial = function (props) {
@@ -73,11 +92,10 @@ let PickerViewMaterial = function (props) {
                            divider={true}
                            className={entry.selected ? (classes.listItem + ' ' + classes.listItemSelected) : classes.listItem }
                     >
-                        <ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle}
-										style={{paddingLeft: entry.depth * 20}}>
+                        <ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle} style={{paddingLeft: (entry.depth + 1) * 20}}>
                             {entry.openable && entry.hasChildren ? (
-                                <IconButton onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}}>{entry.open ?
-                                    <KeyboardArrowDown color={'secondary'} /> : <KeyboardArrowRight color={'secondary'} />}</IconButton>) : <KeyboardArrowDown color={'secondary'} />}
+                                <IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}}>{entry.open ?
+                                    <KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} /> : <KeyboardArrowRight className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}</IconButton>) : <KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}
                         </ListItemIcon>
 
                         <ListItemIcon className={entry.selected ? (classes.listItemNodeTypeIcon + ' ' + classes.selectedText) : classes.listItemNodeTypeIcon} >

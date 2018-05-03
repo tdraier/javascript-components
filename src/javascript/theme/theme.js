@@ -106,8 +106,9 @@ let theme = createMuiTheme({
         MuiIconButton: {
             root: {
                 color: "inherit",
-				width: '38px'
-            }
+				width: '38px',
+            },
+
         },
         MuiCheckbox: {
             default: {
