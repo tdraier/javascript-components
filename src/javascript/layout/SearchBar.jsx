@@ -41,7 +41,6 @@ const styles = theme => ({
     searchIcon: {
         'marginTop': 'auto',
         'marginBottom': 'auto',
-        'paddingLeft': '14px',
         'opacity': '0.87'
     },
     hidden: {

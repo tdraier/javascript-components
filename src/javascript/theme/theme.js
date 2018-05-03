@@ -197,7 +197,7 @@ let theme = createMuiTheme({
 			root: {
 			},
 			colorTextSecondary: {
-				color: 'rgba(0, 0, 0, 0.3)'
+				color: 'rgba(0, 0, 0, 0.54)'
 			},
 			title: {
 				fontSize: '1.2rem'
