@@ -111,6 +111,6 @@ PickerViewMaterial.propTypes = {
     textRenderer: PropTypes.func
 };
 
-PickerViewMaterial = withTheme()(withStyles(styles)(PickerViewMaterial));
+PickerViewMaterial = withTheme()(withStyles(styles, {name:"DxPickerViewMaterial"})(PickerViewMaterial));
 
 export {PickerViewMaterial};

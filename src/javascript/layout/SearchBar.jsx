@@ -1,6 +1,6 @@
 import React from 'react';
-import {Input, InputAdornment, withStyles, Icon, IconButton} from 'material-ui';
-import {Search, Close} from 'material-ui-icons';
+import {Icon, IconButton, Input, InputAdornment, withStyles} from 'material-ui';
+import {Close, Search} from 'material-ui-icons';
 import {translate} from 'react-i18next';
 
 const styles = theme => ({
@@ -123,6 +123,6 @@ class SearchBar extends React.Component {
     }
 }
 
-SearchBar = withStyles(styles)(translate('react-dxcomponents')(SearchBar));
+SearchBar = withStyles(styles, {name:"DxSearchBar"})(translate('react-dxcomponents')(SearchBar));
 
 export {SearchBar};

@@ -54,6 +54,6 @@ SettingsLayout.propTypes = {
     footer: PropTypes.string
 };
 
-SettingsLayout = withStyles(styles)(SettingsLayout);
+SettingsLayout = withStyles(styles, {name:"DxSettingsLayout"})(SettingsLayout);
 
 export {SettingsLayout};
