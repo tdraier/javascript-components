@@ -13,7 +13,8 @@
     "js-bundle-dxcomponent": "webpack",
     "js-bundle-vendors": "webpack --config webpack-vendors.config.js",
     "build-old": "yarn run dist && yarn run js-bundle-dxcomponent && yarn run js-bundle-vendors",
-    "build": "yarn run babel && yarn run prepare-build && yarn run dist"
+    "build": "yarn run babel && yarn run prepare-build && yarn run dist",
+    "publish-script": "node publish.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -49,7 +50,8 @@
     "webpack": "^4.7.0",
     "webpack-cli": "^2.1.2",
     "webpack-node-externals": "^1.6.0",
-    "webpack-systemjs-bundle-plugin": "https://github.com/Jahia/webpack-systemjs-bundle-plugin.git"
+    "webpack-systemjs-bundle-plugin": "https://github.com/Jahia/webpack-systemjs-bundle-plugin.git",
+    "yarn-api": "^1.1.0"
   },
   "dependencies": {
     "@jahia/apollo-dx": "git+ssh://git@github.com:Jahia/apollo-dx.git",

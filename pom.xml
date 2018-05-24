@@ -45,8 +45,8 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -56,9 +56,10 @@
     </parent>
     <artifactId>react-dxcomponents</artifactId>
     <name>react-dxcomponents</name>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-reorganized-SNAPSHOT</version>
     <packaging>bundle</packaging>
-    <description>This is the custom module (react-dxcomponents) for running on a Digital Experience Manager server.</description>
+    <description>This is the custom module (react-dxcomponents) for running on a Digital Experience Manager server.
+    </description>
 
     <scm>
         <connection>scm:git:git@github.com:Jahia/react-dxcomponents.git</connection>
@@ -120,8 +121,28 @@
                     </instructions>
                 </configuration>
             </plugin>
-          
-          	<plugin>
+
+            <plugin>
+                <groupId>org.jahia.server</groupId>
+                <artifactId>jahia-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>calculate-gitbuildnumber</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>gitbuildnumber</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <allBranches>true</allBranches>
+                    <baseBuildNumber>1</baseBuildNumber>
+                    <baseGitRevision>a853d739512c29fadf8adcff6e9828f26cb06122</baseGitRevision>
+                    <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.6</version>
@@ -134,7 +155,7 @@
                         </goals>
                         <configuration>
                             <nodeVersion>v8.2.1</nodeVersion>
-                            <yarnVersion>v1.6.0</yarnVersion>
+                            <yarnVersion>v1.7.0</yarnVersion>
                         </configuration>
                     </execution>
                     <execution>
@@ -161,8 +182,11 @@
                             <goal>yarn</goal>
                         </goals>
                         <configuration>
-                            <arguments>publish</arguments>
-                            <workingDirectory>build</workingDirectory>
+                            <arguments>run publish-script</arguments>
+                            <environmentVariables>
+                                <projectVersion>${project.version}</projectVersion>
+                                <buildNumber>${buildNumber}</buildNumber>
+                            </environmentVariables>
                         </configuration>
                     </execution>
                 </executions>
