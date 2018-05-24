@@ -3,7 +3,7 @@ import * as _ from "lodash";
 
 const reducers = {};
 
-const store = function () {
+const reduxStore = function () {
     let debugTool;
     if (typeof window !== 'undefined') {
         debugTool = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__({
@@ -22,4 +22,4 @@ const resetStateReducer = function(state, action) {
     return state;
 };
 
-export {reducers, store, resetStateReducer};
+export {reducers, reduxStore, resetStateReducer};

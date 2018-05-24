@@ -1,17 +1,19 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import glob from 'glob';
+import path from 'path';
 
 export default {
     input: 'src/javascript/index.js',
     output: {
-        file: 'lib/react-dxcomponents.umd.js',
+        file: 'build/lib/react-dxcomponents.umd.js',
         format: 'umd',
         name:'jahia.reactcomponents',
         sourcemap: true,
         globals: {
             "@jahia/apollo-dx": "jahia.apollodx",
             "lodash": "_",
-            "material-ui/styles/index":"materialUiStyles"
+            "material-ui/styles":"materialUiStyles"
         }
     },
     external:[
@@ -25,8 +27,8 @@ export default {
         "jss-preset-default",
         "lodash",
         "material-ui",
-        "material-ui/colors/index",
-        "material-ui/styles/index",
+        "material-ui/colors",
+        "material-ui/styles",
         "material-ui/styles/colorManipulator",
         "material-ui-icons",
         "prop-types",
@@ -50,7 +52,7 @@ export default {
         }),
         babel({
             exclude:'node_modules/**',
-            presets: [ [ 'es2015', { modules: false } ], 'stage-3', 'react' ],
+            presets: [ [ 'env', { modules: false } ], 'stage-3', 'react' ],
             plugins: [ 'external-helpers' ]
         })
 

@@ -1,6 +1,10 @@
 import React from 'react';
 import {IconButton, List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, withTheme} from 'material-ui';
 import {ExpandLess, ExpandMore, CheckBoxOutlineBlank, CheckBox} from 'material-ui-icons'
+// import ExpandLess from 'material-ui-icons/ExpandLess'
+// import ExpandMore from 'material-ui-icons/ExpandMore'
+// import CheckBoxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank'
+// import CheckBox from 'material-ui-icons/CheckBox'
 import PropTypes from 'prop-types';
 
 let PickerViewMaterialMultiple = function (props) {

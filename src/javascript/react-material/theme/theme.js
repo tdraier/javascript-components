@@ -1,5 +1,5 @@
 import {createMuiTheme} from 'material-ui';
-import {blueGrey, deepOrange, green, grey, lightBlue, purple, red} from 'material-ui/colors/index'
+import {blueGrey, deepOrange, green, grey, lightBlue, purple, red} from 'material-ui/colors'
 
 // All the following keys are optional.
 // We try our best to provide a great default value.

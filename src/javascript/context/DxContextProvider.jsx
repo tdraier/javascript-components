@@ -1,18 +1,20 @@
 import React from 'react';
 import {MuiThemeProvider} from 'material-ui';
-import {createGenerateClassName} from 'material-ui/styles/index';
-import {getI18n} from "../i18n/getI18n";
-import {store} from '../reduxStore';
-import {theme} from '../theme'
+import {createGenerateClassName} from 'material-ui/styles';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
 import {client} from '@jahia/apollo-dx';
 import {ApolloProvider} from 'react-apollo';
 import {Provider} from 'react-redux'
 import {I18nextProvider} from 'react-i18next'
 import {HashRouter} from 'react-router-dom'
-import {OutletRouter} from '../router'
 import PropTypes from 'prop-types';
 import {JssProvider, SheetsRegistry} from 'react-jss';
-import {NotificationProvider} from "../notification/NotificationProvider";
+
+import {getI18n} from "../i18next";
+import {reduxStore} from '../redux';
+import {theme, NotificationProvider} from '../react-material'
+import {OutletRouter} from '../react-router'
 
 class DxContextProvider extends React.Component {
     constructor(props) {
@@ -79,7 +81,7 @@ class DxContextProvider extends React.Component {
             Component = React.createElement(ApolloProvider, {client:apolloClient}, Component);
         }
         if (redux) {
-            Component = React.createElement(Provider, {store:store}, Component);
+            Component = React.createElement(Provider, {store:reduxStore}, Component);
         }
 
         if (currentTheme) {
@@ -94,6 +96,14 @@ class DxContextProvider extends React.Component {
         return Component;
     }
 }
+
+DxContextProvider.propTypes = {
+    i18n: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+    router: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+    apolloClient: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+    mui: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+    children: PropTypes.element.isRequired
+};
 
 DxContextProvider.childContextTypes = {
     dxContext: PropTypes.object
