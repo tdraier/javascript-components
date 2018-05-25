@@ -7,18 +7,17 @@
         "react"
       ],
       "plugins": [
+        "lodash",
         [
-          "lodash",
           "direct-import",
           [
             "material-ui",
             "material-ui-icons",
-            "react-apollo",
             "react-i18next",
             "react-router",
             "react-router-dom",
             "react-redux",
-            "redux",
+            "redux"
           ]
         ]
       ]
