@@ -31,14 +31,10 @@ class Picker extends React.Component {
                         path
                         uuid
                         name
-                        primaryNodeType {
-                            name
-                        }
                         children(typesFilter:{types:$types}, limit:1) {
                             pageInfo {
                                 totalCount
                             }
-                          
                         }
                         selectable : isNodeType(type: {types:$selectable})
                         openable : isNodeType(type: {types:$openable})
@@ -52,14 +48,10 @@ class Picker extends React.Component {
                                 path
                                 uuid
                                 name
-                                primaryNodeType {
-                                    name
-                                }
                                 children(typesFilter:{types:$types}, limit:1) {
                                     pageInfo {
                                         totalCount
                                     }
-                                   
                                 }
                                 selectable : isNodeType(type: {types:$selectable})
                                 openable : isNodeType(type: {types:$openable})
