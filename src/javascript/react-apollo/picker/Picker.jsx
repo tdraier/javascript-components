@@ -2,7 +2,7 @@ import React from 'react';
 import {Query} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
-import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {replaceFragmentsInDocument} from "../../apollo-dx";
 import PropTypes from 'prop-types';
 
 class Picker extends React.Component {

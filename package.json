@@ -6,16 +6,15 @@
     "babel:es": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src/javascript --ignore *.test.js --out-dir ./build/es",
     "react2dts": "cross-env NODE_ENV=production babel-node react2dts.js",
     "prepare-build": "cross-env NODE_ENV=production babel-node prepare-build.js",
-    "webpack": "webpack --config webpack-umd.config.js",
     "rollup": "rollup -c",
     "uglify": "uglifyjs -c -m --source-map 'content=build/lib/react-dxcomponents.umd.js.map' -o build/lib/react-dxcomponents.umd.min.js  -- build/lib/react-dxcomponents.umd.js",
     "dist": "yarn run rollup; yarn run uglify",
-    "js-bundle-dxcomponent": "webpack",
-    "js-bundle-vendors": "webpack --config webpack-vendors.config.js",
-    "build-old": "yarn run dist && yarn run js-bundle-dxcomponent && yarn run js-bundle-vendors",
     "build": "yarn run babel && yarn run prepare-build && yarn run dist",
     "publish-script": "node publish.js"
   },
+  "main": "index.js",
+  "module": "index.js",
+  "browser": "lib/react-dxcomponents.umd.min.js",
   "license": "MIT",
   "devDependencies": {
     "@types/history": "^4.6.2",
@@ -46,18 +45,19 @@
     "react-to-typescript-definitions": "^1.0.0",
     "rollup": "^0.59.2",
     "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "style-loader": "^0.18.2",
     "uglify-js": "^3.3.4",
-    "webpack": "^4.7.0",
-    "webpack-cli": "^2.1.2",
-    "webpack-node-externals": "^1.6.0",
-    "webpack-systemjs-bundle-plugin": "https://github.com/Jahia/webpack-systemjs-bundle-plugin.git",
     "yarn-api": "^1.1.0"
   },
   "dependencies": {
-    "@jahia/apollo-dx": "git+ssh://git@github.com:Jahia/apollo-dx.git",
-    "apollo-client": "^2.2.8",
+    "apollo-cache-inmemory": "^1.2.1",
+    "apollo-client": "^2.3.1",
+    "apollo-link": "^1.2.2",
+    "apollo-link-context": "^1.0.8",
+    "apollo-link-http": "^1.5.4",
+    "apollo-utilities": "^1.0.12",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.1",
     "history": "^4.7.2",
@@ -81,6 +81,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-extend-reducer": "^0.2.1",
-    "theming": "^1.2.1"
+    "theming": "^1.2.1",
+    "zen-observable": "^0.8.8"
   }
 }

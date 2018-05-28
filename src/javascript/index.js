@@ -1,3 +1,4 @@
+export * from './apollo-dx'
 export * from './context'
 export * from './i18next'
 export * from './react-apollo'

@@ -1,5 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import json from 'rollup-plugin-json';
 import glob from 'glob';
 import path from 'path';
 
@@ -17,7 +18,14 @@ export default {
         }
     },
     external:[
+        "apollo-client",
+        "apollo-link",
+        "apollo-link-http",
+        "apollo-link-context",
+        "apollo-cache-inmemory",
+        "apollo-utilities",
         "@jahia/apollo-dx",
+        "graphql",
         "graphql-tag",
         "history",
         "i18next",
@@ -43,13 +51,15 @@ export default {
         "react-router-dom",
         "redux",
         "redux-extend-reducer",
-        "theming"
+        "theming",
+        "zen-observable"
     ],
 
     plugins: [
         resolve({
             extensions: [ '.js', '.jsx' ]
         }),
+        json(),
         babel({
             exclude:'node_modules/**',
             presets: [ [ 'env', { modules: false } ], 'stage-3', 'react' ],

@@ -3,7 +3,7 @@ import {MuiThemeProvider} from 'material-ui';
 import {createGenerateClassName} from 'material-ui/styles';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import createGenerateClassName from 'material-ui/styles/createGenerateClassName';
-import {client} from '@jahia/apollo-dx';
+import {client} from '../apollo-dx';
 import {ApolloProvider} from 'react-apollo';
 import {Provider} from 'react-redux'
 import {I18nextProvider} from 'react-i18next'
