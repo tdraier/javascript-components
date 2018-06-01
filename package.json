@@ -2,6 +2,11 @@
   "name": "@jahia/js-components-workspace",
   "private": true,
   "version": "1.0.0",
+  "scripts": {
+    "install": "lerna bootstrap --ci",
+    "build": "lerna run build",
+    "publish": "lerna run publish-script"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/history": "^4.6.2",
