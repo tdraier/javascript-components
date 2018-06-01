@@ -22,6 +22,8 @@ export default {
         "apollo-client",
         "lodash",
         "prop-types",
+        "graphql-tag",
+        "graphql",
         "react",
         "react-apollo"
     ],
