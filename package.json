@@ -1,20 +1,7 @@
 {
-  "name": "@jahia/react-dxcomponents",
+  "name": "@jahia/js-components-workspace",
+  "private": true,
   "version": "1.0.0",
-  "scripts": {
-    "babel": "cross-env NODE_ENV=production babel ./src/javascript --ignore *.test.js --out-dir ./build",
-    "babel:es": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src/javascript --ignore *.test.js --out-dir ./build/es",
-    "react2dts": "cross-env NODE_ENV=production babel-node react2dts.js",
-    "prepare-build": "cross-env NODE_ENV=production babel-node prepare-build.js",
-    "rollup": "rollup -c",
-    "uglify": "uglifyjs -c -m --source-map 'content=build/lib/react-dxcomponents.umd.js.map' -o build/lib/react-dxcomponents.umd.min.js  -- build/lib/react-dxcomponents.umd.js",
-    "dist": "yarn run rollup; yarn run uglify",
-    "build": "yarn run babel && yarn run prepare-build && yarn run dist",
-    "publish-script": "node publish.js"
-  },
-  "main": "index.js",
-  "module": "index.js",
-  "browser": "lib/react-dxcomponents.umd.min.js",
   "license": "MIT",
   "devDependencies": {
     "@types/history": "^4.6.2",
@@ -37,6 +24,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.1.6",
     "css-loader": "^0.28.11",
+    "lerna": "^2.11.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-each": "^0.10.0",
     "postcss-import": "^11.0.0",
@@ -48,40 +36,10 @@
     "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "style-loader": "^0.18.2",
-    "uglify-js": "^3.3.4",
+    "uglify-js": "^3.3.28",
     "yarn-api": "^1.1.0"
   },
-  "dependencies": {
-    "apollo-cache-inmemory": "^1.2.1",
-    "apollo-client": "^2.3.1",
-    "apollo-link": "^1.2.2",
-    "apollo-link-context": "^1.0.8",
-    "apollo-link-http": "^1.5.4",
-    "apollo-utilities": "^1.0.12",
-    "graphql": "^0.13.2",
-    "graphql-tag": "^2.9.1",
-    "history": "^4.7.2",
-    "i18next": "^10.3.0",
-    "i18next-chained-backend": "^0.1.2",
-    "i18next-xhr-backend": "^1.5.1",
-    "jss": "^9.4.0",
-    "jss-preset-default": "^4.0.1",
-    "lodash": "^4.17.4",
-    "material-ui": "^1.0.0-beta.36",
-    "material-ui-icons": "^1.0.0-beta.17",
-    "prop-types": "^15.6.0",
-    "react": "^16.2.0",
-    "react-apollo": "^2.1.3",
-    "react-dom": "^16.2.0",
-    "react-flexbox-grid": "^2.0.0",
-    "react-i18next": "^7.3.1",
-    "react-jss": "^8.1.0",
-    "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2",
-    "redux-extend-reducer": "^0.2.1",
-    "theming": "^1.2.1",
-    "zen-observable": "^0.8.8"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }

@@ -1,7 +1,0 @@
-<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
-<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
-<react = 'http://www.jahia.org/jahia/react/1.0'>
-<reactnt = 'http://www.jahia.org/jahia/reactnt/1.0'>
-<reactmix = 'http://www.jahia.org/jahia/reactmix/1.0'>
-
-[reactmix:reactComponent] mixin

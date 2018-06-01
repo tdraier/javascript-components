@@ -1,9 +1,12 @@
 {
   "env": {
-    "scripts": {
+    "production": {
       "presets": [
         "env",
         "stage-3"
+      ],
+      "plugins": [
+        "lodash"
       ]
     }
   }

@@ -1,0 +1,14 @@
+{
+  "env": {
+    "production": {
+      "presets": [
+        "env",
+        "stage-3",
+        "react"
+      ],
+      "plugins": [
+        "lodash"
+      ]
+    }
+  }
+}

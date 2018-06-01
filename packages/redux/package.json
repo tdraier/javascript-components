@@ -1,0 +1,22 @@
+{
+  "name": "@jahia/redux",
+  "version": "1.0.0",
+  "scripts": {
+    "babel": "../../node_modules/.bin/cross-env NODE_ENV=production ../../node_modules/.bin/babel ./src --ignore *.test.js --out-dir ./build",
+    "babel:es": "../../node_modules/.bin/cross-env NODE_ENV=production BABEL_ENV=es ../../node_modules/.bin/babel ./src --ignore *.test.js --out-dir ./build/es",
+    "react2dts": "../../node_modules/.bin/cross-env NODE_ENV=scripts ../../node_modules/.bin/babel-node ../../scripts/react2dts.js",
+    "prepare-build": "../../node_modules/.bin/cross-env NODE_ENV=scripts ../../node_modules/.bin/babel-node ../../scripts/prepare-build.js",
+    "rollup": "../../node_modules/.bin/rollup -c",
+    "uglify": "../../node_modules/.bin/uglifyjs -c -m --source-map 'content=build/lib/redux.umd.js.map,includeSources=true' -o build/lib/redux.umd.min.js  -- build/lib/redux.umd.js",
+    "dist": "yarn run rollup; yarn run uglify",
+    "build": "yarn run babel && yarn run prepare-build && yarn run dist",
+    "publish-script": "node ../../scripts/publish.js"
+  },
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "redux": "^4.0.0"
+  }
+}
