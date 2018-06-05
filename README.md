@@ -1,47 +1,63 @@
-# React DX components
-The goal of this module is to provide everything necessary to make other modules containing only React components (i.e. no Java).
-"Everything" means:
+# Javascript components
+The goal of this module is to provide multiple javascript [packages](https://github.com/Jahia/javascript-components/tree/master/packages) that can be reused in different javascript applications.
+
 - reusable UI components
 - context information like current node path, type, user, etc
 - GraphQL connection
-- i18n
+- i18n common configuration
 
-## Setup
-The tools needed are:
-- yarn: used to manage dependencies
-- webpack: used to package the js
+## Usage
+The packages are built and deployed to a private repository. Use the following command to configure your NPM install so that it 
+can find the packages :
 
-Webpack can be used while developing to watch the sources, by building the js as the jsx changes.
+```npm login --registry=https://devtools.jahia.com/nexus3/repository/npm-internal/ --scope=@jahia```
 
-``` webpack --watch --progress ```
+You should then be able to add a package with a simple `npm` or `yarn` command :
 
-## React components
-### DxContextProvider
-This component wraps any DX React component
+```yarn add @jahia/react-material```
 
-```
-<DxContextProvider dxContext={props.dxContext} i18n apollo redux mui>
-    ...
-</DxContextProvider>
-```
+When you make changes to javascript-components, a new beta (snapshot) version is built. You might want to update your dependency. 
+For this purpose, in that project, update the library dependency using the same `yarn add` command, or a `yarn upgrade-interactive`
+This will update the `yarn.lock` file you will have to commit.
 
-## appollo (GraphQL)
+## Build
+Build is based on [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) and [lerna](https://github.com/lerna/lerna). 
+It won't work with npm, please only use yarn for building.
 
-## Redux
-How to use redux in your components
+At root folder : 
+- `yarn install` to install all dependencies
+- `yarn build` to build all packages
 
-## i18n
-i18n support is brought by the i18next library (https://www.i18next.com/)
+Modules can be built independently by going to packages subfolder, and use `yarn build`
+
+## Packages
+
+### apollo-dx
+
+Provides an apollo-client configured to connect on DX graphql API
+
+### react-apollo
+
+Provides helpers methods to manipulate DX nodes, based on graphQL api
+
+### redux
+Simple redux store with extensible reducers
+
+### i18next
+i18n support is brought by the [i18next library](https://www.i18next.com/). This package provides an i18next configuration.
+
 - i18n file is a JSON file format
 - i18n files are stored in `main/resources/javascript/locales`
 - file name is `<locale>.json` where `locale` is `en`, `de`, `FR_fr`, etc ..
 
-You have to set your React DX application as i18n in our main class wrapper `<DxContextProvider />`
+You have to set your React DX application as i18n in our main class wrapper `<I18nextProvider />`
 
 ```
-<DxContextProvider i18n>
+import {getI18n} from '@jahia/i18next'
+
+<I18nextProvider i18n={getI18n({lng:props.dxContext.uilang, contextPath:props.dxContext.contextPath, ns: ['site-settings-seo', 'react-dxcomponents'], defaultNS: 'site-settings-seo', getData:getI18NData})}>
     <MyCustomComponent {...props} />
-</DxContextProvider>
+</I18nextProvider>
 ```
 
 Note that `MyCustomComponent` declaration must precede wrapping the component with `DxContextProvider`.
@@ -59,15 +75,10 @@ This will add the `t` function to the `props` of the component, to be used to ge
 ```{props.t('label.title')}```
 
 
-## shared components
+### react-material
+We use the Material-UI library to build the UI: https://material-ui-next.com
 `<LanguageSwitcher/>`: this component displays a language switcher and changes the locale value in the context as it is changed by the the user via the UI
 
-### Material UI
-We use the Material-UI library to build the UI: https://material-ui-next.com
-
-### Update DX React Component
-When you make changes to this module, you might want to update another one that depends on it. For this purpose, in that project, update the library dependency using:
-
-```yarn add @jahia/react-dxcomponents```
-
-This will update the `yarn.lock` file you will have to commit.
+### react-router
+A router with multiple outlets - it allows to have multiple routes at the same time in the URL, each route applied to different outlets in the page.
+ 
