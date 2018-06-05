@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "lerna-bootstrap": "lerna bootstrap --ci",
+    "lerna-bootstrap": "yarn install && lerna bootstrap --ci",
     "build": "lerna run build",
     "publish": "lerna run publish-script"
   },
