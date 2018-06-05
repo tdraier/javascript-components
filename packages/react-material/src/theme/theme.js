@@ -1,32 +1,31 @@
-import {createMuiTheme} from 'material-ui';
-import {blueGrey, deepOrange, green, grey, lightBlue, purple, red} from 'material-ui/colors'
+import {createMuiTheme, colors} from '@material-ui/core';
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
 let theme = createMuiTheme({
 	palette: {
         background: {
-            global: grey[200],
+            global: colors.grey[200],
         },
         contrastThreshold: 2.5,
         tonalOffset: 0.2,
         primary: {
-            main: blueGrey[600],
+            main: colors.blueGrey[600],
         },
 		secondary: {
             main: '#00a0e3',
         },
         error: {
-            main: red[400],
+            main: colors.red[400],
         },
         publish: {
-            main: deepOrange[500],
+            main: colors.deepOrange[500],
         },
         enabled: {
-            main: green[400],
+            main: colors.green[400],
         },
         delete: {
-            main: red[600],
+            main: colors.red[600],
         },
 		cancelButton: {
 			main: '#676767'
@@ -253,27 +252,27 @@ let darkTheme = createMuiTheme({
     palette: {
         type: "dark",
         background: {
-            global: grey[900]
+            global: colors.grey[900]
         },
         contrastThreshold: 3.0,
         tonalOffset: 0.2,
         primary: {
-            main: purple[500]
+            main: colors.purple[500]
         },
         secondary: {
-            main: green[400]
+            main: colors.green[400]
         },
         error: {
-            main: red[200]
+            main: colors.red[200]
         },
         publish: {
-            main: deepOrange[500],
+            main: colors.deepOrange[500],
         },
         enabled: {
-            main: green[400],
+            main: colors.green[400],
         },
         delete: {
-            main: red[600],
+            main: colors.red[600],
         }
     },
     overrides: {

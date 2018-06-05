@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Menu, MenuItem} from 'material-ui';
+import {Button, Menu, MenuItem} from '@material-ui/core';
 import {translate} from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -43,7 +43,7 @@ LanguageSwitcher.contextTypes = {
     i18n: PropTypes.object
 };
 
-LanguageSwitcher = translate('react-dxcomponents')(LanguageSwitcher);
+LanguageSwitcher = translate('react-material')(LanguageSwitcher);
 
 
 export {LanguageSwitcher}

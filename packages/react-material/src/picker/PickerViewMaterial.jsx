@@ -9,8 +9,8 @@ import {
     SvgIcon,
     withStyles,
     withTheme
-} from 'material-ui';
-import {KeyboardArrowDown, KeyboardArrowRight} from 'material-ui-icons'
+} from '@material-ui/core';
+import {KeyboardArrowDown, KeyboardArrowRight} from '@material-ui/icons'
 import PropTypes from 'prop-types';
 
 

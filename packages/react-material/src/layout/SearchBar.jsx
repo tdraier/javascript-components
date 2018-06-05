@@ -1,6 +1,6 @@
 import React from 'react';
-import {Icon, IconButton, Input, InputAdornment, withStyles} from 'material-ui';
-import {Close, Search} from 'material-ui-icons';
+import {Icon, IconButton, Input, InputAdornment, withStyles} from '@material-ui/core';
+import {Close, Search} from '@material-ui/icons';
 import {translate} from 'react-i18next';
 
 const styles = theme => ({

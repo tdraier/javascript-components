@@ -11,8 +11,8 @@
         [
           "direct-import",
           [
-            "material-ui",
-            "material-ui-icons",
+            "@material-ui/core",
+            "@material-ui/icons",
             "react-i18next"
           ]
         ]

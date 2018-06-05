@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Component } from "react";
-import {Snackbar} from "material-ui";
+import {Snackbar} from "@material-ui/core";
 
 class NotificationProvider extends Component {
     constructor(props) {

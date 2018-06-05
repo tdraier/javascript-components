@@ -19,11 +19,8 @@ export default {
     },
     external:[
         "lodash",
-        "material-ui",
-        "material-ui/colors",
-        "material-ui/styles",
-        "material-ui/styles/colorManipulator",
-        "material-ui-icons",
+        "@material-ui/core",
+        "@material-ui/icons",
         "prop-types",
         "react",
         "react-apollo",

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, withStyles} from 'material-ui';
+import {AppBar, Toolbar, Typography, withStyles} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
