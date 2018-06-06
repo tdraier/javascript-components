@@ -28,7 +28,12 @@ At root folder :
 - `yarn install` to install all dependencies
 - `yarn build` to build all packages
 
-Modules can be built independently by going to packages subfolder, and use `yarn build`
+Modules can be built independently by going to packages subfolder, and use `yarn build`. 
+
+The final build will reside in the `build` subfolder of each package.
+
+If you need to use `yarn link` to use your local build in another other package, be sure to type `yarn link` inside the 
+`build` folder, not the sources (package root) folder.
 
 ## Packages
 
