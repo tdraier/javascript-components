@@ -13,6 +13,6 @@ NavMenuTextIcon.displayName = "NavMenuTextIcon";
 NavMenuTextIcon = pure(NavMenuTextIcon);
 NavMenuTextIcon.muiName = 'SvgIcon';
 
-NavMenuTextIcon.primaryNodeType= ' jnt:navMenuText';
+NavMenuTextIcon.primaryNodeType= 'jnt:navMenuText';
 
 export default NavMenuTextIcon;
