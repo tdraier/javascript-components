@@ -210,13 +210,13 @@ class Picker extends React.Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         let {
-            render:nextRender, rootPaths:nextRootPaths, hideRoot:nextHideRoot,
+            render:nextRender, hideRoot:nextHideRoot,
             openPaths:nextOpenPaths, selectedPaths:nextSelectedPaths, defaultSelectedPaths:nextDefaultSelectedPaths, defaultOpenPaths:nextDefaultOpenPaths,
             ...nextPropsToCompare
         } = nextProps;
 
         let {
-            render, rootPaths, hideRoot,
+            render, hideRoot,
             openPaths, selectedPaths, defaultSelectedPaths, defaultOpenPaths,
             ...previousPropsToCompare
         } = this.props;
