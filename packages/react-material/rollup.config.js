@@ -18,6 +18,7 @@ export default {
         }
     },
     external:[
+        "@jahia/icons",
         "lodash",
         "@material-ui/core",
         "@material-ui/icons",

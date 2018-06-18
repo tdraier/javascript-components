@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import {KeyboardArrowDown, KeyboardArrowRight} from '@material-ui/icons'
 import PropTypes from 'prop-types';
-
+import defaultIconRenderer from './iconRenderer'
 
 let styles = (theme) => ({
     root: {
@@ -92,7 +92,7 @@ let PickerViewMaterial = function (props) {
                         </ListItemIcon>
 
                         <ListItemIcon className={entry.selected ? (classes.listItemNodeTypeIcon + ' ' + classes.selectedText) : classes.listItemNodeTypeIcon} >
-                            { iconRenderer && iconRenderer.call(this,entry) }
+                            { iconRenderer ? iconRenderer.call(this,entry) : defaultIconRenderer.call(this,entry) }
                         </ListItemIcon>
 
                         <ListItemText classes={entry.selected ? {root:classes.listItemLabel, primary:classes.selectedText} : {root:classes.listItemLabel}} inset
