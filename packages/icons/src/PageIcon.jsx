@@ -13,4 +13,6 @@ PageIcon.displayName = "PageIcon";
 PageIcon = pure(PageIcon);
 PageIcon.muiName = 'SvgIcon';
 
+PageIcon.primaryNodeType= ' jnt:page';
+
 export default PageIcon;

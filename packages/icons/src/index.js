@@ -1,3 +1,3 @@
-export {default as MenuItemIcon} from './MenuItemIcon'
+export {default as NavMenuTextIcon} from './NavMenuTextIcon'
 export {default as PageIcon} from './PageIcon'
-export {default as SiteIcon} from './SiteIcon'
+export {default as VirtualsiteIcon} from './VirtualsiteIcon'
