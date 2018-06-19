@@ -1,74 +1,108 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Component } from "react";
+import React, {Component} from 'react';
 import {Snackbar} from "@material-ui/core";
+import {Close} from "@material-ui/icons"
+import {IconButton} from "@material-ui/core"
+import * as _ from "lodash";
+let Context = React.createContext();
 
 class NotificationProvider extends Component {
     constructor(props) {
         super(props);
 
-        let {notificationContext} = this.props;
-
         this.state = {
             notification: {
                 message: "",
-                open: false
+                open: false,
+                predefinedOptions: [],
+                options: {}
             }
         };
 
-        notificationContext.notify = (message) => {
-            this.setState({
-                notification: {
-                    message: message,
-                    open:true
-                }
-            });
+        this.predefined = {
+            closeButton: {
+                action:[<IconButton
+                    key="close"
+                    aria-label="Close"
+                    color="inherit"
+                    onClick={() => this.notificationContext.closeNotification()}
+                >
+                    <Close/>
+                </IconButton>]
+            },
+            noAutomaticClose: {
+                onClose:(event, reason) => {}
+            },
+            closeAfter5s : {
+                autoHideDuration: 5000
+            }
         };
 
-        notificationContext.closeNotification = () => {
-            this.setState({
-                notification: {
-                    message: '',
-                    open: false
+        this.notificationContext = {
+            notify: (message, predefinedOptions, options) => {
+                if (typeof predefinedOptions === 'object' && predefinedOptions.constructor !== Array) {
+                    options = predefinedOptions;
+                    predefinedOptions = [];
                 }
-            });
-        };
-    }
-
-    getChildContext() {
-        return {
-            notificationContext: this.props.notificationContext
-        };
+                this.setState({
+                    notification: {
+                        message: message,
+                        open: true,
+                        predefinedOptions: predefinedOptions || [],
+                        options: options || {}
+                    }
+                });
+            },
+            closeNotification: () => {
+                this.setState({
+                    notification: {
+                        message: '',
+                        open: false,
+                        predefinedOptions: [],
+                        options: {}
+                    }
+                })
+            }
+        }
     }
 
     render() {
-        // TODO make it configurable
-        return <div>
-            {this.props.children}
+        let options = this.state.notification.options || {};
+        let predefinedOptions = this.state.notification.predefinedOptions || [];
 
+        predefinedOptions.forEach(key => this.predefined[key] && _.merge(options, this.predefined[key]));
+
+        return <div>
+            <Context.Provider value={this.notificationContext}>
+                {this.props.children}
+            </Context.Provider>
             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'left',
                 }}
-                autoHideDuration={5000}
-                onClose={this.props.notificationContext.closeNotification}
+                onClose={this.notificationContext.closeNotification}
                 open={this.state.notification.open}
-                SnackbarContentProps={{
+                ContentProps={{
                     'aria-describedby': 'message-id',
                 }}
                 message={<span id="message-id">{this.state.notification.message}</span>}
+                {...options}
             />
         </div>;
     }
 }
 
-NotificationProvider.propTypes = {
-    notificationContext: PropTypes.object.isRequired
-};
+let NotificationConsumer = Context.Consumer;
 
-NotificationProvider.childContextTypes = {
-    notificationContext: PropTypes.object.isRequired
-};
+function withNotifications() {
+    return (WrappedComponent) => {
+        return class extends React.Component {
+            render() {
+                return (<NotificationConsumer>{notificationContext => (<WrappedComponent
+                    notificationContext={notificationContext} {...this.props} />)}</NotificationConsumer>)
+            }
+        };
+    }
+}
 
-export {NotificationProvider}
+export {NotificationProvider, NotificationConsumer, withNotifications}

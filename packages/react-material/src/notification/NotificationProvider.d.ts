@@ -9,3 +9,4 @@ export class NotificationProvider extends React.Component<NotificationProviderPr
 
 }
 
+export const withNotifications: React.SFC;
