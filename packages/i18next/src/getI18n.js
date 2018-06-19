@@ -11,15 +11,24 @@ function getI18n(options) {
         loadPath: (options.contextPath ? options.contextPath : '') + '/modules/{{ns}}/javascript/locales/{{lng}}.json'
     }];
 
-    if (options['getData']) {
-        let getData = options['getData'];
+    if (__webpack_require__) {
         backends.splice(0,0,XHR);
         backendOptions.splice(0,0,
             {
                 loadPath: "{{ns}}/{{lng}}",
-                ajax:(url, options, callback, data) => {
+                ajax:(url, xhroptions, callback, data) => {
                     let [ns,lang] = url.split('/');
-                    let value = getData(ns,lang);
+                    let value;
+                    try {
+                        if (options.namespaceResolvers && options.namespaceResolvers[ns]) {
+                            value = options.namespaceResolvers[ns](lang);
+                        } else {
+                            value = require('@jahia/' + ns + '/locales/' + lang + '.json')
+                        }
+                    } catch (e) {
+                        // Not found
+                    }
+
                     if (value) {
                         callback(JSON.stringify(value), {status: 200});
                     } else {
