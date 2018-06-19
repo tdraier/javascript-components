@@ -123,6 +123,6 @@ class SearchBar extends React.Component {
     }
 }
 
-SearchBar = withStyles(styles, {name:"DxSearchBar"})(translate('react-dxcomponents')(SearchBar));
+SearchBar = withStyles(styles, {name:"DxSearchBar"})(translate('react-material')(SearchBar));
 
 export {SearchBar};

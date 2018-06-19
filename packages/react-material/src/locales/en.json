@@ -1,6 +1,10 @@
 {
   "label": {
     "languages": "Language",
-    "searchPlaceholder": "Search"
+    "searchPlaceholder": "Search",
+    "pagination": {
+      "rowsPerPage": "Rows per page",
+      "of": "of"
+    }
   }
 }
