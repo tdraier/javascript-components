@@ -2,9 +2,8 @@ import React from 'react';
 import {Query} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
-import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import {replaceFragmentsInDocument, PredefinedFragments} from "@jahia/apollo-dx";
 import PropTypes from 'prop-types';
-
 class Picker extends React.Component {
 
     constructor(props) {
@@ -28,8 +27,6 @@ class Picker extends React.Component {
             query PickerQuery($rootPaths:[String!]!, $selectable:[String]!, $openable:[String]!, $openPaths:[String!]!, $types:[String]!) {
                 jcr {
                     rootNodes:nodesByPath(paths: $rootPaths) {
-                        path
-                        uuid
                         name
                         children(typesFilter:{types:$types}, limit:1) {
                             pageInfo {
@@ -38,11 +35,11 @@ class Picker extends React.Component {
                         }
                         selectable : isNodeType(type: {types:$selectable})
                         openable : isNodeType(type: {types:$openable})
+                        ... NodeCacheRequiredFields
                         ... node
                     },
                     openNodes:nodesByPath(paths: $openPaths) {
-                        path
-                        uuid
+                        ... NodeCacheRequiredFields
                         children(typesFilter:{types:$types}) {
                             nodes {
                                 path
@@ -60,8 +57,8 @@ class Picker extends React.Component {
                         }
                     }
                 }
-            }`;
-
+            }
+        ${PredefinedFragments.nodeCacheRequiredFields.gql}`;
 
         replaceFragmentsInDocument(this.query, fragments);
 
