@@ -5,6 +5,14 @@
         "env",
         "stage-3",
         "react"
+      ],
+      "plugins": [
+        [
+          "direct-import",
+          [
+            "@material-ui/core"
+          ]
+        ]
       ]
     }
   }
