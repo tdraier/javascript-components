@@ -6,7 +6,13 @@
         "stage-3"
       ],
       "plugins": [
-        "lodash"
+        "lodash",
+        [
+          "direct-import",
+          [
+            "graphql"
+          ]
+        ]
       ]
     }
   }
