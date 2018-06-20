@@ -42,8 +42,6 @@ class Picker extends React.Component {
                         ... NodeCacheRequiredFields
                         children(typesFilter:{types:$types}) {
                             nodes {
-                                path
-                                uuid
                                 name
                                 children(typesFilter:{types:$types}, limit:1) {
                                     pageInfo {
@@ -52,6 +50,7 @@ class Picker extends React.Component {
                                 }
                                 selectable : isNodeType(type: {types:$selectable})
                                 openable : isNodeType(type: {types:$openable})
+                                ... NodeCacheRequiredFields
                                 ... node
                             }
                         }
