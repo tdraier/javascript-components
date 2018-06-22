@@ -26,6 +26,9 @@ function typescriptCopy() {
         let target = path.resolve(path.resolve("./"), 'build', file.slice(0,-3) + ".d.ts");
         fs.createReadStream(source).pipe(fs.createWriteStream(target));
         console.log(`Copied ${source} to ${target}`);
+        let target_es = path.resolve(path.resolve("./"), 'build', file.slice(0,-3) + ".es.js");
+        fs.createReadStream(source).pipe(fs.createWriteStream(target_es));
+        console.log(`Copied ${source} to ${target_es}`);
     });
 
     const files = glob.sync('**/*.d.ts', { cwd: from });

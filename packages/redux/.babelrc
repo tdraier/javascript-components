@@ -1,14 +1,9 @@
 {
   "env": {
-    "es": {
-      "presets": [
-        "stage-3"
-      ]
-    },
     "production": {
       "presets": [
         "env",
-        "stage-3",
+        "stage-3"
       ],
       "plugins": [
         "lodash"
