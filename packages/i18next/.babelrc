@@ -1,5 +1,10 @@
 {
   "env": {
+    "es": {
+      "presets": [
+        "stage-3"
+      ]
+    },
     "production": {
       "presets": [
         "env",
