@@ -2,7 +2,7 @@
   "env": {
     "production": {
       "presets": [
-        "env",
+        ["env", {"modules":false}],
         "stage-3"
       ],
       "plugins": [

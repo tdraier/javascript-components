@@ -2,17 +2,9 @@
   "env": {
     "production": {
       "presets": [
-        "env",
+        ["env", {"modules":false}],
         "stage-3",
         "react"
-      ],
-      "plugins": [
-        [
-          "direct-import",
-          [
-            "@material-ui/core"
-          ]
-        ]
       ]
     }
   }

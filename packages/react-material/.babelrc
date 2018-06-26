@@ -2,20 +2,12 @@
   "env": {
     "production": {
       "presets": [
-        "env",
+        ["env", {"modules":false}],
         "stage-3",
         "react"
       ],
       "plugins": [
-        "lodash",
-        [
-          "direct-import",
-          [
-            "@material-ui/core",
-            "@material-ui/icons",
-            "react-i18next"
-          ]
-        ]
+        "lodash"
       ]
     }
   }
