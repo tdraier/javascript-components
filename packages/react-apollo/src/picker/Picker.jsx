@@ -2,26 +2,26 @@ import React from 'react';
 import {Query} from 'react-apollo';
 import gql from "graphql-tag";
 import * as _ from "lodash";
-import {replaceFragmentsInDocument, PredefinedFragments} from "@jahia/apollo-dx";
+import {PredefinedFragments, replaceFragmentsInDocument} from "@jahia/apollo-dx";
 import PropTypes from 'prop-types';
+
 class Picker extends React.Component {
 
     constructor(props) {
         super(props);
 
         let {
-            fragments, render, rootPaths, queryVariables, hideRoot,
-            openableTypes, selectableTypes,
-            openPaths, onOpenItem,
-            selectedPaths, onSelectItem,
-            defaultSelectedPaths, onSelectionChange,
-            defaultOpenPaths,
-            onLoading,
-            ...otherProps
+            fragments, rootPaths, queryVariables, hideRoot,
+            openableTypes,
+            onOpenItem,
+            onSelectItem,
+            selectableTypes,
+            openPaths,
+            selectedPaths,
+            defaultSelectedPaths,
+            onSelectionChange,
+            defaultOpenPaths
         } = props;
-
-        this.isOpenControlled = openPaths != null;
-        this.isSelectionControlled = selectedPaths != null;
 
         this.query = gql`
             query PickerQuery($rootPaths:[String!]!, $selectable:[String]!, $openable:[String]!, $openPaths:[String!]!, $types:[String]!) {
@@ -61,17 +61,15 @@ class Picker extends React.Component {
 
         replaceFragmentsInDocument(this.query, fragments);
 
-        let eventsHandlers = {};
+        let state = {};
 
-        let state = {
-            renderProps: otherProps,
-            eventsHandlers: eventsHandlers
-        };
+        this.eventsHandlers = {};
 
-
-        if (!this.isOpenControlled) {
+        if (openPaths == null) {
+            // Uncontrolled mode
+            state.isOpenControlled = false;
             state.openPaths = defaultOpenPaths ? _.clone(defaultOpenPaths) : [];
-            eventsHandlers.onOpenItem = (path, open) => {
+            this.eventsHandlers.onOpenItem = (path, open) => {
                 this.setState((prevState) => ({
                     openPaths: open ?
                         [...prevState.openPaths, path] :
@@ -79,12 +77,17 @@ class Picker extends React.Component {
                 }));
             };
         } else {
-            eventsHandlers.onOpenItem = onOpenItem;
+            state.isOpenControlled = true;
+            if (onOpenItem) {
+                this.eventsHandlers.onOpenItem = onOpenItem;
+            }
         }
 
-        if (!this.isSelectionControlled) {
+        if (selectedPaths == null) {
+            // Uncontrolled mode
+            state.isSelectControlled = false;
             state.selectedPaths = defaultSelectedPaths ? _.clone(defaultSelectedPaths) : [];
-            eventsHandlers.onSelectItem = (path, selected, multiple) => {
+            this.eventsHandlers.onSelectItem = (path, selected, multiple) => {
                 this.setState((prevState) => {
                     let newSelectedPaths = selected ?
                         [...(multiple ? prevState.selectedPaths : []), path] :
@@ -95,32 +98,34 @@ class Picker extends React.Component {
                     };
                 });
             };
-        } else {
-            eventsHandlers.onSelectItem = onSelectItem;
+        } else if (onSelectItem) {
+            state.isSelectControlled = true;
+            if (onSelectItem) {
+                this.eventsHandlers.onSelectItem = onSelectItem;
+            }
         }
 
         this.state = state;
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        let {
-            fragments, render, rootPaths, queryVariables, hideRoot,
-            openableTypes, selectableTypes,
-            openPaths, onOpenItem,
-            selectedPaths, onSelectItem,
-            defaultSelectedPaths, onSelectionChange,
-            defaultOpenPaths,
-            onLoading,
-            ...otherProps
-        } = nextProps;
-
-        if (!_.isEqual(_.omit(otherProps, _.functions(otherProps)), _.omit(prevState.renderProps, _.functions(prevState.renderProps)))) {
-            return {
-                renderProps: otherProps
-            }
+        if ((prevState.isOpenControlled !== (nextProps.openPaths != null)) || (prevState.isSelectControlled !== (nextProps.selectedPaths != null))) {
+            console.warn("Cannot change between controlled/uncontrolled modes");
         }
 
-        return null;
+        let newState = {};
+
+        if (prevState.isOpenControlled && !_.eq(nextProps.openPaths, prevState.openPaths)) {
+            newState.openPaths = nextProps.openPaths;
+        }
+
+        if (prevState.isSelectControlled && !_.eq(nextProps.selectedPaths, prevState.selectedPaths)) {
+            newState.selectedPaths = nextProps.selectedPaths;
+        }
+        if (newState.openPaths || newState.selectedPaths) {
+            return newState;
+        }
+        return null
     }
 
     getVariables(selectedPaths, openPaths) {
@@ -204,33 +209,9 @@ class Picker extends React.Component {
         return pickerEntries;
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        let {
-            render:nextRender, hideRoot:nextHideRoot,
-            openPaths:nextOpenPaths, selectedPaths:nextSelectedPaths, defaultSelectedPaths:nextDefaultSelectedPaths, defaultOpenPaths:nextDefaultOpenPaths,
-            ...nextPropsToCompare
-        } = nextProps;
-
-        let {
-            render, hideRoot,
-            openPaths, selectedPaths, defaultSelectedPaths, defaultOpenPaths,
-            ...previousPropsToCompare
-        } = this.props;
-
-        nextPropsToCompare = _.omit(nextPropsToCompare, _.functions(nextPropsToCompare));
-        previousPropsToCompare = _.omit(previousPropsToCompare, _.functions(previousPropsToCompare));
-
-        let changed = (this.isSelectionControlled ? !_.isEqual(selectedPaths, nextSelectedPaths) : !_.isEqual(this.state.selectedPaths,nextState.selectedPaths))
-            || (this.isOpenControlled ? !_.isEqual(openPaths, nextOpenPaths) : !_.isEqual(this.state.openPaths,nextState.openPaths))
-            || !(_.isEqual(nextPropsToCompare, previousPropsToCompare));
-
-        return changed;
-        // return true;
-    }
-
     render() {
-        let selectedPaths = this.isSelectionControlled ? this.props.selectedPaths : this.state.selectedPaths;
-        let openPaths = this.isOpenControlled ? this.props.openPaths : this.state.openPaths;
+        let selectedPaths = this.state.selectedPaths ? this.state.selectedPaths : this.props.selectedPaths;
+        let openPaths = this.state.openPaths ? this.state.openPaths : this.props.openPaths;
         let {rootPaths, openableTypes, selectableTypes, queryVariables} = this.props;
 
         openPaths = _.clone(openPaths);
@@ -256,24 +237,22 @@ class Picker extends React.Component {
         return <Query query={this.query} variables={vars} fetchPolicy={"cache-first"} >
             {
                 ({error, loading, data}) => {
-                    let Render = this.props.render;
+                    let renderProp = this.props.children;
                     if (this.props.onLoading) {
                         this.props.onLoading(loading);
                     }
                     if (loading) {
                         if (this.previousEntries) {
-                            return <Render {...this.state.eventsHandlers} {...this.state.renderProps}
-                                           pickerEntries={this.previousEntries} loading={true}/>
+                            return renderProp({pickerEntries:this.previousEntries, loading, ...this.eventsHandlers});
                         } else {
-                            return <Render {...this.state.eventsHandlers} {...this.state.renderProps}
-                                           pickerEntries={[]} loading={true}/>
+                            return renderProp({pickerEntries:[], loading, ...this.eventsHandlers});
                         }
                     }
                     if (error) return `Error! ${error.message}`;
                     let pickerEntries = this.getPickerEntries(data, selectedPaths, openPaths);
                     this.previousEntries = pickerEntries;
-                    return <Render {...this.state.eventsHandlers} {...this.state.renderProps}
-                                   pickerEntries={pickerEntries} loading={false || this.props.loading}/>
+
+                    return renderProp({pickerEntries, loading, ...this.eventsHandlers});
                 }
             }
         </Query>
