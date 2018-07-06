@@ -32,7 +32,40 @@ let theme = createMuiTheme({
 		},
 		confirmColor: {
 			main: '#00a0e3'
+		},
+		publicationStatus: {
+        	published: {
+        		main: '#08D000'
+			},
+            modified: {
+                main: '#FB9926'
+            },
+            notPublished: {
+                main: colors.grey[900]
+            },
+            mandatoryLanguageUnpublishable: {
+                main: ''
+            },
+            liveModified: {
+                main: ''
+            },
+            liveOnly: {
+                main: ''
+            },
+            conflict: {
+                main: ''
+            },
+            mandatoryLanguageValid: {
+                main: ''
+            },
+            deleted: {
+                main: '#FB9926'
+            },
+            markedForDeletion: {
+                main: '#FB9926'
+            }
 		}
+
     },
 	overrides: {
 		MuiList: {
