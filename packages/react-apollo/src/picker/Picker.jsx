@@ -212,7 +212,7 @@ class Picker extends React.Component {
     render() {
         let selectedPaths = this.state.selectedPaths ? this.state.selectedPaths : this.props.selectedPaths;
         let openPaths = this.state.openPaths ? this.state.openPaths : this.props.openPaths;
-        let {rootPaths, openableTypes, selectableTypes, queryVariables} = this.props;
+        let {rootPaths, openableTypes, selectableTypes, queryVariables, openSelection} = this.props;
 
         openPaths = _.clone(openPaths);
         let fullyOpenPath = (path) => {
@@ -230,7 +230,7 @@ class Picker extends React.Component {
             }, "");
         };
 
-        _.each(selectedPaths, path => fullyOpenPath(path));
+        _.each(selectedPaths, path => openSelection && fullyOpenPath(path));
 
         let vars = this.getVariables(selectedPaths, openPaths);
 
@@ -260,7 +260,16 @@ class Picker extends React.Component {
 
 }
 
+Picker.defaultProps = {
+    openSelection: true
+}
+
 Picker.propTypes = {
+
+    /**
+     * If true (default value), opens the tree of the current selection.
+     */
+    openSelection: PropTypes.bool,
     /**
      * List of root paths for the picker
      */
