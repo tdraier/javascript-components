@@ -68,14 +68,17 @@ class Picker extends React.Component {
         if (openPaths == null) {
             // Uncontrolled mode
             state.isOpenControlled = false;
-            state.openPaths = defaultOpenPaths ? _.clone(defaultOpenPaths) : [];
+            state.openPaths = [];
             this.eventsHandlers.onOpenItem = (path, open) => {
                 this.setState((prevState) => ({
                     openPaths: open ?
                         [...prevState.openPaths, path] :
-                        _.filter(prevState.openPaths, (thispath) => thispath !== path)
+                        _.filter(prevState.openPaths, (thispath) => !_.startsWith(thispath, path) && thispath !== path)
                 }));
             };
+            if (defaultOpenPaths) {
+                state.openPaths = _.each(this.addPathToOpenPath(defaultOpenPaths, rootPaths, state.openPaths));
+            }
         } else {
             state.isOpenControlled = true;
             if (onOpenItem) {
@@ -87,6 +90,10 @@ class Picker extends React.Component {
             // Uncontrolled mode
             state.isSelectControlled = false;
             state.selectedPaths = defaultSelectedPaths ? _.clone(defaultSelectedPaths) : [];
+            // open selected path if open is uncontrolled
+            if (defaultSelectedPaths && !state.isOpenControlled) {
+                state.openPaths = _.each(this.addPathToOpenPath(defaultSelectedPaths, rootPaths, state.openPaths));
+            }
             this.eventsHandlers.onSelectItem = (path, selected, multiple) => {
                 this.setState((prevState) => {
                     let newSelectedPaths = selected ?
@@ -106,6 +113,9 @@ class Picker extends React.Component {
         }
 
         this.state = state;
+
+        // binding
+        this.openPath = this.openPath.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -207,30 +217,47 @@ class Picker extends React.Component {
         });
 
         return pickerEntries;
-    }
+    };
 
-    render() {
-        let selectedPaths = this.state.selectedPaths ? this.state.selectedPaths : this.props.selectedPaths;
-        let openPaths = this.state.openPaths ? this.state.openPaths : this.props.openPaths;
-        let {rootPaths, openableTypes, selectableTypes, queryVariables, openSelection} = this.props;
-
-        openPaths = _.clone(openPaths);
-        let fullyOpenPath = (path) => {
+    addPathToOpenPath(pathsToOpen, rootPaths, openPaths) {
+        if (!(pathsToOpen instanceof Array)) {
+            pathsToOpen = [pathsToOpen]
+        }
+        _.each(pathsToOpen, path => {
             let rootFound = false;
             _.tail(_.split(path, "/")).reduce((acc, it) => {
                 if (!rootFound) {
                     _.forEach(rootPaths, rootPath => {
-                        rootFound = rootFound || _.startsWith(acc, rootPath);
+                        rootFound = rootFound || ( _.startsWith(acc, rootPath) && rootPath );
                     })
                 }
-                if (rootFound && _.indexOf(openPaths, acc) === -1) {
+                if (rootFound && !_.includes(openPaths, acc)) {
                     openPaths.push(acc);
+                    if (!_.includes(openPaths, rootFound)) {
+                        openPaths.push(rootFound);
+                    }
                 }
                 return acc + "/" + it
             }, "");
-        };
+        });
+        return openPaths;
+    };
 
-        _.each(selectedPaths, path => openSelection && fullyOpenPath(path));
+    openPath(paths) {
+        this.setState((prevState) => {
+            let openPaths = this.addPathToOpenPath(paths, this.props.rootPaths, prevState.openPaths);
+            return {openPaths: openPaths}
+        })
+    };
+
+    render() {
+        let selectedPaths = this.state.selectedPaths ? this.state.selectedPaths : this.props.selectedPaths;
+        let openPaths = this.state.openPaths ? this.state.openPaths : this.props.openPaths;
+        let {rootPaths, openableTypes, selectableTypes, queryVariables} = this.props;
+
+        openPaths = _.clone(openPaths);
+
+
 
         let vars = this.getVariables(selectedPaths, openPaths);
 
@@ -260,16 +287,9 @@ class Picker extends React.Component {
 
 }
 
-Picker.defaultProps = {
-    openSelection: true
-}
 
 Picker.propTypes = {
 
-    /**
-     * If true (default value), opens the tree of the current selection.
-     */
-    openSelection: PropTypes.bool,
     /**
      * List of root paths for the picker
      */
