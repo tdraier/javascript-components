@@ -77,7 +77,7 @@ class Picker extends React.Component {
                 }));
             };
             if (defaultOpenPaths) {
-                this.addPathToOpenPath(defaultOpenPaths, rootPaths, state.openPaths);
+                state.openPaths = this.addPathToOpenPath(defaultOpenPaths, rootPaths, state.openPaths);
             }
         } else {
             state.isOpenControlled = true;
@@ -92,7 +92,7 @@ class Picker extends React.Component {
             state.selectedPaths = defaultSelectedPaths ? _.clone(defaultSelectedPaths) : [];
             // open selected path if open is uncontrolled
             if (defaultSelectedPaths && !state.isOpenControlled) {
-                _.each(this.addPathToOpenPath(defaultSelectedPaths, rootPaths, state.openPaths));
+                 state.openPaths = this.addPathToOpenPath(defaultSelectedPaths, rootPaths, state.openPaths);
             }
             this.eventsHandlers.onSelectItem = (path, selected, multiple) => {
                 this.setState((prevState) => {
