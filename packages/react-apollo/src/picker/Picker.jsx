@@ -73,11 +73,11 @@ class Picker extends React.Component {
                 this.setState((prevState) => ({
                     openPaths: open ?
                         [...prevState.openPaths, path] :
-                        _.filter(prevState.openPaths, (thispath) => !_.startsWith(thispath, path) && thispath !== path)
+                        _.filter(prevState.openPaths, (thispath) => thispath !== path)
                 }));
             };
             if (defaultOpenPaths) {
-                state.openPaths = _.each(this.addPathToOpenPath(defaultOpenPaths, rootPaths, state.openPaths));
+                this.addPathToOpenPath(defaultOpenPaths, rootPaths, state.openPaths);
             }
         } else {
             state.isOpenControlled = true;
@@ -92,7 +92,7 @@ class Picker extends React.Component {
             state.selectedPaths = defaultSelectedPaths ? _.clone(defaultSelectedPaths) : [];
             // open selected path if open is uncontrolled
             if (defaultSelectedPaths && !state.isOpenControlled) {
-                state.openPaths = _.each(this.addPathToOpenPath(defaultSelectedPaths, rootPaths, state.openPaths));
+                _.each(this.addPathToOpenPath(defaultSelectedPaths, rootPaths, state.openPaths));
             }
             this.eventsHandlers.onSelectItem = (path, selected, multiple) => {
                 this.setState((prevState) => {
@@ -115,7 +115,7 @@ class Picker extends React.Component {
         this.state = state;
 
         // binding
-        this.openPath = this.openPath.bind(this);
+        this.openPaths = this.openPaths.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -220,9 +220,6 @@ class Picker extends React.Component {
     };
 
     addPathToOpenPath(pathsToOpen, rootPaths, openPaths) {
-        if (!(pathsToOpen instanceof Array)) {
-            pathsToOpen = [pathsToOpen]
-        }
         _.each(pathsToOpen, path => {
             let rootFound = false;
             _.tail(_.split(path, "/")).reduce((acc, it) => {
@@ -243,7 +240,10 @@ class Picker extends React.Component {
         return openPaths;
     };
 
-    openPath(paths) {
+    openPaths(paths) {
+        if (!(paths instanceof Array)) {
+            paths = [paths]
+        }
         this.setState((prevState) => {
             let openPaths = this.addPathToOpenPath(paths, this.props.rootPaths, prevState.openPaths);
             return {openPaths: openPaths}
