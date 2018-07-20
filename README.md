@@ -32,7 +32,7 @@ Modules can be built independently by going to packages subfolder, and use `yarn
 
 The final build will reside in the `build` subfolder of each package.
 
-If you need to use `yarn link` to use your local build in another other package, be sure to type `yarn link` inside the 
+If you need to use `yarn link` to use your local build in another package, be sure to type `yarn link` inside the 
 `build` folder, not the sources (package root) folder.
 
 ## Packages
