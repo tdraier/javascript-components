@@ -61,7 +61,7 @@ class TablePaginationActions extends React.Component {
                     onClick={this.handleFirstPageButtonClick.bind(this)}
                     disabled={page === 0}
                     aria-label="First Page"
-                    data-vud-role="table-pagination-button-first-page"
+                    data-jrm-role="table-pagination-button-first-page"
                 >
                     <FirstPage/>
                 </IconButton>
@@ -78,7 +78,7 @@ class TablePaginationActions extends React.Component {
                     onClick={this.handleNextButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Next Page"
-                    data-vud-role="table-pagination-button-next-page"
+                    data-jrm-role="table-pagination-button-next-page"
                 >
                     <KeyboardArrowRight/>
                 </IconButton>
@@ -122,7 +122,7 @@ class Pagination extends React.Component {
                         ActionsComponent={TablePaginationActions}
                         labelRowsPerPage={t('label.pagination.rowsPerPage')}
                         labelDisplayedRows={({from, to, count}) => `${from}-${to} ` + t('label.pagination.of') + ` ${count}`}
-                        data-vud-role="table-pagination"
+                        data-jrm-role="table-pagination"
                     />
                 </TableRow>
             </TableFooter>
