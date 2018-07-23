@@ -222,6 +222,9 @@ class Picker extends React.Component {
     addPathToOpenPath(pathsToOpen, rootPaths, openPaths) {
         _.each(pathsToOpen, path => {
             let rootFound = false;
+            if (!path.endsWith('/')) {
+                path += '/'
+            }
             _.tail(_.split(path, "/")).reduce((acc, it) => {
                 if (!rootFound) {
                     _.forEach(rootPaths, rootPath => {
