@@ -30,7 +30,7 @@ class Picker extends React.Component {
                         name
                         children(typesFilter:{types:$types}, limit:1) {
                             pageInfo {
-                                totalCount
+                                nodesCount            
                             }
                         }
                         selectable : isNodeType(type: {types:$selectable})
@@ -45,7 +45,7 @@ class Picker extends React.Component {
                                 name
                                 children(typesFilter:{types:$types}, limit:1) {
                                     pageInfo {
-                                        totalCount
+                                        nodesCount
                                     }
                                 }
                                 selectable : isNodeType(type: {types:$selectable})
@@ -177,7 +177,7 @@ class Picker extends React.Component {
                 prefix: _.repeat("&nbsp;", depth * 3),
                 node: node,
                 hidden: false,
-                hasChildren: node.children.pageInfo.totalCount > 0
+                hasChildren: node.children.pageInfo.nodesCount > 0
             };
             pickerEntries.splice(index, 0, pickerNode);
             nodesById[node.uuid] = pickerNode;
