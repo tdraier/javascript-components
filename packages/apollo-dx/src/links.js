@@ -1,4 +1,4 @@
-import {ApolloLink, from} from 'apollo-link';
+import {ApolloLink} from 'apollo-link';
 import {HttpLink} from 'apollo-link-http';
 import {print} from 'graphql';
 import * as Observable from 'zen-observable';
@@ -47,6 +47,53 @@ const dxHttpLink = (contextPath) => {
     });
 };
 
+const dxSseLink = (contextPath) => {
+
+    class Link extends ApolloLink {
+        constructor(url, httpOptions) {
+            super();
+            this.httpOptions = httpOptions;
+            this.url = url;
+        }
+
+        request(operation) {
+            return new Observable(observer => {
+                let options = Object.assign(operation, {query: print(operation.query)});
+                const {query, variables, operationName, context} = options;
+                if (!query) throw new Error('Must provide `query` to subscribe.');
+                // if ((operationName && !isString(operationName)) || (variables && !isObject(variables))) {
+                //     throw new Error('Incorrect option types to subscribe. `operationName` must be a string, and `variables` must be an object.');
+                // }
+                let subscribeUrl = this.url + "?query=" + encodeURIComponent(options.query) + "&operationName=" + encodeURIComponent(options.operationName) + "&variables=" + encodeURIComponent(JSON.stringify(options.variables));
+                let evtSource = new EventSource(subscribeUrl);
+                evtSource.onmessage = e => {
+                    const message = JSON.parse(e.data);
+                    observer.next(message);
+                    // switch (message.type) {
+                    //     case 'SUBSCRIPTION_DATA':
+                    //         break;
+                    //     case 'KEEPALIVE':
+                    //         break;
+                    // }
+                };
+                evtSource.onerror = e => {
+                    console.error(`EventSource connection failed for subscription. Retry.`);
+                    if (evtSource) {
+                        evtSource.close();
+                    }
+                    // const retryTimeout = setTimeout(() => {
+                    //     this.subscribe(options, handler);
+                    //     clearTimeout(retryTimeout);
+                    // }, 1000);
+                };
+
+                return () => evtSource.close();
+            });
+        }
+    }
+    return new Link(contextPath);
+};
+
 const ssrLink = new ApolloLink(
     (operation, forward) => {
         let {operationName, variables, query, extensions, getContext, setContext} = operation;
@@ -68,4 +115,4 @@ const ssrLink = new ApolloLink(
 //     }
 // });
 
-export {dxUploadLink, dxHttpLink, ssrLink};
+export {dxUploadLink, dxHttpLink, ssrLink, dxSseLink};
