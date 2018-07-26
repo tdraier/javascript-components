@@ -1,10 +1,10 @@
 import {ApolloClient} from 'apollo-client';
-import {from} from 'apollo-link';
+import {from, split} from 'apollo-link';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import {toIdValue} from 'apollo-utilities';
+import {getMainDefinition, toIdValue} from 'apollo-utilities';
 import {fragmentMatcher} from "./fragmentMatcher";
 
-import {dxUploadLink, dxHttpLink, ssrLink} from "./links";
+import {dxHttpLink, dxSseLink, dxUploadLink, ssrLink} from "./links";
 
 const client = function (options) {
     options = options || {};
@@ -94,8 +94,21 @@ const client = function (options) {
         cacheResolvers: cacheResolvers
     });
 
+    let sseLink = dxSseLink((options.contextPath ? options.contextPath : '')+'/modules/graphql');
+
+    let httpLink = from([dxUploadLink, dxHttpLink(options.contextPath ? options.contextPath : '')]);
+
+    let link = split(
+        // split based on operation type
+        ({ query }) => {
+            const { kind, operation } = getMainDefinition(query);
+            return kind === 'OperationDefinition' && operation === 'subscription';
+        },
+        sseLink,
+        httpLink,
+    );
     return new ApolloClient({
-        link: !ssrMode ? (options.link ? options.link : from([dxUploadLink, dxHttpLink(options.contextPath ? options.contextPath : '')])) : ssrLink,
+        link: !ssrMode ? (options.link ? options.link : link) : ssrLink,
         cache: cache,
         ssrMode: ssrMode
     });
