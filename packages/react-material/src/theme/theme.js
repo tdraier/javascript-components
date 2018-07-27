@@ -1,331 +1,63 @@
-import {createMuiTheme, colors} from '@material-ui/core';
+import {createMuiTheme} from '@material-ui/core';
+import {paletteLight, paletteDark} from './palette';
+import {dialogTitle, dialogContent, dialogContentText, dialogActions} from './overrides/dialog';
+import {switchOverride} from './overrides/switch';
+import {button, iconButton} from './overrides/button';
+import {tableRowLight, tableCell} from './overrides/table';
+import {checkbox} from './overrides/checkbox';
+import {formControlLabelLight, formControl, formHelperTextLight} from './overrides/form';
+import {inputLight} from './overrides/input';
+import {typographyLight} from './overrides/typography';
+import {collapse} from './overrides/collapse';
+import {selectLight} from './overrides/select';
+import {menuItem} from './overrides/menu';
+import {listItemText} from './overrides/list';
+import {paper} from './overrides/paper';
+import * as _ from 'lodash';
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
-let theme = createMuiTheme({
-	palette: {
-        background: {
-            global: colors.grey[200],
-        },
-        contrastThreshold: 2.5,
-        tonalOffset: 0.2,
-        primary: {
-            main: colors.blueGrey[600],
-        },
-		secondary: {
-            main: '#00a0e3',
-        },
-        error: {
-            main: colors.red[400],
-        },
-        publish: {
-            main: colors.deepOrange[500],
-        },
-        enabled: {
-            main: colors.green[400],
-        },
-        delete: {
-            main: colors.red[600],
-        },
-		cancelButton: {
-			main: '#676767'
-		},
-		confirmColor: {
-			main: '#00a0e3'
-		},
-		publicationStatus: {
-        	published: {
-        		main: '#08D000'
-			},
-            modified: {
-                main: '#FB9926'
-            },
-            notPublished: {
-                main: colors.grey[900]
-            },
-            mandatoryLanguageUnpublishable: {
-                main: ''
-            },
-            liveModified: {
-                main: ''
-            },
-            liveOnly: {
-                main: ''
-            },
-            conflict: {
-                main: ''
-            },
-            mandatoryLanguageValid: {
-                main: ''
-            },
-            deleted: {
-                main: '#FB9926'
-            },
-            markedForDeletion: {
-                main: '#FB9926'
-            }
-		}
-
-    },
+let baseTheme = {
 	overrides: {
-		MuiList: {
-			root: {
-			}
-		},
-		MuiListItem: {
-			root: {
-			}
-		},
-		MuiListItemText: {
-			root: {
-			}
+        MuiDialogTitle: dialogTitle,
+        MuiDialogContent: dialogContent,
+        MuiDialogContentText: dialogContentText,
+        MuiDialogActions: dialogActions,
+        MuiSwitch: switchOverride,
+        MuiButton: button,
+		MuiTableCell: tableCell,
+        MuiIconButton: iconButton,
+        MuiCheckbox: checkbox,
+		MuiFormControl: formControl,
+        MuiCollapse: collapse,
+		MuiMenuItem: menuItem,
+        MuiListItemText: listItemText,
+        MuiPaper: paper
+	}
+};
 
-		},
-		MuiDialogTitle: {
-			root: {
-				width: '600px',
-				boxSizing: 'border-box',
-				padding: '24px 24px 0px 24px',
-				fontSize: '1rem',
-			}
-		},
-		MuiDialogContent: {
-			root: {
-				padding: '4px 24px 10px 24px',
-			},
+// const theme = createMuiTheme(_.merge({
+//     palette: paletteLight,
+//     overrides: {
+//         MuiInput: inputLight,
+//         MuiSelect: selectLight,
+//         MuiTableRow: tableRowLight,
+//         MuiTypography: typographyLight,
+//         MuiFormHelperText: formHelperTextLight,
+//         MuiFormControlLabel: formControlLabelLight
+//     }
+// }, baseTheme));
+//
+// const darkTheme = createMuiTheme(_.merge({
+//     palette: paletteDark
+// }, baseTheme));
 
-		},
-		MuiDialogContentText: {
-			root: {
-				fontSize: '0.875rem'
-			}
-		},
-		MuiDialogActions: {
-			root: {
-				justifyContent: 'left',
-				padding: '0 20px',
-				marginTop: '30px',
-			},
-		},
-		MuiSwitch: {
-			root: {
-				width: '52px'
-			}
-		},
-        MuiButton: {
-            root: {
-                color: "inherit",
-				padding: '8px',
-				minWidth: '68px'
-            }
-        },
-		MuiTableRow: {
-			root: {
-				borderBottom: '1px solid rgba(224, 224, 224, 1)',
-				'&:hover': {
-					backgroundColor: '#F7F7F7!important'
-				}
-			},
-		},
-        MuiTableCell: {
-            body: {
-                color: "inherit",
-            }
-        },
-        MuiIconButton: {
-            root: {
-                color: "inherit",
-				width: '38px',
-            },
-
-        },
-        MuiCheckbox: {
-			root: {
-			    width: '18px',
-			    marginRight: '10px',
-            }
-        },
-		MuiFormControlLabel: {
-			label: {
-				color: '#676767',
-				fontSize: '13px'
-			}
-		},
-		MuiInput: {
-			root: {
-				'&:before': {
-					display: 'none'
-				},
-				'&:after': {
-					display: 'none'
-				},
-				boxShadow: 'inset 1px 1px 1px 0 rgba(38, 38, 38, 0.3)',
-				borderRadius: '2px',
-				background: 'whitesmoke',
-				padding: '2px 11px 0',
-				boxSizing: 'border-box',
-			},
-			input: {
-				color: '#676767',
-				fontSize: '0.8rem'
-			}
-		},
-		MuiFormControl: {
-			root: {
-				width:"100%",
-		        "& error": {
-		        },
-		        "& message": {
-		            display:"none"
-		        },
-		        "& label": {
-		        }
-			}
-		},
-		MuiCollapse: {
-			entered: {
-				overflow: 'visible'
-			}
-		},
-		MuiFormHelperText: {
-			root: {
-				right: '10px',
-				color: 'red',
-				position: 'absolute',
-				background: 'white',
-				height: 'calc(100% - 6px)',
-				top: '3px',
-				margin: '0',
-				marginTop: '0',
-				lineHeight: '0.3rem',
-				zIndex: '99',
-				padding: '11px 5px 11px 11px',
-				boxSizing: 'border-box',
-				"&:hover message": {
-					display: 'block'
-				},
-				"& error": {
-		        },
-		        "& message": {
-					top: '24px',
-				    width: '280px',
-				    right: '0',
-				    padding: '9px',
-				    zIndex: '9',
-				    display: 'none',
-				    position: 'absolute',
-				    background: '#fc922f',
-				    boxShadow: '1px 1px 2px 0px rgba(38, 38, 38, 0.3)',
-				    borderRadius: '2px',
-				    color: 'white',
-				    padding: '14px',
-					lineHeight: 'normal'
-		        },
-		        "& label": {
-		        }
-			}
-		},
-		MuiTypography: {
-			root: {
-			},
-			colorTextSecondary: {
-				color: 'rgba(0, 0, 0, 0.54)'
-			},
-			title: {
-				fontSize: '1.2rem'
-			},
-			subheading: {
-				fontSize: '0.875rem'
-			},
-			caption: {
-				fontSize: '0.65rem',
-				fontWeight: '800',
-				textTransform: 'uppercase'
-			}
-		},
-		MuiSelect: {
-			root: {
-				color: '#EBEBEB'
-			},
-			select: {},
-			selectMenu: {
-				color: 'whitesmoke',
-				paddingRight: '23px',
-				'&:focus': {
-					backgroundColor: 'inherit'
-				}
-			},
-			disabled: {},
-			icon: {},
-		},
-		MuiMenuItem: {
-			root: {
-				backgroundColor: 'transparent!important',
-				padding: '6px 0',
-				fontSize: '0.875rem'
-			},
-			selected: {
-			}
-
-		},
-		MuiListItemText: {
-			root: {
-				padding: '0',
-			}
-		},
-		MuiPaper: {
-			root: {
-
-			}
-		}
-    }
+const theme = createMuiTheme({
+    palette: paletteLight
 });
 
-let darkTheme = createMuiTheme({
-    palette: {
-        type: "dark",
-        background: {
-            global: colors.grey[900]
-        },
-        contrastThreshold: 3.0,
-        tonalOffset: 0.2,
-        primary: {
-            main: colors.purple[500]
-        },
-        secondary: {
-            main: colors.green[400]
-        },
-        error: {
-            main: colors.red[200]
-        },
-        publish: {
-            main: colors.deepOrange[500],
-        },
-        enabled: {
-            main: colors.green[400],
-        },
-        delete: {
-            main: colors.red[600],
-        }
-    },
-    overrides: {
-        MuiButton: {
-            root: {
-                color: "inherit",
-            }
-        },
-        MuiTableCell: {
-            body: {
-                color: "inherit",
-            }
-        },
-        MuiIconButton: {
-            root: {
-                color: "inherit",
-            }
-        }
-    }
+const darkTheme = createMuiTheme({
+    palette: paletteDark
 });
-
 
 export {theme, darkTheme}

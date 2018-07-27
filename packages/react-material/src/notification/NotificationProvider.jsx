@@ -71,7 +71,7 @@ class NotificationProvider extends Component {
 
         predefinedOptions.forEach(key => this.predefined[key] && _.merge(options, this.predefined[key]));
 
-        return <div>
+        return <React.Fragment>
             <Context.Provider value={this.notificationContext}>
                 {this.props.children}
             </Context.Provider>
@@ -88,7 +88,7 @@ class NotificationProvider extends Component {
                 message={<span id="message-id">{this.state.notification.message}</span>}
                 {...options}
             />
-        </div>;
+        </React.Fragment>;
     }
 }
 

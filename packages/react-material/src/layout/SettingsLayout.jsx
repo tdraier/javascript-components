@@ -4,23 +4,26 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-        backgroundColor: theme.palette.background.global
+        // backgroundColor: theme.palette.background.global,
+        // height: '100%'
     },
     main: {
+        // backgroundColor: theme.palette.background.global,
         minHeight: 'calc(100% - 96px)',
         marginTop: 64,
-        padding: 1
+        // padding: '24px 8px 8px 8px',
     },
     footer: {
+        // backgroundColor: theme.palette.background.global,
         fontSize: '14px',
         fontFamily: theme.typography.fontFamily,
         fontWeight: 300,
-        padding: "8px",
-        textAlign: "center",
+        padding: '8px',
+        textAlign: 'center',
         color: theme.palette.text.secondary
     },
     appBar: {
-        transition: "all 200ms ease-in-out"
+        transition: 'all 200ms ease-in-out'
     }
 });
 
