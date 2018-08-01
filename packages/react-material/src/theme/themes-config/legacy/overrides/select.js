@@ -1,4 +1,4 @@
-const selectLight = {
+const legacySelect = {
     root: {
         color: '#EBEBEB'
     },
@@ -14,4 +14,4 @@ const selectLight = {
     icon: {}
 };
 
-export {selectLight}
+export {legacySelect}

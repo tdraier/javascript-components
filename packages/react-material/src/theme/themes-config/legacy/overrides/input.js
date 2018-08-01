@@ -1,4 +1,4 @@
-const inputLight = {
+const legacyInput = {
     root: {
         '&:before': {
             display: 'none'
@@ -18,4 +18,4 @@ const inputLight = {
     }
 };
 
-export {inputLight}
+export {legacyInput}

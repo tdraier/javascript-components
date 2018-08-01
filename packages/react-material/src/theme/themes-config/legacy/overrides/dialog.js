@@ -1,4 +1,4 @@
-const dialogTitle = {
+const legacyDialogTitle = {
     root: {
         width: '600px',
         boxSizing: 'border-box',
@@ -7,19 +7,19 @@ const dialogTitle = {
     }
 };
 
-const dialogContent = {
+const legacyDialogContent = {
     root: {
         padding: '4px 24px 10px 24px',
     }
 };
 
-const dialogContentText = {
+const legacyDialogContentText = {
     root: {
         fontSize: '0.875rem'
     }
 };
 
-const dialogActions = {
+const legacyDialogActions = {
     root: {
         justifyContent: 'left',
         padding: '0 20px',
@@ -27,4 +27,4 @@ const dialogActions = {
     }
 };
 
-export { dialogTitle, dialogContent, dialogContentText, dialogActions }
+export { legacyDialogTitle, legacyDialogContent, legacyDialogContentText, legacyDialogActions }

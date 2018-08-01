@@ -1,63 +1,23 @@
 import {createMuiTheme} from '@material-ui/core';
-import {paletteLight, paletteDark} from './palette';
-import {dialogTitle, dialogContent, dialogContentText, dialogActions} from './overrides/dialog';
-import {switchOverride} from './overrides/switch';
-import {button, iconButton} from './overrides/button';
-import {tableRowLight, tableCell} from './overrides/table';
-import {checkbox} from './overrides/checkbox';
-import {formControlLabelLight, formControl, formHelperTextLight} from './overrides/form';
-import {inputLight} from './overrides/input';
-import {typographyLight} from './overrides/typography';
-import {collapse} from './overrides/collapse';
-import {selectLight} from './overrides/select';
-import {menuItem} from './overrides/menu';
-import {listItemText} from './overrides/list';
-import {paper} from './overrides/paper';
+import {commonBaseThemeConfig} from './themes-config/common-base/config';
+import {anthraciteThemeConfig} from "./themes-config/anthracite/config";
+import {legacyThemeConfig} from "./themes-config/legacy/config";
+import {darkThemeConfig} from "./themes-config/dark/config";
 import * as _ from 'lodash';
 
-// All the following keys are optional.
-// We try our best to provide a great default value.
-let baseTheme = {
-	overrides: {
-        MuiDialogTitle: dialogTitle,
-        MuiDialogContent: dialogContent,
-        MuiDialogContentText: dialogContentText,
-        MuiDialogActions: dialogActions,
-        MuiSwitch: switchOverride,
-        MuiButton: button,
-		MuiTableCell: tableCell,
-        MuiIconButton: iconButton,
-        MuiCheckbox: checkbox,
-		MuiFormControl: formControl,
-        MuiCollapse: collapse,
-		MuiMenuItem: menuItem,
-        MuiListItemText: listItemText,
-        MuiPaper: paper
-	}
-};
+// To add a new theme create a folder with the name of theme under themes-config
+// Then create a config.js file that will export the config of your theme (palette and/or override)
+// If you have overrides create a folder overrides and create files for your overrides (e.g: button.js, form.js, select.js, ...) look at
+// legacy to have a better idea of what you need to do
+// Then import your theme configuration here and merge it with commonBaseThemeConfig and export your theme, also remember to export your
+// theme in index.js
 
-// const theme = createMuiTheme(_.merge({
-//     palette: paletteLight,
-//     overrides: {
-//         MuiInput: inputLight,
-//         MuiSelect: selectLight,
-//         MuiTableRow: tableRowLight,
-//         MuiTypography: typographyLight,
-//         MuiFormHelperText: formHelperTextLight,
-//         MuiFormControlLabel: formControlLabelLight
-//     }
-// }, baseTheme));
-//
-// const darkTheme = createMuiTheme(_.merge({
-//     palette: paletteDark
-// }, baseTheme));
+// commonBaseThemeConfig should contains the default config to follow our current design guidelines, default colors, margin, width ...
 
-const theme = createMuiTheme({
-    palette: paletteLight
-});
+const anthraciteTheme = createMuiTheme(_.merge(_.cloneDeep(commonBaseThemeConfig), anthraciteThemeConfig));
 
-const darkTheme = createMuiTheme({
-    palette: paletteDark
-});
+const legacyTheme = createMuiTheme(_.merge(_.cloneDeep(commonBaseThemeConfig), legacyThemeConfig));
 
-export {theme, darkTheme}
+const darkTheme = createMuiTheme(_.merge(_.cloneDeep(commonBaseThemeConfig), darkThemeConfig));
+
+export {anthraciteTheme, legacyTheme, darkTheme}

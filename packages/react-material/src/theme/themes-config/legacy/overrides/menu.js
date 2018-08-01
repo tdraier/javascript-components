@@ -1,4 +1,4 @@
-const menuItem = {
+const legacyMenuItem = {
     root: {
         backgroundColor: 'transparent',
         padding: '6px 0',
@@ -6,4 +6,4 @@ const menuItem = {
     }
 };
 
-export {menuItem}
+export {legacyMenuItem}

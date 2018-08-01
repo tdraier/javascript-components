@@ -1,7 +1,7 @@
-const collapse = {
+const legacyCollapse = {
     entered: {
         overflow: 'visible'
     }
 };
 
-export {collapse}
+export {legacyCollapse}

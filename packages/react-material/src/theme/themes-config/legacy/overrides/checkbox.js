@@ -1,8 +1,8 @@
-const checkbox = {
+const legacyCheckbox = {
     root: {
         width: '18px',
         marginRight: '10px',
     }
 };
 
-export {checkbox}
+export {legacyCheckbox}

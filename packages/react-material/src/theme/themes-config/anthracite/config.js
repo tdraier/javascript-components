@@ -1,0 +1,3 @@
+const anthraciteThemeConfig = {};
+
+export {anthraciteThemeConfig}

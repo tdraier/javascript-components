@@ -5,48 +5,34 @@ import {translate} from 'react-i18next';
 
 const styles = theme => ({
     root: {
-        margin: '0',
-        color : 'inherit',
         backgroundColor : theme.palette.primary.light,
         width: '720px',
         height: '44px',
         lineHeight: '40px',
         borderRadius: '3px',
-        fontWeight: '200'
+        '& button:disabled': {
+            color: 'whitesmoke'
+        }
     },
     rootFocus: {
-        margin: '0',
-        color: theme.palette.text.secondary,
-        backgroundColor : '#fff',
         width: '720px',
         height: '44px',
         lineHeight: '40px',
         borderRadius: '3px',
-        fontWeight: '100',
-        boxShadow: "0 1px 8px 0 rgba(0, 0, 0, 0.4)",
-        // '& $input': {
-        //     width: '300px'
-        // }
+        backgroundColor : '#fff',
+        boxShadow: '0 1px 8px 0 rgba(0, 0, 0, 0.4)'
     },
-	input: {
+    input: {
         transitionProperty: 'width',
         transitionDuration: '300ms',
         transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
         transitionDelay: '0ms',
-		color: 'whitesmoke'
-    },
-	inputFocus: {
-		color: '#707070'
+        color: 'whitesmoke'
     },
     searchIcon: {
-        'marginTop': 'auto',
-        'marginBottom': 'auto',
-        'opacity': '0.87'
-    },
-    hidden: {
-        opacity: 0,
         marginTop: 'auto',
-        marginBottom: 'auto'
+        marginBottom: 'auto',
+        opacity: 0.87
     },
     closeIcon: {
         marginTop: 'auto',
@@ -103,26 +89,33 @@ class SearchBar extends React.Component {
         const { classes,t, placeholderLabel } = this.props;
 
         return (
-            <Input classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: (this.state.focus ? classes.inputFocus : classes.input)}}
+            <Input classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: (this.state.focus ? null : classes.input)}}
                    onChange={this.handleChange}
                    onBlur={this.onBlur}
                    onFocus={this.onFocus}
                    disableUnderline={true}
-                   type="text"
+                   type={'text'}
                    inputRef={(input) => {this.inputSearchBar = input;}}
                    placeholder={placeholderLabel || t('label.searchPlaceholder')}
-                   startAdornment={<InputAdornment classes={{root: classes.searchIcon}} position="start"><Search/></InputAdornment>}
-                   endAdornment={<InputAdornment position="end" classes={{root: (this.state.focus ? classes.closeIcon : classes.hidden)}}>
-                       <IconButton onClick={this.onClear}>
-                           <Icon><Close/></Icon>
-                       </IconButton>
-                   </InputAdornment>}
+                   startAdornment={
+                       <InputAdornment position={'start'} classes={{root: classes.searchIcon}}>
+                           <IconButton disabled>
+                               <Search/>
+                           </IconButton>
+                       </InputAdornment>}
+                   endAdornment={
+                       this.state.focus ?
+                           <InputAdornment position={'end'} classes={{root: classes.closeIcon}}>
+                               <IconButton onClick={this.onClear}>
+                                   <Icon><Close/></Icon>
+                               </IconButton>
+                           </InputAdornment> : null}
                    style={this.props.style}
             />
         )
     }
 }
 
-SearchBar = withStyles(styles, {name:"DxSearchBar"})(translate('react-material')(SearchBar));
+SearchBar = withStyles(styles, {name:'DxSearchBar'})(translate('react-material')(SearchBar));
 
 export {SearchBar};

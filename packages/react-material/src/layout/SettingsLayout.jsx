@@ -4,24 +4,15 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-        // backgroundColor: theme.palette.background.global,
-        // height: '100%'
+        height: '100%'
     },
     main: {
-        // backgroundColor: theme.palette.background.global,
         minHeight: 'calc(100% - 96px)',
         marginTop: 64,
-        // padding: '24px 8px 8px 8px',
+        padding: '24px 8px 8px 8px',
+        position: 'relative'
     },
-    footer: {
-        // backgroundColor: theme.palette.background.global,
-        fontSize: '14px',
-        fontFamily: theme.typography.fontFamily,
-        fontWeight: 300,
-        padding: '8px',
-        textAlign: 'center',
-        color: theme.palette.text.secondary
-    },
+    footer: {},
     appBar: {
         transition: 'all 200ms ease-in-out'
     }
@@ -44,7 +35,9 @@ class SettingsLayout extends React.Component {
                     {children}
                 </section>
                 <footer className={classes.footer}>
-                    {footer}
+                    <Typography variant={'body1'} align={'center'} gutterBottom={true} color={'textSecondary'}>
+                        {footer}
+                    </Typography>
                 </footer>
             </section>
         );

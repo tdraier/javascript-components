@@ -1,4 +1,4 @@
-const tableRowLight = {
+const legacyTableRow = {
     root: {
         borderBottom: '1px solid rgba(224, 224, 224, 1)',
         '&:hover': {
@@ -7,10 +7,10 @@ const tableRowLight = {
     }
 };
 
-const tableCell = {
+const legacyTableCell = {
     body: {
         color: "inherit",
     }
 };
 
-export {tableRowLight, tableCell}
+export {legacyTableRow, legacyTableCell}

@@ -1,11 +1,11 @@
-const formControlLabelLight = {
+const legacyFormControlLabel = {
     label: {
         color: '#676767',
         fontSize: '13px'
     }
 };
 
-const formControl = {
+const legacyFormControl = {
     root: {
         width:"100%",
         "& error": {
@@ -18,7 +18,7 @@ const formControl = {
     }
 };
 
-const formHelperTextLight = {
+const legacyFormHelperText = {
     root: {
         right: '10px',
         color: 'red',
@@ -41,7 +41,6 @@ const formHelperTextLight = {
             top: '24px',
             width: '280px',
             right: '0',
-            padding: '9px',
             zIndex: '9',
             display: 'none',
             position: 'absolute',
@@ -57,4 +56,4 @@ const formHelperTextLight = {
     }
 };
 
-export {formControlLabelLight, formControl, formHelperTextLight}
+export {legacyFormControlLabel, legacyFormControl, legacyFormHelperText}

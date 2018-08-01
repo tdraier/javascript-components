@@ -1,4 +1,4 @@
-const button = {
+const legacyButton = {
     root: {
         color: "inherit",
         padding: '8px',
@@ -12,7 +12,7 @@ const button = {
     }
 };
 
-const iconButton = {
+const legacyIconButton = {
     root: {
         color: "inherit",
         width: '38px',
@@ -20,4 +20,4 @@ const iconButton = {
     }
 };
 
-export {button, iconButton}
+export {legacyButton, legacyIconButton}

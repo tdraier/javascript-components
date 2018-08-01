@@ -1,12 +1,11 @@
-const typographyLight = {
+const legacyTypography = {
     root: {
     },
     colorTextSecondary: {
         color: 'rgba(0, 0, 0, 0.54)'
     },
     title: {
-        fontSize: '1.2rem',
-        width: '100%'
+        fontSize: '1.2rem'
     },
     subheading: {
         fontSize: '0.875rem'
@@ -18,4 +17,4 @@ const typographyLight = {
     }
 };
 
-export {typographyLight}
+export {legacyTypography}
