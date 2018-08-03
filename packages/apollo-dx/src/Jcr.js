@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+import * as _ from "lodash";
 import {replaceFragmentsInDocument} from "./parser";
 
 class Jcr {
