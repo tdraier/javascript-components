@@ -14,10 +14,10 @@ import * as _ from 'lodash';
 
 // commonBaseThemeConfig should contains the default config to follow our current design guidelines, default colors, margin, width ...
 
-const anthraciteTheme = createMuiTheme(_.merge(_.cloneDeep(commonBaseThemeConfig), anthraciteThemeConfig));
+const anthraciteTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteThemeConfig));
 
-const legacyTheme = createMuiTheme(_.merge(_.cloneDeep(commonBaseThemeConfig), legacyThemeConfig));
+const legacyTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, legacyThemeConfig));
 
-const darkTheme = createMuiTheme(_.merge(_.cloneDeep(commonBaseThemeConfig), darkThemeConfig));
+const darkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, darkThemeConfig));
 
 export {anthraciteTheme, legacyTheme, darkTheme}
