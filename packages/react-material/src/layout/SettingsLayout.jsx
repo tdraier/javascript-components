@@ -4,15 +4,21 @@ import PropTypes from 'prop-types';
 
 const styles = theme => ({
     root: {
-        height: '100%'
+        height: '100%',
+        width: '100%'
     },
     main: {
-        minHeight: 'calc(100% - 96px)',
-        marginTop: 64,
-        padding: '24px 8px 8px 8px',
+        minHeight: 'calc(100% - ' + theme.spacing.unit * 12 + 'px)',
+        width: '100%',
+        marginTop: theme.spacing.unit * 11,
+        paddingRight: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit,
+        marginBottom: theme.spacing.unit,
         position: 'relative'
     },
-    footer: {},
+    footer: {
+        width: '100%',
+    },
     appBar: {
         transition: 'all 200ms ease-in-out'
     }

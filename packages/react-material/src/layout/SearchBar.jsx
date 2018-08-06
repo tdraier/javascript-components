@@ -6,16 +6,17 @@ import {translate} from 'react-i18next';
 const styles = theme => ({
     root: {
         backgroundColor : theme.palette.primary.light,
-        width: '720px',
+        minWidth: '350px',
         height: '44px',
         lineHeight: '40px',
         borderRadius: '3px',
+        boxShadow: 'inset 1px 1px 1px 0 rgba(38, 38, 38, 0.3)',
         '& button:disabled': {
             color: 'whitesmoke'
         }
     },
     rootFocus: {
-        width: '720px',
+        minWidth: '350px',
         height: '44px',
         lineHeight: '40px',
         borderRadius: '3px',
