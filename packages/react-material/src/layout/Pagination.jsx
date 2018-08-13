@@ -11,25 +11,12 @@ const actionsStyles = theme => ({
         color: theme.palette.text.secondary,
         marginLeft: theme.spacing.unit * 2.5,
     },
-    paginationButton: {
-        '&:hover': {
-            backgroundColor: 'transparent'
-        }
-    }
+    paginationButton: {}
 });
 
 const styles = theme => ({
-    tablePaginationContainer: {
-        border: 'none'
-    },
-    tablePagination: {
-        background: '#eee',
-        '& div': {
-            boxShadow: 'none',
-            background: 'transparent',
-            color: '#6d6d6d'
-        }
-    },
+    tablePaginationContainer: {},
+    tablePagination: {}
 });
 
 class TablePaginationActions extends React.Component {

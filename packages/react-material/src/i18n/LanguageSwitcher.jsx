@@ -26,16 +26,17 @@ class LanguageSwitcher extends React.Component {
     render() {
         let availableLocales = ['fr', 'en'];
 
-        return (<div>
-            <Button onClick={this.handleClick.bind(this)}
-            >{this.props.t('label.languages')}</Button>
-            <Menu open={Boolean(this.state.anchorEl)} onClose={this.handleClose.bind(this, null)}
-                  anchorEl={this.state.anchorEl}>
-                {availableLocales.map((locale) => (
-                    <MenuItem onClick={this.handleClose.bind(this, locale)} key={locale}
-                              value={locale}>{locale}</MenuItem>))}
-            </Menu>
-        </div>);
+        return (
+            <React.Fragment>
+                <Button onClick={this.handleClick.bind(this)}>{this.props.t('label.languages')}</Button>
+                <Menu open={Boolean(this.state.anchorEl)} onClose={this.handleClose.bind(this, null)}
+                      anchorEl={this.state.anchorEl}>
+                    {availableLocales.map((locale) => (
+                        <MenuItem onClick={this.handleClose.bind(this, locale)} key={locale}
+                                  value={locale}>{locale}</MenuItem>))}
+                </Menu>
+            </React.Fragment>
+        );
     }
 }
 
