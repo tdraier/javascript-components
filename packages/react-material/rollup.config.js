@@ -32,6 +32,7 @@ export default {
         "react-redux",
         "react-router",
         "react-router-dom",
+        "react-select",
     ],
 
     plugins: [
