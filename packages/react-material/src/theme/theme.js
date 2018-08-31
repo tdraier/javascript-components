@@ -1,6 +1,7 @@
 import {createMuiTheme} from '@material-ui/core';
 import {commonBaseThemeConfig} from './themes-config/common-base/config';
-import {anthraciteThemeConfig} from "./themes-config/anthracite/config";
+import {anthraciteDarkThemeConfig} from "./themes-config/anthracite/config";
+import {anthraciteLightThemeConfig} from "./themes-config/anthracite/config";
 import {legacyThemeConfig} from "./themes-config/legacy/config";
 import {darkThemeConfig} from "./themes-config/dark/config";
 import * as _ from 'lodash';
@@ -14,10 +15,12 @@ import * as _ from 'lodash';
 
 // commonBaseThemeConfig should contains the default config to follow our current design guidelines, default colors, margin, width ...
 
-const anthraciteTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteThemeConfig));
+const anthraciteDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteDarkThemeConfig));
+
+const anthraciteLightTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteLightThemeConfig));
 
 const legacyTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, legacyThemeConfig));
 
 const darkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, darkThemeConfig));
 
-export {anthraciteTheme, legacyTheme, darkTheme}
+export {anthraciteDarkTheme, anthraciteLightTheme, legacyTheme, darkTheme}
