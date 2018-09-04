@@ -1,5 +1,5 @@
 const anthraciteLightTypography = {
-    "typography": {
+    "root": {
         "fontFamily": "Nunito Sans",
         "fontWeightLight": 300,
         "fontWeightRegular": 400,

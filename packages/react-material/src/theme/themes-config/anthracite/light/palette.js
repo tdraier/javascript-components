@@ -1,6 +1,4 @@
 const anthraciteLightPalette = {
-    root: {
-    },
     "palette": {
         "type": "light",
         "common": {
