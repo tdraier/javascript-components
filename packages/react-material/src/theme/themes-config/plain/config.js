@@ -1,0 +1,3 @@
+const plainThemeConfig = {};
+
+export {plainThemeConfig}

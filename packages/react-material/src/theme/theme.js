@@ -1,5 +1,6 @@
 import {createMuiTheme} from '@material-ui/core';
 import {commonBaseThemeConfig} from './themes-config/common-base/config';
+import {plainThemeConfig} from './themes-config/plain/config'
 import {anthraciteDarkThemeConfig} from "./themes-config/anthracite/config";
 import {anthraciteLightThemeConfig} from "./themes-config/anthracite/config";
 import {legacyThemeConfig} from "./themes-config/legacy/config";
@@ -19,8 +20,10 @@ const anthraciteDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, an
 
 const anthraciteLightTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteLightThemeConfig));
 
+const plainTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, plainThemeConfig));
+
 const legacyTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, legacyThemeConfig));
 
 const darkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, darkThemeConfig));
 
-export {anthraciteDarkTheme, anthraciteLightTheme, legacyTheme, darkTheme}
+export {anthraciteDarkTheme, anthraciteLightTheme, plainTheme, legacyTheme, darkTheme}
