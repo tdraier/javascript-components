@@ -1,11 +1,11 @@
-const anthraciteDarkMenu = {
+const anthraciteMenu = (theme) => ({
     "paper": {
         "background":"#504e4d",
         "boxShadow":"0px 5px 1px -4px rgba(38, 38, 38, 0.4)"
     }
-};
+});
 
-const anthraciteDarkMenuItem = {
+const anthraciteMenuItem = (theme) => ({
     "root": {
         "padding": "5px 17px",
         "fontSize": "0.875rem",
@@ -14,6 +14,6 @@ const anthraciteDarkMenuItem = {
     "selected":{
         "backgroundColor":"#007cb0!important"
     }
-};
+});
 
-export {anthraciteDarkMenu, anthraciteDarkMenuItem}
+export {anthraciteMenu, anthraciteMenuItem}

@@ -1,3 +1,6 @@
+import {createMuiTheme} from '@material-ui/core';
+import * as _ from 'lodash';
+
 import {legacyTypography} from "./overrides/typography";
 import {legacyButton, legacyIconButton} from "./overrides/button";
 import {legacyCheckbox} from "./overrides/checkbox";
@@ -11,6 +14,7 @@ import {legacyPaper} from "./overrides/paper";
 import {legacySelect} from "./overrides/select";
 import {legacySwitch} from "./overrides/switch";
 import {legacyTableCell, legacyTableRow} from "./overrides/table";
+import {commonBaseThemeConfig} from "../common-base/config";
 
 const legacyThemeConfig = {
     overrides: {
@@ -37,4 +41,6 @@ const legacyThemeConfig = {
     }
 };
 
-export {legacyThemeConfig}
+const legacyTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, legacyThemeConfig));
+
+export {legacyTheme}

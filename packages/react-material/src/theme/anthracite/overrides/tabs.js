@@ -1,4 +1,4 @@
-const anthraciteLightTab = {
+const anthraciteTab = (theme) => ({
     "root": {
         "textTransform": "none",
         "minHeight": "auto",
@@ -15,13 +15,14 @@ const anthraciteLightTab = {
     "selected":{
         "opacity": 1
     }
-};
+});
 
-const anthraciteLightTabs = {
+const anthraciteTabs = (theme) => ({
     "root": {
         "minHeight": "unset",
         "padding": "0 40px"
     }
-};
+});
 
-export {anthraciteLightTab, anthraciteLightTabs}
+export {anthraciteTab, anthraciteTabs}
+

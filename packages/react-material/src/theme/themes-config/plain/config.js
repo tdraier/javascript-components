@@ -1,3 +1,0 @@
-const plainThemeConfig = {};
-
-export {plainThemeConfig}

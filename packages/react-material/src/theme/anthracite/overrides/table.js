@@ -1,10 +1,10 @@
-const anthraciteLightTable = {
+const anthraciteTable = (theme) => ({
     "root":{
         "overflow":"hidden"
     }
-};
+});
 
-const anthraciteLightTableCell = {
+const anthraciteTableCell = (theme) => ({
     "root": {
         "borderBottom": "none",
         "padding":"8px",
@@ -24,15 +24,17 @@ const anthraciteLightTableCell = {
         "position": "relative",
         "background": "#F5F5F5"
     }
-};
+});
 
-const anthraciteLightTableRow = {
+const anthraciteTableRow = (theme) => ({
     "root": {
         "height": "36px"
     },
     "head": {
         "height":"unset"
     }
-};
+});
 
-export {anthraciteLightTable, anthraciteLightTableCell, anthraciteLightTableRow}
+
+
+export {anthraciteTable, anthraciteTableCell, anthraciteTableRow}
