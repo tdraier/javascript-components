@@ -96,7 +96,7 @@ let PickerViewMaterial = function (props) {
 								{ iconRenderer ? iconRenderer.call(this,entry) : defaultIconRenderer.call(this,entry) }
 							</ListItemIcon>
 
-							<ListItemText classes={entry.selected ? {root:classes.listItemLabel, primary:classes.selectedText} : {root:classes.listItemLabel}} inset
+							<ListItemText data-jrm-role={'picker-item-text'} classes={entry.selected ? {root:classes.listItemLabel, primary:classes.selectedText} : {root:classes.listItemLabel}} inset
 										  primary={textRenderer ? textRenderer.call(this, entry) : entry.name} />
 						</ListItem>
 					)
