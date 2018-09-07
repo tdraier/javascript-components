@@ -83,9 +83,10 @@ let PickerViewMaterial = function (props) {
 							   key={entry.path}
 							   divider={true}
 							   className={entry.selected ? (classes.listItem + ' ' + classes.listItemSelected) : classes.listItem }
+					           data-jrm-role={'picker-item'}
 						>
 							<ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle} style={{paddingLeft: (entry.depth + 1) * 20, opacity:(entry.openable && entry.hasChildren ? 1:0)}} >
-								<IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}} disabled={!(entry.openable && entry.hasChildren)}>
+								<IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}} disabled={!(entry.openable && entry.hasChildren)} data-jrm-role={'picker-item-toggle'}>
 									{entry.open ?
 										<KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} /> :
 										<KeyboardArrowRight className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}
@@ -96,8 +97,9 @@ let PickerViewMaterial = function (props) {
 								{ iconRenderer ? iconRenderer.call(this,entry) : defaultIconRenderer.call(this,entry) }
 							</ListItemIcon>
 
-							<ListItemText data-jrm-role={'picker-item-text'} classes={entry.selected ? {root:classes.listItemLabel, primary:classes.selectedText} : {root:classes.listItemLabel}} inset
-										  primary={textRenderer ? textRenderer.call(this, entry) : entry.name} />
+							<ListItemText classes={entry.selected ? {root:classes.listItemLabel, primary:classes.selectedText} : {root:classes.listItemLabel}} inset
+										  primary={textRenderer ? textRenderer.call(this, entry) : entry.name}
+							              primaryTypographyProps={{'data-jrm-role': 'picker-item-text'}}/>
 						</ListItem>
 					)
 				)}
