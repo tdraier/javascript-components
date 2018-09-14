@@ -86,7 +86,7 @@ let PickerViewMaterial = function (props) {
 					           data-jrm-role={'picker-item'}
 						>
 							<ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle} style={{paddingLeft: (entry.depth + 1) * 20, opacity:(entry.openable && entry.hasChildren ? 1:0)}} >
-								<IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}} disabled={!(entry.openable && entry.hasChildren)} data-jrm-role={'picker-item-toggle'}>
+								<IconButton className={classes.buttonContainer} onClick={(event) => {onOpenItem(entry.path, !entry.open); event.stopPropagation()}} disabled={!(entry.openable && entry.hasChildren)} data-jrm-role={'picker-item-toggle'} data-jrm-state={entry.open ? 'open' : 'closed'}>
 									{entry.open ?
 										<KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} /> :
 										<KeyboardArrowRight className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected} />}
