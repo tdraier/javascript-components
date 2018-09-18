@@ -96,7 +96,7 @@ const client = function (options) {
 
     let sseLink = dxSseLink((options.contextPath ? options.contextPath : '')+'/modules/graphql');
 
-    let httpLink = from([dxUploadLink, dxHttpLink(options.contextPath ? options.contextPath : '')]);
+    let httpLink = from([dxUploadLink, dxHttpLink(options.contextPath ? options.contextPath : '', options.useBatch, options.httpOptions)]);
 
     let link = split(
         // split based on operation type

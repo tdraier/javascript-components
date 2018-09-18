@@ -2,10 +2,11 @@ import {ApolloLink} from 'apollo-link';
 import {HttpLink} from 'apollo-link-http';
 import {print} from 'graphql';
 import * as Observable from 'zen-observable';
+import { BatchHttpLink } from "apollo-link-batch-http";
 
 const dxUploadLink = new ApolloLink(
     (operation, forward) => {
-        let { operationName, variables, query, extensions, getContext, setContext } = operation;
+        let { variables, setContext } = operation;
         let fileFound = false;
         const formData  = new FormData();
 
@@ -29,21 +30,27 @@ const dxUploadLink = new ApolloLink(
     }
 );
 
-const dxHttpLink = (contextPath) => {
-    return new HttpLink({
+const dxHttpLink = (contextPath, batch, httpOptions) => {
+    let Link = batch ? BatchHttpLink : HttpLink;
+    return new Link({
         uri: contextPath + '/modules/graphql',
         credentials: 'same-origin',
         fetch: (uri, fetcherOptions) => {
             if (fetcherOptions.formData) {
                 let formData = fetcherOptions.formData;
                 let body = JSON.parse(fetcherOptions.body);
-                Object.keys(body).forEach(k=>formData.append(k, typeof body[k] === 'string' ? body[k] : JSON.stringify(body[k])));
+                if (Array.isArray(body)) {
+                    formData.append("query", fetcherOptions.body);
+                } else {
+                    Object.keys(body).forEach(k => formData.append(k, typeof body[k] === 'string' ? body[k] : JSON.stringify(body[k])));
+                }
                 fetcherOptions.body = formData;
                 delete fetcherOptions.headers["content-type"];
                 return fetch(uri,fetcherOptions);
             }
             return fetch(uri,fetcherOptions);
-        }
+        },
+        ...httpOptions
     });
 };
 
@@ -52,14 +59,13 @@ const dxSseLink = (contextPath) => {
     class Link extends ApolloLink {
         constructor(url, httpOptions) {
             super();
-            this.httpOptions = httpOptions;
             this.url = url;
         }
 
         request(operation) {
             return new Observable(observer => {
                 let options = Object.assign(operation, {query: print(operation.query)});
-                const {query, variables, operationName, context} = options;
+                const {query} = options;
                 if (!query) throw new Error('Must provide `query` to subscribe.');
                 // if ((operationName && !isString(operationName)) || (variables && !isObject(variables))) {
                 //     throw new Error('Incorrect option types to subscribe. `operationName` must be a string, and `variables` must be an object.');
@@ -95,8 +101,8 @@ const dxSseLink = (contextPath) => {
 };
 
 const ssrLink = new ApolloLink(
-    (operation, forward) => {
-        let {operationName, variables, query, extensions, getContext, setContext} = operation;
+    (operation) => {
+        let {operationName, variables, query} = operation;
         let res = gqlHelper.executeQuery(print(query), operationName, JSON.stringify(variables));
         return Observable.of(JSON.parse(res));
     }

@@ -1,8 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
-import glob from 'glob';
-import path from 'path';
 
 export default {
     input: 'src/index.js',
@@ -21,6 +19,7 @@ export default {
         "apollo-cache-inmemory",
         "apollo-client",
         "apollo-link",
+        "apollo-link-batch-http",
         "apollo-link-http",
         "apollo-utilities",
         "graphql",
