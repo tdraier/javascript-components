@@ -5,10 +5,8 @@ const anthraciteLightButton = {
         "margin": "5px"
     },
     "contained": {
-        "backgroundColor": "#d7dce0",
         "boxShadow": "0px 5px 1px -4px rgba(38, 38, 38, 0.4)",
         "&:hover": {
-            "backgroundColor":"#d1d7dc"
         }
     },
     "fab": {

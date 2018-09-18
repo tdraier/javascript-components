@@ -1,5 +1,6 @@
 const anthraciteAppBar = (theme) => ({
-    "root": {},
+    "root": {
+    },
     "colorDefault": {
         "backgroundColor": "transparent",
         "boxShadow": "none",
@@ -7,7 +8,7 @@ const anthraciteAppBar = (theme) => ({
         "marginBottom": "30px"
     },
     "colorPrimary": {
-        "backgroundColor": "transparent",
+        "backgroundColor": "#fcfdfd",
         "boxShadow": "none",
         "paddingTop": "30px",
         "marginBottom": "30px",

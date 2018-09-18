@@ -5,9 +5,6 @@ const anthraciteLightToolBar = {
             "flex": 1
         },
         "minHeight": "unset!important",
-        "& button":{
-            "backgroundColor":"#e8ebed"
-        }
     },
     "gutters": {
         "paddingLeft": "40px!important",

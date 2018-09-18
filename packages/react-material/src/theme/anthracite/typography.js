@@ -1,22 +1,23 @@
 const anthraciteTypography = {
-    "fontFamily": "Nunito Sans",
+    "fontFamily": "Nunito Sans, sans-serif",
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
     "fontWeightMedium": 700,
     "display4": {
-        "fontSize": "2.5rem"
+        "fontSize": "33px",
+        "fontWeight": 100
     },
     "display3": {
-        "fontSize": "2rem",
+        "fontSize": "26px",
         "fontWeight": 100
     },
     "display2": {
-        "fontSize": "1.5625rem",
-        "fontWeight": 300
+        "fontSize": "18px",
+        "fontWeight": 100
     },
     "display1": {
-        "fontSize": "1rem",
-        "fontWeight": 400
+        "fontSize": "14px",
+        "fontWeight": 300
     },
     "headline": {
         "fontSize": "1.4375rem",

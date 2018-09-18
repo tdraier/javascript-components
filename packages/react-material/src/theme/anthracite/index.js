@@ -10,11 +10,12 @@ import {anthraciteCheckbox} from "./overrides/checkbox";
 import {anthraciteMenu, anthraciteMenuItem} from "./overrides/menu";
 import {anthracitePaper} from "./overrides/paper";
 import {anthraciteSelect} from "./overrides/select";
-import {anthraciteTable, anthraciteTableCell, anthraciteTableRow,} from "./overrides/table";
+import {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination} from "./overrides/table";
 import {anthraciteTab, anthraciteTabs} from "./overrides/tabs";
 // Import of Light Anthracite theming import
 import {anthraciteLightPalette} from "./light/palette";
 import {anthraciteLightButton, anthraciteLightButtonBase, anthraciteLightIconButton} from "./light/overrides/button";
+import {anthraciteLightCard, anthraciteLightCardContent, anthraciteLightCardHeader} from "./light/overrides/card"
 import {anthraciteLightChip} from "./light/overrides/chip";
 import {
     anthraciteLightDialog,
@@ -47,6 +48,8 @@ import {
 } from "./dark/overrides/list";
 import {anthraciteDarkPanel, anthraciteDarkPanelActions, anthraciteDarkPanelDetails} from "./dark/overrides/panel";
 import {anthraciteDarkToolBar} from "./dark/overrides/toolbar";
+import './app.css';
+
 
 const anthraciteLightThemeConfig = {
     palette: anthraciteLightPalette,
@@ -59,6 +62,9 @@ const anthraciteLightThemeOverrides = (theme) => ({
     MuiButton: anthraciteLightButton,
     MuiButtonBase: anthraciteLightButtonBase,
     MuiIconButton: anthraciteLightIconButton,
+    MuiCard: anthraciteLightCard,
+    MuiCardContent: anthraciteLightCardContent,
+    MuiCardHeader: anthraciteLightCardHeader,
     MuiCheckbox: anthraciteCheckbox(theme),
     MuiChip: anthraciteLightChip,
     MuiDialogTitle: anthraciteLightDialogTitle,
@@ -80,6 +86,7 @@ const anthraciteLightThemeOverrides = (theme) => ({
     MuiSelect: anthraciteSelect(theme),
     MuiTable: anthraciteTable(theme),
     MuiTableRow: anthraciteTableRow(theme),
+    MuiTablePagination: anthraciteTablePagination(theme),
     MuiTableCell: anthraciteTableCell(theme),
     MuiTab: anthraciteTab(theme),
     MuiTabs: anthraciteTabs(theme),

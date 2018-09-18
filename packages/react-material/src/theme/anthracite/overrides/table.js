@@ -37,4 +37,12 @@ const anthraciteTableRow = (theme) => ({
 
 
 
-export {anthraciteTable, anthraciteTableCell, anthraciteTableRow}
+const anthraciteTablePagination = (theme) => ({
+    "root": {
+    },
+    "select": {
+        boxShadow: "none",
+    }
+});
+
+export {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination}
