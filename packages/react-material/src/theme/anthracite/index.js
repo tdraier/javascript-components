@@ -6,16 +6,18 @@ import {anthraciteShape} from "./shape";
 import {anthraciteTypography} from "./typography";
 // Overrides
 import {anthraciteAppBar} from "./overrides/appbar";
+import {anthraciteButton, anthraciteButtonBase, anthraciteIconButton} from "./overrides/button";
+import {anthraciteCard, anthraciteCardContent, anthraciteCardHeader} from "./overrides/card"
 import {anthraciteCheckbox} from "./overrides/checkbox";
 import {anthraciteMenu, anthraciteMenuItem} from "./overrides/menu";
 import {anthracitePaper} from "./overrides/paper";
 import {anthraciteSelect} from "./overrides/select";
 import {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination} from "./overrides/table";
 import {anthraciteTab, anthraciteTabs} from "./overrides/tabs";
+import {anthraciteToolBar} from "./overrides/toolbar";
+
 // Import of Light Anthracite theming import
 import {anthraciteLightPalette} from "./light/palette";
-import {anthraciteLightButton, anthraciteLightButtonBase, anthraciteLightIconButton} from "./light/overrides/button";
-import {anthraciteLightCard, anthraciteLightCardContent, anthraciteLightCardHeader} from "./light/overrides/card"
 import {anthraciteLightChip} from "./light/overrides/chip";
 import {
     anthraciteLightDialog,
@@ -32,10 +34,9 @@ import {
 } from "./light/overrides/list";
 
 import {anthraciteLightPanel, anthraciteLightPanelActions, anthraciteLightPanelDetails} from "./light/overrides/panel";
-import {anthraciteLightToolBar} from "./light/overrides/toolbar";
+
 // Import of Dark Anthracite theming
 import {anthraciteDarkPalette} from "./dark/palette";
-import {anthraciteDarkButton, anthraciteDarkButtonBase, anthraciteDarkIconButton} from "./dark/overrides/button";
 import {anthraciteDarkDialog, anthraciteDarkDialogActions, anthraciteDarkDialogTitle} from "./dark/overrides/dialog";
 import {anthraciteDarkFormControlLabel, anthraciteDarkFormLabel} from "./dark/overrides/form";
 import {anthraciteDarkInput} from "./dark/overrides/input";
@@ -47,8 +48,6 @@ import {
     anthraciteDarkListSubheader
 } from "./dark/overrides/list";
 import {anthraciteDarkPanel, anthraciteDarkPanelActions, anthraciteDarkPanelDetails} from "./dark/overrides/panel";
-import {anthraciteDarkToolBar} from "./dark/overrides/toolbar";
-import './app.css';
 
 
 const anthraciteLightThemeConfig = {
@@ -59,12 +58,12 @@ const anthraciteLightThemeConfig = {
 
 const anthraciteLightThemeOverrides = (theme) => ({
     MuiAppBar: anthraciteAppBar(theme),
-    MuiButton: anthraciteLightButton,
-    MuiButtonBase: anthraciteLightButtonBase,
-    MuiIconButton: anthraciteLightIconButton,
-    MuiCard: anthraciteLightCard,
-    MuiCardContent: anthraciteLightCardContent,
-    MuiCardHeader: anthraciteLightCardHeader,
+    MuiButton: anthraciteButton(theme),
+    MuiButtonBase: anthraciteButtonBase(theme),
+    MuiIconButton: anthraciteIconButton(theme),
+    MuiCard: anthraciteCard(theme),
+    MuiCardContent: anthraciteCardContent(theme),
+    MuiCardHeader: anthraciteCardHeader(theme),
     MuiCheckbox: anthraciteCheckbox(theme),
     MuiChip: anthraciteLightChip,
     MuiDialogTitle: anthraciteLightDialogTitle,
@@ -90,7 +89,7 @@ const anthraciteLightThemeOverrides = (theme) => ({
     MuiTableCell: anthraciteTableCell(theme),
     MuiTab: anthraciteTab(theme),
     MuiTabs: anthraciteTabs(theme),
-    MuiToolbar: anthraciteLightToolBar
+    MuiToolbar: anthraciteToolBar(theme)
 });
 
 const anthraciteLightTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteLightThemeConfig));
@@ -104,9 +103,12 @@ const anthraciteDarkThemeConfig = {
 
 const anthraciteDarkThemeOverrides = (theme) => ({
     MuiAppBar: anthraciteAppBar(theme),
-    MuiButton: anthraciteDarkButton,
-    MuiButtonBase: anthraciteDarkButtonBase,
-    MuiIconButton: anthraciteDarkIconButton,
+    MuiButton: anthraciteButton(theme),
+    MuiButtonBase: anthraciteButtonBase(theme),
+    MuiIconButton: anthraciteIconButton(theme),
+    MuiCard: anthraciteCard(theme),
+    MuiCardContent: anthraciteCardContent(theme),
+    MuiCardHeader: anthraciteCardHeader(theme),
     MuiCheckbox: anthraciteCheckbox(theme),
     MuiDialogTitle: anthraciteDarkDialogTitle,
     MuiDialog: anthraciteDarkDialog,
@@ -131,7 +133,7 @@ const anthraciteDarkThemeOverrides = (theme) => ({
     MuiTableCell: anthraciteTableCell(theme),
     MuiTab: anthraciteTab(theme),
     MuiTabs: anthraciteTabs(theme),
-    MuiToolbar: anthraciteDarkToolBar
+    MuiToolbar: anthraciteToolBar(theme)
 });
 
 const anthraciteDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteDarkThemeConfig));
