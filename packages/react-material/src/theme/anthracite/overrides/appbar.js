@@ -2,17 +2,18 @@ const anthraciteAppBar = (theme) => ({
     "root": {
     },
     "colorDefault": {
-        "backgroundColor": "transparent",
-        "boxShadow": "none",
-        "paddingTop": "30px",
-        "marginBottom": "30px"
-    },
-    "colorPrimary": {
-        "backgroundColor": "#fcfdfd",
+        "backgroundColor": theme.palette.background.default,
         "boxShadow": "none",
         "paddingTop": "30px",
         "marginBottom": "30px",
-        "color": theme.palette.getContrastText(theme.palette.background.default),
+        "color": theme.palette.text.primary
+    },
+    "colorPrimary": {
+        "backgroundColor": theme.palette.background.default,
+        "boxShadow": "none",
+        "paddingTop": "30px",
+        "marginBottom": "30px",
+        "color": theme.palette.text.primary
     }
 });
 
