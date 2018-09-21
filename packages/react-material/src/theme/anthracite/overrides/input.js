@@ -1,12 +1,12 @@
-const anthraciteLightInput = {
+const anthraciteInput = (theme) => ({
     "root": {},
     "error": {
         "& input": {
-            "backgroundColor": "#BD1330",
+            "backgroundColor": theme.palette.error.main,
             "color": "#F5F5F5"
         },
         "& div div": {
-            "backgroundColor": "#BD1330",
+            "backgroundColor": theme.palette.error.main,
             "color": "#F5F5F5"
         },
         "& svg": {
@@ -41,6 +41,9 @@ const anthraciteLightInput = {
             "opacity":"0"
         }
     }
-};
+});
 
-export {anthraciteLightInput}
+export {anthraciteInput}
+
+
+
