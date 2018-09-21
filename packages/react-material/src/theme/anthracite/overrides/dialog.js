@@ -1,12 +1,12 @@
-const anthraciteDialogTitle = (palette) => ({
+const anthraciteDialogTitle = (theme) => ({
     "root": {
         "paddingBottom": "6px"
     }
 });
 
-const anthraciteDialog = (palette) => ({
+const anthraciteDialog = (theme) => ({
     "paper": {
-        "backgroundColor": palette.background.paper
+        "backgroundColor": theme.palette.background.paper
     },
     "paperFullScreen": {
         // "paddingBottom":"56px",
@@ -25,7 +25,7 @@ const anthraciteDialog = (palette) => ({
     }
 });
 
-const anthraciteDialogActions = (palette) => ({
+const anthraciteDialogActions = (theme) => ({
     "root": {
         "padding":"10px"
     },
