@@ -8,9 +8,9 @@ const styles = theme => ({
         width: '100%'
     },
     main: {
-        minHeight: 'calc(100% - ' + theme.spacing.unit * 12 + 'px)',
+        minHeight: 'calc(100% - 30px)',
         width: '100%',
-        marginTop: theme.spacing.unit * 11,
+        paddingTop: theme.spacing.unit * 11,
         paddingRight: theme.spacing.unit,
         paddingLeft: theme.spacing.unit,
         marginBottom: theme.spacing.unit,
@@ -20,7 +20,7 @@ const styles = theme => ({
         width: '100%',
     },
     appBar: {
-        transition: 'all 200ms ease-in-out'
+        // transition: 'all 200ms ease-in-out'
     }
 });
 
