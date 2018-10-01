@@ -51,6 +51,10 @@ export interface PickerProps {
      * Optional set of variable to pass to the graphQL query, in order to fulfill fragments needs
      */
     queryVariables?: Object;
+    /**
+     * Optional function which receives refetch function of the Query component when the component is strapped
+     */
+    setRefetch?: (...args: any[])=>any;
 }
 
 export class Picker extends React.Component<PickerProps, any> {

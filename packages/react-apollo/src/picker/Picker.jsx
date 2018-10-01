@@ -256,7 +256,7 @@ class Picker extends React.Component {
     render() {
         let selectedPaths = this.state.selectedPaths ? this.state.selectedPaths : this.props.selectedPaths;
         let openPaths = this.state.openPaths ? this.state.openPaths : this.props.openPaths;
-        let {rootPaths, openableTypes, selectableTypes, queryVariables} = this.props;
+        let {rootPaths, openableTypes, selectableTypes, queryVariables, setRefetch} = this.props;
 
         openPaths = _.clone(openPaths);
 
@@ -266,7 +266,15 @@ class Picker extends React.Component {
 
         return <Query query={this.query} variables={vars} fetchPolicy={"cache-first"} >
             {
-                ({error, loading, data}) => {
+                ({error, loading, data, refetch}) => {
+                    if (setRefetch) {
+                        setRefetch({
+                            query: this.query,
+                            queryParams: vars,
+                            refetch: refetch
+                        });
+                    }
+
                     let renderProp = this.props.children;
                     if (this.props.onLoading) {
                         this.props.onLoading(loading);
