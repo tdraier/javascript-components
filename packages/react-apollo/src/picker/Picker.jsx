@@ -342,6 +342,11 @@ Picker.propTypes = {
     onSelectionChange: PropTypes.func,
 
     /**
+     * Optional function which receives refetch function of the Query component when the component is strapped
+     */
+    setRefetch: PropTypes.func,
+
+    /**
      * Component to use to do the full rendering of the tree. Should accept : pickerEntries,onSelectItem,onOpenItem . Other properties are passed through.
      */
     render: PropTypes.func,
