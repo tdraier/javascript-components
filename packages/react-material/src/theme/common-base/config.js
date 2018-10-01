@@ -1,8 +1,10 @@
 import {commonPalette} from "./palette";
 import {commonTablePagination} from "./overrides/table";
+import {typography} from './typography';
 
 const commonBaseThemeConfig = {
     palette: commonPalette,
+    typography: typography,
     overrides: {
         MuiTablePagination: commonTablePagination
     },
