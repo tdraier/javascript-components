@@ -9,12 +9,6 @@ const anthraciteDialog = (theme) => ({
         "backgroundColor": theme.palette.background.paper
     },
     "paperFullScreen": {
-        // "paddingBottom":"56px",
-        "& header": {
-            "& div": {
-                "padding": "0!important"
-            }
-        },
         "& .footer": {
             // "background": palette.type.light ? "#363f45" : "#3b3d40",
             "bottom": "-8px",

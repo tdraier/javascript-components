@@ -31,9 +31,6 @@ const anthraciteDarkPalette = {
         "contrastText": "#F5F5F5",
         "light": "rgb(235, 151, 97)",
         "dark": "#e57834"
-    },
-    "action": {
-        "active": "#E67D3A"
     }
 };
 
