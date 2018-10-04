@@ -22,7 +22,7 @@ const anthraciteTableCell = (theme) => ({
     "head": {
         "boxShadow": "2px 1px 1px 0px rgba(20, 20, 21, 0.49)",
         "position": "relative",
-        "background": "#F5F5F5"
+        "background": theme.palette.background.default
     }
 });
 
