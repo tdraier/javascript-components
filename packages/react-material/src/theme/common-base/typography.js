@@ -10,6 +10,24 @@ const typography = {
     },
     "display1": {
         "fontSize": "14px",
+    },
+    "headline": {
+        "fontSize": "23px",
+    },
+    "title": {
+        "fontSize": "23px",
+    },
+    "subheading": {
+        "fontSize": "16px",
+    },
+    "body2": {
+        "fontSize": "14px",
+    },
+    "body1": {
+        "fontSize": "14px",
+    },
+    "button": {
+        "fontSize": "14px",
     }
 };
 

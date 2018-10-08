@@ -20,27 +20,27 @@ const anthraciteTypography = {
         "fontWeight": 300
     },
     "headline": {
-        "fontSize": "1.4375rem",
+        "fontSize": "23px",
         "fontWeight": 400
     },
     "title": {
-        "fontSize": "1.4375rem",
+        "fontSize": "23px",
         "fontWeight": 400
     },
     "subheading": {
-        "fontSize": "1rem",
+        "fontSize": "16px",
         "fontWeight": 500
     },
     "body2": {
-        "fontSize": "0.875rem",
+        "fontSize": "14px",
         "fontWeight": 400
     },
     "body1": {
-        "fontSize": "0.875rem",
+        "fontSize": "14px",
         "fontWeight": 300
     },
     "button": {
-        "fontSize": "0.875rem",
+        "fontSize": "14px",
         "fontWeight": 400
     }
 };
