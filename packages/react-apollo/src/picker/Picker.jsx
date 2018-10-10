@@ -286,7 +286,10 @@ class Picker extends React.Component {
                             return renderProp({pickerEntries:[], loading, ...this.eventsHandlers});
                         }
                     }
-                    if (error) return `Error! ${error.message}`;
+                    if (error) {
+                        return renderProp({pickerEntries: [], error, loading, ...this.eventsHandlers});
+                    }
+
                     let pickerEntries = this.getPickerEntries(data, selectedPaths, openPaths);
                     this.previousEntries = pickerEntries;
 
