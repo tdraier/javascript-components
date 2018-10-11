@@ -3,39 +3,39 @@ const anthraciteTypography = {
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
     "fontWeightMedium": 700,
-    "display4": {
+    "h1": {
         "fontSize": "33px",
         "fontWeight": 100
     },
-    "display3": {
+    "h2": {
         "fontSize": "26px",
         "fontWeight": 100
     },
-    "display2": {
+    "h3": {
         "fontSize": "18px",
         "fontWeight": 100
     },
-    "display1": {
+    "h4": {
         "fontSize": "14px",
         "fontWeight": 300
     },
-    "headline": {
+    "h5": {
         "fontSize": "23px",
         "fontWeight": 400
     },
-    "title": {
+    "h6": {
         "fontSize": "23px",
         "fontWeight": 400
     },
-    "subheading": {
+    "subtitle1": {
         "fontSize": "16px",
         "fontWeight": 500
     },
-    "body2": {
+    "body1": {
         "fontSize": "14px",
         "fontWeight": 400
     },
-    "body1": {
+    "body2": {
         "fontSize": "14px",
         "fontWeight": 300
     },

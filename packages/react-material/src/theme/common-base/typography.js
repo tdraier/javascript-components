@@ -1,34 +1,35 @@
 const typography = {
-    "display4": {
+    "h1": {
         "fontSize": "33px",
     },
-    "display3": {
+    "h2": {
         "fontSize": "26px",
     },
-    "display2": {
+    "h3": {
         "fontSize": "18px",
     },
-    "display1": {
+    "h4": {
         "fontSize": "14px",
     },
-    "headline": {
+    "h5": {
         "fontSize": "23px",
     },
-    "title": {
+    "h6": {
         "fontSize": "23px",
     },
-    "subheading": {
+    "subtitle1": {
         "fontSize": "16px",
-    },
-    "body2": {
-        "fontSize": "14px",
     },
     "body1": {
         "fontSize": "14px",
     },
+    "body2": {
+        "fontSize": "14px",
+    },
     "button": {
         "fontSize": "14px",
-    }
+    },
+    "useNextVariants": true
 };
 
 export {typography}

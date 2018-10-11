@@ -4,10 +4,10 @@ const legacyTypography = {
     colorTextSecondary: {
         color: 'rgba(0, 0, 0, 0.54)'
     },
-    title: {
+    h6: {
         fontSize: '1.2rem'
     },
-    subheading: {
+    subtitle1: {
         fontSize: '0.875rem'
     },
     caption: {

@@ -41,7 +41,7 @@ class SettingsLayout extends React.Component {
                     {children}
                 </section>
                 <footer className={classes.footer}>
-                    <Typography variant={'body1'} align={'center'} gutterBottom={true} color={'textSecondary'}>
+                    <Typography align={'center'} gutterBottom={true} color={'textSecondary'}>
                         {footer}
                     </Typography>
                 </footer>
