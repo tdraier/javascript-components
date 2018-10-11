@@ -1,0 +1,72 @@
+import React from 'react';
+import {actionsRegistry} from './actionsRegistry';
+import * as _ from 'lodash';
+
+class DisplayActionComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        let action = actionsRegistry.get(props.actionKey);
+
+        let context = {
+            ...action,
+            ...props.context,
+            originalContext: props.context,
+            render: props.render,
+            update: this.updateContext.bind(this),
+        };
+
+        if (context.init) {
+            context.init(context, props);
+        }
+
+        this.state = {
+            context
+        }
+    }
+
+    updateContext(newContext) {
+        this.setState({
+            context: {
+                ...this.state.context,
+                ...newContext
+            }
+        });
+    }
+
+    render() {
+        let {context} = this.state;
+        if (context.enabled !== false) {
+            let Render = context.render;
+            return <Render context={context}/>
+        }
+        return false;
+    }
+
+    componentDidUpdate() {
+        let {context} = this.state;
+        if (context.onUpdate) {
+            context.onUpdate(context);
+        }
+    }
+
+    componentDidMount() {
+        let {context} = this.state;
+        if (context.onMount) {
+            context.onMount(context);
+        }
+    }
+
+    componentWillUnmount() {
+        let {context} = this.state;
+        if (context.onDestroy) {
+            context.onDestroy(context);
+        }
+    }
+}
+
+let DisplayAction = (props) => {
+    let action = actionsRegistry.get(props.actionKey);
+    return _.reduce(action.wrappers, (acc, wrapper) => wrapper(acc), <DisplayActionComponent {...props} />);
+};
+
+export {DisplayAction};
