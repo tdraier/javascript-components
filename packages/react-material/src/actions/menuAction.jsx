@@ -9,18 +9,25 @@ import {DisplayActions} from "./DisplayActions";
 let menuAction = composeActions(componentRendererAction, {
     init: (context) => {
         context.open = false;
-        context.component = <Menu id={'menu-'+context.key} open={false}
-                                                      onClose={() => context.setComponentProps({anchorEl: null, open:false})}>
+        context.menuId = context.key;
+        context.componentRenderer.render(context.menuId, <Menu id={'menu-'+context.key} open={false}
+                                                      onClose={() => context.componentRenderer.setProps(context.menuId, {anchorEl: null, open:false})}>
             <DisplayActions target={context.menu} context={context.originalContext} render={
                 ({context}) => <I18n>{ t => <MenuItem onClick={(e)=>context.onClick(context,e)}>
                     {t(context.buttonLabel)}
                 </MenuItem>}</I18n>
             }/>
-        </Menu>
+        </Menu>)
+    },
+
+    onDestroy(context) {
+        if (context.menuId) {
+            context.componentRenderer.destroy(context.menuId);
+        }
     },
 
     onClick: (context, e) => {
-        context.setComponentProps({anchorEl:e.currentTarget, open: true});
+        context.componentRenderer.setProps(context.menuId, {anchorEl:e.currentTarget, open: true});
     }
 });
 

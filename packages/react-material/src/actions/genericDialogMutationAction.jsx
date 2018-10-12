@@ -10,7 +10,7 @@ import {translate} from "react-i18next";
 class GenericDialogMutation extends React.Component {
 
     onCompleted() {
-        let {notificationContext, context:{dialogData:{confirmMessage}}} = this.props;
+        let {notificationContext, dialogData:{confirmMessage}} = this.props;
         notificationContext.notify(confirmMessage);
         this.props.onClose();
     }
@@ -29,7 +29,7 @@ class GenericDialogMutation extends React.Component {
     }
 
     render() {
-        const {t, context:{dialogData:{mutation, mutationParams, title, description, beforeMutation}}, onClose, open} = this.props;
+        const {t, dialogData:{mutation, mutationParams, title, description, beforeMutation}, onClose, open} = this.props;
         return (
             <Mutation mutation={mutation} onCompleted={() => this.onCompleted()} onError={(e)=> this.onError(e)}>
                 {(mutationCall, {called, loading, data, error}) => <React.Fragment>
@@ -58,24 +58,30 @@ GenericDialogMutation = compose(
 let genericDialogMutationAction = composeActions(componentRendererAction, {
 
 
-    init(context, props, next) {
-        if (next) {
-            next();
-        }
-        if (context.dialogData) {
-            context.component = <GenericDialogMutation context={context} open={false} onClose={() => {
-                context.setComponentProps({open: false});
+    init(context) {
+        context.setDialogMutation = (dialogData) => {
+            context.dialogId = context.key;
+            context.componentRenderer.render(context.dialogId, <GenericDialogMutation dialogData={dialogData} open={false} onClose={() => {
+                context.componentRenderer.setProps(context.dialogId,{open: false});
                 if (context.onClose) {
                     context.onClose();
                 }
-            }}/>;
+            }}/>);
+        }
+    },
+
+    onDestroy(context) {
+        if (context.dialogId) {
+            context.componentRenderer.destroy(context.dialogId);
         }
     },
 
     onClick(context,e) {
-        context.setComponentProps({open:true});
-        if (context.onOpen) {
-            context.onOpen();
+        if (context.dialogId) {
+            context.componentRenderer.setProps(context.dialogId, {open: true});
+            if (context.onOpen) {
+                context.onOpen();
+            }
         }
     },
 });

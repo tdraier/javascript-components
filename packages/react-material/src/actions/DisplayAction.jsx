@@ -24,6 +24,35 @@ class DisplayActionComponent extends React.Component {
         }
     }
 
+
+    // constructor(props) {
+    //     super(props);
+    //
+    //     this.state = {
+    //         update: this.updateContext.bind(this),
+    //     }
+    // }
+    //
+    // static getDerivedStateFromProps(props, state) {
+    //     let action = actionsRegistry.get(props.actionKey);
+    //
+    //     let context = {
+    //         ...action,
+    //         ...props.context,
+    //         originalContext: props.context,
+    //         render: props.render,
+    //     };
+    //
+    //     if (context.init) {
+    //         context.init(context, props);
+    //     }
+    //     return {
+    //         ...state,
+    //         context
+    //     }
+    // }
+
+
     updateContext(newContext) {
         this.setState({
             context: {
