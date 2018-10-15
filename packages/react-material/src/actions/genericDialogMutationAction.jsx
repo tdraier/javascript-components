@@ -37,7 +37,7 @@ class GenericDialogMutation extends React.Component {
                     <Dialog open={open} onClose={onClose} onExited={onClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
                         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
                         <DialogContent>
-                            <DialogContentText id="alert-dialog-description">{description}</DialogContentText>
+                            <DialogContentText variant={"subtitle1"} id="alert-dialog-description">{description}</DialogContentText>
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={onClose} color="primary" data-lsm-role="cancel-button">{t('label.cancel')}</Button>
