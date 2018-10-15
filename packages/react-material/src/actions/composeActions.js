@@ -1,8 +1,12 @@
 import * as _ from 'lodash';
+import {actionsRegistry} from "./actionsRegistry";
 
 function composeActions() {
     let actions = Array.prototype.slice.call(arguments);
     return _.reduce(actions, (acc, action) => {
+        if (typeof action === 'string') {
+            action = actionsRegistry.get(action);
+        }
         if (action) {
             _.forEach(action, (value, key) => {
                 let previous = acc[key];
