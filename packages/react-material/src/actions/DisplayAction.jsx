@@ -2,28 +2,31 @@ import React from 'react';
 import {actionsRegistry} from './actionsRegistry';
 import * as _ from 'lodash';
 
-class DisplayActionComponent extends React.Component {
+let count = 0;
+
+class DisplayActionComponent extends React.PureComponent {
 
     constructor(props) {
         super(props);
-
         this.state = {
             update: this.updateContext.bind(this),
+            id: props.actionKey + "-" + (count++)
         }
     }
 
     static getDerivedStateFromProps(props, state) {
         let action = actionsRegistry.get(props.actionKey);
 
-        if (!!state.context && props.context === state.context.originalContext) {
+        if (!!state.context && (props.context === state.context.originalContext)) {
             return null;
         }
 
         let context = {
+            ...state.context,
             ...action,
             ...props.context,
+            id: state.id,
             originalContext: props.context,
-            render: props.render,
         };
 
         if (context.init) {
@@ -35,7 +38,6 @@ class DisplayActionComponent extends React.Component {
             context
         }
     }
-
 
     updateContext(newContext) {
         this.setState({
@@ -49,7 +51,7 @@ class DisplayActionComponent extends React.Component {
     render() {
         let {context} = this.state;
         if (context.enabled !== false) {
-            let Render = context.render;
+            let Render = this.props.render;
             return <Render context={context}/>
         }
         return false;

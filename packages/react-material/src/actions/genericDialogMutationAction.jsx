@@ -58,22 +58,23 @@ GenericDialogMutation = compose(
 let genericDialogMutationAction = composeActions(componentRendererAction, {
 
     init(context) {
-        context.setDialogMutation = (dialogData) => {
-            context.renderComponent(<GenericDialogMutation dialogData={dialogData} open={false} onClose={() => {
-                context.setComponentProps({open: false});
-                if (context.onClose) {
-                    context.onClose();
-                }
-            }}/>);
+        context.openDialogMutation = (dialogData) => {
+            if (context.componentId) {
+                context.setComponentProps({open: true});
+            } else {
+                context.renderComponent(<GenericDialogMutation dialogData={dialogData} open={true} onClose={() => {
+                    context.setComponentProps({open: false});
+                    if (context.onClose) {
+                        context.onClose();
+                    }
+                }}/>);
+            }
+            if (context.onOpen) {
+                context.onOpen();
+            }
         }
     },
 
-    onClick(context) {
-        context.setComponentProps({open: true});
-        if (context.onOpen) {
-            context.onOpen();
-        }
-    },
 });
 
 export { genericDialogMutationAction};

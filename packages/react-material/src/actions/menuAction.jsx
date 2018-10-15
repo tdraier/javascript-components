@@ -5,22 +5,24 @@ import {componentRendererAction} from "./componentRendererAction";
 import {composeActions} from "./composeActions";
 import {DisplayActions} from "./DisplayActions";
 
-let menu = 0;
 let menuAction = composeActions(componentRendererAction, {
     init: (context) => {
         context.open = false;
-        context.renderComponent(<Menu id={'menu-'+context.key + (menu++)} open={false}
-                                                      onClose={() => context.setComponentProps({anchorEl: null, open:false})}>
-            <DisplayActions target={context.menu} context={context.originalContext} render={
-                ({context}) => <I18n>{ t => <MenuItem onClick={(e)=>context.onClick(context,e)}>
-                    {t(context.buttonLabel)}
-                </MenuItem>}</I18n>
-            }/>
-        </Menu>)
     },
 
     onClick: (context, e) => {
-        context.setComponentProps({anchorEl:e.currentTarget, open: true});
+        if (context.componentId) {
+            context.setComponentProps({anchorEl:e.currentTarget, open: true});
+        } else {
+            context.renderComponent(<Menu id={'menu-' + context.id} anchorEl={e.currentTarget} open={true}
+                                          onClose={() => context.setComponentProps({anchorEl: null, open: false})}>
+                <DisplayActions target={context.menu} context={context.originalContext} render={
+                    ({context}) => <I18n>{t => <MenuItem onClick={(e) => context.onClick(context, e)}>
+                        {t(context.buttonLabel)}
+                    </MenuItem>}</I18n>
+                }/>
+            </Menu>);
+        }
     }
 });
 
