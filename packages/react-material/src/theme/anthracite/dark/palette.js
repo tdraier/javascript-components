@@ -23,8 +23,9 @@ const anthraciteDarkPalette = {
         "contrastText": "#F5F5F5"
     },
     "background": {
-        "paper": "#404245",
-        "default": "#333537"
+        "paper": "#F5F5F5",
+        "default": "#3a3c3f",
+        "dark": "404245"
     },
     "secondary": {
         "main": "#E67D3A",
