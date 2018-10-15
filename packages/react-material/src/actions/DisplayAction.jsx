@@ -3,54 +3,38 @@ import {actionsRegistry} from './actionsRegistry';
 import * as _ from 'lodash';
 
 class DisplayActionComponent extends React.Component {
+
     constructor(props) {
         super(props);
+
+        this.state = {
+            update: this.updateContext.bind(this),
+        }
+    }
+
+    static getDerivedStateFromProps(props, state) {
         let action = actionsRegistry.get(props.actionKey);
+
+        if (!!state.context && props.context === state.context.originalContext) {
+            return null;
+        }
 
         let context = {
             ...action,
             ...props.context,
             originalContext: props.context,
             render: props.render,
-            update: this.updateContext.bind(this),
         };
 
         if (context.init) {
             context.init(context, props);
         }
 
-        this.state = {
+        return {
+            ...state,
             context
         }
     }
-
-
-    // constructor(props) {
-    //     super(props);
-    //
-    //     this.state = {
-    //         update: this.updateContext.bind(this),
-    //     }
-    // }
-    //
-    // static getDerivedStateFromProps(props, state) {
-    //     let action = actionsRegistry.get(props.actionKey);
-    //
-    //     let context = {
-    //         ...action,
-    //         ...props.context,
-    //         originalContext: props.context,
-    //         render: props.render,
-    //     };
-    //
-    //     if (context.init) {
-    //         context.init(context, props);
-    //     }
-    //     return {
-    //         ...state,
-    //         context
-    //     }
-    // }
 
 
     updateContext(newContext) {
