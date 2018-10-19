@@ -1,4 +1,4 @@
-const anthraciteTypography = {
+const typography = {
     "fontFamily": "Nunito Sans, sans-serif",
     "fontWeightLight": 300,
     "fontWeightRegular": 400,
@@ -45,4 +45,4 @@ const anthraciteTypography = {
     }
 };
 
-export {anthraciteTypography}
+export {typography}

@@ -1,5 +1,5 @@
-const anthraciteShape = {
+const shape = {
     "borderRadius": 0
 };
 
-export {anthraciteShape}
+export {shape}
