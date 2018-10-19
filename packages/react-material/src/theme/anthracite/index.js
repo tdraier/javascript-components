@@ -43,6 +43,13 @@ import {
 } from "./dark/overrides/list";
 import {anthraciteDarkPanel, anthraciteDarkPanelActions, anthraciteDarkPanelDetails} from "./dark/overrides/panel";
 
+// we use require and not import to not include the binary file to the generated *.umd.js
+const NanutoSansRegular = require("../fonts/nunito-sans-v3-latin-regular.woff");
+const NanutoSansRegular2 = require("../fonts/nunito-sans-v3-latin-regular.woff");
+const NanutoSansBold = require("../fonts/nunito-sans-v3-latin-700.woff");
+const NanutoSansBold2 = require("../fonts/nunito-sans-v3-latin-700.woff2");
+const NanutoSansLight = require("../fonts/nunito-sans-v3-latin-300.woff");
+const NanutoSansLight2 = require("../fonts/nunito-sans-v3-latin-300.woff2");
 
 const anthraciteLightThemeConfig = {
     palette: anthraciteLightPalette,
@@ -127,7 +134,29 @@ const anthraciteDarkThemeOverrides = (theme) => ({
     MuiTableCell: anthraciteTableCell(theme),
     MuiTab: anthraciteTab(theme),
     MuiTabs: anthraciteTabs(theme),
-    MuiToolbar: anthraciteToolBar(theme)
+    MuiToolbar: anthraciteToolBar(theme),
+    MuiTypography: { "@font-face": [{
+            fontFamily: 'Nunito Sans',
+            fontWeight: '300',
+            src: `url('${NanutoSansLight2}') format('woff2')`,
+            fallbacks: [
+                {src: `url('${NanutoSansLight}') format('woff')`}
+            ]
+        },{
+            fontFamily: 'Nunito Sans',
+            fontWeight: '400',
+            src: `url('${NanutoSansRegular2}') format('woff2')`,
+            fallbacks: [
+                {src: `url('${NanutoSansRegular}') format('woff')`}
+            ]
+        },{
+            fontFamily: 'Nunito Sans',
+            fontWeight: '700',
+            src: `url('${NanutoSansBold2}') format('woff2')`,
+            fallbacks: [
+                {src: `url('${NanutoSansBold}') format('woff')`}
+            ]},],
+    }
 });
 
 const anthraciteDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteDarkThemeConfig));

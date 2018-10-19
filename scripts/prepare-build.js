@@ -36,6 +36,9 @@ function typescriptCopy() {
 
     const jsons = glob.sync('**/*.json', { cwd: from });
     jsons.forEach(file => copyFile("src", file));
+
+    const woff = glob.sync('**/*.wof*', { cwd: from });
+    woff.forEach(file => copyFile("src", file));
 }
 
 copyFile(".","package.json");
