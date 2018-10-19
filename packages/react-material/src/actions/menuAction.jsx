@@ -17,7 +17,7 @@ let menuAction = composeActions(componentRendererAction, {
             context.renderComponent(<Menu id={'menu-' + context.id} anchorEl={e.currentTarget} open={true}
                                           onClose={() => context.setComponentProps({anchorEl: null, open: false})}>
                 <DisplayActions target={context.menu} context={context.originalContext} render={
-                    ({context}) => <I18n>{t => <MenuItem onClick={(e) => context.onClick(context, e)}>
+                    ({context}) => <I18n>{t => <MenuItem data-sel-role={context.key} onClick={(e) => context.onClick(context, e)}>
                         {t(context.buttonLabel)}
                     </MenuItem>}</I18n>
                 }/>
