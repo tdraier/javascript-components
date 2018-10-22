@@ -7,16 +7,15 @@ let componentRendererAction = {
         context.componentRenderer = props.componentRenderer;
         context.renderComponent = (comp) => {
             if (!context.componentId) {
-                context.componentId = context.id;
-                context.componentRenderer.render(context.componentId, comp);
-                context.setComponentProps = (props) => context.componentRenderer.setProps(context.componentId, props);
+                let id = "actionComponent-" + context.id;
+                let componentHandler = {
+                    id,
+                    setProps: (props) => context.componentRenderer.setProps(id, props),
+                    destroy: () => context.componentRenderer.destroy(id)
+                };
+                context.componentRenderer.render(id, comp);
+                return componentHandler;
             }
-        }
-    },
-
-    onDestroy:(context) => {
-        if (context.componentId) {
-            context.componentRenderer.destroy(context.componentId);
         }
     },
 

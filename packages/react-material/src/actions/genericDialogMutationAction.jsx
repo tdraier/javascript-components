@@ -29,12 +29,12 @@ class GenericDialogMutation extends React.Component {
     }
 
     render() {
-        const {t, dialogData:{mutation, mutationParams, title, description, beforeMutation}, onClose, open} = this.props;
+        const {t, dialogData:{mutation, mutationParams, title, description, beforeMutation}, onClose, onExited, open} = this.props;
         return (
             <Mutation mutation={mutation} onCompleted={() => this.onCompleted()} onError={(e)=> this.onError(e)}>
                 {(mutationCall, {called, loading, data, error}) => <React.Fragment>
                     {loading &&  <ProgressOverlay/>}
-                    <Dialog open={open} onClose={onClose} onExited={onClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+                    <Dialog open={open} onClose={onClose} onExited={onExited} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
                         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
                         <DialogContent>
                             <DialogContentText variant={"subtitle1"} id="alert-dialog-description">{description}</DialogContentText>
@@ -59,16 +59,7 @@ let genericDialogMutationAction = composeActions(componentRendererAction, {
 
     init(context) {
         context.openDialogMutation = (dialogData) => {
-            if (context.componentId) {
-                context.setComponentProps({open: true});
-            } else {
-                context.renderComponent(<GenericDialogMutation dialogData={dialogData} open={true} onClose={() => {
-                    context.setComponentProps({open: false});
-                    if (context.onClose) {
-                        context.onClose();
-                    }
-                }}/>);
-            }
+            let handler = context.renderComponent(<GenericDialogMutation dialogData={dialogData} open={true} onClose={() => { handler.setProps({open:false}); }} onExited={()=>handler.destroy()}/>);
             if (context.onOpen) {
                 context.onOpen();
             }

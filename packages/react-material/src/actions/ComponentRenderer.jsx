@@ -42,9 +42,10 @@ class ComponentRendererProvider extends Component {
     }
 
     render() {
+        let components = _.values(_.map(this.state.components, (component, key) => React.cloneElement(component, {key, ...this.state.componentsProps[key]})) );
         return (
             <ComponentRendererContext.Provider value={this.value}>
-                {_.values(_.map(this.state.components, (component,key) => (<React.Fragment key={key}>{ React.cloneElement(component, this.state.componentsProps[key]) }</React.Fragment>)))}
+                {components}
                 {this.props.children}
             </ComponentRendererContext.Provider>
         );
