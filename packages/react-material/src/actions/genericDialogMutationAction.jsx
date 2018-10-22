@@ -10,7 +10,7 @@ import {translate} from "react-i18next";
 class GenericDialogMutation extends React.Component {
 
     onCompleted() {
-        let {notificationContext, dialogData:{confirmMessage}} = this.props;
+        let {notificationContext, dialogData: {confirmMessage}} = this.props;
         notificationContext.notify(confirmMessage);
         this.props.onClose();
     }
@@ -22,26 +22,32 @@ class GenericDialogMutation extends React.Component {
         if (ex.graphQLErrors && ex.graphQLErrors.length > 0) {
             let graphQLError = ex.graphQLErrors[0];
             if (graphQLError.errorType === "GqlLocalSiteException") {
-                mess = t("label.errors."+graphQLError.extensions.type, graphQLError.extensions);
+                mess = t("label.errors." + graphQLError.extensions.type, graphQLError.extensions);
             }
         }
         notificationContext.notify(mess, ['closeButton', 'noAutomaticClose']);
     }
 
     render() {
-        const {t, dialogData:{mutation, mutationParams, title, description, beforeMutation}, onClose, onExited, open} = this.props;
+        const {t, dialogData: {mutation, mutationParams, title, description, beforeMutation}, onClose, onExited, open} = this.props;
         return (
-            <Mutation mutation={mutation} onCompleted={() => this.onCompleted()} onError={(e)=> this.onError(e)}>
+            <Mutation mutation={mutation} onCompleted={() => this.onCompleted()} onError={(e) => this.onError(e)}>
                 {(mutationCall, {called, loading, data, error}) => <React.Fragment>
-                    {loading &&  <ProgressOverlay/>}
-                    <Dialog open={open} onClose={onClose} onExited={onExited} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+                    {loading && <ProgressOverlay/>}
+                    <Dialog open={open} onClose={onClose} onExited={onExited} aria-labelledby="alert-dialog-title"
+                            aria-describedby="alert-dialog-description">
                         <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
                         <DialogContent>
-                            <DialogContentText variant={"subtitle1"} id="alert-dialog-description">{description}</DialogContentText>
+                            <DialogContentText variant={"subtitle1"}
+                                               id="alert-dialog-description">{description}</DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={onClose} color="primary" data-lsm-role="cancel-button">{t('label.cancel')}</Button>
-                            <Button onClick={() => {beforeMutation && beforeMutation(); return mutationCall(mutationParams)}} color="primary" data-lsm-role="confirm-button">{t('label.confirm')}</Button>
+                            <Button onClick={onClose} color="primary"
+                                    data-lsm-role="cancel-button">{t('label.cancel')}</Button>
+                            <Button onClick={() => {
+                                beforeMutation && beforeMutation();
+                                return mutationCall(mutationParams)
+                            }} color="primary" data-lsm-role="confirm-button">{t('label.confirm')}</Button>
                         </DialogActions>
                     </Dialog>
                 </React.Fragment>}
@@ -59,7 +65,16 @@ let genericDialogMutationAction = composeActions(componentRendererAction, {
 
     init(context) {
         context.openDialogMutation = (dialogData) => {
-            let handler = context.renderComponent(<GenericDialogMutation dialogData={dialogData} open={true} onClose={() => { handler.setProps({open:false}); }} onExited={()=>handler.destroy()}/>);
+            let handler = context.renderComponent(<GenericDialogMutation dialogData={dialogData} open={true}
+                                                                         onClose={() => {
+                                                                             handler.setProps({open: false});
+                                                                         }}
+                                                                         onExited={() => {
+                                                                             handler.destroy();
+                                                                             if (context.onExited) {
+                                                                                 context.onExited();
+                                                                             }
+                                                                         }}/>);
             if (context.onOpen) {
                 context.onOpen();
             }
@@ -68,4 +83,4 @@ let genericDialogMutationAction = composeActions(componentRendererAction, {
 
 });
 
-export { genericDialogMutationAction};
+export {genericDialogMutationAction};
