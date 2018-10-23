@@ -14,7 +14,8 @@ const anthraciteLightPalette = {
         "disabled": "#3996BD",
         "primary": "#504e4d",
         "hint": "#FCF10D",
-        "secondary": "#504e4d"
+        "secondary": "#504e4d",
+        "dark": '#504e4d'
     },
     "error": {
         "main": "#BD1330",

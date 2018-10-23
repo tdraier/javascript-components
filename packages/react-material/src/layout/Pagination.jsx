@@ -8,15 +8,21 @@ import PropTypes from 'prop-types';
 const actionsStyles = theme => ({
     root: {
         flexShrink: 0,
-        color: theme.palette.text.secondary,
+        color: theme.palette.text.dark,
         marginLeft: theme.spacing.unit * 2.5,
     },
-    paginationButton: {}
+    paginationButton: {
+        color: theme.palette.text.dark,
+    }
 });
 
 const styles = theme => ({
-    tablePaginationContainer: {},
-    tablePagination: {}
+    tablePaginationContainer: {
+        color: theme.palette.text.dark,
+    },
+    tablePagination: {
+        color: theme.palette.text.dark,
+    }
 });
 
 class TablePaginationActions extends React.Component {
