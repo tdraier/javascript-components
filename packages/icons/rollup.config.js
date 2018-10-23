@@ -16,6 +16,7 @@ export default {
     },
     external:[
         "@material-ui/core",
+        "@material-ui/icons",
         "react",
         "recompose"
     ],
