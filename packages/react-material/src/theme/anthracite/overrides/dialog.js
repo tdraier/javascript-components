@@ -28,5 +28,11 @@ const anthraciteDialogActions = (theme) => ({
     }
 });
 
-export {anthraciteDialogTitle, anthraciteDialog, anthraciteDialogActions}
+const anthraciteDialogContent = (theme) => ({
+    "root": {
+        "padding":"0 24px 0 24px"
+    }
+});
+
+export {anthraciteDialogTitle, anthraciteDialog, anthraciteDialogActions, anthraciteDialogContent}
 

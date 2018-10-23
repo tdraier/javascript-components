@@ -8,7 +8,7 @@ import {typography} from "./typography";
 import {anthraciteAppBar} from "./overrides/appbar";
 import {anthraciteButton, anthraciteButtonBase, anthraciteIconButton} from "./overrides/button";
 import {anthraciteCard, anthraciteCardContent, anthraciteCardHeader} from "./overrides/card"
-import {anthraciteDialog, anthraciteDialogActions, anthraciteDialogTitle} from "./overrides/dialog";
+import {anthraciteDialog, anthraciteDialogActions, anthraciteDialogTitle, anthraciteDialogContent} from "./overrides/dialog";
 import {anthraciteCheckbox} from "./overrides/checkbox";
 import {anthraciteInput} from "./overrides/input";
 import {anthraciteMenu, anthraciteMenuItem} from "./overrides/menu";
@@ -63,6 +63,7 @@ const anthraciteLightThemeOverrides = (theme) => ({
     MuiDialogTitle: anthraciteDialogTitle(theme),
     MuiDialog: anthraciteDialog(theme),
     MuiDialogActions: anthraciteDialogActions(theme),
+    MuiDialogContent: anthraciteDialogContent(theme),
     MuiFormLabel: anthraciteLightFormLabel,
     MuiFormControlLabel: anthraciteLightFormControlLabel,
     MuiInput: anthraciteInput(theme),
@@ -108,6 +109,7 @@ const anthraciteDarkThemeOverrides = (theme) => ({
     MuiDialogTitle: anthraciteDialogTitle(theme),
     MuiDialog: anthraciteDialog(theme),
     MuiDialogActions: anthraciteDialogActions(theme),
+    MuiDialogContent: anthraciteDialogContent(theme),
     MuiFormLabel: anthraciteDarkFormLabel,
     MuiFormControlLabel: anthraciteDarkFormControlLabel,
     MuiInput: anthraciteInput(theme),
