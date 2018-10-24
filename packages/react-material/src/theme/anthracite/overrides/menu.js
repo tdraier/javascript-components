@@ -8,9 +8,9 @@ const anthraciteMenuItem = (theme) => ({
     "root": {
         "padding": "5px 17px",
         "fontSize": "0.875rem",
-        "color": theme.palette.background.default,
+        "color": "#3a3c3f",
         "&:hover": {
-            backgroundColor: theme.palette.text.secondary
+            backgroundColor: "#d1d1d1"
         }
     },
     "selected":{
