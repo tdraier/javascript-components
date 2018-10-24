@@ -32,6 +32,12 @@ const anthraciteLightPalette = {
         "contrastText": "#F5F5F5",
         "light": "rgb(235, 151, 97)",
         "dark": "#e57834"
+    },
+    "menu": {
+        "background":"#f5f5f5",
+        "text": "#3a3c3f",
+        "hover":"#d1d1d1",
+        "selected":"#007cb0"
     }
 };
 

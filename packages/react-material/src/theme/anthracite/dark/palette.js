@@ -26,13 +26,18 @@ const anthraciteDarkPalette = {
     "background": {
         "paper": "#F5F5F5",
         "default": "#3a3c3f",
-        "dark": "404245"
     },
     "secondary": {
         "main": "#E67D3A",
         "contrastText": "#F5F5F5",
         "light": "rgb(235, 151, 97)",
         "dark": "#e57834"
+    },
+    "menu": {
+        "background":"#f5f5f5",
+        "text": "#3a3c3f",
+        "hover":"#d1d1d1",
+        "selected":"#007cb0"
     }
 };
 
