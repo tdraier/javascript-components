@@ -43,6 +43,10 @@ class Picker extends React.Component {
                         children(typesFilter:{types:$types}) {
                             nodes {
                                 name
+                                parent {
+                                    path
+                                    uuid
+                                }
                                 children(typesFilter:{types:$types}, limit:1) {
                                     pageInfo {
                                         nodesCount
