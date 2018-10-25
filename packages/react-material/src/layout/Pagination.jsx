@@ -13,6 +13,9 @@ const actionsStyles = theme => ({
     },
     paginationButton: {
         color: theme.palette.text.dark,
+    },
+    disabledButton: {
+        color: theme.palette.text.primary+'!important',
     }
 });
 
@@ -53,6 +56,7 @@ class TablePaginationActions extends React.Component {
                     className={classes.paginationButton}
                     onClick={this.handleFirstPageButtonClick.bind(this)}
                     disabled={page === 0}
+                    classes={{disabled: classes.disabledButton}}
                     aria-label="First Page"
                     data-jrm-role="table-pagination-button-first-page"
                 >
@@ -62,6 +66,7 @@ class TablePaginationActions extends React.Component {
                     className={classes.paginationButton}
                     onClick={this.handleBackButtonClick.bind(this)}
                     disabled={page === 0}
+                    classes={{disabled: classes.disabledButton}}
                     aria-label="Previous Page"
                 >
                     <KeyboardArrowLeft/>
@@ -71,6 +76,7 @@ class TablePaginationActions extends React.Component {
                     onClick={this.handleNextButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Next Page"
+                    classes={{disabled: classes.disabledButton}}
                     data-jrm-role="table-pagination-button-next-page"
                 >
                     <KeyboardArrowRight/>
@@ -79,6 +85,7 @@ class TablePaginationActions extends React.Component {
                     className={classes.paginationButton}
                     onClick={this.handleLastPageButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                    classes={{disabled: classes.disabledButton}}
                     aria-label="Last Page"
                 >
                     <LastPage/>
