@@ -1,9 +1,9 @@
-import React, {Component, createContext} from "react";
+import React, {createContext} from "react";
 import * as _ from 'lodash';
 
 const ComponentRendererContext = createContext();
 
-class ComponentRendererProvider extends Component {
+class ComponentRendererProvider extends React.Component {
 
     constructor(props) {
         super(props);
@@ -52,7 +52,11 @@ class ComponentRendererProvider extends Component {
     }
 }
 
-class ComponentRendererConsumer extends Component {
+class ComponentRendererConsumer extends React.Component {
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return false
+    }
+
     render() {
         return <ComponentRendererContext.Consumer {...this.props}/>
     }
