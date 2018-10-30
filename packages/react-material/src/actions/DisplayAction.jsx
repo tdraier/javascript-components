@@ -1,6 +1,7 @@
 import React from 'react';
 import {actionsRegistry} from './actionsRegistry';
 import * as _ from 'lodash';
+import {Observable, combineLatest, concat, of} from 'rxjs';
 
 let count = 0;
 
@@ -10,9 +11,9 @@ class DisplayActionComponent extends React.PureComponent {
         super(props);
         this.state = {
             context: {
-                update: this.updateContext.bind(this),
                 id: props.actionKey + "-" + (count++)
-            }
+            },
+            updateContext: this.updateContext.bind(this),
         }
     }
 
@@ -21,6 +22,11 @@ class DisplayActionComponent extends React.PureComponent {
 
         if (!!state.context && (props.context === state.context.originalContext)) {
             return null;
+        }
+
+        if (state.subscription) {
+            // First unsubscribe as new context will be created
+            state.subscription.unsubscribe();
         }
 
         let context = {
@@ -34,8 +40,33 @@ class DisplayActionComponent extends React.PureComponent {
             context.init(context, props);
         }
 
+        // Check observers
+        let subscription;
+        let observersObj = _.pickBy(context, (value) => value instanceof Observable);
+        let keys = Object.keys(observersObj);
+
+        if (keys.length > 0) {
+            // Prepare an updateContext method for subscription - first set it as synchronous update of the context object
+            let updateHandler = {
+                current: (v) => {
+                    context = _.assign(context, v);
+                }
+            };
+            // Concat with a sync observer to always get an initial value
+            let observers = _.map(Object.values(observersObj), obs => concat(of(null), obs));
+
+            // Combine all observers into one
+            let combined = combineLatest(...observers, (...vals) => _.zipObject(keys, vals));
+            subscription = combined.subscribe((v) => {
+                updateHandler.current(v);
+            });
+            // All synchronous updates have been received, switched to asynchronous through state update
+            updateHandler.current = state.updateContext;
+        }
+
         return {
             ...state,
+            subscription,
             context
         }
     }
@@ -80,9 +111,12 @@ class DisplayActionComponent extends React.PureComponent {
     }
 
     componentWillUnmount() {
-        let {context} = this.state;
+        let {context, subscription} = this.state;
         if (context.onDestroy) {
             context.onDestroy(context);
+        }
+        if (subscription) {
+            subscription.unsubscribe();
         }
     }
 }

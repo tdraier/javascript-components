@@ -34,6 +34,8 @@ export default {
         "react-router",
         "react-router-dom",
         "react-select",
+        "rxjs",
+        "rxjs/operators"
     ],
 
     plugins: [
