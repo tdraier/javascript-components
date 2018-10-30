@@ -4,7 +4,6 @@ import {ComponentRendererConsumer} from "./ComponentRenderer";
 let componentRendererAction = {
 
     init:(context, props) => {
-        context.componentRenderer = props.componentRenderer;
         context.renderComponent = (comp) => {
             if (!context.componentId) {
                 let id = "actionComponent-" + context.id;
@@ -20,7 +19,10 @@ let componentRendererAction = {
     },
 
     wrappers: [
-        (component) => <ComponentRendererConsumer>{(componentRenderer) => React.cloneElement(component, {componentRenderer})}</ComponentRendererConsumer>
+        (component) => <ComponentRendererConsumer context={component.props.context}>{(componentRenderer) => {
+            component.props.context.componentRenderer = componentRenderer;
+            return component;
+        }}</ComponentRendererConsumer>
     ]
 
 }
