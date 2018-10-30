@@ -9,8 +9,10 @@ class DisplayActionComponent extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            update: this.updateContext.bind(this),
-            id: props.actionKey + "-" + (count++)
+            context: {
+                update: this.updateContext.bind(this),
+                id: props.actionKey + "-" + (count++)
+            }
         }
     }
 
@@ -25,7 +27,6 @@ class DisplayActionComponent extends React.PureComponent {
             ...state.context,
             ...action,
             ...props.context,
-            id: state.id,
             originalContext: props.context,
         };
 
@@ -52,7 +53,14 @@ class DisplayActionComponent extends React.PureComponent {
         let {context} = this.state;
         if (context.enabled !== false) {
             let Render = this.props.render;
-            return <Render context={context}/>
+            if (context.actions) {
+                return _.map(context.actions, (action) => <Render key={action.val} context={{
+                    ...context,
+                    ...action
+                }}/>);
+            } else {
+                return <Render context={context}/>
+            }
         }
         return false;
     }
