@@ -25,7 +25,10 @@ const styles = theme => ({
     },
     tablePagination: {
         color: theme.palette.text.dark,
-    }
+    },
+    select: {
+        color: theme.palette.text.dark,
+    },
 });
 
 class TablePaginationActions extends React.Component {
@@ -113,6 +116,7 @@ class Pagination extends React.Component {
             <TableFooter>
                 <TableRow className={classes.tablePaginationContainer}>
                     <TablePagination
+                        classes={{select: classes.select}}
                         className={classes.tablePagination}
                         count={totalCount}
                         rowsPerPage={pageSize}
