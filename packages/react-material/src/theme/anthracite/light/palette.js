@@ -34,6 +34,10 @@ const anthraciteLightPalette = {
         "light": "rgb(235, 151, 97)",
         "dark": "#e57834"
     },
+    "status": {
+        "add": "#8ce385",
+        "overwrite": '#e3a35b',
+    },
     "menu": {
         "background":"#f5f5f5",
         "text": "#3a3c3f",
@@ -53,6 +57,7 @@ const anthraciteLightPalette = {
     "chip": {
         "background": '#d7dce0'
     },
+
 };
 
 export {anthraciteLightPalette}
