@@ -8,6 +8,7 @@ const anthraciteLightPalette = {
         "main": "#007cb0",
         "dark": "#0076a8",
         "light": "#0085BD",
+        "mutual": "#d7dce0",
         "contrastText": "#F5F5F5"
     },
     "text": {
@@ -38,7 +39,20 @@ const anthraciteLightPalette = {
         "text": "#3a3c3f",
         "hover":"#d1d1d1",
         "selected":"#007cb0"
-    }
+    },
+    "list": {
+        "text": "#d7dce0",
+    },
+    "form": {
+        "text": "#60717b"
+    },
+    "panel": {
+        "background": "#363f45",
+        "disabled": "#f1f3f4"
+    },
+    "chip": {
+        "background": '#d7dce0'
+    },
 };
 
 export {anthraciteLightPalette}

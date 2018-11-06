@@ -38,7 +38,20 @@ const anthraciteDarkPalette = {
         "text": "#3a3c3f",
         "hover":"#d1d1d1",
         "selected":"#007cb0"
-    }
+    },
+    "list": {
+        "text": "#d7dce0",
+    },
+    "form": {
+        "text": "#c2c2c2"
+    },
+    "panel": {
+        "background": "#363f45",
+        "disabled": "#383b3d"
+    },
+    "chip": {
+        "background": '#d7dce0'
+    },
 };
 
 export {anthraciteDarkPalette}

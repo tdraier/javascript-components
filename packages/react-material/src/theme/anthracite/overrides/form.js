@@ -1,12 +1,12 @@
-const anthraciteDarkFormControlLabel = {
+const anthraciteFormControlLabel = (theme) => ({
     "label": {
-        "color": "#c2c2c2",
+        "color": theme.palette.form.text,
         "fontWeight": "400",
         "fontSize": "0.75rem"
     },
     "disabled": {
         "& span": {
-            "color": "#c2c2c2!important"
+            "color": theme.palette.form.text,
         },
         "& svg": {
             "opacity": "0.3"
@@ -18,16 +18,15 @@ const anthraciteDarkFormControlLabel = {
             "alignSelf": "flex-start"
         }
     }
-};
+});
 
-const anthraciteDarkFormLabel = {
+const anthraciteFormLabel = (theme) => ({
     "root": {
-        "color": "#c2c2c2!important"
+        "color": theme.palette.form.text,
     },
     "error": {
-        "color": "#c2c2c2!important"
+        "color": theme.palette.form.text,
     }
-};
+});
 
-
-export {anthraciteDarkFormControlLabel, anthraciteDarkFormLabel}
+export {anthraciteFormControlLabel, anthraciteFormLabel}

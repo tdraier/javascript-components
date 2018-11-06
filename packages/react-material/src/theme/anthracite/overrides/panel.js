@@ -1,4 +1,4 @@
-const anthraciteDarkPanel = {
+const anthracitePanel = (theme) => ({
     "root": {
         "transitionProperty": "all",
         "margin": "7px 40px",
@@ -20,29 +20,29 @@ const anthraciteDarkPanel = {
         }
     },
     "disabled":{
-        "backgroundColor":"#383b3d",
+        "backgroundColor": theme.palette.panel.disabled ,
         "boxShadow":"none",
         "&:hover": {
             "boxShadow":"none"
         }
     }
-};
+});
 
-const anthraciteDarkPanelDetails = {
+const anthracitePanelDetails = {
     "root":{
         "padding": "0 29px 40px"
     }
 };
 
-const anthraciteDarkPanelActions = {
+const anthracitePanelActions = (theme) => ({
     "root":{
         "padding": "10px",
-        "background": "#3b3d40"
+        "background": theme.palette.panel.background
     },
     "action":{
         "boxShadow": "none",
         "marginLeft":"5px"
     }
-};
+});
 
-export {anthraciteDarkPanel, anthraciteDarkPanelDetails, anthraciteDarkPanelActions}
+export {anthracitePanel, anthracitePanelDetails, anthracitePanelActions}

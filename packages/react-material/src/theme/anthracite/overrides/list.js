@@ -1,13 +1,14 @@
-const anthraciteLightListItem =  {
+const anthraciteListItem = (theme) => ({
     "root": {
         "flex": "1"
     },
     "button":{
         "&[role=button]": {
-            "backgroundColor":"#d7dce0",
+            "backgroundColor": theme.palette.list.text,
             "boxShadow":"0px 5px 1px -4px rgba(38, 38, 38, 0.4)",
             "&:hover":{
-                "backgroundColor":"#d1d7dc"
+                // initial "backgroundColor":"#d1d7dc"
+                "backgroundColor": theme.palette.list.text,
             }
         }
     },
@@ -19,14 +20,15 @@ const anthraciteLightListItem =  {
         "position":"relative",
         "top":0
     }
-}
-const anthraciteLightListItemIcon =  {
+});
+
+const anthraciteListItemIcon = {
     "root": {
         "marginRight": 0
     }
-}
+};
 
-const anthraciteLightListItemSecondaryAction =  {
+const anthraciteListItemSecondaryAction = {
     "root":{
         "flex":"1",
         "position":"relative",
@@ -35,18 +37,22 @@ const anthraciteLightListItemSecondaryAction =  {
     }
 };
 
-const anthraciteLightListItemText =  {
+const anthraciteListItemText = {
     "root": {
         "padding": "0 10px"
     }
 };
 
-const anthraciteLightListSubheader=  {
+const anthraciteListSubheader = {
     "root": {
         "textDecoration": "underline"
     }
 };
 
-
-
-export {anthraciteLightListItem, anthraciteLightListItemSecondaryAction, anthraciteLightListItemText, anthraciteLightListSubheader}
+export {
+    anthraciteListItemIcon,
+    anthraciteListItem,
+    anthraciteListItemSecondaryAction,
+    anthraciteListItemText,
+    anthraciteListSubheader
+}

@@ -17,32 +17,18 @@ import {anthraciteSelect} from "./overrides/select";
 import {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination} from "./overrides/table";
 import {anthraciteTab, anthraciteTabs} from "./overrides/tabs";
 import {anthraciteToolBar} from "./overrides/toolbar";
+import {anthraciteListItem, anthraciteListItemSecondaryAction, anthraciteListItemText, anthraciteListSubheader,
+    anthraciteListItemIcon} from "./overrides/list";
 import {anthraciteTypography} from "./overrides/typography";
+import {anthraciteFormControlLabel, anthraciteFormLabel} from "./overrides/form";
+import {anthracitePanel, anthracitePanelActions, anthracitePanelDetails} from "./overrides/panel";
+import {anthraciteChip} from "./overrides/chip";
 
-// Import of Light Anthracite theming import
+// Import of Light Anthracite palette
 import {anthraciteLightPalette} from "./light/palette";
-import {anthraciteLightChip} from "./light/overrides/chip";
-import {anthraciteLightFormControlLabel, anthraciteLightFormLabel} from "./light/overrides/form";
-import {
-    anthraciteLightListItem,
-    anthraciteLightListItemSecondaryAction,
-    anthraciteLightListItemText,
-    anthraciteLightListSubheader
-} from "./light/overrides/list";
 
-import {anthraciteLightPanel, anthraciteLightPanelActions, anthraciteLightPanelDetails} from "./light/overrides/panel";
-
-// Import of Dark Anthracite theming
+// Import of Dark Anthracite palette
 import {anthraciteDarkPalette} from "./dark/palette";
-import {anthraciteDarkFormControlLabel, anthraciteDarkFormLabel} from "./dark/overrides/form";
-import {
-    anthraciteDarkListItem,
-    anthraciteDarkListItemIcon,
-    anthraciteDarkListItemSecondaryAction,
-    anthraciteDarkListItemText,
-    anthraciteDarkListSubheader
-} from "./dark/overrides/list";
-import {anthraciteDarkPanel, anthraciteDarkPanelActions, anthraciteDarkPanelDetails} from "./dark/overrides/panel";
 
 const anthraciteLightThemeConfig = {
     palette: anthraciteLightPalette,
@@ -59,23 +45,23 @@ const anthraciteLightThemeOverrides = (theme) => ({
     MuiCardContent: anthraciteCardContent(theme),
     MuiCardHeader: anthraciteCardHeader(theme),
     MuiCheckbox: anthraciteCheckbox(theme),
-    MuiChip: anthraciteLightChip,
+    MuiChip: anthraciteChip(theme),
     MuiDialogTitle: anthraciteDialogTitle(theme),
     MuiDialog: anthraciteDialog(theme),
     MuiDialogActions: anthraciteDialogActions(theme),
     MuiDialogContent: anthraciteDialogContent(theme),
-    MuiFormLabel: anthraciteLightFormLabel,
-    MuiFormControlLabel: anthraciteLightFormControlLabel,
+    MuiFormLabel: anthraciteFormLabel(theme),
+    MuiFormControlLabel: anthraciteFormControlLabel(theme),
     MuiInput: anthraciteInput(theme),
-    MuiListItem: anthraciteLightListItem,
-    MuiListItemSecondaryAction: anthraciteLightListItemSecondaryAction,
-    MuiListSubheader: anthraciteLightListSubheader,
-    MuiListItemText: anthraciteLightListItemText,
+    MuiListItem: anthraciteListItem(theme),
+    MuiListItemSecondaryAction: anthraciteListItemSecondaryAction,
+    MuiListSubheader: anthraciteListSubheader,
+    MuiListItemText: anthraciteListItemText,
     MuiMenu: anthraciteMenu(theme),
     MuiMenuItem: anthraciteMenuItem(theme),
-    MuiExpansionPanel: anthraciteLightPanel,
-    MuiExpansionPanelDetails: anthraciteLightPanelDetails,
-    MuiExpansionPanelActions: anthraciteLightPanelActions,
+    MuiExpansionPanel: anthracitePanel(theme),
+    MuiExpansionPanelDetails: anthracitePanelDetails,
+    MuiExpansionPanelActions: anthracitePanelActions(theme),
     MuiPaper: anthracitePaper(theme),
     MuiSelect: anthraciteSelect(theme),
     MuiTable: anthraciteTable(theme),
@@ -106,23 +92,24 @@ const anthraciteDarkThemeOverrides = (theme) => ({
     MuiCardContent: anthraciteCardContent(theme),
     MuiCardHeader: anthraciteCardHeader(theme),
     MuiCheckbox: anthraciteCheckbox(theme),
+    MuiChip: anthraciteChip(theme),
     MuiDialogTitle: anthraciteDialogTitle(theme),
     MuiDialog: anthraciteDialog(theme),
     MuiDialogActions: anthraciteDialogActions(theme),
     MuiDialogContent: anthraciteDialogContent(theme),
-    MuiFormLabel: anthraciteDarkFormLabel,
-    MuiFormControlLabel: anthraciteDarkFormControlLabel,
+    MuiFormLabel: anthraciteFormLabel(theme),
+    MuiFormControlLabel: anthraciteFormControlLabel(theme),
     MuiInput: anthraciteInput(theme),
-    MuiListItem: anthraciteDarkListItem,
-    MuiListItemIcon: anthraciteDarkListItemIcon,
-    MuiListItemSecondaryAction: anthraciteDarkListItemSecondaryAction,
-    MuiListSubheader: anthraciteDarkListSubheader,
-    MuiListItemText: anthraciteDarkListItemText,
+    MuiListItem: anthraciteListItem(theme),
+    MuiListItemIcon: anthraciteListItemIcon,
+    MuiListItemSecondaryAction: anthraciteListItemSecondaryAction,
+    MuiListSubheader: anthraciteListSubheader,
+    MuiListItemText: anthraciteListItemText,
     MuiMenu: anthraciteMenu(theme),
     MuiMenuItem: anthraciteMenuItem(theme),
-    MuiExpansionPanel: anthraciteDarkPanel,
-    MuiExpansionPanelDetails: anthraciteDarkPanelDetails,
-    MuiExpansionPanelActions: anthraciteDarkPanelActions,
+    MuiExpansionPanel: anthracitePanel(theme),
+    MuiExpansionPanelDetails: anthracitePanelDetails,
+    MuiExpansionPanelActions: anthracitePanelActions(theme),
     MuiPaper: anthracitePaper(theme),
     MuiSelect: anthraciteSelect(theme),
     MuiTable: anthraciteTable(theme),
