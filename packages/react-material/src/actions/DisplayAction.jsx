@@ -5,7 +5,7 @@ import {Observable, combineLatest, concat, of} from 'rxjs';
 
 let count = 0;
 
-class DisplayActionComponent extends React.PureComponent {
+class DisplayAction extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -20,13 +20,11 @@ class DisplayActionComponent extends React.PureComponent {
     static getDerivedStateFromProps(props, state) {
         let action = actionsRegistry.get(props.actionKey);
 
+        if (!action) {
+            console.warn("Cannot find action "+props.actionKey);
+        }
         if (!!state.context && (props.context === state.context.originalContext)) {
             return null;
-        }
-
-        if (state.subscription) {
-            // First unsubscribe as new context will be created
-            state.subscription.unsubscribe();
         }
 
         let context = {
@@ -41,11 +39,11 @@ class DisplayActionComponent extends React.PureComponent {
         }
 
         // Check observers
-        let subscription;
+        let subscription = state.subscription;
         let observersObj = _.pickBy(context, (value) => value instanceof Observable);
         let keys = Object.keys(observersObj);
 
-        if (keys.length > 0) {
+        if (!subscription && keys.length > 0) {
             // Prepare an updateContext method for subscription - first set it as synchronous update of the context object
             let updateHandler = {
                 current: (v) => {
@@ -62,6 +60,9 @@ class DisplayActionComponent extends React.PureComponent {
             });
             // All synchronous updates have been received, switched to asynchronous through state update
             updateHandler.current = state.updateContext;
+        } else if (keys.length > 0) {
+            // Keep current subscription values
+            _.assign(context, _.pick(state.context, keys));
         }
 
         return {
@@ -80,10 +81,19 @@ class DisplayActionComponent extends React.PureComponent {
         });
     }
 
+    wrap(Render, wrapper) {
+        return (props) => wrapper(<Render {...props}/>)
+    }
+
     render() {
         let {context} = this.state;
+
+        let Render = this.props.render;
+        if (context.wrappers) {
+            Render = _.reduce(context.wrappers, this.wrap, Render);
+        }
+
         if (context.enabled !== false) {
-            let Render = this.props.render;
             if (context.actions) {
                 return _.map(context.actions, (action) => <Render key={action.val} context={{
                     ...context,
@@ -120,10 +130,5 @@ class DisplayActionComponent extends React.PureComponent {
         }
     }
 }
-
-let DisplayAction = (props) => {
-    let action = actionsRegistry.get(props.actionKey);
-    return _.reduce(action.wrappers, (acc, wrapper) => wrapper(acc), <DisplayActionComponent {...props} />);
-};
 
 export {DisplayAction};

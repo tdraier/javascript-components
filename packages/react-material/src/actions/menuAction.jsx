@@ -17,7 +17,7 @@ let styles = {
 };
 
 
-let display = (context, target) => {
+let display = (context, anchor) => {
     // Disable backdrop for sub menus, click through to main menu backdrop
     let subMenuProps = (context.parent) ? {
         ModalClasses:{root:context.classes.modalRoot},
@@ -25,11 +25,14 @@ let display = (context, target) => {
         disableEnforceFocus:true,
         manager:new ModalManager({hideSiblingNodes:false})
     } : {};
-    context.currentMenuHandler = context.renderComponent(<Menu id={'menu-' + context.id} anchorEl={target} open={true} anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+    context.currentMenuHandler = context.renderComponent(<Menu id={'menu-' + context.id} {...anchor} open={true}
                                                 onClose={()=> {
                                                     context.currentMenuHandler.setProps({anchorEl:null, open:false})
                                                 }}
                                                 onExit={()=> {
+                                                    if (context.onExit) {
+                                                        context.onExit(context);
+                                                    }
                                                     // Close sub menu if they exist
                                                     if (context.currentOpenSubmenuContext) {
                                                         context.currentOpenSubmenuContext.currentMenuHandler.setProps({'open':false});
@@ -67,7 +70,7 @@ let display = (context, target) => {
                                                  }}
                                                  onMouseLeave={context.onMouseLeave && ((e) => { context.onMouseLeave(context, e); })}
             >
-                {t(context.buttonLabel)}
+                <span dangerouslySetInnerHTML={{__html:t(context.buttonLabel, context.buttonLabelParams)}}/>
                 {context.icon}
             </MenuItem>}</I18n>
         }/>
@@ -86,7 +89,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
         if (context.parent) {
             // Open submenu on mouseEnter
             context.parent.currentOpenSubmenuContext = context;
-            display(context, e.target);
+            display(context, {anchorEl:e.target,  anchorOrigin:{vertical: 'top', horizontal: 'right'}});
         }
     },
 
@@ -105,8 +108,13 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
     onClick: (context, e) => {
         // If not a submenu, open it (can be overridden for submenu, as menu is opened on mouseEnter)
         if (!context.parent) {
-            display(context, e.currentTarget);
+            display(context, {anchorEl:e.target,  anchorOrigin:{vertical: 'top', horizontal: 'right'}});
         }
+    },
+
+    onContextMenu: (context, e) => {
+        e.preventDefault();
+        display(context, {anchorPosition:{left:e.clientX, top:e.clientY}, anchorReference:'anchorPosition'});
     },
 });
 
