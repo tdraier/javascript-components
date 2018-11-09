@@ -5,80 +5,109 @@ import {Observable, combineLatest, concat, of} from 'rxjs';
 
 let count = 0;
 
-class DisplayAction extends React.PureComponent {
+class StateActionComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        let enhancedContext = {...this.props.context, ...this.state};
+        // console.log("inner props "+enhancedContext.id,this.props);
+        // console.log("inner state "+enhancedContext.id,this.state);
+
+        if (enhancedContext.enabled !== false) {
+
+
+            let Render = this.props.render;
+            if (enhancedContext.actions) {
+                return _.map(enhancedContext.actions, (action) => <Render key={action.val} context={{
+                    ...enhancedContext,
+                    ...action
+                }}/>);
+            } else {
+                return <Render context={enhancedContext}/>
+            }
+        }
+        return false;
+    }
+
+}
+
+class DisplayActionComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        this.innerRef = React.createRef();
         this.state = {
-            context: {
-                id: props.actionKey + "-" + (count++)
-            },
-            updateContext: this.updateContext.bind(this),
-        }
+        };
     }
 
-    static getDerivedStateFromProps(props, state) {
-        let action = actionsRegistry.get(props.actionKey);
+    render() {
 
-        if (!action) {
-            console.warn("Cannot find action "+props.actionKey);
+        let {context, render} = this.props;
+        // console.log("component props " + context.id,this.props);
+
+        let subscription = this.subscription;
+        if (subscription) {
+            subscription.unsubscribe();
         }
-        if (!!state.context && (props.context === state.context.originalContext)) {
-            return null;
-        }
 
-        let context = {
-            ...state.context,
-            ...action,
-            ...props.context,
-            originalContext: props.context,
-        };
+        let enhancedContext = {...context};
 
-        if (context.init) {
-            context.init(context, props);
+
+        if (enhancedContext.init) {
+            enhancedContext.init(enhancedContext, _.omit(this.props, ['context']));
         }
 
         // Check observers
-        let subscription = state.subscription;
-        let observersObj = _.pickBy(context, (value) => value instanceof Observable);
+        let observersObj = _.pickBy(enhancedContext, (value) => value instanceof Observable);
         let keys = Object.keys(observersObj);
 
-        if (!subscription && keys.length > 0) {
+        if (keys.length > 0) {
             // Prepare an updateContext method for subscription - first set it as synchronous update of the context object
-            let updateHandler = {
-                current: (v) => {
-                    context = _.assign(context, v);
+            let update = (v) => {
+                if (this.innerRef.current) {
+                    this.innerRef.current.setState(v);
+                } else {
+                    enhancedContext = _.assign(enhancedContext, v);
                 }
             };
+
             // Concat with a sync observer to always get an initial value
             let observers = _.map(Object.values(observersObj), obs => concat(of(null), obs));
 
             // Combine all observers into one
             let combined = combineLatest(...observers, (...vals) => _.zipObject(keys, vals));
-            subscription = combined.subscribe((v) => {
-                updateHandler.current(v);
+            this.subscription = combined.subscribe((v) => {
+                update(v);
             });
-            // All synchronous updates have been received, switched to asynchronous through state update
-            updateHandler.current = state.updateContext;
-        } else if (keys.length > 0) {
-            // Keep current subscription values
-            _.assign(context, _.pick(state.context, keys));
         }
 
-        return {
-            ...state,
-            subscription,
-            context
-        }
+        return <StateActionComponent context={enhancedContext} render={render} ref={this.innerRef} />
     }
 
-    updateContext(newContext) {
-        this.setState({
-            context: {
-                ...this.state.context,
-                ...newContext
-            }
-        });
+
+    componentWillUnmount() {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
+}
+
+const shallowEquals = (obj1, obj2) =>
+    Object.keys(obj1).length === Object.keys(obj2).length &&
+    Object.keys(obj1).every(key => obj1[key] === obj2[key]);
+
+class DisplayAction extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.id = props.actionKey + "-" + (count++)
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return !shallowEquals(nextProps.context, this.props.context);
     }
 
     wrap(Render, wrapper) {
@@ -86,48 +115,19 @@ class DisplayAction extends React.PureComponent {
     }
 
     render() {
-        let {context} = this.state;
+        // console.log("main props "+this.id,this.props);
 
-        let Render = this.props.render;
-        if (context.wrappers) {
-            Render = _.reduce(context.wrappers, this.wrap, Render);
+        let {context, actionKey, render} = this.props;
+        let action = actionsRegistry.get(actionKey);
+        let enhancedContext = {...action, ...context, originalContext: context, id:this.id};
+
+        let Component = DisplayActionComponent;
+
+        if (enhancedContext.wrappers) {
+            Component = _.reduce(enhancedContext.wrappers, this.wrap, DisplayActionComponent);
         }
 
-        if (context.enabled !== false) {
-            if (context.actions) {
-                return _.map(context.actions, (action) => <Render key={action.val} context={{
-                    ...context,
-                    ...action
-                }}/>);
-            } else {
-                return <Render context={context}/>
-            }
-        }
-        return false;
-    }
-
-    componentDidUpdate() {
-        let {context} = this.state;
-        if (context.onUpdate) {
-            context.onUpdate(context);
-        }
-    }
-
-    componentDidMount() {
-        let {context} = this.state;
-        if (context.onMount) {
-            context.onMount(context);
-        }
-    }
-
-    componentWillUnmount() {
-        let {context, subscription} = this.state;
-        if (context.onDestroy) {
-            context.onDestroy(context);
-        }
-        if (subscription) {
-            subscription.unsubscribe();
-        }
+        return <Component context={enhancedContext} render={render} actionKey={actionKey}/>
     }
 }
 

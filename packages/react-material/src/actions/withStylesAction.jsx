@@ -5,11 +5,12 @@ let withStylesAction = (styles) => {
     let Component = withStyles(styles)((props) => props.children(props.classes));
 
     return {
+        init(context,props) {
+            context.classes = props.classes;
+        },
+
         wrappers: [
-            (component) => <Component context={component.props.context}>{(classes) => {
-                component.props.context.classes = classes;
-                return component;
-            }}</Component>
+            (component) => <Component>{(classes) => React.cloneElement(component, {classes})}</Component>
         ]
     }
 
