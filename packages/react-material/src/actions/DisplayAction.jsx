@@ -119,7 +119,7 @@ class DisplayAction extends React.Component {
 
         let {context, actionKey, render} = this.props;
         let action = actionsRegistry.get(actionKey);
-        let enhancedContext = {...action, ...context, originalContext: context, id:this.id};
+        let enhancedContext = {...action, ...context, originalContext: context, id:this.id, actionKey};
 
         let Component = DisplayActionComponent;
 
