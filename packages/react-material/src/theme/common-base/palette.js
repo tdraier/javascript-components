@@ -63,7 +63,7 @@ const commonPalette = {
             main: '#FB9926'
         },
         markedForDeletion: {
-            main: '#FB9926'
+            main: '#CC0000'
         }
     }
 };
