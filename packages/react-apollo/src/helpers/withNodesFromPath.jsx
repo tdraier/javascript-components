@@ -58,7 +58,7 @@ function withNodesFromPath(fragments) {
                 }
             }`;
 
-        replaceFragmentsInDocument(query, fragments);
+        query = replaceFragmentsInDocument(query, fragments);
 
         return graphql(query, {
             props: mapResultsToProps,

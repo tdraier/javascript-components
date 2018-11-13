@@ -58,8 +58,7 @@ class Picker extends React.Component {
                 }
             }
         ${PredefinedFragments.nodeCacheRequiredFields.gql}`;
-
-        replaceFragmentsInDocument(this.query, fragments);
+        this.query = replaceFragmentsInDocument(this.query, fragments);
 
         let state = {};
 

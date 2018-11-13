@@ -10,7 +10,7 @@ class Jcr {
     executeQuery(query, mapResult, fragments, vars) {
         return new Promise((resolve, reject) => {
 
-            replaceFragmentsInDocument(query, fragments);
+            query = replaceFragmentsInDocument(query, fragments);
 
             this.apolloClient.query({
                 query: query,
