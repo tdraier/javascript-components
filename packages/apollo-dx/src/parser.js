@@ -10,8 +10,9 @@ function findParametersInDocument(doc) {
 }
 
 function replaceFragmentsInDocument(doc, fragments) {
+    let clonedQuery = null;
     if (doc && doc.definitions) {
-        let clonedQuery = _.cloneDeep(doc);
+        clonedQuery = _.cloneDeep(doc);
         _.each(clonedQuery.definitions, def => replaceFragmentsInSelectionSet(def.selectionSet, fragments, def, clonedQuery));
     }
     return clonedQuery;
