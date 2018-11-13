@@ -21,7 +21,7 @@ class StateActionComponent extends React.Component {
 
             let Render = this.props.render;
             if (enhancedContext.actions) {
-                return _.map(enhancedContext.actions, (action) => <Render key={action.val} context={{
+                return _.map(enhancedContext.actions, (action) => <Render key={action.key} context={{
                     ...enhancedContext,
                     ...action
                 }}/>);
