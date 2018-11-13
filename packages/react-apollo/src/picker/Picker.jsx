@@ -360,7 +360,7 @@ Picker.propTypes = {
         PropTypes.string,
         PropTypes.shape({
             applyFor: PropTypes.string.isRequired,
-            variables: PropTypes.string,
+            variables: PropTypes.object,
             gql: PropTypes.object.isRequired
         })
     ])),
