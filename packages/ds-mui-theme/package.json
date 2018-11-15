@@ -1,5 +1,5 @@
 {
-  "name": "@jahia/dx-mui-theme",
+  "name": "@jahia/ds-mui-theme",
   "version": "1.0.0",
   "scripts": {
     "babel": "../../node_modules/.bin/cross-env NODE_ENV=production ../../node_modules/.bin/babel ./src --ignore *.test.js --out-dir ./build",
