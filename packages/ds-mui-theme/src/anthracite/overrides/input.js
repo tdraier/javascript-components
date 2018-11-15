@@ -3,11 +3,11 @@ const anthraciteInput = (theme) => ({
     "error": {
         "& input": {
             "backgroundColor": theme.palette.error.main,
-            "color": "#F5F5F5"
+            "color": theme.palette.text.contrastText
         },
         "& div div": {
             "backgroundColor": theme.palette.error.main,
-            "color": "#F5F5F5"
+            "color": theme.palette.text.contrastText
         },
         "& svg": {
             "color": "#F5F5F5"
@@ -20,8 +20,8 @@ const anthraciteInput = (theme) => ({
         }
     },
     "input": {
-        "backgroundColor": "#fcfdfd",
-        "color": "#504e4d",
+        "backgroundColor": theme.palette.background.paper,
+        "color": theme.palette.text.secondary,
         "boxShadow": "0px 5px 1px -4px rgba(38, 38, 38, 0.4)",
         "fontSize": "0.875rem",
         "padding": "6px 10px",
@@ -30,7 +30,7 @@ const anthraciteInput = (theme) => ({
             "boxShadow": "none"
         },
         "&[required]": {
-            "backgroundColor": "#fcfdfd"
+            "backgroundColor": theme.palette.background.paper,
         },
         "&:focus": {
             "boxShadow": "0px 4px 1px -4px rgba(38, 38, 38, 0.4)!important"

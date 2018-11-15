@@ -20,7 +20,8 @@ const anthracitePanel = (theme) => ({
         }
     },
     "disabled":{
-        "backgroundColor": theme.palette.panel.disabled ,
+        "backgroundColor": theme.palette.background.paper,
+        "color": theme.palette.text.disabled,
         "boxShadow":"none",
         "&:hover": {
             "boxShadow":"none"
@@ -37,7 +38,7 @@ const anthracitePanelDetails = {
 const anthracitePanelActions = (theme) => ({
     "root":{
         "padding": "10px",
-        "background": theme.palette.panel.background
+        "background": theme.palette.text.secondary
     },
     "action":{
         "boxShadow": "none",

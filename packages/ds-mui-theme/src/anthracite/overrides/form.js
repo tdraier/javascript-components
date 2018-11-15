@@ -1,12 +1,12 @@
 const anthraciteFormControlLabel = (theme) => ({
     "label": {
-        "color": theme.palette.form.text,
+        "color": theme.palette.background.default,
         "fontWeight": "400",
         "fontSize": "0.75rem"
     },
     "disabled": {
         "& span": {
-            "color": theme.palette.form.text,
+            "color": theme.palette.background.default,
         },
         "& svg": {
             "opacity": "0.3"
@@ -22,10 +22,10 @@ const anthraciteFormControlLabel = (theme) => ({
 
 const anthraciteFormLabel = (theme) => ({
     "root": {
-        "color": theme.palette.form.text,
+        "color": theme.palette.background.default,
     },
     "error": {
-        "color": theme.palette.form.text,
+        "color": theme.palette.background.default,
     }
 });
 

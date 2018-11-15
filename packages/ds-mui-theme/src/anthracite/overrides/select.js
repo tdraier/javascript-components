@@ -1,6 +1,6 @@
 const anthraciteSelect = (theme) => ({
     "icon": {
-        "color": "#504e4d"
+        "color": theme.palette.text.secondary
     }
 });
 

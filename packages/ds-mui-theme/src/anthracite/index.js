@@ -29,6 +29,8 @@ import {anthraciteLightPalette} from "./light/palette";
 
 // Import of Dark Anthracite palette
 import {anthraciteDarkPalette} from "./dark/palette";
+import {anthracitePalette } from './overrides/palette.js'
+
 
 const anthraciteLightThemeConfig = {
     palette: anthraciteLightPalette,
@@ -78,7 +80,7 @@ const anthraciteLightTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, a
 _.merge(anthraciteLightTheme, {overrides: anthraciteLightThemeOverrides(anthraciteLightTheme)});
 
 const anthraciteDarkThemeConfig = {
-    palette: anthraciteDarkPalette,
+    palette: anthracitePalette,
     shape,
     typography
 };
@@ -123,6 +125,5 @@ const anthraciteDarkThemeOverrides = (theme) => ({
 
 const anthraciteDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteDarkThemeConfig));
 _.merge(anthraciteDarkTheme, {overrides: anthraciteDarkThemeOverrides(anthraciteDarkTheme)});
-
 
 export {anthraciteLightTheme, anthraciteDarkTheme}

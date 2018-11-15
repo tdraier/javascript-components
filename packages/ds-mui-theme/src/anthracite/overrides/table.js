@@ -7,6 +7,7 @@ const anthraciteTable = (theme) => ({
 const anthraciteTableCell = (theme) => ({
     "root": {
         "borderBottom": "none",
+        "background": theme.palette.background.paper,
         "padding":"8px",
         "& svg": {
             "verticalAlign":"middle"

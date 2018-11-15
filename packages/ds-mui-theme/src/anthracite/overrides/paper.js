@@ -7,13 +7,13 @@ const anthracitePaper = (theme) => ({
     },
     "elevation2": {
         "boxShadow": "0px 6px 3px -6px rgba(20, 20, 21, 0.45)",
-        "background": "#fcfdfd"
+        "background": theme.palette.background.paper,
     },
     "elevation24": {
-        "background": "#fcfdfd"
+        "background": theme.palette.background.paper,
     },
     "elevation16": {
-        "background": "rgba(252, 252, 252, 0.97)",
+        "background": theme.palette.background.paper,
         "boxShadow": "0px 0px 12px 1px rgba(20, 20, 21, 0.29)"
     }
 });

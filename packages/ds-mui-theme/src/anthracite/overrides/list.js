@@ -4,11 +4,10 @@ const anthraciteListItem = (theme) => ({
     },
     "button":{
         "&[role=button]": {
-            "backgroundColor": theme.palette.list.text,
+            "backgroundColor": theme.palette.background.default,
             "boxShadow":"0px 5px 1px -4px rgba(38, 38, 38, 0.4)",
             "&:hover":{
-                // initial "backgroundColor":"#d1d7dc"
-                "backgroundColor": theme.palette.list.text,
+                "backgroundColor": theme.palette.background.default,
             }
         }
     },
