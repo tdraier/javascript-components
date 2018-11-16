@@ -13,11 +13,8 @@ class StateActionComponent extends React.Component {
 
     render() {
         let enhancedContext = {...this.props.context, ...this.state};
-        // console.log("inner props "+enhancedContext.id,this.props);
-        // console.log("inner state "+enhancedContext.id,this.state);
 
         if (enhancedContext.enabled !== false) {
-
 
             let Render = this.props.render;
             if (enhancedContext.actions) {
@@ -46,7 +43,6 @@ class DisplayActionComponent extends React.Component {
     render() {
 
         let {context, render} = this.props;
-        // console.log("component props " + context.id,this.props);
 
         let subscription = this.subscription;
         if (subscription) {
@@ -54,8 +50,6 @@ class DisplayActionComponent extends React.Component {
         }
 
         let enhancedContext = {...context};
-
-
         if (enhancedContext.init) {
             enhancedContext.init(enhancedContext, _.omit(this.props, ['context']));
         }
@@ -115,8 +109,6 @@ class DisplayAction extends React.Component {
     }
 
     render() {
-        // console.log("main props "+this.id,this.props);
-
         let {context, actionKey, render} = this.props;
         let action = actionsRegistry.get(actionKey);
         let enhancedContext = {...action, ...context, originalContext: context, id:this.id, actionKey};
