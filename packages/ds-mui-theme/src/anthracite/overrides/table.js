@@ -8,7 +8,6 @@ const anthraciteTableCell = (theme) => ({
     "root": {
         "borderBottom": "none",
         "background": theme.palette.background.paper,
-        "padding":"8px",
         "& svg": {
             "verticalAlign":"middle"
         },
@@ -21,21 +20,20 @@ const anthraciteTableCell = (theme) => ({
         }
     },
     "head": {
+        "backgroundColor": theme.palette.background.paper,
         "boxShadow": "2px 1px 1px 0px rgba(20, 20, 21, 0.49)",
         "position": "relative",
-        "background": theme.palette.background.paper
     }
 });
 
 const anthraciteTableRow = (theme) => ({
     "root": {
-        "height": "36px"
+        "height": "48px"
     },
     "head": {
-        "height":"unset"
+        "height": "56px"
     }
 });
-
 
 
 const anthraciteTablePagination = (theme) => ({
