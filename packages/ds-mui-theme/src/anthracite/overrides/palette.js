@@ -1,7 +1,7 @@
 const anthracitePalette = {
     "type": "dark",
     "common": {
-        "black": "#000000",
+        "black": "#1f262a",
         "white": "#FFFFFF"
     },
     "primary": {
@@ -30,7 +30,9 @@ const anthracitePalette = {
     "error": {
         "main": "#BD1330",
         "light": "#e32646",
-        "warning": "#f6d62f",
+    },
+    "warning": {
+        "main" : "#f6d62f",
     },
     "background": {
         "paper": "#ffffff",
