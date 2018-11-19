@@ -1,5 +1,5 @@
-import {DisplayAction} from "@jahia/react-material";
 import React from "react";
+import {DisplayAction} from "./DisplayAction";
 
 class ContextualMenu extends React.Component {
 
