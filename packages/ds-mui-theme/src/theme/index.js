@@ -32,7 +32,7 @@ import { dsLightPalette } from "./light/palette";
 import { dsPalette } from './overrides/palette.js'
 
 // import of Jahia DS shadows
-import { dsShadows } from './overrides/shadows.js';
+import { dsShadows } from './shadows.js';
 
 const dsLightThemeConfig = {
     palette: dsLightPalette,

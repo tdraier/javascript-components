@@ -1,26 +1,31 @@
 // we use require and not import to not include the binary file to the generated *.umd.js
-import NanutoSansRegular from "../../fonts/nunito-sans-v3-latin-regular.woff";
-import NanutoSansRegular2 from "../../fonts/nunito-sans-v3-latin-regular.woff2";
-import NanutoSansBold from "../../fonts/nunito-sans-v3-latin-700.woff";
-import NanutoSansBold2 from "../../fonts/nunito-sans-v3-latin-700.woff2";
-import NanutoSansLight from "../../fonts/nunito-sans-v3-latin-300.woff";
-import NanutoSansLight2 from "../../fonts/nunito-sans-v3-latin-300.woff2";
+import NunitoSansRegular from "../../fonts/nunito-sans-v3-latin-regular.woff";
+import NunitoSansRegular2 from "../../fonts/nunito-sans-v3-latin-regular.woff2";
+import NunitoSansBold from "../../fonts/nunito-sans-v3-latin-600.woff";
+import NunitoSansBold2 from "../../fonts/nunito-sans-v3-latin-600.woff2";
+import NunitoSansLight from "../../fonts/nunito-sans-v3-latin-300.woff";
+import NunitoSansLight2 from "../../fonts/nunito-sans-v3-latin-300.woff2";
 
-var dsTypography = (theme) => ({ "@font-face": [{
-        fontFamily: 'Nunito Sans',
-        fontWeight: '300',
-        src: 'url(\'' + NanutoSansLight2 + '\') format(\'woff2\')',
-        fallbacks: [{ src: 'url(\'' + NanutoSansLight + '\') format(\'woff\')' }]
-    }, {
-        fontFamily: 'Nunito Sans',
-        fontWeight: '400',
-        src: 'url(\'' + NanutoSansRegular2 + '\') format(\'woff2\')',
-        fallbacks: [{ src: 'url(\'' + NanutoSansRegular + '\') format(\'woff\')' }]
-    }, {
-        fontFamily: 'Nunito Sans',
-        fontWeight: '700',
-        src: 'url(\'' + NanutoSansBold2 + '\') format(\'woff2\')',
-        fallbacks: [{ src: 'url(\'' + NanutoSansBold + '\') format(\'woff\')' }] }]
+var dsTypography = (theme) => (
+    {
+        "@font-face": [{
+            fontFamily: 'Nunito Sans',
+            fontWeight: '300',
+            src: 'url(\'' + NunitoSansLight2 + '\') format(\'woff2\')',
+            fallbacks: [{src: 'url(\'' + NunitoSansLight + '\') format(\'woff\')'}]
+        },
+        {
+            fontFamily: 'Nunito Sans',
+            fontWeight: '400',
+            src: 'url(\'' + NunitoSansRegular2 + '\') format(\'woff2\')',
+            fallbacks: [{src: 'url(\'' + NunitoSansRegular + '\') format(\'woff\')'}]
+        },
+        {
+            fontFamily: 'Nunito Sans',
+            fontWeight: '600',
+            src: 'url(\'' + NunitoSansBold2 + '\') format(\'woff2\')',
+            fallbacks: [{src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')'}]
+        }]
 });
 
 export {dsTypography}

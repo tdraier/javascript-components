@@ -4,6 +4,9 @@ const dsButton = (theme) => ({
         "textTransform": "none",
         "margin": theme.spacing.unit * 2
     },
+    "label" : {
+
+    }
     "fab": {
         "boxShadow": "0px 5px 1px -4px rgba(38, 38, 38, 0.4)"
     },

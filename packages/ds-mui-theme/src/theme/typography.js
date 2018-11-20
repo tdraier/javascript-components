@@ -3,7 +3,7 @@ const typography = {
         "fontFamily": "Nunito Sans",
         "light": 300,
         "regular": 400,
-        "semiBold": 500,
+        "semiBold": 600,
     },
     "fontFamily": "Nunito Sans",
     "h1": {
@@ -39,7 +39,7 @@ const typography = {
     "h6": {
         "fontFamily": "Nunito Sans",
         "fontSize": "20px",
-        "fontWeight": 500,
+        "fontWeight": 600,
         "letterSpacing": "0.15px"
     },
     "subtitle1": {
@@ -51,7 +51,7 @@ const typography = {
     "subtitle2": {
         "fontFamily": "Nunito Sans",
         "fontSize": "16px",
-        "fontWeight": 500,
+        "fontWeight": 600,
         "letterSpacing": "0.10px"
     },
     "body1": {
@@ -70,7 +70,7 @@ const typography = {
     "button": {
         "fontFamily": "Nunito Sans",
         "fontSize": "14px",
-        "fontWeight": 500,
+        "fontWeight": 600,
         "letterSpacing": "1.35px"
 
     },
