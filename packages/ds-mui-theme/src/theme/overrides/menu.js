@@ -1,11 +1,11 @@
-const anthraciteMenu = (theme) => ({
+const dsMenu = (theme) => ({
     "paper": {
         boxShadow: '1px 1px 3px 0px rgba(20, 20, 21, 0.49)',
         "backgroundColor":theme.palette.background.paper
     }
 });
 
-const anthraciteMenuItem = (theme) => ({
+const dsMenuItem = (theme) => ({
     "root": {
         "padding": "5px 17px",
         "fontSize": "0.875rem",
@@ -19,4 +19,4 @@ const anthraciteMenuItem = (theme) => ({
     }
 });
 
-export {anthraciteMenu, anthraciteMenuItem}
+export {dsMenu, dsMenuItem}

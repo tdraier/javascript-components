@@ -1,4 +1,4 @@
-const anthraciteAppBar = (theme) => ({
+const dsAppBar = (theme) => ({
     "root": {
         "paddingTop": '20px',
         "paddingBottom": '20px',
@@ -14,4 +14,4 @@ const anthraciteAppBar = (theme) => ({
     }
 });
 
-export {anthraciteAppBar}
+export {dsAppBar}

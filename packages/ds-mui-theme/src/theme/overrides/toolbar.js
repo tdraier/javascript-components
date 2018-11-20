@@ -1,4 +1,4 @@
-const anthraciteToolBar = (theme) => ({
+const dsToolBar = (theme) => ({
     "root": {
         "display": "flex",
         "& h1": {
@@ -12,4 +12,4 @@ const anthraciteToolBar = (theme) => ({
     }
 });
 
-export { anthraciteToolBar }
+export { dsToolBar }

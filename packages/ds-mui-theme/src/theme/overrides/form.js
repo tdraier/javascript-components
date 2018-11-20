@@ -1,4 +1,4 @@
-const anthraciteFormControlLabel = (theme) => ({
+const dsFormControlLabel = (theme) => ({
     "label": {
         "color": theme.palette.background.default,
         "fontWeight": "400",
@@ -20,7 +20,7 @@ const anthraciteFormControlLabel = (theme) => ({
     }
 });
 
-const anthraciteFormLabel = (theme) => ({
+const dsFormLabel = (theme) => ({
     "root": {
         "color": theme.palette.background.default,
     },
@@ -29,4 +29,4 @@ const anthraciteFormLabel = (theme) => ({
     }
 });
 
-export {anthraciteFormControlLabel, anthraciteFormLabel}
+export {dsFormControlLabel, dsFormLabel}

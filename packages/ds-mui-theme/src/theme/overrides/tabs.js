@@ -1,4 +1,4 @@
-const anthraciteTab = (theme) => ({
+const dsTab = (theme) => ({
     "root": {
         "textTransform": "none",
         "minHeight": "auto",
@@ -17,12 +17,12 @@ const anthraciteTab = (theme) => ({
     }
 });
 
-const anthraciteTabs = (theme) => ({
+const dsTabs = (theme) => ({
     "root": {
         "minHeight": "unset",
         "padding": "0 40px"
     }
 });
 
-export {anthraciteTab, anthraciteTabs}
+export {dsTab, dsTabs}
 

@@ -1,4 +1,4 @@
-const anthraciteInput = (theme) => ({
+const dsInput = (theme) => ({
     "root": {},
     "error": {
         "& input": {
@@ -43,7 +43,7 @@ const anthraciteInput = (theme) => ({
     }
 });
 
-export {anthraciteInput}
+export {dsInput}
 
 
 

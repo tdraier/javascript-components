@@ -1,4 +1,4 @@
-const anthraciteDarkPalette = {
+const dsDarkPalette = {
     "type": "dark",
     "common": {
         "black": "#000000",
@@ -58,4 +58,4 @@ const anthraciteDarkPalette = {
     },
 };
 
-export {anthraciteDarkPalette}
+export {dsDarkPalette}

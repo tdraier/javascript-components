@@ -1,4 +1,4 @@
-const anthraciteListItem = (theme) => ({
+const dsListItem = (theme) => ({
     "root": {
         "flex": "1"
     },
@@ -20,13 +20,13 @@ const anthraciteListItem = (theme) => ({
     }
 });
 
-const anthraciteListItemIcon = {
+const dsListItemIcon = {
     "root": {
         "marginRight": 0
     }
 };
 
-const anthraciteListItemSecondaryAction = {
+const dsListItemSecondaryAction = {
     "root":{
         "flex":"1",
         "position":"relative",
@@ -35,22 +35,22 @@ const anthraciteListItemSecondaryAction = {
     }
 };
 
-const anthraciteListItemText = {
+const dsListItemText = {
     "root": {
         "padding": "0 10px"
     }
 };
 
-const anthraciteListSubheader = {
+const dsListSubheader = {
     "root": {
         "textDecoration": "underline"
     }
 };
 
 export {
-    anthraciteListItemIcon,
-    anthraciteListItem,
-    anthraciteListItemSecondaryAction,
-    anthraciteListItemText,
-    anthraciteListSubheader
+    dsListItemIcon,
+    dsListItem,
+    dsListItemSecondaryAction,
+    dsListItemText,
+    dsListSubheader
 }

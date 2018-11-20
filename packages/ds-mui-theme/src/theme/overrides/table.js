@@ -1,10 +1,10 @@
-const anthraciteTable = (theme) => ({
+const dsTable = (theme) => ({
     "root":{
         "overflow":"hidden"
     }
 });
 
-const anthraciteTableCell = (theme) => ({
+const dsTableCell = (theme) => ({
     "root": {
         "borderBottom": "none",
         "background": theme.palette.background.paper,
@@ -26,7 +26,7 @@ const anthraciteTableCell = (theme) => ({
     }
 });
 
-const anthraciteTableRow = (theme) => ({
+const dsTableRow = (theme) => ({
     "root": {
         "height": "48px"
     },
@@ -36,7 +36,7 @@ const anthraciteTableRow = (theme) => ({
 });
 
 
-const anthraciteTablePagination = (theme) => ({
+const dsTablePagination = (theme) => ({
     "root": {
     },
     "select": {
@@ -44,4 +44,4 @@ const anthraciteTablePagination = (theme) => ({
     }
 });
 
-export {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination}
+export {dsTable, dsTableCell, dsTableRow, dsTablePagination}

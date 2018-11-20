@@ -6,7 +6,7 @@ import NanutoSansBold2 from "../../fonts/nunito-sans-v3-latin-700.woff2";
 import NanutoSansLight from "../../fonts/nunito-sans-v3-latin-300.woff";
 import NanutoSansLight2 from "../../fonts/nunito-sans-v3-latin-300.woff2";
 
-var anthraciteTypography = (theme) => ({ "@font-face": [{
+var dsTypography = (theme) => ({ "@font-face": [{
         fontFamily: 'Nunito Sans',
         fontWeight: '300',
         src: 'url(\'' + NanutoSansLight2 + '\') format(\'woff2\')',
@@ -23,4 +23,4 @@ var anthraciteTypography = (theme) => ({ "@font-face": [{
         fallbacks: [{ src: 'url(\'' + NanutoSansBold + '\') format(\'woff\')' }] }]
 });
 
-export {anthraciteTypography}
+export {dsTypography}

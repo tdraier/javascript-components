@@ -1,4 +1,4 @@
-const anthraciteChip = (theme) => ({
+const dsChip = (theme) => ({
     //change color to dark
     "root":{
         "backgroundColor": theme.palette.background.default
@@ -13,4 +13,4 @@ const anthraciteChip = (theme) => ({
     }
 });
 
-export {anthraciteChip}
+export {dsChip}

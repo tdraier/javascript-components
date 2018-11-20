@@ -1,0 +1,129 @@
+0 silly input [ 'build' ]
+1 silly flags { _: [ 'run' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   script: 'build',
+1 silly flags   args: [] }
+2 verbose rootPath /Users/wdelenclos/projects/javascript-components
+3 info version 2.11.0
+4 silly existsSync /Users/wdelenclos/projects/javascript-components/VERSION
+5 silly initialize attempt
+6 silly initialize success
+7 silly execute attempt
+8 silly runScriptInDir build [] apollo-dx
+9 silly getExecOpts { cwd:
+9 silly getExecOpts    '/Users/wdelenclos/projects/javascript-components/packages/apollo-dx' }
+10 silly runScriptInDir build [] ds-mui-theme
+11 silly getExecOpts { cwd:
+11 silly getExecOpts    '/Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme' }
+12 silly runScriptInDir build [] i18next
+13 silly getExecOpts { cwd:
+13 silly getExecOpts    '/Users/wdelenclos/projects/javascript-components/packages/i18next' }
+14 silly runScriptInDir build [] icons
+15 silly getExecOpts { cwd:
+15 silly getExecOpts    '/Users/wdelenclos/projects/javascript-components/packages/icons' }
+16 silly runScriptInDir build [] react-router
+17 silly getExecOpts { cwd:
+17 silly getExecOpts    '/Users/wdelenclos/projects/javascript-components/packages/react-router' }
+18 error build Errored while running script in '@jahia/ds-mui-theme'
+19 error execute callback with error
+20 error Error: Command failed: yarn run build
+20 error
+20 error src/index.js → build/lib/ds-mui-theme.umd.js...
+20 error [!] Error: 'dsLightPalette' is not exported by src/theme/light/palette.js
+20 error https://github.com/rollup/rollup/wiki/Troubleshooting#name-is-not-exported-by-module
+20 error src/theme/index.js (29:9)
+20 error 27:
+20 error 28: // Import of Light Jahia DS palette
+20 error 29: import { dsLightPalette } from "./light/palette";
+20 error              ^
+20 error 30:
+20 error 31: // Import of Dark Jahia DS palette
+20 error
+20 error error Command failed with exit code 1.
+20 error ERROR: ENOENT: no such file or directory, open 'build/lib/ds-mui-theme.umd.js'
+20 error     at Object.openSync (fs.js:436:3)
+20 error     at Object.readFileSync (fs.js:341:35)
+20 error     at read_file (/Users/wdelenclos/projects/javascript-components/node_modules/uglify-js/bin/uglifyjs:329:19)
+20 error     at /Users/wdelenclos/projects/javascript-components/node_modules/uglify-js/bin/uglifyjs:158:37
+20 error     at Array.forEach (<anonymous>)
+20 error     at Object.<anonymous> (/Users/wdelenclos/projects/javascript-components/node_modules/uglify-js/bin/uglifyjs:157:31)
+20 error     at Module._compile (internal/modules/cjs/loader.js:689:30)
+20 error     at Object.Module._extensions..js (internal/modules/cjs/loader.js:700:10)
+20 error     at Module.load (internal/modules/cjs/loader.js:599:32)
+20 error     at tryModuleLoad (internal/modules/cjs/loader.js:538:12)
+20 error error Command failed with exit code 1.
+20 error error Command failed with exit code 1.
+20 error error Command failed with exit code 1.
+20 error $ yarn run babel && yarn run prepare-build && yarn run dist
+20 error $ ../../node_modules/.bin/cross-env NODE_ENV=production ../../node_modules/.bin/babel ./src --ignore *.test.js --out-dir ./build
+20 error src/common-base/config.js -> build/common-base/config.js
+20 error src/common-base/overrides/table.js -> build/common-base/overrides/table.js
+20 error src/common-base/palette.js -> build/common-base/palette.js
+20 error src/common-base/typography.js -> build/common-base/typography.js
+20 error src/index.js -> build/index.js
+20 error src/legacy/index.js -> build/legacy/index.js
+20 error src/legacy/overrides/button.js -> build/legacy/overrides/button.js
+20 error src/legacy/overrides/checkbox.js -> build/legacy/overrides/checkbox.js
+20 error src/legacy/overrides/collapse.js -> build/legacy/overrides/collapse.js
+20 error src/legacy/overrides/dialog.js -> build/legacy/overrides/dialog.js
+20 error src/legacy/overrides/form.js -> build/legacy/overrides/form.js
+20 error src/legacy/overrides/input.js -> build/legacy/overrides/input.js
+20 error src/legacy/overrides/list.js -> build/legacy/overrides/list.js
+20 error src/legacy/overrides/menu.js -> build/legacy/overrides/menu.js
+20 error src/legacy/overrides/paper.js -> build/legacy/overrides/paper.js
+20 error src/legacy/overrides/select.js -> build/legacy/overrides/select.js
+20 error src/legacy/overrides/switch.js -> build/legacy/overrides/switch.js
+20 error src/legacy/overrides/table.js -> build/legacy/overrides/table.js
+20 error src/legacy/overrides/typography.js -> build/legacy/overrides/typography.js
+20 error src/plain/index.js -> build/plain/index.js
+20 error src/theme/dark/palette.js -> build/theme/dark/palette.js
+20 error src/theme/index.js -> build/theme/index.js
+20 error src/theme/light/palette.js -> build/theme/light/palette.js
+20 error src/theme/overrides/appbar.js -> build/theme/overrides/appbar.js
+20 error src/theme/overrides/button.js -> build/theme/overrides/button.js
+20 error src/theme/overrides/card.js -> build/theme/overrides/card.js
+20 error src/theme/overrides/checkbox.js -> build/theme/overrides/checkbox.js
+20 error src/theme/overrides/chip.js -> build/theme/overrides/chip.js
+20 error src/theme/overrides/dialog.js -> build/theme/overrides/dialog.js
+20 error src/theme/overrides/divider.js -> build/theme/overrides/divider.js
+20 error src/theme/overrides/form.js -> build/theme/overrides/form.js
+20 error src/theme/overrides/input.js -> build/theme/overrides/input.js
+20 error src/theme/overrides/list.js -> build/theme/overrides/list.js
+20 error src/theme/overrides/menu.js -> build/theme/overrides/menu.js
+20 error src/theme/overrides/palette.js -> build/theme/overrides/palette.js
+20 error src/theme/overrides/panel.js -> build/theme/overrides/panel.js
+20 error src/theme/overrides/paper.js -> build/theme/overrides/paper.js
+20 error src/theme/overrides/select.js -> build/theme/overrides/select.js
+20 error src/theme/overrides/shadows.js -> build/theme/overrides/shadows.js
+20 error src/theme/overrides/table.js -> build/theme/overrides/table.js
+20 error src/theme/overrides/tabs.js -> build/theme/overrides/tabs.js
+20 error src/theme/overrides/toolbar.js -> build/theme/overrides/toolbar.js
+20 error src/theme/overrides/typography.js -> build/theme/overrides/typography.js
+20 error src/theme/shape.js -> build/theme/shape.js
+20 error src/theme/typography.js -> build/theme/typography.js
+20 error $ ../../node_modules/.bin/cross-env NODE_ENV=scripts ../../node_modules/.bin/babel-node ../../scripts/prepare-build.js
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/package.json to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/package.json
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/index.d.ts
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/index.es.js
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/legacy/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/legacy/index.d.ts
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/legacy/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/legacy/index.es.js
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/plain/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/plain/index.d.ts
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/plain/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/plain/index.es.js
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/theme/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/theme/index.d.ts
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/theme/index.js to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/theme/index.es.js
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/fonts/nunito-sans-v3-latin-300.woff to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/fonts/nunito-sans-v3-latin-300.woff
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/fonts/nunito-sans-v3-latin-300.woff2 to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/fonts/nunito-sans-v3-latin-300.woff2
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/fonts/nunito-sans-v3-latin-700.woff to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/fonts/nunito-sans-v3-latin-700.woff
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/fonts/nunito-sans-v3-latin-700.woff2 to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/fonts/nunito-sans-v3-latin-700.woff2
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/fonts/nunito-sans-v3-latin-regular.woff to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/fonts/nunito-sans-v3-latin-regular.woff
+20 error Copied /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/src/fonts/nunito-sans-v3-latin-regular.woff2 to /Users/wdelenclos/projects/javascript-components/packages/ds-mui-theme/build/fonts/nunito-sans-v3-latin-regular.woff2
+20 error $ yarn run rollup; yarn run uglify
+20 error $ ../../node_modules/.bin/rollup -c
+20 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+20 error $ ../../node_modules/.bin/uglifyjs -c -m --source-map 'content=build/lib/ds-mui-theme.umd.js.map,includeSources=true' -o build/lib/ds-mui-theme.umd.min.js  -- build/lib/ds-mui-theme.umd.js
+20 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+20 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+20 error info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+20 error
+20 error     at Promise.all.then.arr (/Users/wdelenclos/projects/javascript-components/node_modules/execa/index.js:236:11)

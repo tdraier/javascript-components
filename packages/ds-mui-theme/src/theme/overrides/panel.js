@@ -1,4 +1,4 @@
-const anthracitePanel = (theme) => ({
+const dsPanel = (theme) => ({
     "root": {
         "transitionProperty": "all",
         "margin": "7px 40px",
@@ -29,13 +29,13 @@ const anthracitePanel = (theme) => ({
     }
 });
 
-const anthracitePanelDetails = {
+const dsPanelDetails = {
     "root":{
         "padding": "0 29px 40px"
     }
 };
 
-const anthracitePanelActions = (theme) => ({
+const dsPanelActions = (theme) => ({
     "root":{
         "padding": "10px",
         "background": theme.palette.text.secondary
@@ -46,4 +46,4 @@ const anthracitePanelActions = (theme) => ({
     }
 });
 
-export {anthracitePanel, anthracitePanelDetails, anthracitePanelActions}
+export {dsPanel, dsPanelDetails, dsPanelActions}

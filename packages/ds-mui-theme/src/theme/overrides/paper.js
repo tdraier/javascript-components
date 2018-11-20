@@ -1,4 +1,4 @@
-const anthracitePaper = (theme) => ({
+const dsPaper = (theme) => ({
     "elevation0": {
         "backgroundColor": theme.palette.background.paper,
         "borderRadius": '1px',
@@ -25,4 +25,4 @@ const anthracitePaper = (theme) => ({
     },
 });
 
-export {anthracitePaper}
+export {dsPaper}

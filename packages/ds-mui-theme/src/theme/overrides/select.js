@@ -1,7 +1,7 @@
-const anthraciteSelect = (theme) => ({
+const dsSelect = (theme) => ({
     "icon": {
         "color": theme.palette.text.secondary
     }
 });
 
-export {anthraciteSelect}
+export {dsSelect}

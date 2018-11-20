@@ -1,10 +1,10 @@
-const anthraciteDialogTitle = (theme) => ({
+const dsDialogTitle = (theme) => ({
     "root": {
         "paddingBottom": "6px"
     }
 });
 
-const anthraciteDialog = (theme) => ({
+const dsDialog = (theme) => ({
     "paper": {
         "backgroundColor": theme.palette.background.paper
     },
@@ -19,7 +19,7 @@ const anthraciteDialog = (theme) => ({
     }
 });
 
-const anthraciteDialogActions = (theme) => ({
+const dsDialogActions = (theme) => ({
     "root": {
         "padding":"10px"
     },
@@ -28,11 +28,11 @@ const anthraciteDialogActions = (theme) => ({
     }
 });
 
-const anthraciteDialogContent = (theme) => ({
+const dsDialogContent = (theme) => ({
     "root": {
         "padding":"0 24px 0 24px"
     }
 });
 
-export {anthraciteDialogTitle, anthraciteDialog, anthraciteDialogActions, anthraciteDialogContent}
+export {dsDialogTitle, dsDialog, dsDialogActions, dsDialogContent}
 
