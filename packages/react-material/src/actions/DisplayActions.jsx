@@ -6,6 +6,7 @@ import {DisplayAction} from "./DisplayAction";
 class DisplayActions extends React.Component {
     constructor(props) {
         super(props);
+        this.observerRefs = [];
     }
 
     render() {
@@ -17,7 +18,7 @@ class DisplayActions extends React.Component {
             return found && found.priority && found.priority != 0 ? found.priority : 'undefined'; 
         }]);
 
-        return _.map(actionsToDisplay, action => <DisplayAction key={action.key} context={context} actionKey={action.key} render={render}/>)
+        return _.map(actionsToDisplay, action => <DisplayAction key={action.key} context={context} actionKey={action.key} render={render} observerRef={(obs) => this.observerRefs.push(obs)}/>)
     }
 }
 

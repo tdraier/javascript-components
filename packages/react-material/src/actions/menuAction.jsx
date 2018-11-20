@@ -6,6 +6,7 @@ import {composeActions} from "./composeActions";
 import {DisplayActions} from "./DisplayActions";
 import {withStylesAction} from "./withStylesAction";
 import {ArrowRight} from "@material-ui/icons"
+import {combineLatest} from "rxjs";
 
 let styles = {
     modalRoot: {
@@ -13,9 +14,26 @@ let styles = {
     },
     paperRoot: {
         pointerEvents:'initial'
+    },
+    loading:{
+        opacity:0
     }
 };
 
+let setActionsRef = (ref, context) => {
+    if (ref) {
+        if (context.menuSubscription) {
+            context.menuSubscription.unsubscribe();
+        }
+        context.menuSubscription = combineLatest(ref.observerRefs).subscribe(null, null, () => {
+            context.onMenuLoaded();
+        })
+    }
+};
+
+let preload = (context) => {
+    context.currentMenuHandler = context.renderComponent(<DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} render={() => false} />);
+};
 
 let display = (context, anchor) => {
     // Disable backdrop for sub menus, click through to main menu backdrop
@@ -25,28 +43,44 @@ let display = (context, anchor) => {
         disableEnforceFocus:true,
         manager:new ModalManager({hideSiblingNodes:false})
     } : {};
-    context.currentMenuHandler = context.renderComponent(<Menu id={'menu-' + context.id} {...anchor} open={true}
-                                                onClose={()=> {
-                                                    context.currentMenuHandler.setProps({anchorEl:null, open:false})
-                                                }}
-                                                onExit={()=> {
-                                                    if (context.onExit) {
-                                                        context.onExit(context);
-                                                    }
-                                                    // Close sub menu if they exist
-                                                    if (context.currentOpenSubmenuContext) {
-                                                        context.currentOpenSubmenuContext.currentMenuHandler.setProps({'open':false});
-                                                    }
-                                                }}
-                                                onExited={()=> {
-                                                    // Free resources after exit
-                                                    context.currentMenuHandler.destroy();
-                                                }}
-                                                onMouseEnter={() => context.mouseInMenu=true}
-                                                onMouseLeave={() => context.mouseInMenu=false}
-                                                {...subMenuProps}
+    context.currentMenuHandler = context.renderComponent(<Menu className={context.classes.loading}
+                                                               id={'menu-' + context.id} {...anchor}
+                                                               open={true}
+                                                               action={(c)=>context.onMenuLoaded = () => {
+                                                                   c.updatePosition();
+                                                                   context.currentMenuHandler.setProps({className:""});
+                                                               }}
+                                                               BackdropProps={{
+                                                                   invisible:true,
+                                                                   onContextMenu:(e) => {
+                                                                       e.preventDefault();
+                                                                       context.currentMenuHandler.setProps({'open':false});
+                                                                   }
+                                                               }}
+                                                               onClose={()=> {
+                                                                   context.currentMenuHandler.setProps({anchorEl:null, open:false})
+                                                               }}
+                                                               onExit={()=> {
+                                                                   if (context.onExit) {
+                                                                       context.onExit(context);
+                                                                   }
+                                                                   // Close sub menu if they exist
+                                                                   if (context.currentOpenSubmenuContext) {
+                                                                       context.currentOpenSubmenuContext.currentMenuHandler.setProps({'open':false});
+                                                                   }
+                                                               }}
+                                                               onExited={()=> {
+                                                                   // Free resources after exit
+                                                                   context.currentMenuHandler.destroy();
+                                                                   if (context.menuSubscription) {
+                                                                       context.menuSubscription.unsubscribe();
+                                                                   }
+                                                               }}
+                                                               onMouseEnter={() => context.mouseInMenu=true}
+                                                               onMouseLeave={() => context.mouseInMenu=false}
+                                                               {...subMenuProps}
     >
-        <DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} render={
+        <DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} ref={(r) => setActionsRef(r,context)} render={
             ({context}) => <I18n>{t => <MenuItem data-sel-role={context.key}
                                                  onClick={(e) => {
                                                      // First close all menu by closing main menu
@@ -83,13 +117,17 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
         if (!context.icon) {
             context.icon = <ArrowRight/>;
         }
+        if (context.preload) {
+            preload(context);
+        }
     },
 
     onMouseEnter: (context, e) => {
         if (context.parent) {
             // Open submenu on mouseEnter
             context.parent.currentOpenSubmenuContext = context;
-            display(context, {anchorEl:e.target,  anchorOrigin:{vertical: 'top', horizontal: 'right'}});
+            let b = e.currentTarget.getBoundingClientRect();
+            display(context, {anchorPosition:{left:b.x + b.width, top:b.y}, anchorReference:'anchorPosition'});
         }
     },
 
@@ -108,7 +146,8 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
     onClick: (context, e) => {
         // If not a submenu, open it (can be overridden for submenu, as menu is opened on mouseEnter)
         if (!context.parent) {
-            display(context, {anchorEl:e.target,  anchorOrigin:{vertical: 'top', horizontal: 'right'}});
+            let b = e.currentTarget.getBoundingClientRect();
+            display(context, {anchorPosition:{left:b.x, top:b.y}, anchorReference:'anchorPosition'});
         }
     },
 

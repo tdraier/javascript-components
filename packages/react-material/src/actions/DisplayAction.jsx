@@ -72,10 +72,15 @@ class DisplayActionComponent extends React.Component {
             let observers = _.map(Object.values(observersObj), obs => concat(of(null), obs));
 
             // Combine all observers into one
-            let combined = combineLatest(...observers, (...vals) => _.zipObject(keys, vals));
-            this.subscription = combined.subscribe((v) => {
-                update(v);
-            });
+            let combinedObserver = combineLatest(...observers, (...vals) => _.zipObject(keys, vals));
+            this.subscription = combinedObserver.subscribe((v) => update(v));
+            if (this.props.observerRef) {
+                this.props.observerRef(combinedObserver);
+            }
+        } else {
+            if (this.props.observerRef) {
+                this.props.observerRef(of(null));
+            }
         }
 
         return <StateActionComponent context={enhancedContext} render={render} ref={this.innerRef} />
@@ -109,7 +114,7 @@ class DisplayAction extends React.Component {
     }
 
     render() {
-        let {context, actionKey, render} = this.props;
+        let {context, actionKey, render, observerRef} = this.props;
         let action = actionsRegistry.get(actionKey);
         let enhancedContext = {...action, ...context, originalContext: context, id:this.id, actionKey};
 
@@ -119,7 +124,7 @@ class DisplayAction extends React.Component {
             Component = _.reduce(enhancedContext.wrappers, this.wrap, DisplayActionComponent);
         }
 
-        return <Component context={enhancedContext} render={render} actionKey={actionKey}/>
+        return <Component context={enhancedContext} render={render} actionKey={actionKey} observerRef={observerRef}/>
     }
 }
 
