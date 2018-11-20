@@ -1,3 +1,3 @@
 export { plainTheme } from './plain/index'
-export { anthraciteDarkTheme, anthraciteLightTheme } from './anthracite/index'
+export { dsDarkTheme, dsLightTheme } from './theme/index'
 export { legacyTheme } from './legacy/index'
