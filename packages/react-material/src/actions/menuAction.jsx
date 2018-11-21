@@ -25,9 +25,7 @@ let setActionsRef = (ref, context) => {
         if (context.menuSubscription) {
             context.menuSubscription.unsubscribe();
         }
-        context.menuSubscription = combineLatest(ref.observerRefs).subscribe(null, null, () => {
-            context.onMenuLoaded();
-        })
+        context.menuSubscription = combineLatest(ref.observerRefs).subscribe(() => context.onMenuLoaded())
     }
 };
 

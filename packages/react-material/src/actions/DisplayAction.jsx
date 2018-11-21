@@ -14,7 +14,7 @@ class StateActionComponent extends React.Component {
     render() {
         let enhancedContext = {...this.props.context, ...this.state};
 
-        if (enhancedContext.enabled !== false) {
+        if (enhancedContext.enabled !== false && enhancedContext.enabled !== null) {
 
             let Render = this.props.render;
             if (enhancedContext.actions) {
@@ -69,7 +69,9 @@ class DisplayActionComponent extends React.Component {
             };
 
             // Concat with a sync observer to always get an initial value
-            let observers = _.map(Object.values(observersObj), obs => concat(of(null), obs));
+            let observers = Object.values(observersObj);
+
+            keys.forEach(k => _.set(enhancedContext, k ,null));
 
             // Combine all observers into one
             let combinedObserver = combineLatest(...observers, (...vals) => _.zipObject(keys, vals));
