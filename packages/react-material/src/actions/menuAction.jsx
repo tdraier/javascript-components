@@ -55,10 +55,14 @@ let display = (context, anchor) => {
                                                                        context.currentMenuHandler.setProps({'open':false});
                                                                    }
                                                                }}
+                                                               onEntered={() => {
+                                                                   context.menuOpen = true
+                                                               }}
                                                                onClose={()=> {
                                                                    context.currentMenuHandler.setProps({anchorEl:null, open:false})
                                                                }}
                                                                onExit={()=> {
+                                                                   context.menuOpen = false;
                                                                    if (context.onExit) {
                                                                        context.onExit(context);
                                                                    }
@@ -121,7 +125,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
     },
 
     onMouseEnter: (context, e) => {
-        if (context.parent) {
+        if (context.parent && context.parent.menuOpen) {
             // Open submenu on mouseEnter
             context.parent.currentOpenSubmenuContext = context;
             let b = e.currentTarget.getBoundingClientRect();
