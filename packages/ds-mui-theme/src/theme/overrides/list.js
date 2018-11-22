@@ -37,7 +37,8 @@ const dsListItemSecondaryAction = {
 
 const dsListItemText = {
     "root": {
-        "padding": "0 10px"
+        "padding": "0 10px",
+        boxShadow: 'none'
     }
 };
 

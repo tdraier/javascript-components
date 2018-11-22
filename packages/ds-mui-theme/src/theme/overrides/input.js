@@ -15,25 +15,28 @@ const dsInput = (theme) => ({
     },
     "disabled": {
         "& input": {
-            "backgroundColor": "#b2bcc2",
+            "backgroundColor": theme.palette.background.disabled,
             "boxShadow": "none"
         }
     },
     "input": {
-        "backgroundColor": theme.palette.background.paper,
+        "backgroundColor": theme.palette.background.default,
         "color": theme.palette.text.secondary,
-        "boxShadow": "0px 5px 1px -4px rgba(38, 38, 38, 0.4)",
+        "border": "solid 1px "+theme.palette.border.main,
+        borderRadius: 1,
+        "boxShadow": theme.shadows[1],
         "fontSize": "0.875rem",
         "padding": "6px 10px",
+        transitionDuration: .3,
         "&[readonly]": {
             "backgroundColor": "rgba(252, 253, 253, 0.5)",
             "boxShadow": "none"
         },
         "&[required]": {
-            "backgroundColor": theme.palette.background.paper,
+            "backgroundColor": theme.palette.background.default,
         },
         "&:focus": {
-            "boxShadow": "0px 4px 1px -4px rgba(38, 38, 38, 0.4)!important"
+            "boxShadow": theme.shadows[8],
         }
     },
     "underline": {

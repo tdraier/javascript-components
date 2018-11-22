@@ -7,6 +7,7 @@ import {typography} from "./typography";
 
 // Overrides
 import {dsAppBar} from "./overrides/appbar";
+import {dsAvatar} from "./overrides/avatar";
 import {dsButton, dsButtonBase, dsIconButton} from "./overrides/button";
 import {dsCard, dsCardContent, dsCardHeader} from "./overrides/card"
 import {dsDialog, dsDialogActions, dsDialogTitle, dsDialogContent} from "./overrides/dialog";
@@ -25,6 +26,7 @@ import {dsTypography} from "./overrides/typography";
 import {dsFormControlLabel, dsFormLabel} from "./overrides/form";
 import {dsPanel, dsPanelActions, dsPanelDetails} from "./overrides/panel";
 import {dsChip} from "./overrides/chip";
+import {dsSnackbar} from "./overrides/snackbar";
 
 // Import of Light Jahia DS palette
 import { dsLightPalette } from "./light/palette";
@@ -35,14 +37,16 @@ import { dsPalette } from './overrides/palette.js'
 // import of Jahia DS shadows
 import { dsShadows } from './shadows.js';
 
+
 const dsLightThemeConfig = {
-    palette: dsLightPalette,
+    palette: dsPalette,
     shape,
     typography
 };
 
 const dsLightThemeOverrides = (theme) => ({
     MuiAppBar: dsAppBar(theme),
+    MuiAvatar: dsAvatar(theme),
     MuiButton: dsButton(theme),
     MuiButtonBase: dsButtonBase(theme),
     MuiIconButton: dsIconButton(theme),
@@ -55,7 +59,6 @@ const dsLightThemeOverrides = (theme) => ({
     MuiDialog: dsDialog(theme),
     MuiDialogActions: dsDialogActions(theme),
     MuiDialogContent: dsDialogContent(theme),
-    MuiDivider: dsDivider(theme),
     MuiFormLabel: dsFormLabel(theme),
     MuiFormControlLabel: dsFormControlLabel(theme),
     MuiInput: dsInput(theme),
@@ -70,6 +73,7 @@ const dsLightThemeOverrides = (theme) => ({
     MuiExpansionPanelActions: dsPanelActions(theme),
     MuiPaper: dsPaper(theme),
     MuiSelect: dsSelect(theme),
+    MuiSnackbar: dsSnackbar(theme),
     MiuSvgIcon: dsIcons(theme),
     MuiTable: dsTable(theme),
     MuiTableRow: dsTableRow(theme),
@@ -93,6 +97,7 @@ const dsDarkThemeConfig = {
 
 const dsDarkThemeOverrides = (theme) => ({
     MuiAppBar: dsAppBar(theme),
+    MuiAvatar: dsAvatar(theme),
     MuiButton: dsButton(theme),
     MuiButtonBase: dsButtonBase(theme),
     MuiIconButton: dsIconButton(theme),
@@ -105,6 +110,7 @@ const dsDarkThemeOverrides = (theme) => ({
     MuiDialog: dsDialog(theme),
     MuiDialogActions: dsDialogActions(theme),
     MuiDialogContent: dsDialogContent(theme),
+    MuiDivider: dsDivider(theme),
     MuiFormLabel: dsFormLabel(theme),
     MuiFormControlLabel: dsFormControlLabel(theme),
     MuiInput: dsInput(theme),
@@ -120,6 +126,7 @@ const dsDarkThemeOverrides = (theme) => ({
     MuiExpansionPanelActions: dsPanelActions(theme),
     MuiPaper: dsPaper(theme),
     MuiSelect: dsSelect(theme),
+    MuiSnackbar: dsSnackbar(theme),
     MiuSvgIcon: dsIcons(theme),
     MuiTable: dsTable(theme),
     MuiTableRow: dsTableRow(theme),

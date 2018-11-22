@@ -1,15 +1,15 @@
 const dsAppBar = (theme) => ({
     "root": {
-        "paddingTop": '20px',
-        "paddingBottom": '20px',
-        "boxShadow": "none",
+        "paddingTop": '16px',
+        "paddingBottom": '16px',
+        "boxShadow": theme.shadows[8],
     },
     "colorDefault": {
-        "backgroundColor": theme.palette.background.default,
-        "color": theme.palette.text.primary
+        "backgroundColor": theme.palette.text.secondary,
+        "color": theme.palette.text.textContrast
     },
     "colorPrimary": {
-        "backgroundColor": theme.palette.background.default,
+        "backgroundColor": theme.palette.background.paper,
         "color": theme.palette.text.primary
     }
 });
