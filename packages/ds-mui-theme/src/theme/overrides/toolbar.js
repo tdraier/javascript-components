@@ -7,8 +7,8 @@ const dsToolBar = (theme) => ({
         "minHeight": "unset!important",
     },
     "gutters": {
-        "paddingLeft": "40px!important",
-        "paddingRight": "40px!important"
+        "paddingLeft": "32px!important",
+        "paddingRight": "32px!important"
     }
 });
 

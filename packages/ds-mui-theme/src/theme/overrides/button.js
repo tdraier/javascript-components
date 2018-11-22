@@ -1,11 +1,18 @@
 const dsButton = (theme) => ({
     "root": {
+        color: theme.palette.text.secondary,
         "padding": ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *2+"px",
         "textTransform": "none",
         "margin": ""+theme.spacing.unit * 2+"px 0"
     },
+    "disabled": {
+        backgroundColor: theme.palette.border.main+'!important',
+        color: theme.palette.text.disabled+'!important',
+        cursor: "not-allowed!important",
+        boxShadow: 'none!important',
+        pointerEvents: "inherit!important"
+    },
     "label" : {
-
     },
     "fab": {
         "boxShadow": "0px 5px 1px -4px rgba(38, 38, 38, 0.4)"
@@ -44,13 +51,13 @@ const dsButton = (theme) => ({
         }
     },
     "textPrimary": {
-        color: theme.palette.text.contrastText,
+        color: theme.palette.text.hint,
         "&:hover": {
             "backgroundColor": "transparent"
         }
     },
     "textSecondary": {
-        color: theme.palette.text.contrastText,
+        color: theme.palette.text.hint,
         "&:hover": {
             "backgroundColor": "transparent"
         }
@@ -63,18 +70,31 @@ const dsButton = (theme) => ({
     },
     "fullWidth": {
         "width": "100%"
-    },
+    }
 
 });
 
 const dsIconButton =  (theme) => ({
     "root":{
         "boxShadow": "none"
-    }
+    },
+    "disabled": {
+        backgroundColor:'transparent!important',
+        color: theme.palette.text.disabled+'!important',
+        cursor: "not-allowed!important",
+        boxShadow: 'none!important',
+        pointerEvents: "inherit!important"
+    },
 });
 
 const dsButtonBase = (theme) => ({
-    "root": {}
+    "root": {
+        "boxShadow": "none"
+    },
+    "disabled": {
+        backgroundColor: theme.palette.border.main+'!important',
+        color: theme.palette.text.disabled+'!important'
+    }
 });
 
 

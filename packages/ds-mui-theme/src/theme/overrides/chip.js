@@ -1,7 +1,9 @@
 const dsChip = (theme) => ({
     //change color to dark
     "root":{
-        "backgroundColor": theme.palette.background.default
+        "border": "solid 1px "+theme.palette.border.main,
+        "backgroundColor": theme.palette.background.paper,
+        color: theme.palette.text.primary
     },
     "clickable":{
         "&:hover":{
@@ -9,7 +11,8 @@ const dsChip = (theme) => ({
         }
     },
     "avatar":{
-        "backgroundColor": theme.palette.background.default
+        "backgroundColor": theme.palette.background.default,
+         color: theme.palette.text.primary
     }
 });
 
