@@ -45,38 +45,40 @@ let display = (context, anchor) => {
                                                                id={'menu-' + context.id} {...anchor}
                                                                open={true}
                                                                action={(c)=>context.onMenuLoaded = () => {
-                                                                   c.updatePosition();
-                                                                   context.currentMenuHandler.setProps({className:""});
+                                                                   if (context.menuOpen) {
+                                                                       c.updatePosition();
+                                                                       context.currentMenuHandler.setProps({className: ""});
+                                                                   }
                                                                }}
                                                                BackdropProps={{
                                                                    invisible:true,
                                                                    onContextMenu:(e) => {
                                                                        e.preventDefault();
-                                                                       context.currentMenuHandler.setProps({'open':false});
+                                                                       context.currentMenuHandler.setProps({open:false});
                                                                    }
                                                                }}
-                                                               onEntered={() => {
+                                                               onEntering={() => {
                                                                    context.menuOpen = true
                                                                }}
                                                                onClose={()=> {
-                                                                   context.currentMenuHandler.setProps({anchorEl:null, open:false})
+                                                                   context.currentMenuHandler.setProps({open:false})
                                                                }}
                                                                onExit={()=> {
                                                                    context.menuOpen = false;
                                                                    if (context.onExit) {
                                                                        context.onExit(context);
                                                                    }
+                                                                   if (context.menuSubscription) {
+                                                                       context.menuSubscription.unsubscribe();
+                                                                   }
                                                                    // Close sub menu if they exist
                                                                    if (context.currentOpenSubmenuContext) {
-                                                                       context.currentOpenSubmenuContext.currentMenuHandler.setProps({'open':false});
+                                                                       context.currentOpenSubmenuContext.currentMenuHandler.setProps({open:false});
                                                                    }
                                                                }}
                                                                onExited={()=> {
                                                                    // Free resources after exit
                                                                    context.currentMenuHandler.destroy();
-                                                                   if (context.menuSubscription) {
-                                                                       context.menuSubscription.unsubscribe();
-                                                                   }
                                                                }}
                                                                onMouseEnter={() => context.mouseInMenu=true}
                                                                onMouseLeave={() => context.mouseInMenu=false}
