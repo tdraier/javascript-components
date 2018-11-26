@@ -41,6 +41,7 @@ let display = (context, anchor) => {
         disableEnforceFocus:true,
         manager:new ModalManager({hideSiblingNodes:false})
     } : {};
+    context.menuOpen = true;
     context.currentMenuHandler = context.renderComponent(<Menu className={context.classes.loading}
                                                                id={'menu-' + context.id} {...anchor}
                                                                open={true}
@@ -56,9 +57,6 @@ let display = (context, anchor) => {
                                                                        e.preventDefault();
                                                                        context.currentMenuHandler.setProps({open:false});
                                                                    }
-                                                               }}
-                                                               onEntering={() => {
-                                                                   context.menuOpen = true
                                                                }}
                                                                onClose={()=> {
                                                                    context.currentMenuHandler.setProps({open:false})
