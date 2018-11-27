@@ -22,12 +22,15 @@ let styles = {
 
 let setActionsRef = (ref, context) => {
     if (ref) {
-        if (context.menuSubscription) {
-            context.menuSubscription.unsubscribe();
+        if (menuStatus[context.id].menuSubscription) {
+            menuStatus[context.id].menuSubscription.unsubscribe();
+            delete menuStatus[context.id].menuSubscription;
         }
-        context.menuSubscription = combineLatest(ref.observerRefs).subscribe(() => context.onMenuLoaded())
+        menuStatus[context.id].menuSubscription = combineLatest(ref.observerRefs).subscribe(() => menuStatus[context.id].onMenuLoaded())
     }
 };
+
+let menuStatus = {};
 
 let preload = (context) => {
     context.currentMenuHandler = context.renderComponent(<DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} render={() => false} />);
@@ -41,16 +44,26 @@ let display = (context, anchor) => {
         disableEnforceFocus:true,
         manager:new ModalManager({hideSiblingNodes:false})
     } : {};
-    context.menuOpen = true;
+
+    if (!menuStatus[context.id]) {
+        menuStatus[context.id] = {
+            open:false,
+            inMenu:false
+        }
+    }
+
+    menuStatus[context.id].open = true;
     context.currentMenuHandler = context.renderComponent(<Menu className={context.classes.loading}
                                                                id={'menu-' + context.id} {...anchor}
                                                                open={true}
-                                                               action={(c)=>context.onMenuLoaded = () => {
-                                                                   if (context.menuOpen) {
-                                                                       c.updatePosition();
-                                                                       context.currentMenuHandler.setProps({className: ""});
-                                                                   }
-                                                               }}
+                                                               action={(c)=> {
+                                                                   menuStatus[context.id].onMenuLoaded = () => {
+                                                                       if (menuStatus[context.id].open) {
+                                                                           c.updatePosition();
+                                                                           context.currentMenuHandler.setProps({className: ""});
+                                                                       }
+                                                                   }}
+                                                               }
                                                                BackdropProps={{
                                                                    invisible:true,
                                                                    onContextMenu:(e) => {
@@ -62,12 +75,13 @@ let display = (context, anchor) => {
                                                                    context.currentMenuHandler.setProps({open:false})
                                                                }}
                                                                onExit={()=> {
-                                                                   context.menuOpen = false;
+                                                                   menuStatus[context.id].open = false;
                                                                    if (context.onExit) {
                                                                        context.onExit(context);
                                                                    }
-                                                                   if (context.menuSubscription) {
-                                                                       context.menuSubscription.unsubscribe();
+                                                                   if (menuStatus[context.id].menuSubscription) {
+                                                                       menuStatus[context.id].menuSubscription.unsubscribe();
+                                                                       delete menuStatus[context.id].menuSubscription;
                                                                    }
                                                                    // Close sub menu if they exist
                                                                    if (context.currentOpenSubmenuContext) {
@@ -77,9 +91,14 @@ let display = (context, anchor) => {
                                                                onExited={()=> {
                                                                    // Free resources after exit
                                                                    context.currentMenuHandler.destroy();
+                                                                   delete menuStatus[context.id];
                                                                }}
-                                                               onMouseEnter={() => context.mouseInMenu=true}
-                                                               onMouseLeave={() => context.mouseInMenu=false}
+                                                               onMouseEnter={() => {
+                                                                   menuStatus[context.id].inMenu=true;
+                                                               }}
+                                                               onMouseLeave={() => {
+                                                                   menuStatus[context.id].inMenu=false;
+                                                               }}
                                                                {...subMenuProps}
     >
         <DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} ref={(r) => setActionsRef(r,context)} render={
@@ -104,7 +123,9 @@ let display = (context, anchor) => {
                                                          context.onMouseEnter(context, e);
                                                      }
                                                  }}
-                                                 onMouseLeave={context.onMouseLeave && ((e) => { context.onMouseLeave(context, e); })}
+                                                 onMouseLeave={context.onMouseLeave && ((e) => {
+                                                     context.onMouseLeave(context, e);
+                                                 })}
             >
                 <span dangerouslySetInnerHTML={{__html:t(context.buttonLabel, context.buttonLabelParams)}}/>
                 {context.icon}
@@ -125,7 +146,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
     },
 
     onMouseEnter: (context, e) => {
-        if (context.parent && context.parent.menuOpen) {
+        if (context.parent && menuStatus[context.parent.id].open) {
             // Open submenu on mouseEnter
             context.parent.currentOpenSubmenuContext = context;
             let b = e.currentTarget.getBoundingClientRect();
@@ -137,7 +158,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
         if (context.parent && context.parent.currentOpenSubmenuContext) {
             // Close submenu on mouseLeave - first check if the pointer has not left for the menu itself
             setTimeout(() => {
-                if (!context.mouseInMenu && context.parent.currentOpenSubmenuContext && context.parent.currentOpenSubmenuContext.key === context.key) {
+                if ((!menuStatus[context.id] || !menuStatus[context.id].inMenu) && context.parent.currentOpenSubmenuContext && context.parent.currentOpenSubmenuContext.key === context.key) {
                     context.parent.currentOpenSubmenuContext.currentMenuHandler.setProps({'open': false})
                     context.parent.currentOpenSubmenuContext = null;
                 }
