@@ -1,4 +1,4 @@
-export {DisplayActions, DisplayAction, ContextualMenu, composeActions, actionsRegistry, buttonRenderer, iconButtonRenderer, ComponentRendererConsumer, ComponentRendererProvider, componentRendererAction, menuAction, genericDialogMutationAction, withStylesAction} from './actions'
+export {DisplayActions, DisplayAction, ContextualMenu, composeActions, actionsRegistry, buttonRenderer, iconButtonRenderer, ComponentRendererConsumer, ComponentRendererProvider, componentRendererAction, menuAction, genericDialogMutationAction, withStylesAction, toIconComponent} from './actions'
 export {LanguageSwitcher} from './i18n/LanguageSwitcher'
 export {FilterSelect} from './input/FilterSelect'
 export {SettingsLayout} from './layout/SettingsLayout'

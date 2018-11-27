@@ -1,6 +1,7 @@
 import {IconButton, Tooltip} from "@material-ui/core";
 import {I18n} from 'react-i18next';
 import React from "react";
+import {toIconComponent} from "./toIconComponent";
 
 let iconButtonRenderer = (buttonProps, propagateEvent) => ({context}) => {
     let button = <IconButton data-sel-role={context.key} onClick={(e) => {
@@ -8,7 +9,7 @@ let iconButtonRenderer = (buttonProps, propagateEvent) => ({context}) => {
             e.stopPropagation();
         }
         context.onClick(context, e)} } {...buttonProps}>
-        {context.buttonIcon}
+        {toIconComponent(context.buttonIcon)}
     </IconButton>;
 
     if (context.buttonLabel) {
