@@ -19,14 +19,15 @@ const dsInput = (theme) => ({
             "boxShadow": "none"
         }
     },
-    "input": {
-        "backgroundColor": theme.palette.background.default,
-        "color": theme.palette.text.secondary,
-        "border": "solid 1px "+theme.palette.border.main,
+    input: {
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.secondary,
+        border : "solid 1px "+theme.palette.border.main,
+        borderBottom : "solid 2px "+theme.palette.primary.main,
         borderRadius: 1,
-        "boxShadow": theme.shadows[1],
-        "fontSize": "0.875rem",
-        "padding": "6px 10px",
+        boxShadow : theme.shadows[1],
+        fontSize : "0.875rem",
+        padding : "6px 10px",
         transitionDuration: .3,
         "&[readonly]": {
             "backgroundColor": "rgba(252, 253, 253, 0.5)",
