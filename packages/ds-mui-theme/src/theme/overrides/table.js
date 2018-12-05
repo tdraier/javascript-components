@@ -7,7 +7,6 @@ const dsTable = (theme) => ({
 const dsTableCell = (theme) => ({
     "root": {
         "borderBottom": "none",
-        "background": theme.palette.background.paper,
         "& svg": {
             "verticalAlign":"middle"
         },
@@ -20,8 +19,6 @@ const dsTableCell = (theme) => ({
         }
     },
     "head": {
-        "backgroundColor": theme.palette.background.paper,
-        "boxShadow": "2px 1px 1px 0px rgba(20, 20, 21, 0.49)",
         "position": "relative",
     }
 });
