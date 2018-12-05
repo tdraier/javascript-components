@@ -1,6 +1,7 @@
 const dsIcons = (theme) => ({
     root:{
-        color: theme.palette.text.secondary
+        color: theme.palette.text.secondary,
+        fontSize: 18
     },
     colorAction:{
         color: theme.palette.text.hint
