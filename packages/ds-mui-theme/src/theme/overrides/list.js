@@ -4,8 +4,8 @@ const dsListItem = (theme) => ({
     },
     "button":{
         "&[role=button]": {
-            "boxShadow":"0px 5px 1px -4px rgba(38, 38, 38, 0.4)",
             "&:hover":{
+                backgroundColor: theme.palette.background.default
             }
         }
     },
