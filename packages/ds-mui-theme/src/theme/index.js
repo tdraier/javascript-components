@@ -13,7 +13,7 @@ import {dsCard, dsCardContent, dsCardHeader} from "./overrides/card"
 import {dsDialog, dsDialogActions, dsDialogTitle, dsDialogContent} from "./overrides/dialog";
 import {dsDivider} from "./overrides/divider";
 import {dsCheckbox} from "./overrides/checkbox";
-import {dsInput} from "./overrides/input";
+import {dsInput, dsInputBase} from "./overrides/input";
 import {dsMenu, dsMenuItem} from "./overrides/menu";
 import {dsPaper} from "./overrides/paper";
 import {dsSelect} from "./overrides/select";
@@ -114,6 +114,7 @@ const dsDarkThemeOverrides = (theme) => ({
     MuiFormLabel: dsFormLabel(theme),
     MuiFormControlLabel: dsFormControlLabel(theme),
     MuiInput: dsInput(theme),
+    MuiInputBase: dsInputBase(theme),
     MuiListItem: dsListItem(theme),
     MuiListItemIcon: dsListItemIcon,
     MuiListItemSecondaryAction: dsListItemSecondaryAction,

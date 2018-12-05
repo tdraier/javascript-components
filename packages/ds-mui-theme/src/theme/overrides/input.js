@@ -22,9 +22,7 @@ const dsInput = (theme) => ({
     "input": {
         "backgroundColor": theme.palette.background.default,
         "color": theme.palette.text.secondary,
-        "border": "solid 1px "+theme.palette.border.main,
         borderRadius: 1,
-        "boxShadow": theme.shadows[1],
         "fontSize": "0.875rem",
         "padding": "6px 10px",
         transitionDuration: .3,
@@ -45,8 +43,13 @@ const dsInput = (theme) => ({
         }
     }
 });
-
-export {dsInput}
+const dsInputBase= (theme) => ({
+    root: {
+        border: '1px solid'+theme.palette.border.main,
+        boxShadow: theme.shadows[1]
+    }
+});
+export {dsInput,dsInputBase}
 
 
 
