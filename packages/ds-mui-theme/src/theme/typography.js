@@ -58,7 +58,7 @@ const typography = {
     },
     "subtitle2": {
         "fontFamily": "Nunito Sans",
-        "fontSize": "16px",
+        "fontSize": "14px",
         "fontWeight": 600,
         "letterSpacing": "0.10px",
         "lineHeight" : "1.57"
