@@ -30,31 +30,52 @@ var dsTypography = (theme) => (
         "root" : {
             color : theme.palette.text.disabled,
         },
-        "h5":{
-            color : theme.palette.text.disabled
+        "h1": {
+            color: theme.palette.text.disabled
         },
-        "h6":{
-            color : theme.palette.text.disabled
+        "h2": {
+            color: theme.palette.text.disabled
         },
-        "body1":{
-            color : theme.palette.text.disabled
+        "h3": {
+            color: theme.palette.text.disabled
         },
-        "body2":{
-            color : theme.palette.text.disabled
+        "h4": {
+            color: theme.palette.text.disabled
         },
-        "paragraph":{
-          color: theme.palette.text.secondary
+        "h5": {
+            color: theme.palette.text.disabled
         },
-        "colorPrimary" : {
-            color : theme.palette.primary.main
+        "h6": {
+            color: theme.palette.text.disabled
         },
-        "colorSecondary":{
+        "body1": {
+            color: theme.palette.text.disabled
+        },
+        "subtitle1":{
+            color: theme.palette.text.disabled
+        },
+        "subtitle2":{
+            color: theme.palette.text.disabled
+        },
+        "overline":{
+            color: theme.palette.text.disabled
+        },
+        "body2": {
+            color: theme.palette.text.disabled
+        },
+        "paragraph": {
+            color: theme.palette.text.secondary
+        },
+        "colorPrimary": {
+            color: theme.palette.primary.main
+        },
+        "colorSecondary": {
             color: theme.palette.secondary.main
         },
         "colorTextPrimary": {
             color: theme.palette.text.primary
         },
-        "colorTextSecondary" : {
+        "colorTextSecondary": {
             color: theme.palette.text.secondary
         },
         "colorError": {
