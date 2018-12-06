@@ -9,6 +9,9 @@ const dsToolBar = (theme) => ({
     "gutters": {
         "paddingLeft": "32px!important",
         "paddingRight": "32px!important"
+    },
+    "dense": {
+        padding: "0 16px!important"
     }
 });
 
