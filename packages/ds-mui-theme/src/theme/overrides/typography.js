@@ -26,20 +26,42 @@ var dsTypography = (theme) => (
             src: 'url(\'' + NunitoSansBold2 + '\') format(\'woff2\')',
             fallbacks: [{src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')'}]
         }],
+        // Every texts are disabled if no color specified
         "root" : {
-            "color" : theme.palette.text.secondary,
+            color : theme.palette.text.disabled,
         },
         "h5":{
-            "color" : theme.palette.text.secondary
+            color : theme.palette.text.disabled
         },
         "h6":{
-            "color" : theme.palette.text.secondary
+            color : theme.palette.text.disabled
         },
         "body1":{
-            "color" : theme.palette.text.secondary
+            color : theme.palette.text.disabled
         },
         "body2":{
-            "color" : theme.palette.text.secondary
+            color : theme.palette.text.disabled
+        },
+        "paragraph":{
+          color: theme.palette.text.secondary
+        },
+        "colorPrimary" : {
+            color : theme.palette.primary.main
+        },
+        "colorSecondary":{
+            color: theme.palette.secondary.main
+        },
+        "colorTextPrimary": {
+            color: theme.palette.text.primary
+        },
+        "colorTextSecondary" : {
+            color: theme.palette.text.secondary
+        },
+        "colorError": {
+            color: theme.palette.error.main
+        },
+        "colorInherit": {
+            color: theme.palette.text.secondary
         }
 });
 
