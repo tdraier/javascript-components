@@ -45,19 +45,19 @@ const commonPalette = {
             main: colors.grey[900]
         },
         mandatoryLanguageUnpublishable: {
-            main: ''
+            main: '#F6D62F'
         },
         liveModified: {
-            main: ''
+            main: '#F6D62F'
         },
         liveOnly: {
-            main: ''
+            main: '#F6D62F'
         },
         conflict: {
-            main: ''
+            main: '#F6D62F'
         },
         mandatoryLanguageValid: {
-            main: ''
+            main: '#F6D62F'
         },
         deleted: {
             main: '#FB9926'
