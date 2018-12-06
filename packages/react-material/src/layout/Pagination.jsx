@@ -8,26 +8,8 @@ import PropTypes from 'prop-types';
 const actionsStyles = theme => ({
     root: {
         flexShrink: 0,
-        color: theme.palette.text.dark,
+        color: theme.palette.text.primary,
         marginLeft: theme.spacing.unit * 2.5,
-    },
-    paginationButton: {
-        color: theme.palette.text.dark,
-    },
-    disabledButton: {
-        color: theme.palette.text.primary+'!important',
-    }
-});
-
-const styles = theme => ({
-    tablePaginationContainer: {
-        color: theme.palette.text.dark,
-    },
-    tablePagination: {
-        color: theme.palette.text.dark,
-    },
-    select: {
-        color: theme.palette.text.dark,
     },
 });
 
@@ -56,39 +38,31 @@ class TablePaginationActions extends React.Component {
         return (
             <div className={classes.root}>
                 <IconButton
-                    className={classes.paginationButton}
                     onClick={this.handleFirstPageButtonClick.bind(this)}
                     disabled={page === 0}
-                    classes={{disabled: classes.disabledButton}}
                     aria-label="First Page"
                     data-jrm-role="table-pagination-button-first-page"
                 >
                     <FirstPage/>
                 </IconButton>
                 <IconButton
-                    className={classes.paginationButton}
                     onClick={this.handleBackButtonClick.bind(this)}
                     disabled={page === 0}
-                    classes={{disabled: classes.disabledButton}}
                     aria-label="Previous Page"
                 >
                     <KeyboardArrowLeft/>
                 </IconButton>
                 <IconButton
-                    className={classes.paginationButton}
                     onClick={this.handleNextButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Next Page"
-                    classes={{disabled: classes.disabledButton}}
                     data-jrm-role="table-pagination-button-next-page"
                 >
                     <KeyboardArrowRight/>
                 </IconButton>
                 <IconButton
-                    className={classes.paginationButton}
                     onClick={this.handleLastPageButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-                    classes={{disabled: classes.disabledButton}}
                     aria-label="Last Page"
                 >
                     <LastPage/>
@@ -114,10 +88,9 @@ class Pagination extends React.Component {
         let {classes, totalCount, pageSize, currentPage, onChangeRowsPerPage, t} = this.props;
         return <Table>
             <TableFooter>
-                <TableRow className={classes.tablePaginationContainer}>
+                <TableRow>
                     <TablePagination
                         classes={{select: classes.select}}
-                        className={classes.tablePagination}
                         count={totalCount}
                         rowsPerPage={pageSize}
                         page={currentPage}
