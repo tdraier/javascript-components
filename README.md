@@ -41,6 +41,10 @@ If you need to use `yarn link` to use your local build in another package, be su
 
 Provides an apollo-client configured to connect on DX graphql API
 
+### ds-mui-theme
+
+Provides the Jahia Design System Theme for Matarial UI
+
 ### react-apollo
 
 Provides helpers methods to manipulate DX nodes, based on graphQL api
