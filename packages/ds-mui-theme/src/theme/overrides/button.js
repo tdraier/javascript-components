@@ -76,7 +76,8 @@ const dsButton = (theme) => ({
 
 const dsIconButton =  (theme) => ({
     "root":{
-        "boxShadow": "none"
+        "boxShadow": "none",
+         color: theme.palette.text.secondary
     },
     "disabled": {
         backgroundColor:'transparent!important',
