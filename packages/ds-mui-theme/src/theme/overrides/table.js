@@ -1,7 +1,5 @@
 const dsTable = (theme) => ({
-    "root":{
-        "overflow":"hidden"
-    }
+
 });
 
 const dsTableCell = (theme) => ({
@@ -19,7 +17,10 @@ const dsTableCell = (theme) => ({
         }
     },
     "head": {
-        "position": "relative",
+        position: "sticky",
+        top: 0,
+        backgroundColor: theme.palette.background.paper,
+        zIndex: 10
     }
 });
 
@@ -28,7 +29,7 @@ const dsTableRow = (theme) => ({
         "height": "48px"
     },
     "head": {
-        "height": "56px"
+        "height": "56px",
     }
 });
 
