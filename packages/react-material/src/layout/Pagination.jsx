@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 const actionsStyles = theme => ({
     root: {
         flexShrink: 0,
-        color: theme.palette.text.primary,
         marginLeft: theme.spacing.unit * 2.5,
     },
 });

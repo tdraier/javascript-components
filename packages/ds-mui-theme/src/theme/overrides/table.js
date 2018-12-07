@@ -20,7 +20,7 @@ const dsTableCell = (theme) => ({
         position: "sticky",
         top: 0,
         backgroundColor: theme.palette.background.paper,
-        zIndex: 10
+        zIndex: 2
     }
 });
 

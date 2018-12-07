@@ -44,10 +44,7 @@ const dsInput = (theme) => ({
     }
 });
 const dsInputBase= (theme) => ({
-    root: {
-        border: '1px solid'+theme.palette.border.main,
-        boxShadow: theme.shadows[1]
-    }
+
 });
 export {dsInput,dsInputBase}
 
