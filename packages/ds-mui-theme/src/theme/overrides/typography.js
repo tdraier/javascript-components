@@ -80,9 +80,6 @@ var dsTypography = (theme) => (
         },
         "colorError": {
             color: theme.palette.error.main
-        },
-        "colorInherit": {
-            color: theme.palette.text.secondary
         }
 });
 
