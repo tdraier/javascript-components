@@ -6,9 +6,6 @@ const dsIcons = (theme) => ({
     colorAction:{
         color: theme.palette.text.hint
     },
-    fontSizeInherit: {
-        fontSize: 18
-    },
     fontSizeLarge:{
         fontSize: 24
     },
@@ -18,6 +15,3 @@ const dsIcons = (theme) => ({
 });
 
 export {dsIcons}
-
-
-
