@@ -1,6 +1,6 @@
 const dsSnackbar = (theme) => ({
-    "root": {
-        "backgroundColor": theme.palette.text.primary
+    root: {
+        backgroundColor: theme.palette.text.primary
     }
 });
 

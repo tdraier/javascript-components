@@ -1,5 +1,4 @@
 import {createMuiTheme} from '@material-ui/core';
-import {commonBaseThemeConfig} from "../common-base/config";
 import * as _ from 'lodash';
 
 import {shape} from "./shape";
@@ -28,74 +27,20 @@ import {dsPanel, dsPanelActions, dsPanelDetails} from "./overrides/panel";
 import {dsChip} from "./overrides/chip";
 import {dsSnackbar} from "./overrides/snackbar";
 
-// Import of Light Jahia DS palette
-import { dsLightPalette } from "./light/palette";
-
 // Import of Dark Jahia DS palette
-import { dsPalette } from './overrides/palette.js'
+import { dsGenericPalette } from './palette.js'
 
 // import of Jahia DS shadows
 import { dsShadows } from './shadows.js';
 
-
-const dsLightThemeConfig = {
-    palette: dsPalette,
-    shape,
-    typography
-};
-
-const dsLightThemeOverrides = (theme) => ({
-    MuiAppBar: dsAppBar(theme),
-    MuiAvatar: dsAvatar(theme),
-    MuiButton: dsButton(theme),
-    MuiButtonBase: dsButtonBase(theme),
-    MuiIconButton: dsIconButton(theme),
-    MuiCard: dsCard(theme),
-    MuiCardContent: dsCardContent(theme),
-    MuiCardHeader: dsCardHeader(theme),
-    MuiCheckbox: dsCheckbox(theme),
-    MuiChip: dsChip(theme),
-    MuiDialogTitle: dsDialogTitle(theme),
-    MuiDialog: dsDialog(theme),
-    MuiDialogActions: dsDialogActions(theme),
-    MuiDialogContent: dsDialogContent(theme),
-    MuiFormLabel: dsFormLabel(theme),
-    MuiFormControlLabel: dsFormControlLabel(theme),
-    MuiInput: dsInput(theme),
-    MuiListItem: dsListItem(theme),
-    MuiListItemSecondaryAction: dsListItemSecondaryAction,
-    MuiListSubheader: dsListSubheader,
-    MuiListItemText: dsListItemText,
-    MuiMenu: dsMenu(theme),
-    MuiMenuItem: dsMenuItem(theme),
-    MuiExpansionPanel: dsPanel(theme),
-    MuiExpansionPanelDetails: dsPanelDetails,
-    MuiExpansionPanelActions: dsPanelActions(theme),
-    MuiPaper: dsPaper(theme),
-    MuiSelect: dsSelect(theme),
-    MuiSnackbar: dsSnackbar(theme),
-    MiuSvgIcon: dsIcons(theme),
-    MuiTable: dsTable(theme),
-    MuiTableRow: dsTableRow(theme),
-    MuiTablePagination: dsTablePagination(theme),
-    MuiTableCell: dsTableCell(theme),
-    MuiTab: dsTab(theme),
-    MuiTabs: dsTabs(theme),
-    MuiToolbar: dsToolBar(theme),
-    MuiTypography: dsTypography(theme)
-});
-
-const dsLightTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, dsLightThemeConfig));
-_.merge(dsLightTheme, {overrides: dsLightThemeOverrides(dsLightTheme)});
-
-const dsDarkThemeConfig = {
-    palette: dsPalette,
+const dsGenericThemeConfig = {
+    palette: dsGenericPalette,
     shape,
     typography,
     shadows : dsShadows
 };
 
-const dsDarkThemeOverrides = (theme) => ({
+const dsThemeOverrides = (theme) => ({
     MuiAppBar: dsAppBar(theme),
     MuiAvatar: dsAvatar(theme),
     MuiButton: dsButton(theme),
@@ -138,7 +83,7 @@ const dsDarkThemeOverrides = (theme) => ({
     MuiTypography: dsTypography(theme)
 });
 
-const dsDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, dsDarkThemeConfig));
-_.merge(dsDarkTheme, {overrides: dsDarkThemeOverrides(dsDarkTheme)});
+const dsGenericTheme = createMuiTheme(dsGenericThemeConfig);
+_.merge(dsGenericTheme, {overrides: dsThemeOverrides(dsGenericTheme)});
 
-export {dsLightTheme, dsDarkTheme}
+export {dsGenericTheme}

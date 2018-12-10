@@ -27,58 +27,58 @@ var dsTypography = (theme) => (
             fallbacks: [{src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')'}]
         }],
         // Every texts are disabled if no color specified
-        "root" : {
+        root : {
             color : theme.palette.text.disabled,
         },
-        "h1": {
+        h1: {
             color: theme.palette.text.disabled
         },
-        "h2": {
+        h2: {
             color: theme.palette.text.disabled
         },
-        "h3": {
+        h3: {
             color: theme.palette.text.disabled
         },
-        "h4": {
+        h4: {
             color: theme.palette.text.disabled
         },
-        "h5": {
+        h5: {
             color: theme.palette.text.disabled
         },
-        "h6": {
+        h6: {
             color: theme.palette.text.disabled
         },
-        "body1": {
+        body1: {
             color: theme.palette.text.disabled
         },
-        "subtitle1":{
+        subtitle1:{
             color: theme.palette.text.disabled
         },
-        "subtitle2":{
+        subtitle2:{
             color: theme.palette.text.disabled
         },
-        "overline":{
+        overline:{
             color: theme.palette.text.disabled
         },
-        "body2": {
+        body2: {
             color: theme.palette.text.disabled
         },
-        "paragraph": {
+        paragraph: {
             color: theme.palette.text.secondary
         },
-        "colorPrimary": {
+        colorPrimary: {
             color: theme.palette.primary.main
         },
-        "colorSecondary": {
+        colorSecondary: {
             color: theme.palette.secondary.main
         },
-        "colorTextPrimary": {
+        colorTextPrimary: {
             color: theme.palette.text.primary
         },
-        "colorTextSecondary": {
+        colorTextSecondary: {
             color: theme.palette.text.secondary
         },
-        "colorError": {
+        colorError: {
             color: theme.palette.error.main
         }
 });

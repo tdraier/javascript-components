@@ -1,6 +1,6 @@
 const dsSelect = (theme) => ({
-    "icon": {
-        "color": theme.palette.text.secondary
+    icon: {
+        color: theme.palette.text.secondary
     }
 });
 

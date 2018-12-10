@@ -1,85 +1,85 @@
 const dsButton = (theme) => ({
-    "root": {
+    root: {
         color: theme.palette.text.secondary,
-        "padding": ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *2+"px",
-        "textTransform": "none",
-        "margin": ""+theme.spacing.unit * 2+"px 0"
+        padding: ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *2+"px",
+        textTransform: "none",
+        margin: ""+theme.spacing.unit * 2+"px 0"
     },
-    "disabled": {
+    disabled: {
         backgroundColor: theme.palette.border.main+'!important',
         color: theme.palette.text.disabled+'!important',
         cursor: "not-allowed!important",
         boxShadow: 'none!important',
         pointerEvents: "inherit!important"
     },
-    "label" : {
+    label : {
     },
-    "fab": {
-        "boxShadow": "0px 5px 1px -4px rgba(38, 38, 38, 0.4)"
+    fab: {
+        boxShadow: "0px 5px 1px -4px rgba(38, 38, 38, 0.4)"
     },
-    "text": {
-        "padding": 0,
-        "boxShadow": "none",
-        "minHeight": "auto",
-        "minWidth": "auto",
+    text: {
+        padding: 0,
+        boxShadow: "none",
+        minHeight: "auto",
+        minWidth: "auto",
         "&:hover": {
-            "backgroundColor": "transparent"
+            backgroundColor: "transparent"
         }
     },
-    "contained": {
-        "color": theme.palette.text.contrastText,
-        "backgroundColor": theme.palette.text.secondary,
-        "boxShadow": theme.shadows[4],
-        "borderRadius": "1px",
+    contained: {
+        color: theme.palette.text.contrastText,
+        backgroundColor: theme.palette.text.secondary,
+        boxShadow: theme.shadows[4],
+        borderRadius: "1px",
         "&:hover": {
-            "backgroundColor": theme.palette.text.primary,
-            "boxShadow": theme.shadows[8],
+            backgroundColor: theme.palette.text.primary,
+            boxShadow: theme.shadows[8],
         }
     },
-    "containedPrimary": {
-        "color": theme.palette.text.contrastText,
-        "backgroundColor": theme.palette.primary.main,
+    containedPrimary: {
+        color: theme.palette.text.contrastText,
+        backgroundColor: theme.palette.primary.main,
         "&:hover": {
-            "backgroundColor": theme.palette.primary.dark,
+            backgroundColor: theme.palette.primary.dark,
         }
     },
-    "containedSecondary": {
-        "color": theme.palette.text.contrastText,
-        "backgroundColor": theme.palette.secondary.main,
+    containedSecondary: {
+        color: theme.palette.text.contrastText,
+        backgroundColor: theme.palette.secondary.main,
         "&:hover": {
-            "backgroundColor": theme.palette.secondary.dark,
+            backgroundColor: theme.palette.secondary.dark,
         }
     },
-    "textPrimary": {
+    textPrimary: {
         color: theme.palette.text.hint,
         "&:hover": {
-            "backgroundColor": "transparent"
+            backgroundColor: "transparent"
         }
     },
-    "textSecondary": {
+    textSecondary: {
         color: theme.palette.text.hint,
         "&:hover": {
-            "backgroundColor": "transparent"
+            backgroundColor: "transparent"
         }
     },
-    "sizeSmall": {
-        "padding": ""+theme.spacing.unit *1 + "px "+theme.spacing.unit *2+"px",
+    sizeSmall: {
+        padding: ""+theme.spacing.unit *1 + "px "+theme.spacing.unit *2+"px",
     },
-    "sizeLarge": {
-        "padding": ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *3+"px",
+    sizeLarge: {
+        padding: ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *3+"px",
     },
-    "fullWidth": {
-        "width": "100%"
+    fullWidth: {
+        width: "100%"
     }
 
 });
 
 const dsIconButton =  (theme) => ({
-    "root":{
-        "boxShadow": "none",
+    root:{
+        boxShadow: "none",
          color: theme.palette.text.secondary
     },
-    "disabled": {
+    disabled: {
         backgroundColor:'transparent!important',
         color: theme.palette.text.disabled+'!important',
         cursor: "not-allowed!important",
@@ -89,10 +89,10 @@ const dsIconButton =  (theme) => ({
 });
 
 const dsButtonBase = (theme) => ({
-    "root": {
-        "boxShadow": "none"
+    root: {
+        boxShadow: "none"
     },
-    "disabled": {
+    disabled: {
         backgroundColor: theme.palette.border.main+'!important',
         color: theme.palette.text.disabled+'!important'
     }

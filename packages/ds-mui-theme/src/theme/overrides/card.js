@@ -1,5 +1,5 @@
 const dsCard = (theme) => ({
-    "root":{
+    root:{
         ['@media (min-width:600px)']: {
             paddingLeft: '0px',
             paddingRight: '0px'
@@ -8,7 +8,7 @@ const dsCard = (theme) => ({
 });
 
 const dsCardContent = (theme) => ({
-    "root":{
+    root:{
         paddingTop: 16,
         paddingBottom: 0,
         paddingLeft: 0,
@@ -17,7 +17,7 @@ const dsCardContent = (theme) => ({
 });
 
 const dsCardHeader = (theme) => ({
-    "root":{
+    root:{
         paddingTop: 0,
         paddingBottom: 0,
         paddingLeft: 0,

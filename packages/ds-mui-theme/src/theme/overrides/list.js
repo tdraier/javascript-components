@@ -1,8 +1,8 @@
 const dsListItem = (theme) => ({
-    "root": {
-        "flex": "1"
+    root: {
+        flex: "1"
     },
-    "button":{
+    button:{
         "&[role=button]": {
             boxShadow: "none",
             "&:hover":{
@@ -10,42 +10,42 @@ const dsListItem = (theme) => ({
             }
         }
     },
-    "container": {
-        "display":"flex"
+    container: {
+        display:"flex"
     },
 
-    "secondaryAction": {
-        "flex":"1",
-        "position":"relative",
-        "top":0
+    secondaryAction: {
+        flex:"1",
+        position:"relative",
+        top:0
     }
 });
 
 const dsListItemIcon = {
-    "root": {
-        "marginRight": 0
+    root: {
+        marginRight: 0
     }
 };
 
 const dsListItemSecondaryAction = {
-    "root":{
-        "flex":"1",
-        "position":"relative",
-        "top":0,
-        "transform": "none"
+    root:{
+        flex:"1",
+        position:"relative",
+        top:0,
+        transform: "none"
     }
 };
 
 const dsListItemText = {
-    "root": {
-        "padding": "0 10px",
+    root: {
+        padding: "0 10px",
         boxShadow: 'none'
     }
 };
 
 const dsListSubheader = {
-    "root": {
-        "textDecoration": "underline"
+    root: {
+        textDecoration: "underline"
     }
 };
 
