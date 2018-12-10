@@ -1,17 +1,20 @@
 const dsToolBar = (theme) => ({
-    "root": {
-        "display": "flex",
-        "& h1": {
-            "flex": 1
+    root: {
+        display: 'flex',
+        '& h1': {
+            flex: 1
         },
-        "minHeight": "unset!important",
+        '& button': {
+            margin: 0
+        }
     },
-    "gutters": {
-        "paddingLeft": "32px!important",
-        "paddingRight": "32px!important"
+    gutters: {
+        paddingLeft: theme.spacing.unit * 3,
+        paddingRight: theme.spacing.unit * 3
     },
-    "dense": {
-        padding: "0 16px!important"
+    dense: {
+        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing.unit
     }
 });
 
