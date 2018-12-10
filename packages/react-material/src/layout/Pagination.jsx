@@ -84,12 +84,11 @@ class Pagination extends React.Component {
     };
 
     render() {
-        let {classes, totalCount, pageSize, currentPage, onChangeRowsPerPage, t} = this.props;
+        let {totalCount, pageSize, currentPage, onChangeRowsPerPage, t} = this.props;
         return <Table>
             <TableFooter>
                 <TableRow>
                     <TablePagination
-                        classes={{select: classes.select}}
                         count={totalCount}
                         rowsPerPage={pageSize}
                         page={currentPage}
