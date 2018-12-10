@@ -115,7 +115,6 @@ Pagination.propTypes = {
 };
 
 Pagination = _.flowRight(
-    withStyles(styles, {name:"DxPagination"}),
     translate('react-material')
 )(Pagination);
 
