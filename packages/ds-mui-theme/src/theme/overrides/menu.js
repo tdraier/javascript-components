@@ -15,7 +15,8 @@ const dsMenuItem = (theme) => ({
         }
     },
     selected:{
-        backgroundColor: theme.palette.primary.main  + "!important"
+        backgroundColor: theme.palette.primary.main  + "!important",
+        color: theme.palette.text.contrastText + "!important"
     }
 });
 
