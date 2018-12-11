@@ -20,6 +20,7 @@ import {dsIcons} from "./overrides/icon";
 import {dsTable, dsTableCell, dsTableRow, dsTablePagination} from "./overrides/table";
 import {dsTab, dsTabs} from "./overrides/tabs";
 import {dsToolBar} from "./overrides/toolbar";
+import {dsToggleButton}from "./overrides/toggle";
 import {dsListItem, dsListItemSecondaryAction, dsListItemText, dsListSubheader, dsListItemIcon} from "./overrides/list";
 import {dsTypography} from "./overrides/typography";
 import {dsFormControlLabel, dsFormLabel} from "./overrides/form";
@@ -79,6 +80,7 @@ const dsThemeOverrides = (theme) => ({
     MuiTableCell: dsTableCell(theme),
     MuiTab: dsTab(theme),
     MuiTabs: dsTabs(theme),
+    MuiToggleButton: dsToggleButton(theme),
     MuiToolbar: dsToolBar(theme),
     MuiTypography: dsTypography(theme)
 });
