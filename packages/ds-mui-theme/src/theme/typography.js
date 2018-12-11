@@ -65,14 +65,14 @@ const typography = {
     },
     body1: {
         fontFamily: "Nunito Sans",
-        fontSize: "16px",
+        fontSize: "14px",
         fontWeight: 400,
         letterSpacing: "0.44px",
         lineHeight : "1.50"
     },
     body2: {
         fontFamily: "Nunito Sans",
-        fontSize: "14px",
+        fontSize: "13px",
         fontWeight: 400,
         letterSpacing: "0.25px",
         lineHeight : "1.50"
