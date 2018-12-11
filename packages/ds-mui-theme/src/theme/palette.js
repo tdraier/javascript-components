@@ -19,7 +19,9 @@ const dsGenericPalette = {
         light: "#f57c30",
     },
     layout: {
-        dark: "#404D56",
+        main: "#4e5156",
+        dark: "#393B3C",
+        light: "#1f262a"
     },
     text: {
         primary: "#1f262a",

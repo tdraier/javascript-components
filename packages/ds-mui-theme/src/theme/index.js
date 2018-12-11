@@ -25,7 +25,7 @@ import {dsTypography} from "./overrides/typography";
 import {dsFormControlLabel, dsFormLabel} from "./overrides/form";
 import {dsPanel, dsPanelActions, dsPanelDetails} from "./overrides/panel";
 import {dsChip} from "./overrides/chip";
-import {dsSnackbar} from "./overrides/snackbar";
+import {dsSnackbarContent} from "./overrides/snackbar";
 
 // Import of Dark Jahia DS palette
 import { dsGenericPalette } from './palette.js'
@@ -72,7 +72,7 @@ const dsThemeOverrides = (theme) => ({
     MuiExpansionPanelActions: dsPanelActions(theme),
     MuiPaper: dsPaper(theme),
     MuiSelect: dsSelect(theme),
-    MuiSnackbar: dsSnackbar(theme),
+    MuiSnackbarContent: dsSnackbarContent(theme),
     MiuSvgIcon: dsIcons(theme),
     MuiTable: dsTable(theme),
     MuiTableRow: dsTableRow(theme),
