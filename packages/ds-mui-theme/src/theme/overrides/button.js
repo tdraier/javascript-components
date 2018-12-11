@@ -28,11 +28,11 @@ const dsButton = (theme) => ({
     },
     contained: {
         color: theme.palette.text.contrastText,
-        backgroundColor: theme.palette.text.secondary,
+        backgroundColor: theme.palette.layout.main,
         boxShadow: theme.shadows[4],
         borderRadius: "1px",
         "&:hover": {
-            backgroundColor: theme.palette.text.primary,
+            backgroundColor: theme.palette.layout.dark,
             boxShadow: theme.shadows[8],
         }
     },
