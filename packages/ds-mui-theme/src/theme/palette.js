@@ -45,6 +45,7 @@ const dsGenericPalette = {
     background: {
         paper: "#ffffff",
         default: "#eff2f4",
+        dark: "#1b1b1c"
     },
     confirmColor: {
         main: '#00a0e3'
