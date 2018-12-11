@@ -91,6 +91,9 @@ const dsGenericPalette = {
         },
         markedForDeletion: {
             main: '#CC0000'
+        },
+        unpublished: {
+            main: '#CECECE'
         }
     },
     status: {
