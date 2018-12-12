@@ -6,7 +6,7 @@ const dsToggleButton = (theme) => ({
         margin: ""+theme.spacing.unit * 2+"px 0"
     },
     selected: {
-        color: theme.palette.text.disable+'!important',
+        color: theme.palette.text.disabled+'!important',
         '&:after':{
             backgroundColor: theme.palette.background.default,
             opacity: 1,
