@@ -23,6 +23,7 @@ import {dsToolBar} from "./overrides/toolbar";
 import {dsToggleButton}from "./overrides/toggle";
 import {dsListItem, dsListItemSecondaryAction, dsListItemText, dsListSubheader, dsListItemIcon} from "./overrides/list";
 import {dsTypography} from "./overrides/typography";
+import {dsTooltip} from "./overrides/tooltips";
 import {dsFormControlLabel, dsFormLabel} from "./overrides/form";
 import {dsPanel, dsPanelActions, dsPanelDetails} from "./overrides/panel";
 import {dsChip} from "./overrides/chip";
@@ -82,6 +83,7 @@ const dsThemeOverrides = (theme) => ({
     MuiTabs: dsTabs(theme),
     MuiToggleButton: dsToggleButton(theme),
     MuiToolbar: dsToolBar(theme),
+    MuiTooltip: dsTooltip(theme),
     MuiTypography: dsTypography(theme)
 });
 

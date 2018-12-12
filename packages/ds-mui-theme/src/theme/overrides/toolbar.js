@@ -13,8 +13,8 @@ const dsToolBar = (theme) => ({
         paddingRight: theme.spacing.unit * 3
     },
     dense: {
-        paddingLeft: theme.spacing.unit,
-        paddingRight: theme.spacing.unit
+        paddingLeft: theme.spacing.unit*2,
+        paddingRight: theme.spacing.unit*2
     }
 });
 

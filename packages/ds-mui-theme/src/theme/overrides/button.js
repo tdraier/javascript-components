@@ -1,7 +1,7 @@
 const dsButton = (theme) => ({
     root: {
         color: theme.palette.text.secondary,
-        padding: ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *2+"px",
+        padding: "10px "+theme.spacing.unit * 2+"px",
         textTransform: "none",
         margin: ""+theme.spacing.unit * 2+"px 0",
         letterSpacing: 1.1
@@ -64,10 +64,10 @@ const dsButton = (theme) => ({
         }
     },
     sizeSmall: {
-        padding: ""+theme.spacing.unit *1 + "px "+theme.spacing.unit *2+"px",
+        padding: "6px "+theme.spacing.unit * 2+"px",
     },
     sizeLarge: {
-        padding: ""+theme.spacing.unit *2 + "px "+theme.spacing.unit *3+"px",
+        padding: "17px "+theme.spacing.unit *2+"px",
     },
     fullWidth: {
         width: "100%"

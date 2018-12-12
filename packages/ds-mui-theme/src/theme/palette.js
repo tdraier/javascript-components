@@ -45,22 +45,7 @@ const dsGenericPalette = {
     background: {
         paper: "#ffffff",
         default: "#eff2f4",
-        dark: "#1b1b1c"
-    },
-    confirmColor: {
-        main: '#00a0e3'
-    },
-    publish: {
-        main: colors.deepOrange[500]
-    },
-    enabled: {
-        main: colors.green[400]
-    },
-    delete: {
-        main: colors.red[600]
-    },
-    cancelButton: {
-        main: '#676767'
+        dark: "#1F262A"
     },
     publicationStatus: {
         published: {
@@ -96,6 +81,22 @@ const dsGenericPalette = {
         unpublished: {
             main: '#CECECE'
         }
+    },
+    // TODO: Need a standardization of names
+    confirmColor: {
+        main: '#00a0e3'
+    },
+    publish: {
+        main: colors.deepOrange[500]
+    },
+    enabled: {
+        main: colors.green[400]
+    },
+    delete: {
+        main: colors.red[600]
+    },
+    cancelButton: {
+        main: '#676767'
     },
     status: {
         add: "#8ce385",

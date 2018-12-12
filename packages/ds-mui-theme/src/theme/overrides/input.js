@@ -31,15 +31,18 @@ const dsInput = (theme) => ({
             "boxShadow": "none"
         },
         "&[required]": {
-            "backgroundColor": theme.palette.background.default,
+            "backgroundColor": theme.palette.background.default
         },
         "&:focus": {
-            "boxShadow": theme.shadows[8],
+            "boxShadow": theme.shadows[8]
         }
     },
     "underline": {
-        "&:after": {
-            "opacity":"0"
+        "&:hover": {
+            borderBottom: '1px solid ' + theme.palette.primary.main+ '!important'
+        },
+        "&:before":{
+            borderBottom: '1px solid ' + theme.palette.border.main+ '!important'
         }
     }
 });

@@ -3,13 +3,17 @@ const dsAppBar = (theme) => ({
         boxShadow: theme.shadows[8],
     },
     colorDefault: {
-        backgroundColor: theme.palette.text.secondary,
-        color: theme.palette.text.textContrast
-    },
-    colorPrimary: {
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary
-    }
+    },
+    colorPrimary: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.text.contrastText
+    },
+    colorSecondary: {
+        backgroundColor: theme.palette.layout.main,
+        color: theme.palette.text.contrastText
+}
 });
 
 export {dsAppBar}
