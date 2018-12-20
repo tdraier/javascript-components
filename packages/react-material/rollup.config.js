@@ -50,7 +50,7 @@ export default {
         }),
         url({
             limit: 100 * 1024,
-            include: ["**/*.woff", "**/*.woff2"],
+            include: ["**/*.woff", "**/*.woff2", "**/*.ttf", "**/*.eot"],
             emitFiles: true
         })
     ]
