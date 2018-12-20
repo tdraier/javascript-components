@@ -1,34 +1,51 @@
 // we use require and not import to not include the binary file to the generated *.umd.js
-import NunitoSansRegular from "../../fonts/nunito-sans-v3-latin-regular.woff";
-import NunitoSansRegular2 from "../../fonts/nunito-sans-v3-latin-regular.woff2";
-import NunitoSansBold from "../../fonts/nunito-sans-v3-latin-600.woff";
-import NunitoSansBold2 from "../../fonts/nunito-sans-v3-latin-600.woff2";
-import NunitoSansLight from "../../fonts/nunito-sans-v3-latin-300.woff";
-import NunitoSansLight2 from "../../fonts/nunito-sans-v3-latin-300.woff2";
+import NunitoSansRegular from '../../fonts/nunito-sans-v3-latin-regular.woff';
+import NunitoSansRegular2 from '../../fonts/nunito-sans-v3-latin-regular.woff2';
+import NunitoSansRegularTtf from '../../fonts/nunito-sans-v3-latin-regular.ttf';
+import NunitoSansRegularEot from '../../fonts/nunito-sans-v3-latin-regular.eot';
+import NunitoSansBold from '../../fonts/nunito-sans-v3-latin-600.woff';
+import NunitoSansBold2 from '../../fonts/nunito-sans-v3-latin-600.woff2';
+import NunitoSansBoldTtf from '../../fonts/nunito-sans-v3-latin-600.ttf';
+import NunitoSansBoldEot from '../../fonts/nunito-sans-v3-latin-600.eot';
+import NunitoSansLight from '../../fonts/nunito-sans-v3-latin-300.woff';
+import NunitoSansLight2 from '../../fonts/nunito-sans-v3-latin-300.woff2';
+import NunitoSansLightEot from '../../fonts/nunito-sans-v3-latin-300.eot';
 
 var dsTypography = (theme) => (
     {
-        "@font-face": [{
+        '@font-face': [{
             fontFamily: 'Nunito Sans',
             fontWeight: '300',
             src: 'url(\'' + NunitoSansLight2 + '\') format(\'woff2\')',
-            fallbacks: [{src: 'url(\'' + NunitoSansLight + '\') format(\'woff\')'}]
+            fallbacks: [
+                {src: 'url(\'' + NunitoSansLight + '\') format(\'woff\')'},
+                {src: 'url(\'' + NunitoSansLightTtf + '\') format(\'truetype\')'},
+                {src: 'url(\'' + NunitoSansLightEot + '\') format(\'embedded-opentype\')'}
+            ]
         },
         {
             fontFamily: 'Nunito Sans',
             fontWeight: '400',
             src: 'url(\'' + NunitoSansRegular2 + '\') format(\'woff2\')',
-            fallbacks: [{src: 'url(\'' + NunitoSansRegular + '\') format(\'woff\')'}]
+            fallbacks: [
+                {src: 'url(\'' + NunitoSansRegular + '\') format(\'woff\')'},
+                {src: 'url(\'' + NunitoSansRegularTtf + '\') format(\'truetype\')'},
+                {src: 'url(\'' + NunitoSansRegularEot + '\') format(\'embedded-opentype\')'}
+            ]
         },
         {
             fontFamily: 'Nunito Sans',
             fontWeight: '600',
             src: 'url(\'' + NunitoSansBold2 + '\') format(\'woff2\')',
-            fallbacks: [{src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')'}]
+            fallbacks: [
+                {src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')'},
+                {src: 'url(\'' + NunitoSansBoldTtf + '\') format(\'truetype\')'},
+                {src: 'url(\'' + NunitoSansBoldEot + '\') format(\'embedded-opentype\')'}
+            ]
         }],
         // Every texts are disabled if no color specified
         root : {
-            color : theme.palette.text.disabled,
+            color : theme.palette.text.disabled
         },
         h1: {
             color: theme.palette.text.disabled

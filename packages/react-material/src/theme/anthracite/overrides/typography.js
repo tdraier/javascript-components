@@ -1,26 +1,50 @@
 // we use require and not import to not include the binary file to the generated *.umd.js
-import NanutoSansRegular from "../../fonts/nunito-sans-v3-latin-regular.woff";
-import NanutoSansRegular2 from "../../fonts/nunito-sans-v3-latin-regular.woff2";
-import NanutoSansBold from "../../fonts/nunito-sans-v3-latin-700.woff";
-import NanutoSansBold2 from "../../fonts/nunito-sans-v3-latin-700.woff2";
-import NanutoSansLight from "../../fonts/nunito-sans-v3-latin-300.woff";
-import NanutoSansLight2 from "../../fonts/nunito-sans-v3-latin-300.woff2";
+import NunitoSansRegular from '../../fonts/nunito-sans-v3-latin-regular.woff';
+import NunitoSansRegular2 from '../../fonts/nunito-sans-v3-latin-regular.woff2';
+import NunitoSansRegularTtf from '../../fonts/nunito-sans-v3-latin-regular.ttf';
+import NunitoSansRegularEot from '../../fonts/nunito-sans-v3-latin-regular.eot';
+import NunitoSansBold from '../../fonts/nunito-sans-v3-latin-700.woff';
+import NunitoSansBold2 from '../../fonts/nunito-sans-v3-latin-700.woff2';
+import NunitoSansBoldTtf from '../../fonts/nunito-sans-v3-latin-700.ttf';
+import NunitoSansBoldEot from '../../fonts/nunito-sans-v3-latin-700.eot';
+import NunitoSansLight from '../../fonts/nunito-sans-v3-latin-300.woff';
+import NunitoSansLight2 from '../../fonts/nunito-sans-v3-latin-300.woff2';
+import NunitoSansLightTtf from '../../fonts/nunito-sans-v3-latin-300.ttf';
+import NunitoSansLightEot from '../../fonts/nunito-sans-v3-latin-300.eot';
 
-var anthraciteTypography = (theme) => ({ "@font-face": [{
-        fontFamily: 'Nunito Sans',
-        fontWeight: '300',
-        src: 'url(\'' + NanutoSansLight2 + '\') format(\'woff2\')',
-        fallbacks: [{ src: 'url(\'' + NanutoSansLight + '\') format(\'woff\')' }]
-    }, {
-        fontFamily: 'Nunito Sans',
-        fontWeight: '400',
-        src: 'url(\'' + NanutoSansRegular2 + '\') format(\'woff2\')',
-        fallbacks: [{ src: 'url(\'' + NanutoSansRegular + '\') format(\'woff\')' }]
-    }, {
-        fontFamily: 'Nunito Sans',
-        fontWeight: '700',
-        src: 'url(\'' + NanutoSansBold2 + '\') format(\'woff2\')',
-        fallbacks: [{ src: 'url(\'' + NanutoSansBold + '\') format(\'woff\')' }] }]
+var anthraciteTypography = () => ({
+    '@font-face': [
+        {
+            fontFamily: 'Nunito Sans',
+            fontWeight: '300',
+            src: 'url(\'' + NunitoSansLight2 + '\') format(\'woff2\')',
+            fallbacks: [
+                { src: 'url(\'' + NunitoSansLight + '\') format(\'woff\')' },
+                { src: 'url(\'' + NunitoSansLightTtf + '\') format(\'truetype\')' },
+                { src: 'url(\'' + NunitoSansLightEot + '\') format(\'embedded-opentype\')' }
+            ]
+        }, 
+        {
+            fontFamily: 'Nunito Sans',
+            fontWeight: '400',
+            src: 'url(\'' + NunitoSansRegular2 + '\') format(\'woff2\')',
+            fallbacks: [
+                { src: 'url(\'' + NunitoSansRegular + '\') format(\'woff\')' },
+                { src: 'url(\'' + NunitoSansRegularTtf + '\') format(\'truetype\')' },
+                { src: 'url(\'' + NunitoSansRegularEot + '\') format(\'embedded-opentype\')' }
+            ]
+        },
+        {
+            fontFamily: 'Nunito Sans',
+            fontWeight: '700',
+            src: 'url(\'' + NunitoSansBold2 + '\') format(\'woff2\')',
+            fallbacks: [
+                { src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')' },
+                { src: 'url(\'' + NunitoSansBoldTtf + '\') format(\'truetype\')' },
+                { src: 'url(\'' + NunitoSansBoldEot + '\') format(\'embedded-opentype\')' }
+            ]
+        }
+    ]
 });
 
 export {anthraciteTypography}
