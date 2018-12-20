@@ -150,7 +150,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
             // Open submenu on mouseEnter
             context.parent.currentOpenSubmenuContext = context;
             let b = e.currentTarget.getBoundingClientRect();
-            display(context, {anchorPosition:{left:b.x + b.width, top:b.y}, anchorReference:'anchorPosition'});
+            display(context, {anchorPosition:{left:b.left + b.width, top:b.top}, anchorReference:'anchorPosition'});
         }
     },
 
@@ -170,7 +170,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
         // If not a submenu, open it (can be overridden for submenu, as menu is opened on mouseEnter)
         if (!context.parent) {
             let b = e.currentTarget.getBoundingClientRect();
-            display(context, {anchorPosition:{left:b.x, top:b.y}, anchorReference:'anchorPosition'});
+            display(context, {anchorPosition:{left:b.left, top:b.top}, anchorReference:'anchorPosition'});
         }
     },
 
