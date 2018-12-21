@@ -9,6 +9,7 @@ import NunitoSansBoldTtf from '../../fonts/nunito-sans-v3-latin-600.ttf';
 import NunitoSansBoldEot from '../../fonts/nunito-sans-v3-latin-600.eot';
 import NunitoSansLight from '../../fonts/nunito-sans-v3-latin-300.woff';
 import NunitoSansLight2 from '../../fonts/nunito-sans-v3-latin-300.woff2';
+import NunitoSansLightTtf from '../../fonts/nunito-sans-v3-latin-300.ttf';
 import NunitoSansLightEot from '../../fonts/nunito-sans-v3-latin-300.eot';
 
 var dsTypography = (theme) => (
