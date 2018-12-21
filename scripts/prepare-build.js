@@ -39,6 +39,12 @@ function typescriptCopy() {
 
     const woff = glob.sync('**/*.wof*', { cwd: from });
     woff.forEach(file => copyFile("src", file));
+
+    const eot = glob.sync('**/*.eot', { cwd: from });
+    eot.forEach(file => copyFile("src", file));
+
+    const ttf = glob.sync('**/*.ttf', { cwd: from });
+    ttf.forEach(file => copyFile("src", file));
 }
 
 copyFile(".","package.json");
