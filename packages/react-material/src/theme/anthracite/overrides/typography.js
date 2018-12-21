@@ -17,31 +17,31 @@ var anthraciteTypography = () => ({
         {
             fontFamily: 'Nunito Sans',
             fontWeight: '300',
-            src: 'url(\'' + NunitoSansLight2 + '\') format(\'woff2\')',
-            fallbacks: [
-                { src: 'url(\'' + NunitoSansLight + '\') format(\'woff\')' },
-                { src: 'url(\'' + NunitoSansLightTtf + '\') format(\'truetype\')' },
-                { src: 'url(\'' + NunitoSansLightEot + '\') format(\'embedded-opentype\')' }
+            src: [
+                'url(\'' + NunitoSansLight2 + '\') format(\'woff2\')',
+                'url(\'' + NunitoSansLight + '\') format(\'woff\')',
+                'url(\'' + NunitoSansLightTtf + '\') format(\'truetype\')',
+                'url(\'' + NunitoSansLightEot + '\') format(\'embedded-opentype\')'
             ]
         }, 
         {
             fontFamily: 'Nunito Sans',
             fontWeight: '400',
-            src: 'url(\'' + NunitoSansRegular2 + '\') format(\'woff2\')',
-            fallbacks: [
-                { src: 'url(\'' + NunitoSansRegular + '\') format(\'woff\')' },
-                { src: 'url(\'' + NunitoSansRegularTtf + '\') format(\'truetype\')' },
-                { src: 'url(\'' + NunitoSansRegularEot + '\') format(\'embedded-opentype\')' }
+            src: [
+                'url(\'' + NunitoSansRegular2 + '\') format(\'woff2\')',
+                'url(\'' + NunitoSansRegular + '\') format(\'woff\')',
+                'url(\'' + NunitoSansRegularTtf + '\') format(\'truetype\')',
+                'url(\'' + NunitoSansRegularEot + '\') format(\'embedded-opentype\')'
             ]
         },
         {
             fontFamily: 'Nunito Sans',
             fontWeight: '700',
-            src: 'url(\'' + NunitoSansBold2 + '\') format(\'woff2\')',
-            fallbacks: [
-                { src: 'url(\'' + NunitoSansBold + '\') format(\'woff\')' },
-                { src: 'url(\'' + NunitoSansBoldTtf + '\') format(\'truetype\')' },
-                { src: 'url(\'' + NunitoSansBoldEot + '\') format(\'embedded-opentype\')' }
+            src: [
+                'url(\'' + NunitoSansBold2 + '\') format(\'woff2\')',
+                'url(\'' + NunitoSansBold + '\') format(\'woff\')',
+                'url(\'' + NunitoSansBoldTtf + '\') format(\'truetype\')',
+                'url(\'' + NunitoSansBoldEot + '\') format(\'embedded-opentype\')'
             ]
         }
     ]
