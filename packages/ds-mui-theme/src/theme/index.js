@@ -75,7 +75,7 @@ const dsThemeOverrides = (theme) => ({
     MuiPaper: dsPaper(theme),
     MuiSelect: dsSelect(theme),
     MuiSnackbarContent: dsSnackbarContent(theme),
-    MiuSvgIcon: dsIcons(theme),
+    MuiSvgIcon: dsIcons(theme),
     MuiTable: dsTable(theme),
     MuiTableRow: dsTableRow(theme),
     MuiTableCell: dsTableCell(theme),
