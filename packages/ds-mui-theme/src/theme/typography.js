@@ -94,7 +94,7 @@ const typography = {
     },
     overline: {
         fontFamily: "Nunito Sans, sans-serif",
-        fontSize: "10px",
+        fontSize: "11px",
         fontWeight: 600,
         letterSpacing: "0.5px",
         lineHeight : "2.66",
