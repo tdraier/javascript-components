@@ -52,7 +52,7 @@ const dsGenericPalette = {
             main: '#00aa4f'
         },
         modified: {
-            main: '#FB9926'
+            main: '#EF6C00'
         },
         notPublished: {
             main: colors.grey[900]
