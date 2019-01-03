@@ -49,7 +49,7 @@ const dsGenericPalette = {
     },
     publicationStatus: {
         published: {
-            main: '#08D000'
+            main: '#00aa4f'
         },
         modified: {
             main: '#FB9926'
