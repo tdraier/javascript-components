@@ -24,6 +24,7 @@ export default {
         "@material-ui/core",
         "@material-ui/icons",
         "prop-types",
+        "recompose",
         "react",
         "react-apollo",
         "react-dom",

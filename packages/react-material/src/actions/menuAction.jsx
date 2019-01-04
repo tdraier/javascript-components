@@ -7,6 +7,7 @@ import {DisplayActions} from "./DisplayActions";
 import {withStylesAction} from "./withStylesAction";
 import {ArrowRight} from "@material-ui/icons"
 import {combineLatest} from "rxjs";
+import {pure} from 'recompose';
 
 let styles = {
     modalRoot: {
@@ -36,6 +37,8 @@ let preload = (context) => {
     context.currentMenuHandler = context.renderComponent(<DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} render={() => false} />);
 };
 
+let PureMenu = pure(Menu);
+
 let display = (context, anchor) => {
     // Disable backdrop for sub menus, click through to main menu backdrop
     let subMenuProps = (context.parent) ? {
@@ -53,7 +56,7 @@ let display = (context, anchor) => {
     }
 
     menuStatus[context.id].open = true;
-    context.currentMenuHandler = context.renderComponent(<Menu className={context.classes.loading}
+    context.currentMenuHandler = context.renderComponent(<PureMenu className={context.classes.loading}
                                                                id={'menu-' + context.id} {...anchor}
                                                                open={true}
                                                                action={(c)=> {
@@ -131,7 +134,7 @@ let display = (context, anchor) => {
                 {context.icon}
             </MenuItem>}</I18n>
         }/>
-    </Menu>);
+    </PureMenu>);
 };
 
 let menuAction = composeActions(componentRendererAction, withStylesAction(styles), {
