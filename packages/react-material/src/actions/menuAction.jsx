@@ -104,7 +104,7 @@ let display = (context, anchor) => {
                                                                }}
                                                                {...subMenuProps}
     >
-        <DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} ref={(r) => setActionsRef(r,context)} render={
+        <DisplayActions target={context.menu} context={{...context.originalContext, parent:context}} filter={context.menuFilter} ref={(r) => setActionsRef(r,context)} render={
             ({context}) => <I18n>{t => <MenuItem data-sel-role={context.key}
                                                  onClick={(e) => {
                                                      // First close all menu by closing main menu
