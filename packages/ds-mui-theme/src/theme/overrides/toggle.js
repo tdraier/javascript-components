@@ -15,6 +15,7 @@ const dsToggleButton = (theme) => ({
     },
     selected: {
         color: theme.palette.text.contrastText+'!important',
+        backgroundColor: theme.palette.primary.main,
         '&:after':{
             backgroundColor: theme.palette.primary.main,
             opacity: 1,
