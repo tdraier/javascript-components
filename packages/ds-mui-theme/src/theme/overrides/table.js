@@ -21,6 +21,9 @@ const dsTableCell = (theme) => ({
         top: 0,
         backgroundColor: theme.palette.background.paper,
         zIndex: 2
+    },
+    body: {
+        color: theme.palette.text.textSecondary
     }
 });
 
