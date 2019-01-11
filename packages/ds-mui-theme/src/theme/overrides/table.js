@@ -23,7 +23,7 @@ const dsTableCell = (theme) => ({
         zIndex: 2
     },
     body: {
-        color: theme.palette.text.textSecondary
+        color: theme.palette.text.secondary
     }
 });
 
