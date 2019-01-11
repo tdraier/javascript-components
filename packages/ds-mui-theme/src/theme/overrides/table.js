@@ -1,7 +1,6 @@
 const dsTable = (theme) => ({
 
 });
-
 const dsTableCell = (theme) => ({
     root: {
         borderBottom: "none",
@@ -35,7 +34,6 @@ const dsTableRow = (theme) => ({
         height: "56px",
     }
 });
-
 
 const dsTablePagination = (theme) => ({
     root: {
