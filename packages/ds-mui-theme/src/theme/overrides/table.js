@@ -3,7 +3,6 @@ const dsTable = (theme) => ({
 });
 const dsTableCell = (theme) => ({
     root: {
-        padding: "8px 56px 4px 24px",
         borderBottom: "none",
         "& svg": {
             verticalAlign:"middle"
