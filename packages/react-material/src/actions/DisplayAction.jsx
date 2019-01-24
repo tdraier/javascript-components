@@ -1,7 +1,8 @@
 import React from 'react';
 import {actionsRegistry} from './actionsRegistry';
 import * as _ from 'lodash';
-import {Observable, combineLatest, concat, of} from 'rxjs';
+import {Observable, combineLatest, of} from 'rxjs';
+import {first} from 'rxjs/operators';
 
 let count = 0;
 
@@ -72,6 +73,11 @@ class DisplayActionComponent extends React.Component {
             let observers = Object.values(observersObj);
 
             keys.forEach(k => _.set(enhancedContext, k ,null));
+
+            // Related to https://jira.jahia.org/browse/QA-11271
+            // this empty subscription is auto cancelled with the first operator
+            // and resolve a problem where the observer was never resolved is some cases
+            _.each(observers, observer => observer.pipe(first()).subscribe());
 
             // Combine all observers into one
             let combinedObserver = combineLatest(...observers, (...vals) => _.zipObject(keys, vals));
