@@ -104,6 +104,10 @@ const dsGenericPalette = {
     },
 
     // Palette v1.0.0
+    brand: {
+        alpha: '#007CB0',
+        beta: '#00A0E3'
+    },
     ui: {
         alpha: '#F6FAFC',
         beta: '#00A0E3',
