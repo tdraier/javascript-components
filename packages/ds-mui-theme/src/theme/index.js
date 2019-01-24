@@ -4,30 +4,30 @@ import * as _ from 'lodash';
 import {shape} from "./shape";
 import {typography} from "./typography";
 
-// Overrides
-import {dsAppBar} from "./overrides/appbar";
-import {dsAvatar} from "./overrides/avatar";
-import {dsButton, dsButtonBase, dsIconButton} from "./overrides/button";
-import {dsCard, dsCardContent, dsCardHeader} from "./overrides/card"
-import {dsDialog, dsDialogActions, dsDialogTitle, dsDialogContent} from "./overrides/dialog";
-import {dsDivider} from "./overrides/divider";
-import {dsCheckbox} from "./overrides/checkbox";
-import {dsInput, dsInputBase} from "./overrides/input";
-import {dsMenu, dsMenuItem} from "./overrides/menu";
-import {dsPaper} from "./overrides/paper";
-import {dsSelect} from "./overrides/select";
-import {dsIcons} from "./overrides/icon";
-import {dsTable, dsTableCell, dsTableRow, dsTablePagination} from "./overrides/table";
-import {dsTab, dsTabs} from "./overrides/tabs";
-import {dsToolBar} from "./overrides/toolbar";
-import {dsToggleButton}from "./overrides/toggle";
-import {dsListItem, dsListItemSecondaryAction, dsListItemText, dsListSubheader, dsListItemIcon} from "./overrides/list";
-import {dsTypography} from "./overrides/typography";
-import {dsTooltip} from "./overrides/tooltips";
-import {dsFormControlLabel, dsFormLabel} from "./overrides/form";
-import {dsPanel, dsPanelActions, dsPanelDetails} from "./overrides/panel";
-import {dsChip} from "./overrides/chip";
-import {dsSnackbarContent} from "./overrides/snackbar";
+// Default
+import {dsAppBar} from "./default/appbar";
+import {dsAvatar} from "./default/avatar";
+import {dsButton, dsButtonBase, dsIconButton} from "./default/button";
+import {dsCard, dsCardContent, dsCardHeader} from "./default/card"
+import {dsDialog, dsDialogActions, dsDialogTitle, dsDialogContent} from "./default/dialog";
+import {dsDivider} from "./default/divider";
+import {dsCheckbox} from "./default/checkbox";
+import {dsInput, dsInputBase} from "./default/input";
+import {dsMenu, dsMenuItem} from "./default/menu";
+import {dsPaper} from "./default/paper";
+import {dsSelect} from "./default/select";
+import {dsIcons} from "./default/icon";
+import {dsTable, dsTableCell, dsTableRow, dsTablePagination} from "./default/table";
+import {dsTab, dsTabs} from "./default/tabs";
+import {dsToolBar} from "./default/toolbar";
+import {dsToggleButton}from "./default/toggle";
+import {dsListItem, dsListItemSecondaryAction, dsListItemText, dsListSubheader, dsListItemIcon} from "./default/list";
+import {dsTypography} from "./default/typography";
+import {dsTooltip} from "./default/tooltips";
+import {dsFormControlLabel, dsFormLabel} from "./default/form";
+import {dsPanel, dsPanelActions, dsPanelDetails} from "./default/panel";
+import {dsChip} from "./default/chip";
+import {dsSnackbarContent} from "./default/snackbar";
 
 // Import of Dark Jahia DS palette
 import { dsGenericPalette } from './palette.js'

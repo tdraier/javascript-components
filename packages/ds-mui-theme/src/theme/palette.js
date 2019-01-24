@@ -1,6 +1,7 @@
 import {colors} from "@material-ui/core";
 
 const dsGenericPalette = {
+    // Legacy Palette
     type: "light",
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -82,7 +83,6 @@ const dsGenericPalette = {
             main: '#CECECE'
         }
     },
-    // TODO: Need a standardization of names
     confirmColor: {
         main: '#00a0e3'
     },
@@ -101,7 +101,38 @@ const dsGenericPalette = {
     status: {
         add: "#8ce385",
         overwrite: '#e3a35b',
+    },
+
+    // Palette v1.0.0
+    ui: {
+        alpha: '#F6FAFC',
+        beta: '#00A0E3',
+        gamma: '#1F262A',
+        delta: '#969AA0',
+        epsilon: '#FFFFFF',
+        omega: '#EEF2F4'
+    },
+    invert: {
+        alpha: '#131C21',
+        beta: '#FFFFFF'
+    },
+    font: {
+        alpha: '#373C42',
+        beta: '#525C65',
+        gamma: '#9197A0',
+    },
+    hover:{
+        alpha: '#086992',
+        row: '#F2F5F6'
+    },
+    support: {
+        alpha: '#e0182d',
+        beta: '#5aa700',
+        gamma: '#efc100',
+        delta: '#5aaafa'
     }
+
+
 };
 
 export {dsGenericPalette}
