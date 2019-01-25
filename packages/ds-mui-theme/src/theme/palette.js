@@ -110,11 +110,14 @@ const dsGenericPalette = {
     },
     ui: {
         alpha: '#F6FAFC',
-        beta: '#00A0E3',
+        beta: '#3B3D40',
         gamma: '#1F262A',
         delta: '#969AA0',
         epsilon: '#FFFFFF',
         omega: '#EEF2F4'
+    },
+    field: {
+        alpha: "#F3F6F8"
     },
     invert: {
         alpha: '#131C21',
@@ -130,10 +133,10 @@ const dsGenericPalette = {
         row: '#F2F5F6'
     },
     support: {
-        alpha: '#e0182d',
-        beta: '#5aa700',
-        gamma: '#efc100',
-        delta: '#5aaafa'
+        alpha: '#E0182D',
+        beta: '#0EA982',
+        gamma: '#EBBB12',
+        delta: '#E27A00'
     }
 
 

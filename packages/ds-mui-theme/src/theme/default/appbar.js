@@ -7,8 +7,8 @@ const dsAppBar = (theme) => ({
         color: theme.palette.text.primary
     },
     colorPrimary: {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.text.contrastText
+        backgroundColor: theme.palette.ui.beta,
+        color: theme.palette.invert.beta
     },
     colorSecondary: {
         backgroundColor: theme.palette.layout.main,
