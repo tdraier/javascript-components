@@ -92,7 +92,7 @@ const EnhancedLeftMenuItem = compose(
 
 EnhancedLeftMenuItem.propTypes = {
     context: PropTypes.object,
-    drawer: PropTypes.object
+    drawer: PropTypes.bool
 };
 
 export default EnhancedLeftMenuItem;
