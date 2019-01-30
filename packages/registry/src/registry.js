@@ -34,7 +34,7 @@ class Registry {
     }
 
     find(filters) {
-        let result = this.registry.getAll();
+        let result = this.getAll();
         if (filters.target) {
             result = _.filter(result, item => _.includes(_.map(item.target, 'id'), filters.target));
             result = _.sortBy(result, [function (o) {
