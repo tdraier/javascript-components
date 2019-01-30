@@ -80,7 +80,7 @@ export const LeftMenuItem = ({classes, t, drawer, context}) => {
 
 LeftMenuItem.propTypes = {
     context: PropTypes.object.isRequired,
-    drawer: PropTypes.object.isRequired,
+    drawer: PropTypes.bool.isRequired,
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired
 };
