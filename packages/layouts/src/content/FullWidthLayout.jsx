@@ -7,7 +7,6 @@ import TopBar from '../components/TopBar';
 
 let styles = theme => ({
     topBar: {
-        paddingTop: theme.spacing.unit * 2,
         color: theme.palette.primary.contrastText
     },
     metaNav: {
