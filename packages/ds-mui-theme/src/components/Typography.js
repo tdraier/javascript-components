@@ -24,17 +24,21 @@ let styles = theme => ({
     legal: theme.typography.legal,
     p: theme.typography.p,
 
+
     colorInherit: {
         color: 'inherit'
     },
     colorAlpha: {
-        color: 'blue'
+        color: theme.palette.font.alpha,
     },
     colorBeta: {
-        color: 'red'
+        color: theme.palette.font.beta,
     },
     colorGamma: {
-        color: 'green'
+        color: theme.palette.font.gamma,
+    },
+    colorInvert: {
+        color: theme.palette.invert.beta,
     }
 });
 
@@ -126,7 +130,7 @@ Typography.propTypes = process.env.NODE_ENV !== 'production' ? {
      * Applies the theme typography styles.
      * Use `body1` as the default value with the legacy implementation and `body2` with the new one.
      */
-    variant: PropTypes.oneOf(['giga', 'mega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'iota', 'omega'])
+    variant: PropTypes.oneOf(['giga', 'mega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'iota', 'omega', 'caption', 'legal', 'p'])
 
 } : {};
 
