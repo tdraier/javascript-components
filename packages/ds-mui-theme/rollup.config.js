@@ -10,32 +10,35 @@ export default {
     output: {
         file: 'build/lib/ds-mui-theme.umd.js',
         format: 'umd',
-        name:'jahia.dsmuitheme',
+        name: 'jahia.dsmuitheme',
         sourcemap: true,
         globals: {
-            "@jahia/apollo-dx": "jahia.apollodx",
-            "lodash": "_",
-            "material-ui/styles":"materialUiStyles"
+            '@jahia/apollo-dx': 'jahia.apollodx',
+            'lodash': '_',
+            'material-ui/styles': 'materialUiStyles'
         }
     },
-    external:[
-        "lodash",
-        "@material-ui/core"
+    external: [
+        'lodash',
+        '@material-ui/core',
+        'react',
+        'classnames',
+        'prop-types',
     ],
 
     plugins: [
         resolve({
-            extensions: [ '.js', '.jsx' ]
+            extensions: ['.js', '.jsx']
         }),
         json(),
         babel({
-            exclude:'node_modules/**',
-            presets: [ [ 'env', { modules: false } ], 'stage-3', 'react' ],
-            plugins: [ 'external-helpers' ]
+            exclude: 'node_modules/**',
+            presets: [['env', {modules: false}], 'stage-3', 'react'],
+            plugins: ['external-helpers']
         }),
         url({
             limit: 100 * 1024,
-            include: ["**/*.woff", "**/*.woff2", "**/*.ttf", "**/*.eot"],
+            include: ['**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.eot'],
             emitFiles: true
         })
     ]
