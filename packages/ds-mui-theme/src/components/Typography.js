@@ -20,7 +20,10 @@ let styles = theme => ({
     epsilon: theme.typography.epsilon,
     zeta: theme.typography.zeta,
     iota: theme.typography.iota,
-    omega: theme.typography.omega,
+    caption: theme.typography.caption,
+    legal: theme.typography.legal,
+    p: theme.typography.p,
+
     colorInherit: {
         color: 'inherit'
     },
