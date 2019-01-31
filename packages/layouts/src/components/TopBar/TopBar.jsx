@@ -26,23 +26,24 @@ const styles = theme => ({
         marginLeft: 'auto',
         width: '80%'
     },
-    topBar: {
+    topBarActions: {
         width: 'min-content',
         alignSelf: 'flex-end',
         paddingTop: theme.spacing.unit * 3
     },
     topBarGrid: {
-        marginBottom: theme.spacing.unit * 2,
         '& button': {
             margin: '0px'
         }
     }
 });
 
-export const TopBar = ({classes, title, contextModifiers, actions}) => (
+export const TopBar = ({classes, title, contextModifiers, path, actions}) => (
     <div className={classes.root} data-sel-role="top-bar">
         <Grid container spacing={0} alignItems="center">
-            <Grid item xs={2} className={classes.topBarGrid}>
+            <Grid item xs={3} className={classes.topBarGrid}>
+                <Typography variant="body1" color="inherit">{path}</Typography>
+
                 <Typography variant="h5"
                             color="inherit"
                             className={classes.typoTitle}
@@ -53,8 +54,7 @@ export const TopBar = ({classes, title, contextModifiers, actions}) => (
 
                 {contextModifiers}
             </Grid>
-            <Grid item xs={1}/>
-            <Grid item xs={9} className={classes.topBar}>
+            <Grid item xs={9} className={classes.topBarActions}>
                 {actions}
             </Grid>
         </Grid>
@@ -65,6 +65,7 @@ TopBar.propTypes = {
     actions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     contextModifiers: PropTypes.element.isRequired,
+    path: PropTypes.element.isRequired,
     title: PropTypes.string.isRequired
 };
 
@@ -75,7 +76,8 @@ const EnhancedTopBar = compose(
 export default EnhancedTopBar;
 
 EnhancedTopBar.propTypes = {
-    actions: PropTypes.object.isRequired,
-    contextModifiers: PropTypes.element.isRequired,
+    actions: PropTypes.object,
+    contextModifiers: PropTypes.element,
+    path: PropTypes.element,
     title: PropTypes.string.isRequired
 };
