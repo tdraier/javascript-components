@@ -41,6 +41,7 @@ let preload = context => {
     context.currentMenuHandler = context.renderComponent(<DisplayActions target={context.menu}
                                                                          context={{
                                                                              ...context.originalContext,
+                                                                             displayDisabled: context.menuDisplayDisabled,
                                                                              parent: context
                                                                          }}
                                                                          render={
@@ -124,12 +125,17 @@ let display = (context, anchor) => {
                   {...subMenuProps}
         >
             <DisplayActions ref={r => setActionsRef(r, context)}
-                            context={{...context.originalContext, parent: context}}
+                            context={{
+                                ...context.originalContext,
+                                displayDisabled: context.menuDisplayDisabled,
+                                parent: context}
+                            }
                             filter={context.menuFilter}
                             render={
                                 ({context}) => (
                                     <I18n>{t => (
                                         <MenuItem data-sel-role={context.key}
+                                                  disabled={context.enabled !== null && context.enabled === false}
                                                   onClick={e => {
                                                       // First close all menu by closing main menu
                                                       let rootContext = context;
@@ -176,7 +182,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
             context.icon = <ArrowRight/>;
         }
 
-        if (context.preload) {
+        if (context.menuPreload) {
             preload(context);
         }
     },
