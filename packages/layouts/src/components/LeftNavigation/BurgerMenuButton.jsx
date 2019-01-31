@@ -26,7 +26,7 @@ export const BurgerMenuButton = ({classes, isDrawerOpen}) => {
 
     return (
         <div className={classNames(classes.menuButton, isDrawerOpen && classes.menuButtonBlue)}
-             data-cm-role="cm-burger-menu"
+             data-sel-role="burger-menu"
              onClick={openMenu}/>
     );
 };

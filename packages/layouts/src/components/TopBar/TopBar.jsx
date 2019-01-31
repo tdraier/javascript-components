@@ -40,13 +40,13 @@ const styles = theme => ({
 });
 
 export const TopBar = ({classes, title, contextModifiers, actions}) => (
-    <div className={classes.root} data-cm-role="cm-top-bar">
+    <div className={classes.root} data-sel-role="top-bar">
         <Grid container spacing={0} alignItems="center">
             <Grid item xs={2} className={classes.topBarGrid}>
                 <Typography variant="h5"
                             color="inherit"
                             className={classes.typoTitle}
-                            data-cm-role="cm-mode-title"
+                            data-sel-role="top-bar-title"
                 >
                     {title}
                 </Typography>

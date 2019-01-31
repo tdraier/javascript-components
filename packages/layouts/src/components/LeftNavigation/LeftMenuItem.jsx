@@ -55,7 +55,7 @@ export const LeftMenuItem = ({classes, t, drawer, context}) => {
         <React.Fragment>
             {Boolean(icon) && icon}
             <Typography className={drawer ? classes.typographyIcon : classes.typographyIconLight}
-                        data-cm-role="left-menu-item-text"
+                        data-sel-role="left-menu-item-text"
             >
                 {t(buttonLabel)}
             </Typography>
@@ -68,7 +68,7 @@ export const LeftMenuItem = ({classes, t, drawer, context}) => {
                 <Badge badgeContent={badge}
                        color="error"
                        classes={{root: classes.badgeRoot, badge: classes.badgeBadge}}
-                       data-cm-role="workflow-active-task-count"
+                       data-sel-role="badge"
                 >
                     {Content}
                 </Badge> :
