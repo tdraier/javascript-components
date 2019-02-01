@@ -69,15 +69,6 @@ TopBar.propTypes = {
     title: PropTypes.string.isRequired
 };
 
-const EnhancedTopBar = compose(
+export default compose(
     withStyles(styles)
 )(TopBar);
-
-export default EnhancedTopBar;
-
-EnhancedTopBar.propTypes = {
-    actions: PropTypes.object,
-    contextModifiers: PropTypes.element,
-    path: PropTypes.string,
-    title: PropTypes.string.isRequired
-};

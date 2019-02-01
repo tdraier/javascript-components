@@ -68,14 +68,7 @@ LeftDrawerListItems.propTypes = {
     t: PropTypes.func.isRequired
 };
 
-const EnhancedLeftDrawerListItems = compose(
+export default compose(
     translate(),
     withStyles(styles),
 )(LeftDrawerListItems);
-
-EnhancedLeftDrawerListItems.propTypes = {
-    actionPath: PropTypes.string.isRequired,
-    context: PropTypes.object.isRequired
-};
-
-export default EnhancedLeftDrawerListItems;

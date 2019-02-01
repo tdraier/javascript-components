@@ -85,14 +85,7 @@ LeftMenuItem.propTypes = {
     t: PropTypes.func.isRequired
 };
 
-const EnhancedLeftMenuItem = compose(
+export default compose(
     translate(),
     withStyles(styles, {withTheme: true})
 )(LeftMenuItem);
-
-EnhancedLeftMenuItem.propTypes = {
-    context: PropTypes.object,
-    drawer: PropTypes.bool
-};
-
-export default EnhancedLeftMenuItem;

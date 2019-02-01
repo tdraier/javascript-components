@@ -40,17 +40,7 @@ BurgerMenuButton.defaultProps = {
     isDrawerOpen: false
 };
 
-const EnhancedBurgerMenuButton = compose(
+export default compose(
     translate(),
     withStyles(styles, {name: 'DxBurgerMenuButton'})
 )(BurgerMenuButton);
-
-EnhancedBurgerMenuButton.propTypes = {
-    isDrawerOpen: PropTypes.bool
-};
-
-EnhancedBurgerMenuButton.defaultProps = {
-    isDrawerOpen: false
-};
-
-export default EnhancedBurgerMenuButton;

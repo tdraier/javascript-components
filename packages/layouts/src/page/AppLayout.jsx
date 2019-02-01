@@ -65,7 +65,7 @@ export class AppLayout extends React.Component {
     }
 }
 
-const EnhancedAppLayout = compose(
+export default compose(
     withStyles(styles)
 )(AppLayout);
 
@@ -80,4 +80,3 @@ AppLayout.defaultProps = {
     expanded: false
 };
 
-export default EnhancedAppLayout;

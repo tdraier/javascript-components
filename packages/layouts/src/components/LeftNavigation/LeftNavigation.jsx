@@ -116,16 +116,6 @@ LeftNavigation.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-const EnhancedLeftNavigation = compose(
+export default compose(
     withStyles(styles, {withTheme: true}),
 )(LeftNavigation);
-
-export default EnhancedLeftNavigation;
-
-EnhancedLeftNavigation.propTypes = {
-    actionsTarget: PropTypes.string.isRequired,
-    secondaryActionsTarget: PropTypes.string.isRequired,
-    context: PropTypes.any.isRequired,
-    drawer: PropTypes.object.isRequired
-};
-
