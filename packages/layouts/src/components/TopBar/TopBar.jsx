@@ -42,7 +42,7 @@ export const TopBar = ({classes, title, contextModifiers, path, actions}) => (
     <div className={classes.root} data-sel-role="top-bar">
         <Grid container spacing={0} alignItems="center">
             <Grid item xs={3} className={classes.topBarGrid}>
-                <Typography variant="body1" color="inherit">{path}</Typography>
+                <Typography noWrap variant="body1" color="inherit">{path}</Typography>
 
                 <Typography variant="h5"
                             color="inherit"
@@ -65,7 +65,7 @@ TopBar.propTypes = {
     actions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     contextModifiers: PropTypes.element.isRequired,
-    path: PropTypes.element.isRequired,
+    path: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
 };
 
@@ -78,6 +78,6 @@ export default EnhancedTopBar;
 EnhancedTopBar.propTypes = {
     actions: PropTypes.object,
     contextModifiers: PropTypes.element,
-    path: PropTypes.element,
+    path: PropTypes.string,
     title: PropTypes.string.isRequired
 };
