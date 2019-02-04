@@ -18,6 +18,14 @@ let styles = {
     },
     loading: {
         opacity: 0
+    },
+    emptyMenuItem: {
+        display: 'none'
+    },
+    empty: {
+        '& $emptyMenuItem': {
+            display: 'block'
+        }
     }
 };
 
@@ -28,7 +36,11 @@ let setActionsRef = (ref, context) => {
             delete menuStatus[context.id].menuSubscription;
         }
 
-        menuStatus[context.id].menuSubscription = combineLatest(ref.observerRefs).subscribe(() => menuStatus[context.id].onMenuLoaded());
+        menuStatus[context.id].menuSubscription = combineLatest(ref.observerRefs).subscribe(() => {
+            if (menuStatus[context.id]) {
+                menuStatus[context.id].onMenuLoaded(context.menuDisplayed);
+            }
+        });
     }
 };
 
@@ -77,10 +89,10 @@ let display = (context, anchor) => {
                   id={'menu-' + context.id}
                   {...anchor}
                   action={c => {
-                      menuStatus[context.id].onMenuLoaded = () => {
+                      menuStatus[context.id].onMenuLoaded = displayed => {
                           if (menuStatus[context.id].open) {
                               c.updatePosition();
-                              context.currentMenuHandler.setProps({className: ''});
+                              context.currentMenuHandler.setProps({className: displayed ? '' : context.classes.empty});
                           }
                       };
                   }
@@ -124,53 +136,64 @@ let display = (context, anchor) => {
                   }}
                   {...subMenuProps}
         >
-            <DisplayActions ref={r => setActionsRef(r, context)}
-                            context={{
-                                ...context.originalContext,
-                                displayDisabled: context.menuDisplayDisabled,
-                                parent: context}
-                            }
-                            filter={context.menuFilter}
-                            render={
-                                ({context}) => (
-                                    <I18n>{t => (
-                                        <MenuItem data-sel-role={context.key}
-                                                  disabled={context.enabled !== null && context.enabled === false}
-                                                  onClick={e => {
-                                                      // First close all menu by closing main menu
-                                                      let rootContext = context;
-                                                      while (rootContext.parent && rootContext.parent.currentMenuHandler) {
-                                                          rootContext = rootContext.parent;
-                                                      }
+            <I18n>{t => (
+                <React.Fragment>
+                    {context.menuEmptyMessage &&
+                    <MenuItem disabled classes={{root: context.classes.emptyMenuItem}}>{t(context.menuEmptyMessage)}</MenuItem>
+                    }
+                    <DisplayActions ref={r => setActionsRef(r, context)}
+                                    context={{
+                                        ...context.originalContext,
+                                        displayDisabled: context.menuDisplayDisabled,
+                                        parent: context
+                                    }
+                                    }
+                                    filter={context.menuFilter}
+                                    render={
+                                        ({context}) => {
+                                            context.parent.menuDisplayed = true;
+                                            return (
+                                                <MenuItem data-sel-role={context.key}
+                                                          disabled={context.enabled !== null && context.enabled === false}
+                                                          onClick={e => {
+                                                              // First close all menu by closing main menu
+                                                              let rootContext = context;
+                                                              while (rootContext.parent && rootContext.parent.currentMenuHandler) {
+                                                                  rootContext = rootContext.parent;
+                                                              }
 
-                                                      rootContext.currentMenuHandler.setProps({open: false});
-                                                      // Send click event
-                                                      context.onClick(context, e);
-                                                  }}
-                                                  onMouseEnter={e => {
-                                                      // If a submenu was open, close it
-                                                      if (context.parent.currentOpenSubmenuContext) {
-                                                          context.parent.currentOpenSubmenuContext.currentMenuHandler.setProps({open: false});
-                                                      }
+                                                              rootContext.currentMenuHandler.setProps({open: false});
+                                                              // Send click event
+                                                              context.onClick(context, e);
+                                                          }}
+                                                          onMouseEnter={e => {
+                                                              // If a submenu was open, close it
+                                                              if (context.parent.currentOpenSubmenuContext) {
+                                                                  context.parent.currentOpenSubmenuContext.currentMenuHandler.setProps({open: false});
+                                                              }
 
-                                                      // Send mouseEnter event
-                                                      if (context.onMouseEnter) {
-                                                          context.onMouseEnter(context, e);
-                                                      }
-                                                  }}
-                                                  onMouseLeave={context.onMouseLeave && (e => {
-                                                      context.onMouseLeave(context, e);
-                                                  })}
-                                        >
-                                            {/* eslint-disable-next-line */}
-                                            <span dangerouslySetInnerHTML={{__html: t(context.buttonLabel, context.buttonLabelParams)}}/>
-                                            {context.icon}
-                                        </MenuItem>
-                                    )}
-                                    </I18n>
-                                )
-                            }
-                            target={context.menu}/>
+                                                              // Send mouseEnter event
+                                                              if (context.onMouseEnter) {
+                                                                  context.onMouseEnter(context, e);
+                                                              }
+                                                          }}
+                                                          onMouseLeave={context.onMouseLeave && (e => {
+                                                              context.onMouseLeave(context, e);
+                                                          })}
+                                                >
+                                                    {/* eslint-disable-next-line */}
+                                                    <span
+                                                        dangerouslySetInnerHTML={{__html: t(context.buttonLabel, context.buttonLabelParams)}}/>
+                                                    {context.icon}
+                                                </MenuItem>
+                                            );
+                                        }
+                                    }
+                                    target={context.menu}
+                    />
+                </React.Fragment>
+            )}
+            </I18n>
         </PureMenu>
     );
 };
@@ -182,6 +205,7 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
             context.icon = <ArrowRight/>;
         }
 
+        context.menuDisplayed = false;
         if (context.menuPreload) {
             preload(context);
         }
