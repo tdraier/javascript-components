@@ -30,7 +30,7 @@ export const LeftDrawerListItems = ({context, actionPath, classes, t}) => (
                                 <ListItem button
                                           selected={_.includes(_.split(actionPath, '/'), actionContext.actionKey)}
                                           onClick={event => {
-                                              context.drawer.handleDrawerClose();
+                                              !actionContext.hasChildren && context.drawer.handleDrawerClose();
                                               actionContext.onClick(actionContext, event);
                                           }}
                                 >
