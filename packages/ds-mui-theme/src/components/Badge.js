@@ -2,6 +2,7 @@ import React from 'react';
 import {Badge as MuiBadge, withStyles} from '@material-ui/core';
 import * as _ from 'lodash';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 let styles = theme => ({
     root: {},
