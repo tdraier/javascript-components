@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
 
 export default {
-    TextColor: PropTypes.oneOf(['inherit', 'alpha', 'beta', 'gamma'])
+    TextColor: PropTypes.oneOf(['inherit', 'alpha', 'beta', 'gamma', 'invert'])
 };
