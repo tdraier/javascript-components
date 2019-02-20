@@ -24,21 +24,20 @@ let styles = theme => ({
     legal: theme.typography.legal,
     p: theme.typography.p,
 
-
     colorInherit: {
         color: 'inherit'
     },
     colorAlpha: {
-        color: theme.palette.font.alpha,
+        color: theme.palette.font.alpha
     },
     colorBeta: {
-        color: theme.palette.font.beta,
+        color: theme.palette.font.beta
     },
     colorGamma: {
-        color: theme.palette.font.gamma,
+        color: theme.palette.font.gamma
     },
     colorInvert: {
-        color: theme.palette.invert.beta,
+        color: theme.palette.invert.beta
     }
 });
 

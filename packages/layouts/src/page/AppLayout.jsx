@@ -13,8 +13,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.layout.dark,
-        padding: 0,
-        paddingRight: theme.spacing.unit * 4
+        padding: 0
     },
     expanded: {
         marginLeft: styleConstants.leftNavigationDrawerWidth,
