@@ -3,6 +3,7 @@ import React from 'react';
 import {Grid, withStyles} from '@material-ui/core';
 import {Typography} from '@jahia/ds-mui-theme';
 import {compose} from 'recompose';
+import styleConstants from '../../styleConstants';
 
 const styles = theme => ({
     root: {
@@ -10,7 +11,7 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center',
         padding: '0px ' + (theme.spacing.unit * 3) + 'px',
-        height: theme.spacing.unit * 18
+        height: styleConstants.topBarHeight + 'px'
     },
     typoTitle: {
         width: '260px',
