@@ -12,8 +12,8 @@ const styles = theme => ({
     root: {
         minWidth: (styleConstants.screenMargin + styleConstants.leftNavigationWidth) + 'px',
         paddingLeft: theme.spacing.unit * 4,
-        height: '100%',
-        display: 'flex'
+        display: 'flex',
+        flexDirection: 'column',
     },
     rootOpenDrawer: {
         zIndex: theme.zIndex.modal,
@@ -24,6 +24,9 @@ const styles = theme => ({
     rootClosedDrawer: {
         background: theme.palette.layout.dark,
         overflow: 'hidden'
+    },
+    spacer: {
+        flex: '1 1 0%'
     },
     menuBurger: {
         paddingRight: '0px !important',
@@ -46,14 +49,8 @@ const styles = theme => ({
         overflowX: 'hidden'
     },
     list: {
-        paddingTop: '0 !important',
-        height: '100vh'
     },
     listBottom: {
-        position: 'absolute',
-        left: theme.spacing.unit * 4,
-        bottom: theme.spacing.unit,
-        zIndex: 'inherit'
     },
     drawerTree: {
         marginTop: '18px'
@@ -83,6 +80,7 @@ export const LeftNavigation = ({context, classes, actionsTarget, secondaryAction
                                 )}/>
 
             </List>
+            <div className={classes.spacer}/>
             <List className={classes.listBottom} component="nav">
                 <DisplayActions target={secondaryActionsTarget}
                                 context={actionContext}

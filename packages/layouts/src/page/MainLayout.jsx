@@ -1,13 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Grid, Typography, withStyles} from '@material-ui/core';
+import {Typography, withStyles} from '@material-ui/core';
 import {compose} from 'recompose';
 import {Trans} from 'react-i18next';
 import TopBar from '../components/TopBar';
 
 let styles = theme => ({
+    root: {
+        flex: '1 1 0%',
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%'
+    },
     topBar: {
         color: theme.palette.primary.contrastText
+    },
+    content: {
+        flex: '1 1 0%',
+        display: 'flex',
+        flexDirection: 'column'
     },
     metaNav: {
         position: 'absolute',
@@ -26,7 +37,7 @@ let styles = theme => ({
 });
 
 export const MainLayout = ({classes, topBarProps, children}) => (
-    <React.Fragment>
+    <div className={classes.root}>
         <div className={classes.metaNav}>
             <Typography variant="overline" color="inherit"><Trans i18nKey="label.contentManager.link.academy"
                                                                   components={[
@@ -39,13 +50,13 @@ export const MainLayout = ({classes, topBarProps, children}) => (
                                                                   ]}/>
             </Typography>
         </div>
-        <Grid container spacing={0}>
-            <Grid item xs={12} className={classes.topBar}>
-                <TopBar {...topBarProps}/>
-            </Grid>
-        </Grid>
-        {children}
-    </React.Fragment>
+        <div className={classes.topBar}>
+            <TopBar {...topBarProps}/>
+        </div>
+        <div className={classes.content}>
+            {children}
+        </div>
+    </div>
 );
 
 MainLayout.propTypes = {

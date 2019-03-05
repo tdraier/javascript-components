@@ -8,16 +8,19 @@ import styleConstants from '../styleConstants';
 const styles = theme => ({
     root: {
         position: 'relative',
-        display: 'flex'
+        display: 'flex',
+        flexDirection: 'row',
+        height: '100vh'
     },
-    content: {
-        flexGrow: 1,
+    main: {
+        flex: '1 1 0%',
+        display: 'flex',
+        flexDirection: 'column',
         backgroundColor: theme.palette.layout.dark,
         padding: 0
     },
     expanded: {
-        marginLeft: styleConstants.leftNavigationDrawerWidth,
-        padding: 0
+        marginLeft: styleConstants.leftNavigationDrawerWidth
     }
 });
 
@@ -56,7 +59,7 @@ export class AppLayout extends React.Component {
         return (
             <div className={classes.root}>
                 <LeftNavigation {...leftNavigationProps} drawer={{...this.state, handleDrawerOpen, handleDrawerClose}}/>
-                <div className={classes.content + ' ' + (expanded ? classes.expanded : '')}>
+                <div className={classes.main + ' ' + (expanded ? classes.expanded : '')}>
                     {children}
                 </div>
             </div>
