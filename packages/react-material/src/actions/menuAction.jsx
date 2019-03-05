@@ -8,6 +8,8 @@ import {withStylesAction} from './withStylesAction';
 import {ArrowRight} from '@material-ui/icons';
 import {BehaviorSubject, combineLatest} from 'rxjs';
 import {pure} from 'recompose';
+import {toIconComponent} from './toIconComponent';
+import {ListItemIcon} from '@jahia/ds-mui-theme';
 
 let styles = {
     modalRoot: {
@@ -82,6 +84,8 @@ let display = (context, anchor) => {
         };
     }
 
+    const showIcons = context.showIcons;
+
     menuStatus[context.id].open = true;
     context.currentMenuHandler = context.renderComponent(
         <PureMenu open
@@ -139,7 +143,7 @@ let display = (context, anchor) => {
             <I18n>{t => (
                 <React.Fragment>
                     {context.menuEmptyMessage &&
-                    <MenuItem disabled classes={{root: context.classes.emptyMenuItem}}>{t(context.menuEmptyMessage)}</MenuItem>
+                        <MenuItem disabled classes={{root: context.classes.emptyMenuItem}}>{t(context.menuEmptyMessage)}</MenuItem>
                     }
                     <DisplayActions ref={r => setActionsRef(r, context)}
                                     context={{
@@ -182,8 +186,12 @@ let display = (context, anchor) => {
                                                           })}
                                                 >
                                                     {/* eslint-disable-next-line */}
-                                                    <span
-                                                        dangerouslySetInnerHTML={{__html: t(context.buttonLabel, context.buttonLabelParams)}}/>
+                                                    {(showIcons && context.buttonIcon) &&
+                                                        <ListItemIcon>
+                                                            {toIconComponent(context.buttonIcon)}
+                                                        </ListItemIcon>
+                                                    }
+                                                    <span dangerouslySetInnerHTML={{__html: t(context.buttonLabel, context.buttonLabelParams)}}/>
                                                     {context.icon}
                                                 </MenuItem>
                                             );

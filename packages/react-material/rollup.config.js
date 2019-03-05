@@ -20,6 +20,7 @@ export default {
     },
     external:[
         "@jahia/icons",
+        "@jahia/ds-mui-theme",
         "lodash",
         "@material-ui/core",
         "@material-ui/icons",
