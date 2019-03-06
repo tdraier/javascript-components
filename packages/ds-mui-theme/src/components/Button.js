@@ -2,6 +2,7 @@ import React from 'react';
 import {Button as MuiButton, withStyles} from '@material-ui/core';
 import * as _ from 'lodash';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 let styles = theme => ({
     root: {},
@@ -35,12 +36,16 @@ const getClasses = ({variant, color, size, classes: {root, label, focusVisible, 
 });
 
 const Button = withStyles(styles, {name: 'DsButton'})(
-    ({variant, color, size, classes, ...props}) => (
-        <MuiButton classes={getClasses({variant, color, size, classes})} {...props}/>
+    ({variant, color, size, classes, icon, children, ...props}) => (
+        <MuiButton classes={getClasses({variant, color, size, classes})} {...props}>
+            {children}
+            {icon}
+        </MuiButton>
     )
 );
 
 Button.propTypes = process.env.NODE_ENV !== 'production' ? {
+    icon: PropTypes.node
 } : {};
 
 Button.defaultProps = {

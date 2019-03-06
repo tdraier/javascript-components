@@ -4,3 +4,7 @@ export {default as IconButton} from './IconButton';
 export {default as Badge} from './Badge';
 export {default as FormControlLabel} from './FormControlLabel';
 export {default as ListItemIcon} from './ListItemIcon';
+export {default as Panel} from './Panel';
+export {default as PanelSummary} from './PanelSummary';
+export {default as PanelDetails} from './PanelDetails';
+export {default as PanelAction} from './PanelActions';

@@ -51,16 +51,20 @@ let styles = theme => ({
     },
 
     sizeCompact: {
-        '&> span > svg': {
-            fontSize: theme.typography.zeta.fontSize
-        },
         padding: 6
     },
-
+    icon: {
+        color: theme.palette.type === 'light' ? theme.palette.grey[700] : theme.palette.grey[300],
+        marginLeft: 4,
+        marginRight: -8
+    },
+    iconSizeCompact: {
+        fontSize: theme.typography.zeta.fontSize
+    },
+    iconSizeNormal: {
+        fontSize: theme.typography.delta.fontSize
+    },
     sizeNormal: {
-        '&> span > svg': {
-            fontSize: theme.typography.delta.fontSize
-        },
         padding: 7
     },
 
@@ -89,9 +93,12 @@ const getClasses = ({variant, color, size, classes: {root, disableRipple, ...dsC
 /*
    Spread new classes into original component
  */
+
 const IconButton = withStyles(styles, {name: 'DsIconButton'})(
-    ({variant, color, size, classes, ...props}) => (
-        <MuiIconButton classes={getClasses({variant, color, size, classes})} {...props}/>
+    ({variant, color, size, classes, icon, ...props}) => (
+        <MuiIconButton classes={getClasses({variant, color, size, classes})} {...props}>
+            {icon}
+        </MuiIconButton>
     )
 );
 
@@ -102,7 +109,7 @@ IconButton.propTypes = process.env.NODE_ENV !== 'production' ? {
     /**
      * The icon element.
      */
-    children: PropTypes.node,
+    icon: PropTypes.node.isRequired,
 
     /**
      * Override or extend the styles applied to the component.
