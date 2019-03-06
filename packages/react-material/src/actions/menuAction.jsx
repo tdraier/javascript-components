@@ -28,6 +28,10 @@ let styles = {
         '& $emptyMenuItem': {
             display: 'block'
         }
+    },
+    noIcon: {
+        width: 20,
+        height: 20
     }
 };
 
@@ -85,6 +89,7 @@ let display = (context, anchor) => {
     }
 
     const showIcons = context.showIcons;
+    const noIconClass = context.classes.noIcon;
 
     menuStatus[context.id].open = true;
     context.currentMenuHandler = context.renderComponent(
@@ -186,9 +191,12 @@ let display = (context, anchor) => {
                                                           })}
                                                 >
                                                     {/* eslint-disable-next-line */}
-                                                    {(showIcons && context.buttonIcon) &&
+                                                    {showIcons &&
                                                         <ListItemIcon>
-                                                            {toIconComponent(context.buttonIcon)}
+                                                            {context.buttonIcon ?
+                                                                toIconComponent(context.buttonIcon) :
+                                                                <span className={noIconClass}/>
+                                                            }
                                                         </ListItemIcon>
                                                     }
                                                     <span dangerouslySetInnerHTML={{__html: t(context.buttonLabel, context.buttonLabelParams)}}/>
