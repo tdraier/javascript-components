@@ -28,7 +28,7 @@ const getClasses = ({variant, classes: {root, ...dsClasses}}) => ({
 /*
    Spread new classes into original component
  */
-const PanelDetails = withStyles(styles, {name: 'DsPanelDetails'})(
+const ExpansionPanelDetails = withStyles(styles, {name: 'DsExpansionPanelDetails'})(
     ({variant, disabled, expanded, classes, ...props}) => (
         <MuiExpansionPanelDetails classes={getClasses({variant, disabled, expanded, classes})} {...props}/>
     )
@@ -37,18 +37,18 @@ const PanelDetails = withStyles(styles, {name: 'DsPanelDetails'})(
 /*
   Proptype of component
  */
-PanelDetails.propTypes = process.env.NODE_ENV !== 'production' ? {
+ExpansionPanelDetails.propTypes = process.env.NODE_ENV !== 'production' ? {
     children: PropTypes.node.isRequired,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     className: PropTypes.string
 } : {};
 
 /*
    Default Props
  */
-PanelDetails.defaultProps = {
+ExpansionPanelDetails.defaultProps = {
 };
 
-PanelDetails.displayName = 'DsPanelDetails';
+ExpansionPanelDetails.displayName = 'DsExpansionPanelDetails';
 
-export default PanelDetails;
+export default ExpansionPanelDetails;

@@ -73,14 +73,13 @@ let styles = theme => ({
         display: 'flex',
         alignItems: 'inherit',
         justifyContent: 'inherit'
-    },
-    disableRipple: {}
+    }
 });
 
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, color, size, classes: {root, disableRipple, ...dsClasses}}) => ({
+const getClasses = ({variant, color, disableRipple, size, classes: {root, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant],
@@ -115,7 +114,7 @@ IconButton.propTypes = process.env.NODE_ENV !== 'production' ? {
      * Override or extend the styles applied to the component.
      * See [CSS API](#css-api) below for more details.
      */
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
 
     /**
      * @ignore

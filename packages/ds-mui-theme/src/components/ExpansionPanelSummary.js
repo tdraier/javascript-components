@@ -80,7 +80,7 @@ const getClasses = ({variant, classes: {root, ...dsClasses}}) => ({
 /*
    Spread new classes into original component
  */
-const PanelSummary = withStyles(styles, {name: 'DsPanel'})(
+const ExpansionPanelSummary = withStyles(styles, {name: 'DsExpansionPanelSummary'})(
     ({variant, classes, ...props}) => (
         <MuiExpansionPanelSummary classes={getClasses({variant, classes})} {...props}/>
     )
@@ -89,9 +89,9 @@ const PanelSummary = withStyles(styles, {name: 'DsPanel'})(
 /*
   Proptype of component
  */
-PanelSummary.propTypes = process.env.NODE_ENV !== 'production' ? {
+ExpansionPanelSummary.propTypes = process.env.NODE_ENV !== 'production' ? {
     children: PropTypes.node,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     expanded: PropTypes.bool,
@@ -105,10 +105,11 @@ PanelSummary.propTypes = process.env.NODE_ENV !== 'production' ? {
 /*
    Default Props
  */
-PanelSummary.defaultProps = {
+ExpansionPanelSummary.defaultProps = {
     disabled: false
 };
 
-PanelSummary.displayName = 'DsPanelSummary';
+ExpansionPanelSummary.displayName = 'DsExpansionPanelSummary';
+ExpansionPanelSummary.muiName = 'ExpansionPanelSummary';
 
-export default PanelSummary;
+export default ExpansionPanelSummary;

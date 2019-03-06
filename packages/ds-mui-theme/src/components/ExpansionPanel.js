@@ -11,6 +11,7 @@ import {ExpansionPanel as MuiExpansionPanel, withStyles} from '@material-ui/core
 let styles = theme => ({
     root: {
         position: 'relative',
+        margin: '8px 0',
         '&:before': {
             position: 'absolute',
             left: 0,
@@ -71,7 +72,7 @@ const getClasses = ({variant, classes: {root, disabled, expanded, defaultExpande
 /*
    Spread new classes into original component
  */
-const Panel = withStyles(styles, {name: 'DsPanel'})(
+const ExpansionPanel = withStyles(styles, {name: 'DsExpansionPanel'})(
     ({variant, disabled, expanded, classes, ...props}) => (
         <MuiExpansionPanel classes={getClasses({variant, disabled, expanded, classes})} {...props}/>
     )
@@ -80,26 +81,25 @@ const Panel = withStyles(styles, {name: 'DsPanel'})(
 /*
   Proptype of component
  */
-Panel.propTypes = process.env.NODE_ENV !== 'production' ? {
+ExpansionPanel.propTypes = process.env.NODE_ENV !== 'production' ? {
     children: PropTypes.node.isRequired,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     className: PropTypes.string,
     CollapseProps: PropTypes.object,
     defaultExpanded: PropTypes.bool,
     disabled: PropTypes.bool,
     expanded: PropTypes.bool,
     onChange: PropTypes.func
-
 } : {};
 
 /*
    Default Props
  */
-Panel.defaultProps = {
+ExpansionPanel.defaultProps = {
     defaultExpanded: false,
     disabled: false
 };
 
-Panel.displayName = 'DsPanel';
+ExpansionPanel.displayName = 'DsExpansionPanel';
 
-export default Panel;
+export default ExpansionPanel;
