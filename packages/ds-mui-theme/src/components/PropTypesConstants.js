@@ -10,5 +10,7 @@ export default {
     ExpansionPanelColors: PropTypes.oneOf(['default', 'inverted']),
     IconButtonVariants: PropTypes.oneOf(['ghost', 'normal']),
     IconButtonSizes: PropTypes.oneOf(['normal', 'compact']),
-    IconButtonColors: PropTypes.oneOf(['default', 'inverted'])
+    IconButtonColors: PropTypes.oneOf(['default', 'inverted']),
+    SelectColors: PropTypes.oneOf(['default', 'inverted']),
+    SelectVariants: PropTypes.oneOf(['normal', 'ghost'])
 };

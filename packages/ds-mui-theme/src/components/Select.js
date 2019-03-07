@@ -1,58 +1,66 @@
 import React from 'react';
-import {Select as MuiSelect, withStyles} from '@material-ui/core';
-import * as _ from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-let styles = theme => ({
-    root: {},
-    disabled: {},
-    normal: {},
-    ghost: {},
-    colorNormal: {
-        color: 'red'
+/* Wrapped component */
+import {Select as MuiSelect, withStyles} from '@material-ui/core';
+import PropTypeConstants from './PropTypesConstants';
+import * as _ from 'lodash';
+
+/* Styles applied in the component.
+* root: the style of the component itself
+* attributeValue: when an attribute is set
+*/
+let styles = () => ({
+    root: {
+    },
+    normal: {
+    },
+    ghost: {
     },
     colorInverted: {
-        color: 'blue'
     },
-    sizeNormal: {},
-    sizeCompact: {
-        height: theme.unit * 3
-    },
-    noWrap: {},
-    gutterBottom: {},
-    paragraph: {}
+    colorDefault: {
+    }
 });
 
-const getClasses = ({variant, color, size, classes: {root, label, focusVisible, disabled, fullWidth, ...myClasses}}) => ({
+/*
+   Set custom classes of component
+ */
+const getClasses = ({variant, color, classes: {root, disabled, expanded, defaultExpanded, ...dsClasses}}) => ({
     root: classnames(
         root,
-        myClasses[variant],
-        myClasses['color' + _.capitalize(color)],
-        myClasses['size' + _.capitalize(size)]
-    ),
-    label,
-    focusVisible,
-    disabled,
-    fullWidth
+        dsClasses[variant],
+        dsClasses['color' + _.capitalize(color)]
+    )
 });
 
-const Select = withStyles(styles, {name: 'DsButton'})(
-    ({variant, color, size, classes, ...props}) => (
-        <MuiSelect classes={getClasses({variant, color, size, classes})} {...props}/>
+/*
+   Spread new classes into original component
+ */
+const Select = withStyles(styles, {name: 'DsSelect'})(
+    ({variant, color, classes, ...props}) => (
+        <MuiSelect classes={getClasses({variant, color, classes})} {...props}/>
     )
 );
 
+/*
+  Proptype of component
+ */
 Select.propTypes = process.env.NODE_ENV !== 'production' ? {
-
-    /**
-     * Applies the theme typography styles.
-     * Use `body1` as the default value with the legacy implementation and `body2` with the new one.
-     */
-    variant: PropTypes.oneOf(['normal', 'ghost'])
+    color: PropTypeConstants.SelectColors,
+    variant: PropTypeConstants.SelectVariants
 } : {};
 
-Select.defaultProps = {};
+/*
+   Default Props
+ */
+Select.defaultProps = {
+    autoWidth: false,
+    displayEmpty: false,
+    multiple: false,
+    native: false
+};
 
 Select.displayName = 'DsSelect';
 
