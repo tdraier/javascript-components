@@ -14,7 +14,7 @@ let styles = theme => ({
     root: {
         position: 'relative',
         boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
-        margin: '8px 0',
+        margin: '0 0 8px 0',
         '&:before': {
             position: 'absolute',
             left: 0,
