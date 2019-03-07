@@ -7,7 +7,14 @@ import PropTypeConstants from './PropTypesConstants';
 
 let styles = theme => ({
     root: {
-        borderRadius: 1
+        borderRadius: 1,
+        letterSpacing: 0,
+        fontWeight: 600,
+        fontSize: 14,
+        lineHeight: 1.25,
+        margin: '0 8px',
+        '-webkit-font-smoothing': 'antialiased',
+        '-moz-osx-font-smoothing': 'grayscale'
     },
     label: {},
     focusVisible: {},

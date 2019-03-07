@@ -11,7 +11,7 @@ import {ExpansionPanelDetails as MuiExpansionPanelDetails, withStyles} from '@ma
 let styles = () => ({
     root: {
         display: 'flex',
-        padding: '8px 24px 24px'
+        padding: '8px 32px 32px'
     }
 });
 
@@ -29,8 +29,8 @@ const getClasses = ({variant, classes: {root, ...dsClasses}}) => ({
    Spread new classes into original component
  */
 const ExpansionPanelDetails = withStyles(styles, {name: 'DsExpansionPanelDetails'})(
-    ({variant, disabled, expanded, classes, ...props}) => (
-        <MuiExpansionPanelDetails classes={getClasses({variant, disabled, expanded, classes})} {...props}/>
+    ({variant, classes, ...props}) => (
+        <MuiExpansionPanelDetails classes={getClasses({variant, classes})} {...props}/>
     )
 );
 

@@ -12,8 +12,7 @@ let styles = theme => ({
     root: {
         display: 'flex',
         minHeight: 8 * 6,
-        padding: '0 24px 0 24px',
-        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
+        padding: '8px 32px 8px 32px',
         borderRadius: 1,
         '&:hover:not($disabled)': {
             cursor: 'pointer'
@@ -21,50 +20,27 @@ let styles = theme => ({
         '&$expanded': {
             minHeight: 64
         },
-        '&$focused': {
-            boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)'
-        },
+        '&$focused': {},
         '&$disabled': {
             opacity: 0.38
         }
     },
-
-    /* Styles applied to the root element if `expanded={true}`. */
+    expandIcon:{
+        color: 'inherit'
+    },
     expanded: {},
-
-    /* Styles applied to the root and children wrapper elements when focused. */
-    focused: {},
-
-    /* Styles applied to the root element if `disabled={true}`. */
-    disabled: {},
-
-    /* Styles applied to the children wrapper element. */
+    focused: {
+        backgroundColor: theme.palette.ui.omega
+    },
     content: {
         display: 'flex',
         flexGrow: 1,
-        margin: '12px 0',
+        margin: '26px 0',
         '& > :last-child': {
             paddingRight: 32
         },
         '&$expanded': {
-            margin: '20px 0'
-        }
-    },
-
-    /* Styles applied to the `IconButton` component when `expandIcon` is supplied. */
-    expandIcon: {
-        position: 'absolute',
-        top: '50%',
-        right: 8,
-        transform: 'translateY(-50%) rotate(0deg)',
-        '&:hover': {
-            // Disable the hover effect for the IconButton,
-            // because a hover effect should apply to the entire Expand button and
-            // not only to the IconButton.
-            backgroundColor: 'transparent'
-        },
-        '&$expanded': {
-            transform: 'translateY(-50%) rotate(180deg)'
+            margin: '28px 0'
         }
     }
 });
@@ -72,19 +48,24 @@ let styles = theme => ({
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, classes: {root, ...dsClasses}}) => ({
+const getClasses = ({variant, classes: {root, expanded, disabled, focused,expandIcon, content, ...dsClasses}}) => ({
     root: classnames(
         root,
-        dsClasses[variant],
-    )
+        dsClasses[variant]
+    ),
+    expanded,
+    disabled,
+    expandIcon,
+    focused,
+    content
 });
 
 /*
    Spread new classes into original component
  */
 const ExpansionPanelSummary = withStyles(styles, {name: 'DsExpansionPanelSummary'})(
-    ({variant, classes, ...props}) => (
-        <MuiExpansionPanelSummary classes={getClasses({variant, classes})} {...props}/>
+    ({variant, classes, focused, content, expanded, disabled, ...props}) => (
+        <MuiExpansionPanelSummary classes={getClasses({variant, expanded, disabled, focused, content, classes})} {...props}/>
     )
 );
 
@@ -93,15 +74,17 @@ const ExpansionPanelSummary = withStyles(styles, {name: 'DsExpansionPanelSummary
  */
 ExpansionPanelSummary.propTypes = process.env.NODE_ENV !== 'production' ? {
     children: PropTypes.node,
-    classes: PropTypes.object,
+    classes: PropTypes.object.isRequired,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     expanded: PropTypes.bool,
     expandIcon: PropTypes.node,
     IconButtonProps: PropTypes.object,
+    innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    onBlur: PropTypes.func,
     onChange: PropTypes.func,
-    onClick: PropTypes.func
-
+    onClick: PropTypes.func,
+    onFocusVisible: PropTypes.func
 } : {};
 
 /*

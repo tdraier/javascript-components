@@ -6,6 +6,8 @@ export default {
     ButtonVariants: PropTypes.oneOf(['ghost', 'primary', 'secondary', 'inline']),
     ButtonColors: PropTypes.oneOf(['default', 'inverted']),
     ButtonSizes: PropTypes.oneOf(['normal', 'compact']),
+    ExpansionPanelVariants: PropTypes.oneOf(['normal', 'ghost']),
+    ExpansionPanelColors: PropTypes.oneOf(['default', 'inverted']),
     IconButtonVariants: PropTypes.oneOf(['ghost', 'normal']),
     IconButtonSizes: PropTypes.oneOf(['normal', 'compact']),
     IconButtonColors: PropTypes.oneOf(['default', 'inverted'])

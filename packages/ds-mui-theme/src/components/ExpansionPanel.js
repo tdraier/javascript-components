@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 /* Wrapped component */
 import {ExpansionPanel as MuiExpansionPanel, withStyles} from '@material-ui/core';
+import PropTypeConstants from './PropTypesConstants';
+import * as _ from 'lodash';
 
 /* Styles applied in the component.
 * root: the style of the component itself
@@ -11,6 +13,7 @@ import {ExpansionPanel as MuiExpansionPanel, withStyles} from '@material-ui/core
 let styles = theme => ({
     root: {
         position: 'relative',
+        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
         margin: '8px 0',
         '&:before': {
             position: 'absolute',
@@ -35,11 +38,32 @@ let styles = theme => ({
             }
         }
     },
+    normal: {
+        borderRadius: 1,
+        border: 'solid 1px ' + theme.palette.ui.omega,
+        '&:focus': {
+            backgroundColor: theme.palette.ui.omega
+        }
+    },
     ghost: {
-
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        '&:hover': {
+            boxShadow: 'none'
+        },
+        '&:focus': {
+            backgroundColor: theme.palette.ui.omega
+        }
+    },
+    ghostExpanded: {
+        boxShadow: 'none'
     },
     expanded: {
         margin: '16px 0',
+        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.2)',
+        '&:hover': {
+            boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.2)'
+        },
         '&:first-child': {
             marginTop: 0
         },
@@ -50,31 +74,54 @@ let styles = theme => ({
             opacity: 0
         }
     },
-
+    colorDefault: {
+        backgroundColor: theme.palette.ui.epsilon,
+        color: theme.palette.font.alpha
+    },
+    colorInverted: {
+        backgroundColor: theme.palette.ui.beta + '!important',
+        color: theme.palette.invert.beta,
+        border: 'solid 1px ' + theme.palette.invert.alpha
+    },
     /* Styles applied to the root element if `disabled={true}`. */
     disabled: {
-        backgroundColor: theme.palette.action.disabledBackground
+        backgroundColor: theme.palette.ui.epsilon,
+        color: theme.palette.font.gamma,
+        boxShadow: 'none',
+        cursor: 'not-allowed',
+        pointerEvents: 'none',
+        '&:first-child': {
+            opacity: 0.5
+        },
+        '&:last-child': {
+            opacity: 0.5
+        },
+        '&:hover': {
+            boxShadow: 'none'
+        }
     }
 });
 
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, classes: {root, disabled, expanded, defaultExpanded, ...dsClasses}}) => ({
+const getClasses = ({variant, color, classes: {root, disabled, expanded, defaultExpanded, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant],
+        dsClasses['color' + _.capitalize(color)],
     ),
     disabled,
-    expanded
+    expanded,
+    defaultExpanded
 });
 
 /*
    Spread new classes into original component
  */
 const ExpansionPanel = withStyles(styles, {name: 'DsExpansionPanel'})(
-    ({variant, disabled, expanded, classes, ...props}) => (
-        <MuiExpansionPanel classes={getClasses({variant, disabled, expanded, classes})} {...props}/>
+    ({variant, color, classes, ...props}) => (
+        <MuiExpansionPanel classes={getClasses({variant, color, classes})} {...props}/>
     )
 );
 
@@ -82,6 +129,8 @@ const ExpansionPanel = withStyles(styles, {name: 'DsExpansionPanel'})(
   Proptype of component
  */
 ExpansionPanel.propTypes = process.env.NODE_ENV !== 'production' ? {
+    variant: PropTypeConstants.ExpansionPanelVariants,
+    color: PropTypeConstants.ExpansionPanelColors,
     children: PropTypes.node.isRequired,
     classes: PropTypes.object,
     className: PropTypes.string,
@@ -96,6 +145,8 @@ ExpansionPanel.propTypes = process.env.NODE_ENV !== 'production' ? {
    Default Props
  */
 ExpansionPanel.defaultProps = {
+    variant: 'normal',
+    color: 'default',
     defaultExpanded: false,
     disabled: false
 };
