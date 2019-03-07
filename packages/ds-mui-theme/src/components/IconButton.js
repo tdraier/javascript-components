@@ -49,7 +49,9 @@ let styles = theme => ({
     colorDefault: {
         color: theme.palette.font.alpha
     },
-
+    colorInverted: {
+        color: theme.palette.invert.beta
+    },
     sizeCompact: {
         padding: 6
     },
@@ -67,7 +69,6 @@ let styles = theme => ({
     sizeNormal: {
         padding: 7
     },
-
     label: {
         width: '100%',
         display: 'flex',

@@ -83,7 +83,7 @@ Typography.propTypes = process.env.NODE_ENV !== 'production' ? {
     /**
      * The color of the component. It supports those theme colors that make sense for this component.
      */
-    color: PropTypeConstants.TextColor,
+    color: PropTypeConstants.TextColors,
 
     /**
      * The component used for the root node.
@@ -129,8 +129,7 @@ Typography.propTypes = process.env.NODE_ENV !== 'production' ? {
      * Applies the theme typography styles.
      * Use `body1` as the default value with the legacy implementation and `body2` with the new one.
      */
-    variant: PropTypes.oneOf(['giga', 'mega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'iota', 'omega', 'caption', 'legal', 'p'])
-
+    variant: PropTypeConstants.TextVariants
 } : {};
 
 Typography.defaultProps = {

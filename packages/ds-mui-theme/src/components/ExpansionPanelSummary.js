@@ -13,6 +13,8 @@ let styles = theme => ({
         display: 'flex',
         minHeight: 8 * 6,
         padding: '0 24px 0 24px',
+        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
+        borderRadius: 1,
         '&:hover:not($disabled)': {
             cursor: 'pointer'
         },
@@ -20,7 +22,7 @@ let styles = theme => ({
             minHeight: 64
         },
         '&$focused': {
-            backgroundColor: theme.palette.grey[300]
+            boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)'
         },
         '&$disabled': {
             opacity: 0.38
