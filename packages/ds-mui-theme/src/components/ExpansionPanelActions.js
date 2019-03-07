@@ -14,22 +14,17 @@ let styles = () => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: '16px 8px'
+        padding: '0 24px 32px',
+        background: 'transparent'
     },
-
-    /* Styles applied to the children. */
-    action: {
-        marginLeft: 8
-    }
 });
 
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, classes: {root, action, ...dsClasses}}) => ({
+const getClasses = ({variant, classes: {root, ...dsClasses}}) => ({
     root: classnames(
         root,
-        action,
         dsClasses[variant],
     )
 });
@@ -38,8 +33,8 @@ const getClasses = ({variant, classes: {root, action, ...dsClasses}}) => ({
    Spread new classes into original component
  */
 const ExpansionPanelActions = withStyles(styles, {name: 'DsExpansionPanelActions'})(
-    ({variant, classes, action, ...props}) => (
-        <MuiExpansionPanelActions classes={getClasses({variant, action, classes})} {...props}/>
+    ({variant, classes, ...props}) => (
+        <MuiExpansionPanelActions classes={getClasses({variant, classes})} {...props}/>
     )
 );
 
