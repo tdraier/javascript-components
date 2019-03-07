@@ -46,10 +46,11 @@ let styles = theme => ({
         }
     },
     ghost: {
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent!important',
         boxShadow: 'none!important',
+        border: 'none!important',
         '&:hover': {
-            boxShadow: 'none'
+            boxShadow: 'none!important'
         },
         '&:focus': {
             backgroundColor: theme.palette.ui.omega
@@ -76,13 +77,17 @@ let styles = theme => ({
         color: theme.palette.font.alpha
     },
     colorInverted: {
-        backgroundColor: theme.palette.ui.beta + '!important',
+        backgroundColor: theme.palette.ui.beta,
         color: theme.palette.invert.beta,
         border: 'solid 1px ' + theme.palette.invert.alpha
     },
+
+    ghostDisabled: {
+        backgroundColor: theme.palette.ui.beta
+    },
     /* Styles applied to the root element if `disabled={true}`. */
     disabled: {
-        backgroundColor: theme.palette.ui.epsilon,
+        backgroundColor: 'inherit',
         color: theme.palette.font.gamma,
         boxShadow: 'none',
         cursor: 'not-allowed',

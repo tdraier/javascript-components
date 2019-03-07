@@ -10,7 +10,6 @@ let styles = theme => ({
         borderRadius: 1,
         letterSpacing: 0,
         fontWeight: 600,
-        fontSize: 14,
         lineHeight: 1.25,
         margin: '0 8px',
         '-webkit-font-smoothing': 'antialiased',
@@ -49,9 +48,11 @@ let styles = theme => ({
         color: theme.palette.invert.beta
     },
     sizeNormal: {
+        fontSize: 14,
         padding: theme.spacing.unit + 'px ' + (theme.spacing.unit * 3) + 'px'
     },
     sizeCompact: {
+        fontSize: 12,
         padding: (theme.spacing.unit / 2) + 'px' + theme.spacing.unit + 'px '
     },
     noWrap: {},
