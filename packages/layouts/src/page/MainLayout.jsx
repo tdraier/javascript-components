@@ -10,7 +10,8 @@ let styles = theme => ({
         flex: '1 1 0%',
         display: 'flex',
         flexDirection: 'column',
-        width: '100%'
+        width: '100%',
+        minHeight: 0
     },
     topBar: {
         color: theme.palette.primary.contrastText
@@ -18,7 +19,8 @@ let styles = theme => ({
     content: {
         flex: '1 1 0%',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        minHeight: 0
     },
     metaNav: {
         position: 'absolute',

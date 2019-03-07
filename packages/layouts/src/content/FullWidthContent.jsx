@@ -7,7 +7,8 @@ const styles = () => ({
     root: {
         flex: '1 1 0%',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        minHeight: 0
     }
 });
 
