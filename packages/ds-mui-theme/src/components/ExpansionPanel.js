@@ -47,16 +47,13 @@ let styles = theme => ({
     },
     ghost: {
         backgroundColor: 'transparent',
-        boxShadow: 'none',
+        boxShadow: 'none!important',
         '&:hover': {
             boxShadow: 'none'
         },
         '&:focus': {
             backgroundColor: theme.palette.ui.omega
         }
-    },
-    ghostExpanded: {
-        boxShadow: 'none'
     },
     expanded: {
         margin: '16px 0',
@@ -109,7 +106,7 @@ const getClasses = ({variant, color, classes: {root, disabled, expanded, default
     root: classnames(
         root,
         dsClasses[variant],
-        dsClasses['color' + _.capitalize(color)],
+        dsClasses['color' + _.capitalize(color)]
     ),
     disabled,
     expanded,

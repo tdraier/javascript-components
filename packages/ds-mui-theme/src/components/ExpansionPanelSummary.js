@@ -48,7 +48,7 @@ let styles = theme => ({
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, classes: {root, expanded, disabled, focused,expandIcon, content, ...dsClasses}}) => ({
+const getClasses = ({variant, classes: {root, expanded, disabled, focused, expandIcon, content, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant]
