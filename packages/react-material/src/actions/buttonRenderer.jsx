@@ -1,4 +1,4 @@
-import {Button} from "@material-ui/core";
+import {Button} from '@jahia/ds-mui-theme';
 import React from "react";
 import {I18n} from 'react-i18next';
 import {toIconComponent} from "./toIconComponent";
