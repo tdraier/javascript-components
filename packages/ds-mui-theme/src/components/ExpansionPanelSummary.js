@@ -74,7 +74,7 @@ const ExpansionPanelSummary = withStyles(styles, {name: 'DsExpansionPanelSummary
  */
 ExpansionPanelSummary.propTypes = process.env.NODE_ENV !== 'production' ? {
     children: PropTypes.node,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     expanded: PropTypes.bool,
