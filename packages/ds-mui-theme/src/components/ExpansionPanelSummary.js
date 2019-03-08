@@ -25,7 +25,7 @@ let styles = theme => ({
             opacity: 0.38
         }
     },
-    expandIcon:{
+    expandIcon: {
         color: 'inherit'
     },
     expanded: {},
