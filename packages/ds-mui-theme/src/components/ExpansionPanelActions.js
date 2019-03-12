@@ -14,7 +14,7 @@ let styles = () => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
-        padding: '0 24px 32px',
+        padding: '0 ' + (theme.spacing.unit * 3) + 'px ' + (theme.spacing.unit * 4) + 'px',
         background: 'transparent'
     },
 });

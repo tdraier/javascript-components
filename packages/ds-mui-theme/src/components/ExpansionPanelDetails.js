@@ -11,7 +11,7 @@ import {ExpansionPanelDetails as MuiExpansionPanelDetails, withStyles} from '@ma
 let styles = () => ({
     root: {
         display: 'flex',
-        padding: '8px 32px 32px'
+        padding: theme.spacing.unit + 'px ' + (theme.spacing.unit * 4) + 'px ' + (theme.spacing.unit * 4) + 'px'
     }
 });
 

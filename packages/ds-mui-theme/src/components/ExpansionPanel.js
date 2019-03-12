@@ -14,7 +14,7 @@ let styles = theme => ({
     root: {
         position: 'relative',
         boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
-        margin: '0 0 8px 0',
+        margin: '0 0 ' + theme.spacing.unit + 'px 0',
         '&:before': {
             position: 'absolute',
             left: 0,
@@ -46,18 +46,18 @@ let styles = theme => ({
         }
     },
     ghost: {
-        backgroundColor: 'transparent!important',
-        boxShadow: 'none!important',
-        border: 'none!important',
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        border: 'none',
         '&:hover': {
-            boxShadow: 'none!important'
+            boxShadow: 'none'
         },
         '&:focus': {
             backgroundColor: theme.palette.ui.omega
         }
     },
     expanded: {
-        margin: '16px 0',
+        margin: (theme.spacing.unit * 2) + 'px 0',
         boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.2)',
         '&:hover': {
             boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.2)'

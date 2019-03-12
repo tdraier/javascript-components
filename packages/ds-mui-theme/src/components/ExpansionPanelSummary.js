@@ -12,7 +12,7 @@ let styles = theme => ({
     root: {
         display: 'flex',
         minHeight: 8 * 6,
-        padding: '8px 32px 8px 32px',
+        padding: theme.spacing.unit + 'px ' + (theme.spacing.unit * 4) + 'px ' + theme.spacing.unit + 'px ' + (theme.spacing.unit * 4) + 'px',
         borderRadius: 1,
         '&:hover:not($disabled)': {
             cursor: 'pointer'
@@ -37,7 +37,7 @@ let styles = theme => ({
         flexGrow: 1,
         margin: '26px 0',
         '& > :last-child': {
-            paddingRight: 32
+            paddingRight: theme.spacing.unit * 4
         },
         '&$expanded': {
             margin: '28px 0'
