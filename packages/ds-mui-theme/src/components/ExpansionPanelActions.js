@@ -22,11 +22,12 @@ let styles = () => ({
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, classes: {root, ...dsClasses}}) => ({
+const getClasses = ({variant, classes: {root, action, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant],
-    )
+    ),
+    action
 });
 
 /*
@@ -51,7 +52,6 @@ ExpansionPanelActions.propTypes = process.env.NODE_ENV !== 'production' ? {
    Default Props
  */
 ExpansionPanelActions.defaultProps = {
-    enumerable: true
 };
 
 ExpansionPanelActions.displayName = 'DsExpansionPanelActions';
