@@ -17,7 +17,8 @@ const styles = theme => ({
         display: 'flex',
         flexDirection: 'column',
         backgroundColor: theme.palette.layout.dark,
-        padding: 0
+        padding: 0,
+        minWidth: 0
     },
     expanded: {
         marginLeft: styleConstants.leftNavigationDrawerWidth

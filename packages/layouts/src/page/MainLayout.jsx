@@ -38,20 +38,13 @@ let styles = theme => ({
     }
 });
 
-export const MainLayout = ({classes, topBarProps, children}) => (
+export const MainLayout = ({classes, topBarProps, help, children}) => (
     <div className={classes.root}>
+        {help &&
         <div className={classes.metaNav}>
-            <Typography variant="overline" color="inherit"><Trans i18nKey="label.contentManager.link.academy"
-                                                                  components={[
-                                                                      <a key="academyLink"
-                                                                         href={contextJsParameters.config.academyLink}
-                                                                         target="_blank"
-                                                                         rel="noopener noreferrer"
-                                                                      >.
-                                                                      </a>
-                                                                  ]}/>
-            </Typography>
+            <Typography variant="overline" color="inherit">{...help}</Typography>
         </div>
+        }
         <div className={classes.topBar}>
             <TopBar {...topBarProps}/>
         </div>
@@ -62,9 +55,14 @@ export const MainLayout = ({classes, topBarProps, children}) => (
 );
 
 MainLayout.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     classes: PropTypes.object.isRequired,
-    topBarProps: PropTypes.object.isRequired
+    topBarProps: PropTypes.object.isRequired,
+    help: PropTypes.node
+};
+
+MainLayout.defaultProps = {
+    help: null
 };
 
 export default compose(

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Grid, withStyles} from '@material-ui/core';
+import {div, withStyles} from '@material-ui/core';
 import {Typography} from '@jahia/ds-mui-theme';
 import {compose} from 'recompose';
 import styleConstants from '../../styleConstants';
@@ -14,10 +14,10 @@ const styles = theme => ({
         height: styleConstants.topBarHeight + 'px'
     },
     typoTitle: {
-        width: '260px',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        minWidth: 0
     },
     head: {
         display: 'inline-block',
@@ -25,11 +25,20 @@ const styles = theme => ({
         marginRight: 'auto'
     },
     topBarActions: {
+        flex: '0 1 auto',
         width: 'min-content',
         display: 'flex',
         justifyContent: 'flex-end'
     },
-    topBarGrid: {
+    topBarTitle: {
+        overflow: 'hidden'
+    },
+    topBarContext: {
+        flex: '1 1 0%',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+        minWidth: 0,
         '& button': {
             margin: '0px',
             padding: '0px'
@@ -37,48 +46,47 @@ const styles = theme => ({
     }
 });
 
-export const TopBar = ({classes, title, contextModifiers, path, actions}) => (
+export const TopBar = ({classes, title, contextModifiers, path, pathElement, actions}) => (
     <div className={classes.root} data-sel-role="top-bar">
-        <Grid container
-              direction="row"
-              justify="space-between"
-              alignItems="flex-end"
-              spacing={24}
-        >
-            <Grid item xs={4} className={classes.topBarGrid}>
-                <Grid container
-                      direction="column"
-                      justify="space-between"
-                      alignItems="flex-start"
-                >
-                    <Typography noWrap gutterBottom variant="omega" color="invert">{path}</Typography>
+        <div className={classes.topBarContext}>
+            <div>
+                {typeof path === 'string' ? <Typography noWrap gutterBottom variant="omega" color="invert">{path}</Typography> : path}
+            </div>
 
-                    <Typography gutterBottom
-                                variant="beta"
-                                color="invert"
-                                className={classes.typoTitle}
-                                data-sel-role="top-bar-title"
-                    >
-                        {title}
-                    </Typography>
-                    <div>
-                        {contextModifiers}
-                    </div>
-                </Grid>
-            </Grid>
-            <Grid item xs={8} className={classes.topBarActions}>
-                {actions}
-            </Grid>
-        </Grid>
+            <div className={classes.topBarTitle}>
+                <Typography gutterBottom
+                            variant="beta"
+                            color="invert"
+                            className={classes.typoTitle}
+                            data-sel-role="top-bar-title"
+                >
+                    {title}
+                </Typography>
+            </div>
+            <div>
+                {contextModifiers}
+            </div>
+        </div>
+        {actions &&
+        <div className={classes.topBarActions}>
+            {actions}
+        </div>
+        }
     </div>
 );
 
 TopBar.propTypes = {
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.object,
     classes: PropTypes.object.isRequired,
-    contextModifiers: PropTypes.element.isRequired,
-    path: PropTypes.string.isRequired,
+    contextModifiers: PropTypes.node.isRequired,
+    path: PropTypes.node,
     title: PropTypes.string.isRequired
+};
+
+TopBar.defaultProps = {
+    actions: null,
+    path: null,
+    pathElement: null
 };
 
 export default compose(
