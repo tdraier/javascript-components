@@ -27,9 +27,6 @@ let styles = theme => ({
         '&:hover': {
             '@media (hover: none)': {
                 backgroundColor: 'transparent'
-            },
-            '&$disabled': {
-                backgroundColor: 'transparent'
             }
         }
     },
