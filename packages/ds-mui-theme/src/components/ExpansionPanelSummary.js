@@ -28,6 +28,7 @@ let styles = theme => ({
     expandIcon: {
         color: 'inherit'
     },
+    disabled: {},
     expanded: {},
     focused: {
         backgroundColor: theme.palette.ui.omega
