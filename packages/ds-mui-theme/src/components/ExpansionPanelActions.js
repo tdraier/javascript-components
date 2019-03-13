@@ -44,7 +44,7 @@ const ExpansionPanelActions = withStyles(styles, {name: 'DsExpansionPanelActions
  */
 ExpansionPanelActions.propTypes = process.env.NODE_ENV !== 'production' ? {
     children: PropTypes.node.isRequired,
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object,
     className: PropTypes.string
 } : {};
 
@@ -52,6 +52,8 @@ ExpansionPanelActions.propTypes = process.env.NODE_ENV !== 'production' ? {
    Default Props
  */
 ExpansionPanelActions.defaultProps = {
+    classes: null,
+    className: null
 };
 
 ExpansionPanelActions.displayName = 'DsExpansionPanelActions';
