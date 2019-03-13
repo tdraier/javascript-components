@@ -91,7 +91,6 @@ let styles = theme => ({
         color: theme.palette.font.gamma,
         boxShadow: 'none',
         cursor: 'not-allowed',
-        pointerEvents: 'none',
         '&:first-child': {
             opacity: 0.5
         },
