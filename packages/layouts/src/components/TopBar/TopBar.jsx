@@ -25,7 +25,7 @@ const styles = theme => ({
         marginRight: 'auto'
     },
     topBarActions: {
-        flex: '0 1 auto',
+        flex: '1 1 0%',
         width: 'min-content',
         display: 'flex',
         justifyContent: 'flex-end'
