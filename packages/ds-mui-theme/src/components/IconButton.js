@@ -156,7 +156,7 @@ IconButton.defaultProps = {
     align: undefined,
     classes: undefined,
     color: 'default',
-    disabledRipple: false,
+    disableRipple: false,
     disabled: false,
     variant: 'ghost',
     size: 'normal'
