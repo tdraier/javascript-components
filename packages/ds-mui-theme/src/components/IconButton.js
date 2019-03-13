@@ -31,9 +31,6 @@ let styles = theme => ({
             '&$disabled': {
                 backgroundColor: 'transparent'
             }
-        },
-        '&$disabled': {
-            color: theme.palette.font.gamma
         }
     },
     normal: {
