@@ -8,7 +8,7 @@ import styleConstants from '../../styleConstants';
 const styles = theme => ({
     root: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         padding: '0px ' + (theme.spacing.unit * 3) + 'px',
         height: styleConstants.topBarHeight + 'px'
@@ -25,7 +25,7 @@ const styles = theme => ({
         marginRight: 'auto'
     },
     topBarActions: {
-        flex: '1 1 0%',
+        flex: '4 1 0%',
         width: 'min-content',
         display: 'flex',
         justifyContent: 'flex-end'
@@ -34,7 +34,7 @@ const styles = theme => ({
         overflow: 'hidden'
     },
     topBarContext: {
-        flex: '1 1 0%',
+        flex: '1 1 auto',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
