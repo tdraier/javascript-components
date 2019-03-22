@@ -12,5 +12,8 @@ export default {
     IconButtonSizes: PropTypes.oneOf(['normal', 'compact']),
     IconButtonColors: PropTypes.oneOf(['default', 'inverted', 'inherit']),
     SelectColors: PropTypes.oneOf(['default', 'inverted']),
-    SelectVariants: PropTypes.oneOf(['normal', 'ghost'])
+    SelectVariants: PropTypes.oneOf(['normal', 'ghost']),
+    ChipSizes: PropTypes.oneOf(['normal', 'compact']),
+    ChipColors: PropTypes.oneOf(['default', 'inverted']),
+    ChipVariants: PropTypes.oneOf(['primary', 'secondary'])
 };
