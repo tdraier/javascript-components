@@ -91,12 +91,7 @@ let styles = theme => ({
         color: theme.palette.font.gamma,
         boxShadow: 'none',
         cursor: 'not-allowed',
-        '&:first-child': {
-            opacity: 0.5
-        },
-        '&:last-child': {
-            opacity: 0.5
-        },
+        opacity: 0.5,
         '&:hover': {
             boxShadow: 'none'
         }
