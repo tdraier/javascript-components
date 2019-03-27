@@ -2,7 +2,7 @@ import React from 'react';
 import {Chip as MuiChip, withStyles} from '@material-ui/core';
 import * as _ from 'lodash';
 import classnames from 'classnames';
-import PropTypesConstants from "./PropTypesConstants";
+import PropTypesConstants from './PropTypesConstants';
 
 let styles = theme => ({
     root: {},
