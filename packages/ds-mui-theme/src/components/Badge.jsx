@@ -8,7 +8,11 @@ const styles = theme => ({
     root: {
         backgroundColor: theme.palette.brand.alpha,
         color: theme.palette.invert.beta,
-        margin: '0 ' + theme.spacing.unit + 'px'
+        margin: '0 ' + theme.spacing.unit + 'px',
+        '& > svg': {
+            width: 14,
+            float: 'left'
+        }
     },
     normal: {
         height: theme.spacing.unit * 2.5,
@@ -68,7 +72,7 @@ const getClasses = ({
     variant, color, position, classes: {
         root, badge, ...myClasses
     }
-    }) => ({
+}) => ({
     root: classnames(
         root,
         badge,
