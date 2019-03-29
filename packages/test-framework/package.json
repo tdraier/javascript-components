@@ -1,0 +1,7 @@
+{
+  "name": "@jahia/test-framework",
+  "version": "1.0.0",
+  "description": "This Jahia test-framework for React Apps",
+  "main": "index.js",
+  "license": "MIT"
+}
