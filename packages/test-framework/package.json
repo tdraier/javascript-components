@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "babel": "../../node_modules/.bin/cross-env NODE_ENV=production ../../node_modules/.bin/babel ./src --ignore *.test.js --out-dir ./build",
-    "build": "yarn babel",
+    "prepare-build": "../../node_modules/.bin/cross-env NODE_ENV=scripts ../../node_modules/.bin/babel-node ../../scripts/prepare-build.js",
+    "build": "yarn prepare-build && yarn babel",
     "publish-script": "node ../../scripts/publish.js"
   },
   "description": "This Jahia test-framework for React Apps",
