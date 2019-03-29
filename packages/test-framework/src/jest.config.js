@@ -1,6 +1,7 @@
 module.exports = {
     moduleNameMapper: {
-        '@jahia/(.*)': '<rootDir>/node_modules/@jahia/$1/lib/$1.umd.js',
+        '@jahia/(?!test-framework)(.*)': '<rootDir>/node_modules/@jahia/$1/lib/$1.umd.js',
+        '@jahia/test-framework': '<rootDir>/node_modules/@jahia/test-framework',
         '\\.(css|less)$': '<rootDir>/node_modules/@jahia/test-framework/__mocks__/styleMock.js'
     },
     setupFilesAfterEnv: [
