@@ -7,7 +7,7 @@ module.exports = {
         '<rootDir>/node_modules/@jahia/test-framework/setupTests.js'
     ],
     testPathIgnorePatterns: [
-        '<rootDir>/main/resources/javascript/',
+        '<rootDir>/src/main/',
         '<rootDir>/node/',
         '<rootDir>/node_modules/',
         '<rootDir>/target/'
