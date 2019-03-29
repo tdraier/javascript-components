@@ -7,7 +7,3 @@ export const shallowWithTheme = (children, options, theme) => {
     const instance = wrapper.instance();
     return wrapper.shallow({context: instance.getChildContext()});
 };
-
-export const mock = (jest, lib) => {
-    jest.mock(lib, () => require('./__mocks__/' + lib));
-};
