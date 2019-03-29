@@ -1,14 +1,9 @@
 {
-  "env": {
-    "production": {
-      "presets": [
-        ["env", {"modules":false}],
-        "stage-3",
-        "react"
-      ],
-      "plugins": [
-        "lodash"
-      ]
-    }
-  }
+  "presets" : [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "lodash"
+  ]
 }
