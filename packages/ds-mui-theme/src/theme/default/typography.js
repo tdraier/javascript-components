@@ -1,4 +1,4 @@
-// we use require and not import to not include the binary file to the generated *.umd.js
+// We use require and not import to not include the binary file to the generated *.umd.js
 import NunitoSansRegular from '../../fonts/nunito-sans-v3-latin-regular.woff';
 import NunitoSansRegular2 from '../../fonts/nunito-sans-v3-latin-regular.woff2';
 import NunitoSansRegularTtf from '../../fonts/nunito-sans-v3-latin-regular.ttf';
@@ -12,7 +12,7 @@ import NunitoSansLight2 from '../../fonts/nunito-sans-v3-latin-300.woff2';
 import NunitoSansLightTtf from '../../fonts/nunito-sans-v3-latin-300.ttf';
 import NunitoSansLightEot from '../../fonts/nunito-sans-v3-latin-300.eot';
 
-var dsTypography = (theme) => (
+let dsTypography = theme => (
     {
         '@font-face': [{
             fontFamily: 'Nunito Sans',
@@ -45,8 +45,8 @@ var dsTypography = (theme) => (
             ]
         }],
         // Every texts are disabled if no color specified
-        root : {
-            color : theme.palette.text.disabled
+        root: {
+            color: theme.palette.text.disabled
         },
         h1: {
             color: theme.palette.text.disabled
@@ -69,13 +69,13 @@ var dsTypography = (theme) => (
         body1: {
             color: theme.palette.text.disabled
         },
-        subtitle1:{
+        subtitle1: {
             color: theme.palette.text.disabled
         },
-        subtitle2:{
+        subtitle2: {
             color: theme.palette.text.disabled
         },
-        overline:{
+        overline: {
             color: theme.palette.text.disabled
         },
         body2: {
@@ -99,6 +99,6 @@ var dsTypography = (theme) => (
         colorError: {
             color: theme.palette.error.main
         }
-});
+    });
 
-export {dsTypography}
+export {dsTypography};
