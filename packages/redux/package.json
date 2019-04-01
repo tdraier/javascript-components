@@ -17,8 +17,10 @@
   "browser": "lib/redux.umd.min.js",
   "sideEffects": false,
   "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.10",
+  "peerDependencies":  {
     "redux": "^4.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
   }
 }
