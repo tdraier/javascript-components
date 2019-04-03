@@ -8,5 +8,6 @@ export {default as ExpansionPanel} from './ExpansionPanel';
 export {default as ExpansionPanelSummary} from './ExpansionPanelSummary';
 export {default as ExpansionPanelDetails} from './ExpansionPanelDetails';
 export {default as ExpansionPanelActions} from './ExpansionPanelActions';
+export {default as Paper} from './Paper';
 export {default as Select} from './Select';
 export {default as Chip} from './Chip';

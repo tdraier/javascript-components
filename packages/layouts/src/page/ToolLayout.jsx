@@ -24,7 +24,6 @@ export default compose(
 
 ToolLayout.propTypes = {
     children: PropTypes.element.isRequired,
-    classes: PropTypes.object.isRequired,
     contextPath: PropTypes.string,
     label: PropTypes.string,
     title: PropTypes.string

@@ -5,7 +5,6 @@ import classnames from 'classnames';
 
 let styles = theme => ({
     root: {
-        margin: '24px 32px',
         padding: theme.spacing.unit * 4
     },
     colorLight: {
