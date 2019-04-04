@@ -1,11 +1,12 @@
-import * as _ from "lodash";
-import {parseType} from 'graphql'
-import {PredefinedFragments} from "./PredefinedFragments";
+import * as _ from 'lodash';
+import {parseType} from 'graphql';
+import {PredefinedFragments} from './PredefinedFragments';
 
 function findParametersInDocument(doc) {
     if (doc && doc.definitions) {
         return _.flatMap(doc.definitions, def => findParametersInSelectionSet(def.selectionSet));
     }
+
     return [];
 }
 
@@ -15,29 +16,30 @@ function replaceFragmentsInDocument(doc, fragments) {
         clonedQuery = _.cloneDeep(doc);
         _.each(clonedQuery.definitions, def => replaceFragmentsInSelectionSet(def.selectionSet, fragments, def, clonedQuery));
     }
+
     return clonedQuery;
 }
 
-
 function findParametersInSelectionSet(selectionSet) {
     if (selectionSet && selectionSet.selections) {
-        return _.flatMap(selectionSet.selections, (sel) =>
+        return _.flatMap(selectionSet.selections, sel =>
             _.without(_.concat(
-                _.flatMap(_.filter(sel.arguments, (arg) => (arg.value.kind == 'Variable')), (arg) => arg.value.name.value),
+                _.flatMap(_.filter(sel.arguments, arg => (arg.value.kind === 'Variable')), arg => arg.value.name.value),
                 findParametersInSelectionSet(sel.selectionSet)),
-                undefined)
+            undefined)
         );
     }
+
     return [];
 }
-
 
 function findFragmentsInSelectionSet(selectionSet) {
     if (selectionSet && selectionSet.selections) {
         return _.concat(
-            _.map(_.filter(selectionSet.selections, (sel) => sel.kind == 'FragmentSpread'), (sel) => sel.name.value),
-            _.flatMap(selectionSet.selections, (sel) => findFragmentsInSelectionSet(sel.selectionSet)))
+            _.map(_.filter(selectionSet.selections, sel => sel.kind === 'FragmentSpread'), sel => sel.name.value),
+            _.flatMap(selectionSet.selections, sel => findFragmentsInSelectionSet(sel.selectionSet)));
     }
+
     return [];
 }
 
@@ -46,11 +48,11 @@ function replaceFragmentsInSelectionSet(selectionSet, fragments, def, document) 
         let newFragmentsSpreads = [];
         let removedFragmentSpreads = [];
         // Look for all existing fragment spreads in selection set
-        _.each(_.filter(selectionSet.selections, (sel) => sel.kind == 'FragmentSpread'), (sel) => {
+        _.each(_.filter(selectionSet.selections, sel => sel.kind === 'FragmentSpread'), sel => {
             // Handle only named fragments
             if (sel.name.value) {
                 // Check if spread exists in current doc - if not, we replace or remove it
-                let existing = _.find(document.definitions, (definition) => definition.kind == 'FragmentDefinition' && definition.name.value == sel.name.value);
+                let existing = _.find(document.definitions, definition => definition.kind === 'FragmentDefinition' && definition.name.value === sel.name.value);
 
                 if (!existing) {
                     // First remove the spread, as it has no match in document
@@ -58,18 +60,18 @@ function replaceFragmentsInSelectionSet(selectionSet, fragments, def, document) 
 
                     // Check if a replacement is provided for this pseudo-fragment, then insert spreads and definitions
                     if (fragments) {
-                        fragments = _.map(fragments, (frag) => (typeof frag === "string") ? PredefinedFragments[frag] : frag)
+                        fragments = _.map(fragments, frag => (typeof frag === 'string') ? PredefinedFragments[frag] : frag);
 
-                        let applyableFragments = _.filter(fragments, (frag) => frag.applyFor == sel.name.value);
+                        let applyableFragments = _.filter(fragments, frag => frag.applyFor === sel.name.value);
 
-                        let allFragmentsDefinitions = _.flatMap(applyableFragments, (fragment) => fragment.gql.definitions);
-                        _.each(allFragmentsDefinitions, (frag) => {
+                        let allFragmentsDefinitions = _.flatMap(applyableFragments, fragment => fragment.gql.definitions);
+                        _.each(allFragmentsDefinitions, frag => {
                             let newSpread = _.cloneDeep(sel);
                             newSpread.name.value = frag.name.value;
                             newFragmentsSpreads.push(newSpread);
 
                             // Add the new fragment definition in document if it has not already been added
-                            let existing = _.find(document.definitions, (definition) => definition.kind == 'FragmentDefinition' && definition.name.value == frag.name.value)
+                            let existing = _.find(document.definitions, definition => definition.kind === 'FragmentDefinition' && definition.name.value === frag.name.value);
                             if (!existing) {
                                 document.definitions.push(frag);
                             }
@@ -78,15 +80,15 @@ function replaceFragmentsInSelectionSet(selectionSet, fragments, def, document) 
                         // Adds the associated variables to the query
                         let allVariables = _.reduce(applyableFragments, (result, n) => _.assign(result, n.variables), {});
                         _.each(allVariables, (value, name) => {
-                            let existing = _.find(def.variableDefinitions, (def) => def.variable.name.value == name);
+                            let existing = _.find(def.variableDefinitions, def => def.variable.name.value === name);
                             if (!existing) {
                                 let type = parseType(value, {noLocation: true});
                                 def.variableDefinitions.push({
-                                    kind: "VariableDefinition",
+                                    kind: 'VariableDefinition',
                                     variable: {
-                                        kind: "Variable",
+                                        kind: 'Variable',
                                         name: {
-                                            kind: "Name",
+                                            kind: 'Name',
                                             value: name
                                         }
                                     },
@@ -100,14 +102,14 @@ function replaceFragmentsInSelectionSet(selectionSet, fragments, def, document) 
         });
 
         // Removed replaced spreads
-        selectionSet.selections = _.filter(selectionSet.selections, (sel) => removedFragmentSpreads.indexOf(sel) == -1);
+        selectionSet.selections = _.filter(selectionSet.selections, sel => removedFragmentSpreads.indexOf(sel) === -1);
 
         // Add all new spreads
         selectionSet.selections.push(...newFragmentsSpreads);
 
         // Recursively call on sub-selections set
-        _.each(selectionSet.selections, (sel) => replaceFragmentsInSelectionSet(sel.selectionSet, fragments, def, document));
+        _.each(selectionSet.selections, sel => replaceFragmentsInSelectionSet(sel.selectionSet, fragments, def, document));
     }
 }
 
-export {replaceFragmentsInDocument, findParametersInDocument, findFragmentsInSelectionSet}
+export {replaceFragmentsInDocument, findParametersInDocument, findFragmentsInSelectionSet};

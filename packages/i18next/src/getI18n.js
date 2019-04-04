@@ -5,25 +5,25 @@ import ChainedBackend from 'i18next-chained-backend';
 import * as _ from 'lodash';
 
 function getI18n(options) {
-
-    let backends = [ XHR ];
-    let backendOptions = [ {
+    let backends = [XHR];
+    let backendOptions = [{
         loadPath: (options.contextPath ? options.contextPath : '') + '/modules/{{ns}}/javascript/locales/{{lng}}.json'
     }];
 
+    /* eslint-disable-next-line */
     if (__webpack_require__) {
-        backends.splice(0,0,XHR);
-        backendOptions.splice(0,0,
+        backends.splice(0, 0, XHR);
+        backendOptions.splice(0, 0,
             {
-                loadPath: "{{ns}}/{{lng}}",
-                ajax:(url, xhroptions, callback, data) => {
-                    let [ns,lang] = url.split('/');
+                loadPath: '{{ns}}/{{lng}}',
+                ajax: (url, xhroptions, callback) => {
+                    let [ns, lang] = url.split('/');
                     let value;
                     try {
                         if (options.namespaceResolvers && options.namespaceResolvers[ns]) {
                             value = options.namespaceResolvers[ns](lang);
                         } else {
-                            value = require('@jahia/' + ns + '/locales/' + lang + '.json')
+                            value = require('@jahia/' + ns + '/locales/' + lang + '.json');
                         }
                     } catch (e) {
                         // Not found
@@ -32,11 +32,11 @@ function getI18n(options) {
                     if (value) {
                         callback(JSON.stringify(value), {status: 200});
                     } else {
-                        callback(null, {status:400});
+                        callback(null, {status: 400});
                     }
                 }
             }
-        )
+        );
     }
 
     let defaults = {
@@ -44,17 +44,16 @@ function getI18n(options) {
         debug: true,
 
         interpolation: {
-            escapeValue: false, // not needed for react!!
+            escapeValue: false // Not needed for react!!
         },
 
-        // react i18next special options (optional)
+        // React i18next special options (optional)
         react: {
             wait: true,
             bindI18n: 'languageChanged loaded',
             bindStore: 'added removed',
             nsMode: 'default'
         },
-
 
         backend: {
             backends: backends,
@@ -70,5 +69,4 @@ function getI18n(options) {
     return i18n;
 }
 
-
-export { getI18n };
+export {getI18n};

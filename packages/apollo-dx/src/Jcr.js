@@ -1,6 +1,6 @@
-import gql from "graphql-tag";
-import * as _ from "lodash";
-import {replaceFragmentsInDocument} from "./parser";
+import gql from 'graphql-tag';
+import * as _ from 'lodash';
+import {replaceFragmentsInDocument} from './parser';
 
 class Jcr {
     constructor(apolloClient) {
@@ -9,7 +9,6 @@ class Jcr {
 
     executeQuery(query, mapResult, fragments, vars) {
         return new Promise((resolve, reject) => {
-
             query = replaceFragmentsInDocument(query, fragments);
 
             this.apolloClient.query({
@@ -40,7 +39,7 @@ class Jcr {
                 }
             }
         `;
-        return this.executeQuery(query, (result) => result.data.jcr.nodeById, fragments, vars);
+        return this.executeQuery(query, result => result.data.jcr.nodeById, fragments, vars);
     }
 
     getNodeByPath(path, fragments, variables) {
@@ -62,9 +61,8 @@ class Jcr {
                 }
             }
         `;
-        return this.executeQuery(query, (result) => result.data.jcr.nodeByPath, fragments, vars);
+        return this.executeQuery(query, result => result.data.jcr.nodeByPath, fragments, vars);
     }
-
 
     getNodesByPath(paths, fragments, variables) {
         let vars = _.assign({
@@ -85,12 +83,10 @@ class Jcr {
                 }
             }
         `;
-        return this.executeQuery(query, (result) => {
-            debugger;
-            return result.data.jcr.nodesByPath
+        return this.executeQuery(query, result => {
+            return result.data.jcr.nodesByPath;
         }, fragments, vars);
     }
-
 }
 
 export {Jcr};
