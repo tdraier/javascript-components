@@ -9,14 +9,14 @@ const styles = theme => ({
         backgroundColor: theme.palette.brand.alpha,
         color: theme.palette.invert.beta,
         margin: '0 ' + theme.spacing.unit + 'px',
-        '& > svg': {
+        '& svg': {
             width: 14,
             float: 'left'
         }
     },
     normal: {
-        height: theme.spacing.unit * 2.5,
-        minWidth: theme.spacing.unit * 2.5,
+        height: theme.spacing.unit * 2.75,
+        minWidth: theme.spacing.unit * 2.75,
         borderRadius: theme.spacing.unit / 2,
         padding: 0 + ' 4px'
     },
@@ -29,8 +29,8 @@ const styles = theme => ({
         }
     },
     circle: {
-        height: theme.spacing.unit * 2.5,
-        minWidth: theme.spacing.unit * 2.5,
+        height: theme.spacing.unit * 2.75,
+        minWidth: theme.spacing.unit * 2.75,
         borderRadius: '50%'
     },
     positionInline: {
@@ -69,10 +69,10 @@ const styles = theme => ({
 });
 
 const getClasses = ({
-    variant, color, position, classes: {
+                        variant, color, position, classes: {
         root, badge, ...myClasses
     }
-}) => ({
+                    }) => ({
     root: classnames(
         root,
         badge,
@@ -84,8 +84,8 @@ const getClasses = ({
 
 const Badge = withStyles(styles, {name: 'DsBadge'})(
     ({
-        variant, color, position, classes, icon, children, ...props
-    }) => (
+         variant, color, position, classes, icon, children, ...props
+     }) => (
         <MuiBadge
             classes={getClasses({
                 variant, color, position, classes
