@@ -108,7 +108,7 @@ const client = function (options) {
         return flushNodeEntry(cacheKey);
     };
 
-    const flushNodeEntry = (cacheKey) => {
+    const flushNodeEntry = cacheKey => {
         if (cacheKey) {
             let strings = Object.keys(cache.data.data).filter(key => key.match(new RegExp('.*' + cacheKey.id + '.*')));
             strings.forEach(key => cache.data.delete(key));
