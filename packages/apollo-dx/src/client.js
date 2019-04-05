@@ -98,17 +98,17 @@ const client = function (options) {
 
     cache.flushNodeEntryByPath = (path, workspace = 'EDIT') => {
         let cacheKey = cacheResolvers.JCRQuery.nodeByPath({workspace}, {path});
-        if (cacheKey) {
-            let strings = Object.keys(cache.data.data).filter(key => key.match(new RegExp('.*' + cacheKey.id + '.*')));
-            strings.forEach(key => cache.data.delete(key));
-            return strings.length;
-        }
 
-        return 0;
+        return flushNodeEntry(cacheKey);
     };
 
     cache.flushNodeEntryById = (uuid, workspace = 'EDIT') => {
         let cacheKey = cacheResolvers.JCRQuery.nodeById({workspace}, {uuid});
+
+        return flushNodeEntry(cacheKey);
+    };
+
+    const flushNodeEntry = (cacheKey) => {
         if (cacheKey) {
             let strings = Object.keys(cache.data.data).filter(key => key.match(new RegExp('.*' + cacheKey.id + '.*')));
             strings.forEach(key => cache.data.delete(key));
