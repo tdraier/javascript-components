@@ -1,7 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
-
 /* Wrapped component */
 import {Select as MuiSelect, withStyles} from '@material-ui/core';
 import PropTypeConstants from './PropTypesConstants';
@@ -11,28 +9,41 @@ import * as _ from 'lodash';
 * root: the style of the component itself
 * attributeValue: when an attribute is set
 */
-let styles = () => ({
-    root: {
-    },
-    normal: {
-    },
+let styles = theme => ({
+    root: {},
+    normal: {},
     ghost: {
+        '& $select': {
+            color: theme.palette.brand.alpha,
+            backgroundColor: 'transparent'
+        },
+        '& $select:focus': {
+            boxShadow: 'unset'
+        },
+        '& $icon': {
+            color: theme.palette.brand.alpha,
+        }
     },
-    colorInverted: {
+    colorInverted: {},
+    colorDefault: {},
+    select: {},
+    selectMenu: {},
+    icon: {
+        top: 'calc(50% - 10px)'
     },
-    colorDefault: {
-    }
+    disabled: {}
 });
 
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, color, classes: {root, disabled, expanded, defaultExpanded, ...dsClasses}}) => ({
+const getClasses = ({variant, color, classes: {root, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant],
         dsClasses['color' + _.capitalize(color)]
-    )
+    ),
+    ...dsClasses
 });
 
 /*
@@ -40,7 +51,7 @@ const getClasses = ({variant, color, classes: {root, disabled, expanded, default
  */
 const Select = withStyles(styles, {name: 'DsSelect'})(
     ({variant, color, classes, ...props}) => (
-        <MuiSelect classes={getClasses({variant, color, classes})} {...props}/>
+        <MuiSelect disableUnderline classes={getClasses({variant, color, classes})} {...props}/>
     )
 );
 

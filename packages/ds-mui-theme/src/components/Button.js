@@ -79,8 +79,8 @@ const getClasses = ({variant, color, size, classes: {root, label, focusVisible, 
 const Button = withStyles(styles, {name: 'DsButton'})(
     ({variant, color, size, classes, icon, children, ...props}) => (
         <MuiButton classes={getClasses({variant, color, size, classes})} {...props}>
-            {children}
             {icon}
+            {children}
         </MuiButton>
     )
 );
