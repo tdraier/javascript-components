@@ -9,9 +9,7 @@
         "uglify": "../../node_modules/.bin/uglifyjs -c -m --source-map \"content=build/lib/layouts.umd.js.map,includeSources=true\" -o build/lib/layouts.umd.min.js  -- build/lib/layouts.umd.js",
         "dist": "yarn run rollup && yarn run uglify",
         "build": "yarn run babel && yarn run prepare-build && yarn run dist",
-        "publish-script": "node ../../scripts/publish.js",
-        "lint": "eslint --ext js,jsx ./src",
-        "lint:fix": "eslint --ext js,jsx --fix ./src"
+        "publish-script": "node ../../scripts/publish.js"
     },
     "main": "index.js",
     "module": "index.es.js",

@@ -8,11 +8,9 @@
         "rollup": "../../node_modules/.bin/rollup -c",
         "uglify": "../../node_modules/.bin/uglifyjs -c -m --source-map \"content=build/lib/apollo-dx.umd.js.map,includeSources=true\" -o build/lib/apollo-dx.umd.min.js  -- build/lib//apollo-dx.umd.js",
         "dist": "yarn run rollup && yarn run uglify",
-        "build": "yarn run lint && yarn run babel && yarn run prepare-build && yarn run dist",
+        "build": "yarn run babel && yarn run prepare-build && yarn run dist",
         "publish-script": "node ../../scripts/publish.js",
-        "test": "jest",
-        "lint": "eslint --ext js,jsx ./src",
-        "lint:fix": "eslint --ext js,jsx --fix ./src"
+        "test": "jest"
     },
     "main": "index.js",
     "module": "index.es.js",
