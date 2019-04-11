@@ -1,52 +1,52 @@
-import {colors} from "@material-ui/core";
+import {colors} from '@material-ui/core';
 
 const dsGenericPalette = {
     // Legacy Palette
-    type: "light",
+    type: 'light',
     contrastThreshold: 3,
     tonalOffset: 0.2,
     common: {
-        black: "#1f262a",
-        white: "#FFFFFF"
+        black: '#1f262a',
+        white: '#FFFFFF'
     },
     primary: {
-        main: "#007cb0",
-        dark: "#005F87",
-        light: "#009bdc",
+        main: '#007cb0',
+        dark: '#005F87',
+        light: '#009bdc'
     },
     secondary: {
-        main: "#e57834",
-        dark: "#bd5715",
-        light: "#f57c30",
+        main: '#e57834',
+        dark: '#bd5715',
+        light: '#f57c30'
     },
     layout: {
-        main: "#4e5156",
-        dark: "#3b3d40"
+        main: '#4e5156',
+        dark: '#3b3d40'
     },
     text: {
-        primary: "#1f262a",
-        secondary: "#393B3C",
-        hint: "#006f9e",
-        disabled: "#91A3ae",
-        contrastText: "#ffffff",
+        primary: '#1f262a',
+        secondary: '#393B3C',
+        hint: '#006f9e',
+        disabled: '#91A3ae',
+        contrastText: '#ffffff'
     },
     border: {
-        main: "#D8DEE3"
+        main: '#D8DEE3'
     },
     valid: {
-        main: "#13bd76",
+        main: '#13bd76'
     },
     error: {
-        main: "#BD1330",
-        light: "#e32646",
+        main: '#BD1330',
+        light: '#e32646'
     },
     warning: {
-        main: "#f6d62f",
+        main: '#f6d62f'
     },
     background: {
-        paper: "#ffffff",
-        default: "#eff2f4",
-        dark: "#1F262A"
+        paper: '#ffffff',
+        default: '#eff2f4',
+        dark: '#1F262A'
     },
     publicationStatus: {
         published: {
@@ -99,8 +99,8 @@ const dsGenericPalette = {
         main: '#676767'
     },
     status: {
-        add: "#8ce385",
-        overwrite: '#e3a35b',
+        add: '#8ce385',
+        overwrite: '#e3a35b'
     },
 
     // Palette v1.0.0
@@ -117,7 +117,7 @@ const dsGenericPalette = {
         omega: '#EEF2F4'
     },
     field: {
-        alpha: "#F3F6F8"
+        alpha: '#F3F6F8'
     },
     invert: {
         alpha: '#131C21',
@@ -126,9 +126,9 @@ const dsGenericPalette = {
     font: {
         alpha: '#373C42',
         beta: '#525C65',
-        gamma: '#9197A0',
+        gamma: '#9197A0'
     },
-    hover:{
+    hover: {
         alpha: '#086992',
         row: '#F2F5F6'
     },
@@ -139,7 +139,6 @@ const dsGenericPalette = {
         delta: '#E27A00'
     }
 
-
 };
 
-export {dsGenericPalette}
+export {dsGenericPalette};

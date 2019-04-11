@@ -1,22 +1,22 @@
-const dsTable = (theme) => ({
+const dsTable = () => ({
 
 });
-const dsTableCell = (theme) => ({
+const dsTableCell = theme => ({
     root: {
-        borderBottom: "none",
-        "& svg": {
-            verticalAlign:"middle"
+        borderBottom: 'none',
+        '& svg': {
+            verticalAlign: 'middle'
         },
-        "& button": {
-            width:"unset",
-            height:"unset"
+        '& button': {
+            width: 'unset',
+            height: 'unset'
         },
-        "&:last-child": {
+        '&:last-child': {
             paddingRight: 0
         }
     },
     head: {
-        position: "sticky",
+        position: 'sticky',
         top: 0,
         backgroundColor: theme.palette.background.paper,
         zIndex: 2
@@ -26,20 +26,20 @@ const dsTableCell = (theme) => ({
     }
 });
 
-const dsTableRow = (theme) => ({
+const dsTableRow = () => ({
     root: {
-        height: "48px"
+        height: '48px'
     },
     head: {
-        height: "56px",
+        height: '56px'
     }
 });
 
-const dsTablePagination = (theme) => ({
+const dsTablePagination = () => ({
     root: {
     },
     select: {
-        boxShadow: "none",
+        boxShadow: 'none'
     },
     caption: {
         fontSize: '0.65rem',
@@ -48,4 +48,4 @@ const dsTablePagination = (theme) => ({
     }
 });
 
-export {dsTable, dsTableCell, dsTableRow, dsTablePagination}
+export {dsTable, dsTableCell, dsTableRow, dsTablePagination};

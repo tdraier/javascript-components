@@ -2,4 +2,4 @@ const shape = {
     borderRadius: 0
 };
 
-export {shape}
+export {shape};

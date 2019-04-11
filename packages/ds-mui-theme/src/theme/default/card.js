@@ -1,27 +1,27 @@
-const dsCard = (theme) => ({
-    root:{
-        ['@media (min-width:600px)']: {
+const dsCard = () => ({
+    root: {
+        '@media (min-width:600px)': {
             paddingLeft: '0px',
             paddingRight: '0px'
         }
     }
 });
 
-const dsCardContent = (theme) => ({
-    root:{
+const dsCardContent = () => ({
+    root: {
         paddingTop: 16,
         paddingBottom: 0,
         paddingLeft: 0,
-        paddingRight: 0,
-    },
+        paddingRight: 0
+    }
 });
 
-const dsCardHeader = (theme) => ({
-    root:{
+const dsCardHeader = () => ({
+    root: {
         paddingTop: 0,
         paddingBottom: 0,
         paddingLeft: 0,
-        paddingRight: 0,
+        paddingRight: 0
     },
     action: {
         alignSelf: 'flex-end',
@@ -29,6 +29,5 @@ const dsCardHeader = (theme) => ({
     }
 });
 
-export {dsCard, dsCardHeader, dsCardContent}
-
+export {dsCard, dsCardHeader, dsCardContent};
 

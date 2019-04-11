@@ -1,4 +1,4 @@
-const dsSnackbarContent = (theme) => ({
+const dsSnackbarContent = theme => ({
     root: {
         backgroundColor: theme.palette.layout.dark
     },
@@ -7,4 +7,4 @@ const dsSnackbarContent = (theme) => ({
     }
 });
 
-export {dsSnackbarContent}
+export {dsSnackbarContent};

@@ -1,7 +1,7 @@
-const dsSelect = (theme) => ({
+const dsSelect = theme => ({
     icon: {
         color: theme.palette.text.secondary
     }
 });
 
-export {dsSelect}
+export {dsSelect};

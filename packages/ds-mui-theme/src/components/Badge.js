@@ -36,9 +36,7 @@ const styles = theme => ({
     positionInline: {
         display: 'inline-block'
     },
-    positionRelative: {
-
-    },
+    positionRelative: {},
     colorPrimary: {
         backgroundColor: theme.palette.brand.alpha,
         color: theme.palette.invert.beta
@@ -68,24 +66,18 @@ const styles = theme => ({
     }
 });
 
-const getClasses = ({
-                        variant, color, position, classes: {
-        root, badge, ...myClasses
-    }
-                    }) => ({
+const getClasses = ({variant, color, position, classes: {root, badge, ...myClasses}}) => ({
     root: classnames(
         root,
-        badge,
         myClasses[variant],
         myClasses['color' + _.capitalize(color)],
         myClasses['position' + _.capitalize(position)],
-    )
+    ),
+    badge
 });
 
 const Badge = withStyles(styles, {name: 'DsBadge'})(
-    ({
-         variant, color, position, classes, icon, children, ...props
-     }) => (
+    ({variant, color, position, classes, icon, children, ...props}) => (
         <MuiBadge
             classes={getClasses({
                 variant, color, position, classes

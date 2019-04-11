@@ -21,7 +21,7 @@ let styles = theme => ({
             boxShadow: 'unset'
         },
         '& $icon': {
-            color: theme.palette.brand.alpha,
+            color: theme.palette.brand.alpha
         }
     },
     colorInverted: {},
@@ -37,13 +37,16 @@ let styles = theme => ({
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, color, classes: {root, ...dsClasses}}) => ({
+const getClasses = ({variant, color, classes: {root, select, selectMenu, icon, disabled, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant],
         dsClasses['color' + _.capitalize(color)]
     ),
-    ...dsClasses
+    select,
+    selectMenu,
+    icon,
+    disabled
 });
 
 /*

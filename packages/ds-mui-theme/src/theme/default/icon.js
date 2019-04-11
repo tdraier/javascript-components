@@ -1,16 +1,16 @@
-const dsIcons = (theme) => ({
-    root:{
+const dsIcons = theme => ({
+    root: {
         fontSize: 20
     },
-    colorAction:{
+    colorAction: {
         color: theme.palette.text.hint
     },
-    fontSizeLarge:{
+    fontSizeLarge: {
         fontSize: 24
     },
-    fontSizeSmall:{
+    fontSizeSmall: {
         fontSize: 16
     }
 });
 
-export {dsIcons}
+export {dsIcons};

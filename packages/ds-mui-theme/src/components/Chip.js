@@ -24,11 +24,11 @@ let styles = theme => ({
         color: theme.palette.invert.beta
     },
     sizeNormal: {
-        // todo normal size CSS
+        // Todo normal size CSS
     },
     sizeCompact: {
-        // todo compact size CSS
-    },
+        // Todo compact size CSS
+    }
 });
 
 const getClasses = ({variant, color, size, classes: {root, icon, ...myClasses}}) => ({
@@ -47,7 +47,7 @@ const getClasses = ({variant, color, size, classes: {root, icon, ...myClasses}})
 const Chip = withStyles(styles, {name: 'DsChip'})(
     ({variant, color, size, classes, ...props}) => (
         <MuiChip classes={getClasses({variant, color, size, classes})} {...props}/>
-));
+    ));
 
 Chip.propTypes = process.env.NODE_ENV !== 'production' ? {
     size: PropTypesConstants.ChipSizes,

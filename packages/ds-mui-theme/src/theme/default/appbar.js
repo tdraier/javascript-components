@@ -1,6 +1,6 @@
-const dsAppBar = (theme) => ({
+const dsAppBar = theme => ({
     root: {
-        boxShadow: theme.shadows[8],
+        boxShadow: theme.shadows[8]
     },
     colorDefault: {
         backgroundColor: theme.palette.background.paper,
@@ -13,7 +13,7 @@ const dsAppBar = (theme) => ({
     colorSecondary: {
         backgroundColor: theme.palette.layout.main,
         color: theme.palette.text.contrastText
-}
+    }
 });
 
-export {dsAppBar}
+export {dsAppBar};

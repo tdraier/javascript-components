@@ -1,19 +1,19 @@
-const dsChip = (theme) => ({
-    //change color to dark
-    root:{
-        border: "solid 1px "+theme.palette.border.main,
+const dsChip = theme => ({
+    // Change color to dark
+    root: {
+        border: 'solid 1px ' + theme.palette.border.main,
         backgroundColor: theme.palette.background.paper,
         color: theme.palette.text.primary
     },
-    clickable:{
-        "&:hover":{
+    clickable: {
+        '&:hover': {
             backgroundColor: theme.palette.background.default
         }
     },
-    avatar:{
+    avatar: {
         backgroundColor: theme.palette.background.default,
-         color: theme.palette.text.primary
+        color: theme.palette.text.primary
     }
 });
 
-export {dsChip}
+export {dsChip};

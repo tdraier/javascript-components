@@ -42,7 +42,7 @@ let styles = theme => ({
         }
     },
     ghost: {
-        color: theme.palette.brand.alpha,
+        color: theme.palette.brand.alpha
     },
     colorInverted: {
         color: theme.palette.invert.beta

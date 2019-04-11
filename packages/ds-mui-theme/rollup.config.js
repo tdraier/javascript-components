@@ -2,8 +2,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import json from 'rollup-plugin-json';
 import url from 'rollup-plugin-url';
-import glob from 'glob';
-import path from 'path';
 
 export default {
     input: 'src/index.js',
@@ -14,7 +12,7 @@ export default {
         sourcemap: true,
         globals: {
             '@jahia/apollo-dx': 'jahia.apollodx',
-            'lodash': '_',
+            lodash: '_',
             'material-ui/styles': 'materialUiStyles'
         }
     },
@@ -23,7 +21,7 @@ export default {
         '@material-ui/core',
         'react',
         'classnames',
-        'prop-types',
+        'prop-types'
     ],
 
     plugins: [

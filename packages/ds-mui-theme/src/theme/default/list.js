@@ -1,23 +1,23 @@
-const dsListItem = (theme) => ({
+const dsListItem = theme => ({
     root: {
-        flex: "1"
+        flex: '1'
     },
-    button:{
-        "&[role=button]": {
-            boxShadow: "none",
-            "&:hover":{
+    button: {
+        '&[role=button]': {
+            boxShadow: 'none',
+            '&:hover': {
                 backgroundColor: theme.palette.background.default
             }
         }
     },
     container: {
-        display:"flex"
+        display: 'flex'
     },
 
     secondaryAction: {
-        flex:"1",
-        position:"relative",
-        top:0
+        flex: '1',
+        position: 'relative',
+        top: 0
     }
 });
 
@@ -28,24 +28,24 @@ const dsListItemIcon = {
 };
 
 const dsListItemSecondaryAction = {
-    root:{
-        flex:"1",
-        position:"relative",
-        top:0,
-        transform: "none"
+    root: {
+        flex: '1',
+        position: 'relative',
+        top: 0,
+        transform: 'none'
     }
 };
 
 const dsListItemText = {
     root: {
-        padding: "0 10px",
+        padding: '0 10px',
         boxShadow: 'none'
     }
 };
 
 const dsListSubheader = {
     root: {
-        textDecoration: "underline"
+        textDecoration: 'underline'
     }
 };
 
@@ -55,4 +55,4 @@ export {
     dsListItemSecondaryAction,
     dsListItemText,
     dsListSubheader
-}
+};

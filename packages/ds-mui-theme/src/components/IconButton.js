@@ -74,7 +74,7 @@ let styles = theme => ({
 /*
    Set custom classes of component
  */
-const getClasses = ({variant, color, disableRipple, size, classes: {root, ...dsClasses}}) => ({
+const getClasses = ({variant, color, size, classes: {root, disableRipple, ...dsClasses}}) => ({
     root: classnames(
         root,
         dsClasses[variant],

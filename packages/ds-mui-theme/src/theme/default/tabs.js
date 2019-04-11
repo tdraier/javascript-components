@@ -1,28 +1,28 @@
-const dsTab = (theme) => ({
+const dsTab = () => ({
     root: {
-        textTransform: "none",
-        minHeight: "auto",
-        minWidth: "unset!important",
-        margin: "0 15px 0 0",
+        textTransform: 'none',
+        minHeight: 'auto',
+        minWidth: 'unset!important',
+        margin: '0 15px 0 0',
         opacity: 0.6
     },
     labelContainer: {
-        paddingTop: "0!important",
-        paddingRight: "0!important",
-        paddingBottom: "2px!important",
-        paddingLeft: "0!important"
+        paddingTop: '0!important',
+        paddingRight: '0!important',
+        paddingBottom: '2px!important',
+        paddingLeft: '0!important'
     },
-    selected:{
+    selected: {
         opacity: 1
     }
 });
 
-const dsTabs = (theme) => ({
+const dsTabs = () => ({
     root: {
-        minHeight: "unset",
-        padding: "0 40px"
+        minHeight: 'unset',
+        padding: '0 40px'
     }
 });
 
-export {dsTab, dsTabs}
+export {dsTab, dsTabs};
 

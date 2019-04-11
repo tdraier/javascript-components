@@ -16,11 +16,13 @@ const getClasses = ({classes: {root}}) => ({
 
 const ListItemIcon = withStyles(styles, {name: 'DsListItemIcon'})(
     ({children, classes, ...props}) => (
-        <MuiListItemIcon classes={getClasses({classes})} children={children} {...props}/>
+        <MuiListItemIcon classes={getClasses({classes})} {...props}>
+            {children}
+        </MuiListItemIcon>
     )
 );
 
-ListItemIcon.propTypes = process.env.NODE_ENV !== "production" ? {
+ListItemIcon.propTypes = process.env.NODE_ENV !== 'production' ? {
 } : {};
 
 ListItemIcon.displayName = 'DsListItemIcon';

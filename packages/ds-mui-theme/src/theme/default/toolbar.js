@@ -1,4 +1,4 @@
-const dsToolBar = (theme) => ({
+const dsToolBar = theme => ({
     root: {
         display: 'flex',
         '& h1': {
@@ -13,9 +13,9 @@ const dsToolBar = (theme) => ({
         paddingRight: theme.spacing.unit * 3
     },
     dense: {
-        paddingLeft: theme.spacing.unit*2,
-        paddingRight: theme.spacing.unit*2
+        paddingLeft: theme.spacing.unit * 2,
+        paddingRight: theme.spacing.unit * 2
     }
 });
 
-export { dsToolBar }
+export {dsToolBar};
