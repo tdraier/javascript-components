@@ -11,8 +11,8 @@
         "build": "yarn run lint && yarn run babel && yarn run prepare-build && yarn run dist",
         "publish-script": "node ../../scripts/publish.js",
         "test": "jest",
-        "lint": "eslint --ext js,jsx .",
-        "lint:fix": "eslint --ext js,jsx --fix ."
+        "lint": "eslint --ext js,jsx ./src",
+        "lint:fix": "eslint --ext js,jsx --fix ./src"
     },
     "main": "index.js",
     "module": "index.es.js",
