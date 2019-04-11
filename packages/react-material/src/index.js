@@ -10,3 +10,6 @@ export {NotificationProvider, withNotifications} from './notification/Notificati
 export {PickerViewMaterial} from './picker/PickerViewMaterial'
 export {PickerViewMaterialMultiple} from './picker/PickerViewMaterialMultiple'
 export {anthraciteDarkTheme, anthraciteLightTheme, plainTheme, legacyTheme} from './theme'
+export {PreviewComponent} from './components/PreviewComponent'
+export {DxContext} from './components/DxContext'
+export {isBrowserImage, isPDF, getFileType} from './utils'
