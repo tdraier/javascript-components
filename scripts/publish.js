@@ -7,12 +7,12 @@ var yarn = require('yarn-api');
 var json = require(path.resolve("./package.json"));
 var build = json.version;
 
-build += '-feature_BACKLOG_9621.' + (new Date()).toISOString().slice(0,19).replace(/[-:T]/g,"");
+build += '-featureBACKLOG9621.' + (new Date()).toISOString().slice(0,19).replace(/[-:T]/g,"");
 
 //if (versions.indexOf("SNAPSHOT") > -1) {
 //    build += "-beta" + process.env.buildNumber;
 //}
 
-yarn(['publish', 'build', '--no-git-tag-version', '--tag', 'feature_BACKLOG_9621', '--new-version', build], function (err) {
+yarn(['publish', 'build', '--no-git-tag-version', '--tag', 'featureBACKLOG9621', '--new-version', build], function (err) {
     if (err) console.error(err);
 });
