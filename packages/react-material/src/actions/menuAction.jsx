@@ -234,7 +234,6 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
 
     destroy: context => {
         if (menuStatus[context.id] && menuStatus[context.id].preload) {
-            console.log('destroy !');
             menuStatus[context.id].preload.destroy();
         }
     },
