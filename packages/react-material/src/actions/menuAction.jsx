@@ -56,7 +56,7 @@ let preload = context => {
     context.obs = {enabled: new BehaviorSubject(false)};
     context.enabled = context.obs.enabled;
 
-    context.currentMenuHandler = context.renderComponent(<DisplayActions target={context.menu}
+    let currentPreloadMenuHandler = context.renderComponent(<DisplayActions target={context.menu}
                                                                          context={{
                                                                              ...context.originalContext,
                                                                              displayDisabled: context.menuDisplayDisabled,
@@ -68,6 +68,11 @@ let preload = context => {
                                                                                  return false;
                                                                              }
                                                                          }/>);
+    menuStatus[context.id] = {
+        open: false,
+        inMenu: false,
+        preload: currentPreloadMenuHandler
+    };
 };
 
 let PureMenu = pure(Menu);
@@ -224,6 +229,13 @@ let menuAction = composeActions(componentRendererAction, withStylesAction(styles
         context.menuDisplayed = false;
         if (context.menuPreload) {
             preload(context);
+        }
+    },
+
+    destroy: context => {
+        if (menuStatus[context.id] && menuStatus[context.id].preload) {
+            console.log('destroy !');
+            menuStatus[context.id].preload.destroy();
         }
     },
 
