@@ -5,7 +5,9 @@
     "scripts": {
         "lerna-bootstrap": "yarn install && lerna bootstrap --ci",
         "build": "lerna run build",
-        "publish": "lerna run publish-script"
+        "publish": "lerna run publish-script",
+        "lint": "eslint --ext js,jsx .",
+        "lint:fix": "eslint --ext js,jsx --fix"
     },
     "license": "MIT",
     "devDependencies": {
