@@ -77,7 +77,7 @@ class PreviewComponent extends React.Component {
         return (
             <div className={classNames(classes.previewContainer, classes.contentContainer)}>
                 <Paper elevation={1} classes={{root: classes.contentPaper}}>
-                    <iframe ref={element => this.iframeLoadContent(assets, displayValue, element)}
+                    <iframe data-sel-role="preview-frame" ref={element => this.iframeLoadContent(assets, displayValue, element)}
                             className={classes.contentIframe}/>
                 </Paper>
             </div>
