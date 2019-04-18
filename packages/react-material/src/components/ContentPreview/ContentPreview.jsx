@@ -72,7 +72,7 @@ class ContentPreview extends React.Component {
     }
 
     render() {
-        const {classes, path, workspace, language, templateType, view, contextConfiguration} = this.props;
+        const {classes, path, workspace, language, templateType, view, contextConfiguration, setRefetch} = this.props;
 
         const queryVariables = {
             path: path,
@@ -90,7 +90,13 @@ class ContentPreview extends React.Component {
                        variables={queryVariables}
                 >
                     {({loading, data, refetch}) => {
-                        this.refetchPreview = refetch;
+                        if (setRefetch) {
+                            setRefetch({
+                                query: previewQuery,
+                                queryParams: queryVariables,
+                                refetch: refetch
+                            });
+                        }
 
                         if (!loading) {
                             if (!_.isEmpty(data)) {
@@ -116,7 +122,8 @@ ContentPreview.propTypes = {
     templateType: PropTypes.string.isRequired,
     view: PropTypes.string.isRequired,
     contextConfiguration: PropTypes.string.isRequired,
-    fullScreen: PropTypes.bool.isRequired
+    fullScreen: PropTypes.bool.isRequired,
+    setRefetch: PropTypes.func,
 };
 
 ContentPreview = compose(

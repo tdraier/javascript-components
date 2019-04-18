@@ -9,6 +9,7 @@ export interface ContentPreviewProps {
     view: string;
     contextConfiguration: string;
     fullScreen: boolean;
+    setRefetch?: (...args: any[])=>any;
 }
 
 export class ContentPreview extends React.Component<ContentPreviewProps, any> {
