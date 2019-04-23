@@ -57,12 +57,10 @@ const styles = theme => ({
         backgroundColor: theme.palette.support.alpha
     },
     badge: {
-        '& > span': {
-            position: 'static',
-            transform: 'none',
-            fontSize: theme.spacing.unit * 1.5,
-            fontWeight: 600
-        }
+        position: 'static',
+        transform: 'none',
+        fontSize: theme.spacing.unit * 1.5,
+        fontWeight: 600
     }
 });
 
