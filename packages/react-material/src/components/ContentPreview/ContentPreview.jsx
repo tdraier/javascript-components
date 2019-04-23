@@ -58,19 +58,6 @@ const styles = theme => ({
 });
 
 class ContentPreview extends React.Component {
-    constructor(props) {
-        super(props);
-        this.refetchPreview = () => {
-        };
-    }
-
-    componentDidUpdate(prevProps) {
-        // todo allow external refetch of the preview BACKLOG-10101
-        /*if (this.props.selection && prevProps.selection && prevProps.selection.lastPublished !== this.props.selection.lastPublished) {
-            this.refetchPreview();
-        }*/
-    }
-
     render() {
         const {classes, path, workspace, language, templateType, view, contextConfiguration, setRefetch} = this.props;
 
@@ -101,7 +88,7 @@ class ContentPreview extends React.Component {
                         if (!loading) {
                             if (!_.isEmpty(data)) {
                                 return (
-                                    <PreviewComponent data={data.jcr}
+                                    <PreviewComponent data={data.jcr ? data.jcr : {}}
                                                       {...this.props}/>
                                 );
                             }

@@ -7,10 +7,6 @@ export const previewQuery = gql`query previewQueryByWorkspace($path: String!, $t
             id: uuid
             isFile: isNodeType(type: {types: ["jnt:file"]})
             path
-            isPublished: property(name: "j:published") {
-                name
-                value
-            }
             lastModified: property(name: "jcr:lastModified", language: $language) {
                 value
             }
