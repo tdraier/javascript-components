@@ -69,11 +69,11 @@ const styles = theme => ({
 const getClasses = ({variant, color, position, classes: {root, badge, ...myClasses}}) => ({
     root: classnames(
         root,
-        badge,
         myClasses[variant],
         myClasses['color' + _.capitalize(color)],
         myClasses['position' + _.capitalize(position)],
-    )
+    ),
+    badge
 });
 
 const Badge = withStyles(styles, {name: 'DsBadge'})(
