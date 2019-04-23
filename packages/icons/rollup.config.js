@@ -17,6 +17,8 @@ export default {
     external:[
         "@material-ui/core",
         "@material-ui/icons",
+        "mdi-material-ui",
+        "prop-types",
         "react",
         "recompose"
     ],

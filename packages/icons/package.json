@@ -18,10 +18,11 @@
     "sideEffects": false,
     "license": "MIT",
     "peerDependencies": {
-      "@material-ui/core": "^3.9.3"
+        "@material-ui/core": "^3.9.3"
     },
     "dependencies": {
         "@material-ui/icons": "^3.0.2",
+        "mdi-material-ui": "^5.10.0",
         "recompose": "^0.30.0"
     }
 }
