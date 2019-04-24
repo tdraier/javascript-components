@@ -90,4 +90,8 @@ We use the Material-UI library to build the UI: https://material-ui-next.com
 
 ### react-router
 A router with multiple outlets - it allows to have multiple routes at the same time in the URL, each route applied to different outlets in the page.
+
+### [test-framework](packages/test-framework)
+
+Provides common dependencies, configuration, utilities and mocks for testing JavaScript projects.
  
