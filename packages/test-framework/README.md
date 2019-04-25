@@ -89,7 +89,42 @@ Unit tests must be located in their own specific files which should respect the 
 - a test file should be named after the file containing the code to test, so that unit tests for a file named **foo.js** should be 
 located in a file named **foo.test.js** (or **foo.spec.js**).
 
-TODO: add some sample code here
+Here is one of our test as example:
+```jsx
+import React from 'react';
+import {shallow} from '@jahia/test-framework';
+import {IconButton} from '@jahia/ds-mui-theme';
+import {RotatePanel} from './RotatePanel';
+import defaultProps from '../../../testDefaultProps';
+
+describe('Rotate panel', () => {
+    let props;
+    let wrapper;
+
+    beforeEach(() => {
+        try {
+            props = {
+                onRotate: jest.fn(),
+            };
+
+            wrapper = shallow(<RotatePanel {...defaultProps} {...props}/>);
+        } catch (e) {
+            console.log(e);
+        }
+    });
+
+    it('Should rotate the image', () => {
+        wrapper.find(IconButton).last().simulate('click');
+        expect(props.onRotate.mock.calls.length).toBe(1);
+        expect(props.onRotate.mock.calls[0][0]).toBe(1);
+
+        wrapper.find(IconButton).first().simulate('click');
+        expect(props.onRotate.mock.calls.length).toBe(2);
+        expect(props.onRotate.mock.calls[1][0]).toBe(-1);
+    });
+
+});
+```
 
 ## IDE integration
 
@@ -109,9 +144,3 @@ using `yarn` with the following command:
     or using `npm` with the following one:
   
     ```npm install jest --save-dev```
-  
-  
-
-
-
-
