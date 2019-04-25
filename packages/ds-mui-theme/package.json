@@ -9,7 +9,8 @@
         "uglify": "../../node_modules/.bin/uglifyjs -c -m --source-map \"content=build/lib/ds-mui-theme.umd.js.map,includeSources=true\" -o build/lib/ds-mui-theme.umd.min.js  -- build/lib/ds-mui-theme.umd.js",
         "dist": "yarn run rollup && yarn run uglify",
         "build": "yarn run babel && yarn run prepare-build && yarn run dist",
-        "publish-script": "node ../../scripts/publish.js"
+        "publish-script": "node ../../scripts/publish.js",
+        "test": "jest"
     },
     "main": "index.js",
     "module": "index.es.js",
@@ -27,11 +28,14 @@
         "prop-types": "^15.6.2"
     },
     "devDependencies": {
-        "@babel/core": "^7.4.3",
-        "@babel/preset-env": "^7.4.3",
+        "@babel/core": "^7.4.0",
+        "@babel/preset-env": "^7.4.2",
+        "babel-jest": "^24.5.0",
         "@babel/preset-react": "^7.0.0",
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-        "@babel/plugin-transform-runtime": "^7.4.3",
-        "@material-ui/core": "^3.9.3"
+        "@babel/plugin-transform-runtime": "^7.4.0",
+        "@babel/preset-react": "^7.0.0",
+        "@jahia/test-framework": "^1.0.0",
+        "enzyme": "^3.9.0"
     }
 }

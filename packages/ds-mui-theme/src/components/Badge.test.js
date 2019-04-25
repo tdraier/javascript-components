@@ -1,11 +1,11 @@
 import React from 'react';
 import Badge from './Badge';
-import {shallowWithTheme} from '../../../test-framework/src/index';
+import {shallowWithTheme} from '@jahia/test-framework';
 import {dsGenericTheme} from '../theme';
 
 describe('Badge', () => {
-    it('should render a <span />', () => {
+    it('should render a <div />', () => {
         const wrapper = shallowWithTheme(<Badge/>, {}, dsGenericTheme);
-        expect(wrapper.html()).toContain('span');
+        expect(wrapper.find('div').length).toEqual(1);
     });
 });
