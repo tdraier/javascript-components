@@ -106,38 +106,37 @@ class PickerTreeViewMaterial extends React.Component {
                                 [classes.listItemSelected]: entry.selected
                             });
                             return (
-                                <React.Fragment key={entry.path}>
+                                <div
+                                    data-jrm-role="picker-item"
+                                    data-cm-role={dataCmRole}
+                                    className={itemClass}
+                                    onClick={() => this.hoverOn(entry.path)}
+                                    onDoubleClick={() => onOpenItem(entry.path, !entry.open)}
+                                    onMouseEnter={() => this.hoverOn(entry.path)}
+                                    onMouseLeave={this.hoverOff}
+                                >
                                     <div
-                                        data-jrm-role="picker-item"
-                                        data-cm-role={dataCmRole}
-                                        className={itemClass}
-                                        onClick={() => this.hoverOn(entry.path)}
-                                        onDoubleClick={() => onOpenItem(entry.path, !entry.open)}
-                                        onMouseEnter={() => this.hoverOn(entry.path)}
-                                        onMouseLeave={this.hoverOff}
+                                        style={{
+                                            paddingLeft: ((entry.depth > 0) ? ((entry.depth) * 16) : 0),
+                                            opacity: (entry.openable && entry.hasChildren ? 1 : 0)
+                                        }}
                                     >
-                                        <div
-                                            style={{
-                                                paddingLeft: ((entry.depth > 0) ? ((entry.depth) * 16) : 0),
-                                                opacity: (entry.openable && entry.hasChildren ? 1 : 0)
+                                        <IconButton
+                                            icon={<KeyboardArrowRight/>}
+                                            className={entry.open ? classes.openedTreeEl : classes.closedTreeEl}
+                                            disabled={!(entry.openable && entry.hasChildren)}
+                                            data-jrm-role="picker-item-toggle"
+                                            data-jrm-state={entry.open ? 'open' : 'closed'}
+                                            onClick={event => {
+                                                onOpenItem(entry.path, !entry.open);
+                                                event.stopPropagation();
                                             }}
-                                        >
-                                            <IconButton
-                                                icon={<KeyboardArrowRight/>}
-                                                className={entry.open ? classes.openedTreeEl : classes.closedTreeEl}
-                                                disabled={!(entry.openable && entry.hasChildren)}
-                                                data-jrm-role="picker-item-toggle"
-                                                data-jrm-state={entry.open ? 'open' : 'closed'}
-                                                onClick={event => {
-                                                    onOpenItem(entry.path, !entry.open);
-                                                    event.stopPropagation();
-                                                }}
-                                            />
-                                        </div>
-                                        <span
-                                            className={classes.treeEntry}
-                                            onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : null}
-                                        >
+                                        />
+                                    </div>
+                                    <span
+                                        className={classes.treeEntry}
+                                        onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : null}
+                                    >
                                             <ListItemIcon className={classes.listItemNodeTypeIcon}>
                                                 {iconRenderer(entry)}
                                             </ListItemIcon>
@@ -155,8 +154,7 @@ class PickerTreeViewMaterial extends React.Component {
                                                 data-jrm-role="picker-item-text"
                                             />
                                         </span>
-                                    </div>
-                                </React.Fragment>
+                                </div>
                             );
                         })
                     }

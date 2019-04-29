@@ -41,14 +41,12 @@ const PickerItemsFragment = {
 class NodeTree extends React.Component {
     constructor(props) {
         super(props);
-        this.picker = React.createRef();
     }
 
     render() {
         let {rootPath, path, openPaths, handleOpen, handleSelect, lang, openableTypes, selectableTypes, rootLabel, setRefetch, dataCmRole, classes} = this.props;
         return (
             <Picker
-                ref={this.picker}
                 rootPaths={[rootPath]}
                 openPaths={openPaths}
                 openableTypes={openableTypes}
