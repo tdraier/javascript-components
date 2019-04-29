@@ -10,6 +10,7 @@ export interface ContentPreviewProps {
     contextConfiguration: string;
     fullScreen: boolean;
     setRefetch?: (...args: any[])=>any;
+    fetchPolicy?: string;
 }
 
 export class ContentPreview extends React.Component<ContentPreviewProps, any> {

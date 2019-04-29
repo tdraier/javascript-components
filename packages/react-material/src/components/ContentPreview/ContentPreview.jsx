@@ -59,7 +59,7 @@ const styles = theme => ({
 
 class ContentPreview extends React.Component {
     render() {
-        const {classes, path, workspace, language, templateType, view, contextConfiguration, setRefetch} = this.props;
+        const {classes, path, workspace, language, templateType, view, contextConfiguration, setRefetch, fetchPolicy} = this.props;
 
         const queryVariables = {
             path: path,
@@ -75,6 +75,7 @@ class ContentPreview extends React.Component {
                 <Query query={previewQuery}
                        errorPolicy="all"
                        variables={queryVariables}
+                       fetchPolicy={fetchPolicy ? fetchPolicy : 'cache-first'}
                 >
                     {({loading, data, refetch}) => {
                         if (setRefetch) {
@@ -111,6 +112,7 @@ ContentPreview.propTypes = {
     contextConfiguration: PropTypes.string.isRequired,
     fullScreen: PropTypes.bool.isRequired,
     setRefetch: PropTypes.func,
+    fetchPolicy: PropTypes.string
 };
 
 ContentPreview = compose(
