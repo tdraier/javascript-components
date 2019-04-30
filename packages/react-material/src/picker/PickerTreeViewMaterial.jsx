@@ -106,7 +106,8 @@ class PickerTreeViewMaterial extends React.Component {
                                 [classes.listItemSelected]: entry.selected
                             });
                             return (
-                                <div
+                                <ListItem
+                                    key={entry.path}
                                     data-jrm-role="picker-item"
                                     data-cm-role={dataCmRole}
                                     className={itemClass}
@@ -154,7 +155,7 @@ class PickerTreeViewMaterial extends React.Component {
                                                 data-jrm-role="picker-item-text"
                                             />
                                         </span>
-                                </div>
+                                </ListItem>
                             );
                         })
                     }
