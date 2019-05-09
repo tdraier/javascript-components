@@ -108,6 +108,8 @@ const client = function (options) {
         return flushNodeEntry(cacheKey);
     };
 
+    cache.idByPath = idByPath;
+
     const flushNodeEntry = cacheKey => {
         if (cacheKey) {
             let strings = Object.keys(cache.data.data).filter(key => key.match(new RegExp('.*' + cacheKey.id + '.*')));
