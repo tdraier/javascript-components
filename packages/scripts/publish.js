@@ -12,7 +12,7 @@ let build = json.version;
 
 let params = [];
 
-if (fs.existsSync('build')) {
+if (fs.existsSync('build/package.json')) {
     params.push('build');
 } else {
     params.push('.');

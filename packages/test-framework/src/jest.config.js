@@ -1,9 +1,9 @@
 module.exports = {
     moduleNameMapper: {
-        '\\.(css|less|woff|woff2|eot|ttf)$': '<rootDir>/node_modules/@jahia/test-framework/__mocks__/styleMock.js'
+        '\\.(css|less|woff|woff2|eot|ttf)$': '<rootDir>/node_modules/@jahia/test-framework/build/js/__mocks__/styleMock.js'
     },
     setupFilesAfterEnv: [
-        '<rootDir>/node_modules/@jahia/test-framework/setupTests.js'
+        '<rootDir>/node_modules/@jahia/test-framework/build/js/setupTests.js'
     ],
     testPathIgnorePatterns: [
         '<rootDir>/src/main/',
