@@ -4,4 +4,4 @@ const legacySwitch = {
     }
 };
 
-export { legacySwitch }
+export {legacySwitch};

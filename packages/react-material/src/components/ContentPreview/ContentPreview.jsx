@@ -94,6 +94,7 @@ class ContentPreview extends React.Component {
                                 );
                             }
                         }
+
                         return null;
                     }}
                 </Query>
@@ -120,4 +121,4 @@ ContentPreview = compose(
     withStyles(styles)
 )(ContentPreview);
 
-export {ContentPreview}
+export {ContentPreview};

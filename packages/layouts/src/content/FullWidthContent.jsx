@@ -19,7 +19,7 @@ export const FullWidthContent = ({children, classes}) => (
 );
 
 FullWidthContent.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element.isRequired
 };
 
 export default compose(

@@ -10,7 +10,7 @@ const legacyInput = {
         borderRadius: '2px',
         background: 'whitesmoke',
         padding: '2px 11px 0',
-        boxSizing: 'border-box',
+        boxSizing: 'border-box'
     },
     input: {
         color: '#676767',
@@ -18,4 +18,4 @@ const legacyInput = {
     }
 };
 
-export {legacyInput}
+export {legacyInput};

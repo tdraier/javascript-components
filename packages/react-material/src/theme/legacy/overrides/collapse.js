@@ -4,4 +4,4 @@ const legacyCollapse = {
     }
 };
 
-export {legacyCollapse}
+export {legacyCollapse};

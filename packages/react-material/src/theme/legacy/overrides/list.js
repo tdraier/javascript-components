@@ -1,7 +1,7 @@
-const legacyListItemText =  {
+const legacyListItemText = {
     root: {
-        padding: '0',
+        padding: '0'
     }
 };
 
-export {legacyListItemText}
+export {legacyListItemText};

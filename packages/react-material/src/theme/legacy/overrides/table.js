@@ -9,8 +9,8 @@ const legacyTableRow = {
 
 const legacyTableCell = {
     body: {
-        color: "inherit",
+        color: 'inherit'
     }
 };
 
-export {legacyTableRow, legacyTableCell}
+export {legacyTableRow, legacyTableCell};

@@ -4,11 +4,10 @@ import {translate} from 'react-i18next';
 import PropTypes from 'prop-types';
 
 class LanguageSwitcher extends React.Component {
-
-    constructor(props,context) {
-        super(props,context);
+    constructor(props, context) {
+        super(props, context);
         this.state = {
-            anchorEl: null,
+            anchorEl: null
         };
     }
 
@@ -21,7 +20,7 @@ class LanguageSwitcher extends React.Component {
         if (lang) {
             this.context.i18n.changeLanguage(lang);
         }
-    };
+    }
 
     render() {
         let availableLocales = ['fr', 'en'];
@@ -29,11 +28,17 @@ class LanguageSwitcher extends React.Component {
         return (
             <React.Fragment>
                 <Button onClick={this.handleClick.bind(this)}>{this.props.t('label.languages')}</Button>
-                <Menu open={Boolean(this.state.anchorEl)} onClose={this.handleClose.bind(this, null)}
-                      anchorEl={this.state.anchorEl}>
-                    {availableLocales.map((locale) => (
-                        <MenuItem onClick={this.handleClose.bind(this, locale)} key={locale}
-                                  value={locale}>{locale}</MenuItem>))}
+                <Menu open={Boolean(this.state.anchorEl)}
+                      onClose={this.handleClose.bind(this, null)}
+                      anchorEl={this.state.anchorEl}
+                >
+                    {availableLocales.map(locale => (
+                        <MenuItem key={locale}
+                                  onClick={this.handleClose.bind(this, locale)}
+                                  value={locale}
+                        >{locale}
+                        </MenuItem>
+))}
                 </Menu>
             </React.Fragment>
         );
@@ -46,5 +51,4 @@ LanguageSwitcher.contextTypes = {
 
 LanguageSwitcher = translate('react-material')(LanguageSwitcher);
 
-
-export {LanguageSwitcher}
+export {LanguageSwitcher};

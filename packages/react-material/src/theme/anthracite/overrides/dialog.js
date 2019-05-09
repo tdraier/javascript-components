@@ -1,38 +1,38 @@
-const anthraciteDialogTitle = (theme) => ({
-    "root": {
-        "paddingBottom": "6px"
+const anthraciteDialogTitle = theme => ({
+    root: {
+        paddingBottom: '6px'
     }
 });
 
-const anthraciteDialog = (theme) => ({
-    "paper": {
-        "backgroundColor": theme.palette.background.paper
+const anthraciteDialog = theme => ({
+    paper: {
+        backgroundColor: theme.palette.background.paper
     },
-    "paperFullScreen": {
-        "& .footer": {
+    paperFullScreen: {
+        '& .footer': {
             // "background": palette.type.light ? "#363f45" : "#3b3d40",
-            "bottom": "-8px",
-            "left":"-4px",
-            "position":"absolute",
-            "width":"100%"
+            bottom: '-8px',
+            left: '-4px',
+            position: 'absolute',
+            width: '100%'
         }
     }
 });
 
-const anthraciteDialogActions = (theme) => ({
-    "root": {
-        "padding":"10px"
+const anthraciteDialogActions = theme => ({
+    root: {
+        padding: '10px'
     },
-    "action": {
-        "boxShadow": "none"
+    action: {
+        boxShadow: 'none'
     }
 });
 
-const anthraciteDialogContent = (theme) => ({
-    "root": {
-        "padding":"0 24px 0 24px"
+const anthraciteDialogContent = theme => ({
+    root: {
+        padding: '0 24px 0 24px'
     }
 });
 
-export {anthraciteDialogTitle, anthraciteDialog, anthraciteDialogActions, anthraciteDialogContent}
+export {anthraciteDialogTitle, anthraciteDialog, anthraciteDialogActions, anthraciteDialogContent};
 

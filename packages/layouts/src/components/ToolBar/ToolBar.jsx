@@ -7,7 +7,7 @@ import {Typography} from '@jahia/ds-mui-theme';
 const styles = theme => ({
     topBar: {
         background: theme.palette.ui.gamma,
-        color: theme.palette.invert.beta,
+        color: theme.palette.invert.beta
     },
     topBarText: {
         fontWeight: 600,
@@ -21,12 +21,11 @@ const styles = theme => ({
         lineHeight: '18px',
         fontSize: '14px',
         textAlign: 'right',
-        color: theme.palette.invert.beta,
+        color: theme.palette.invert.beta
     }
 });
 
 export const ToolBar = ({classes, contextPath, label, title}) => {
-
     return (
         <AppBar position="static">
             <Toolbar className={classes.topBar}>

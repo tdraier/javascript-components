@@ -1,4 +1,4 @@
-// we use require and not import to not include the binary file to the generated *.umd.js
+// We use require and not import to not include the binary file to the generated *.umd.js
 import NunitoSansRegular from '../../../../resources/fonts/nunito-sans-v3-latin-regular.woff';
 import NunitoSansRegular2 from '../../../../resources/fonts/nunito-sans-v3-latin-regular.woff2';
 import NunitoSansRegularTtf from '../../../../resources/fonts/nunito-sans-v3-latin-regular.ttf';
@@ -47,4 +47,4 @@ var anthraciteTypography = () => ({
     ]
 });
 
-export {anthraciteTypography}
+export {anthraciteTypography};

@@ -1,6 +1,6 @@
-import {commonPalette} from "./palette";
-import {commonTablePagination} from "./overrides/table";
-import {typography} from "./typography";
+import {commonPalette} from './palette';
+import {commonTablePagination} from './overrides/table';
+import {typography} from './typography';
 
 const commonBaseThemeConfig = {
     palette: commonPalette,
@@ -18,4 +18,4 @@ const commonBaseThemeConfig = {
     }
 };
 
-export {commonBaseThemeConfig}
+export {commonBaseThemeConfig};

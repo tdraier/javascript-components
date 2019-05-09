@@ -13,7 +13,7 @@ let iconButtonRenderer = (buttonProps, iconProps, propagateEvent) => ({context})
                             e.stopPropagation();
                         }
 
-                        context.onClick(context, e)
+                        context.onClick(context, e);
                     }}
                     {...buttonProps}
         />

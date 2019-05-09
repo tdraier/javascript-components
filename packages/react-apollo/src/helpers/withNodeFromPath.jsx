@@ -1,11 +1,11 @@
 import React from 'react';
 import {graphql} from 'react-apollo';
-import gql from "graphql-tag";
-import * as _ from "lodash";
-import {replaceFragmentsInDocument} from "@jahia/apollo-dx";
+import gql from 'graphql-tag';
+import * as _ from 'lodash';
+import {replaceFragmentsInDocument} from '@jahia/apollo-dx';
 
 function withNodeFromPath(fragments) {
-    return (ViewComponent) => {
+    return ViewComponent => {
         // GraphQL maps
         let mapResultsToProps = ({data, ownProps}) => {
             let node;
@@ -16,11 +16,11 @@ function withNodeFromPath(fragments) {
 
             return {
                 ...ownProps,
-                node: node,
+                node: node
             };
         };
 
-        let mapPropsToOptions = (props) => {
+        let mapPropsToOptions = props => {
             let vars = {
                 path: props.path,
                 workspace: props.workspace ? props.workspace : 'EDIT'
@@ -32,7 +32,7 @@ function withNodeFromPath(fragments) {
             return {
                 variables: vars,
                 skip: !props.path
-            }
+            };
         };
 
         let query = gql`
@@ -54,7 +54,7 @@ function withNodeFromPath(fragments) {
             props: mapResultsToProps,
             options: mapPropsToOptions
         })(ViewComponent);
-    }
+    };
 }
 
 export {withNodeFromPath};

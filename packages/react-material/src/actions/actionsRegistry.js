@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import {composeActions} from "./composeActions";
+import {composeActions} from './composeActions';
 
 class Registry {
     constructor() {
@@ -32,7 +32,6 @@ class Registry {
     getAll() {
         return _.values(this.registry);
     }
-
 }
 
 let actionsRegistry = new Registry();

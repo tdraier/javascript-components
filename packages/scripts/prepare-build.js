@@ -7,7 +7,7 @@ console.log('Preparing build folder');
 
 function mkdirs(dir) {
     if (!fs.existsSync(dir)) {
-        let parent = path.resolve(dir,'..');
+        let parent = path.resolve(dir, '..');
         mkdirs(parent);
         fs.mkdirSync(dir);
     }
@@ -27,7 +27,7 @@ function copyFile(srcFolder, destFolder, file, newFile) {
 function typingsCopy() {
     // Create index.d.ts
     glob.sync('**/index.js', {cwd: 'src'}).forEach(file => {
-        copyFile('src', 'build/esm', file,  file.slice(0,-3) + '.d.ts');
+        copyFile('src', 'build/esm', file, file.slice(0, -3) + '.d.ts');
     });
 
     glob.sync('**/*.d.ts', {cwd: 'src'}).forEach(file => {

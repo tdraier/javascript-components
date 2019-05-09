@@ -1,21 +1,22 @@
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
 function createOutletHistory(baseHistory, outletName) {
-
-    const getPath = (path) => {
+    const getPath = path => {
         let parts = [];
         let base = baseHistory.location.pathname;
         let newPath = outletName + ':' + path;
         if (base.indexOf('(') > -1) {
-            base = base.substr(base.indexOf('(')+1);
-            base = base.substr(0,base.indexOf(')'));
-            parts = base.split('//')
-            parts = _.map(parts, (p)=> (p.startsWith(outletName + ':') ? newPath : p));
+            base = base.substr(base.indexOf('(') + 1);
+            base = base.substr(0, base.indexOf(')'));
+            parts = base.split('//');
+            parts = _.map(parts, p => (p.startsWith(outletName + ':') ? newPath : p));
         }
+
         if (parts.indexOf(newPath) === -1) {
             parts.push(newPath);
         }
-        return '/('+ _.join(parts,'//') + ')';
+
+        return '/(' + _.join(parts, '//') + ')';
     };
 
     const getState = function (state) {
@@ -25,22 +26,24 @@ function createOutletHistory(baseHistory, outletName) {
             newState['router_' + outletName] = state;
         } else if (baseHistory.location.state) {
             newState = baseHistory.location.state;
-            delete newState['router_' + outletName]
+            delete newState['router_' + outletName];
         }
+
         return newState;
     };
 
-    const extractPath = function(base) {
+    const extractPath = function (base) {
         if (base.indexOf('(') > -1) {
             base = base.substr(base.indexOf('(') + 1);
             base = base.substr(0, base.indexOf(')'));
-            let parts = base.split('//')
+            let parts = base.split('//');
             let s = outletName + ':';
-            let part = _.find(parts, (p)=> (p.startsWith(s)));
+            let part = _.find(parts, p => (p.startsWith(s)));
             if (part) {
-                return part.substr(s.length)
+                return part.substr(s.length);
             }
         }
+
         return '';
     };
 
@@ -53,55 +56,56 @@ function createOutletHistory(baseHistory, outletName) {
         length: baseHistory.length,
         action: baseHistory.action,
         location: initialLocation,
-        createHref: (location) => {
-            return baseHistory.createHref({pathname:getPath(location.pathname)});
+        createHref: location => {
+            return baseHistory.createHref({pathname: getPath(location.pathname)});
         },
         push: (path, state) => {
-            return baseHistory.push(getPath(path),getState(state));
+            return baseHistory.push(getPath(path), getState(state));
         },
         replace: (path, state) => {
-            baseHistory.replace(getPath(path),getState(state));
+            baseHistory.replace(getPath(path), getState(state));
         },
-        go: (n) => {
-            baseHistory.go(n)
+        go: n => {
+            baseHistory.go(n);
         },
         goBack: () => {
-            baseHistory.goBack()
+            baseHistory.goBack();
         },
         goForward: () => {
-            baseHistory.goForward()
+            baseHistory.goForward();
         },
-        block:(prompt) => {
-            return baseHistory.block(prompt)
+        block: prompt => {
+            return baseHistory.block(prompt);
         },
-        listen: (listener) => {
+        listen: listener => {
             listeners.push(listener);
             return () => {
                 _.pull(listeners, listener);
-            }
+            };
         },
         dispose: () => {
             unlisten();
         }
     };
 
-    const unlisten = baseHistory.listen( (event) => {
+    const unlisten = baseHistory.listen(event => {
         let path = extractPath(event.pathname);
         let state;
         if (event.state && event.state['router_' + outletName]) {
             state = event.state['router_' + outletName];
         }
+
         if (history.location.pathname !== path || history.location.state !== state) {
             Object.assign(history.location, event);
             history.location.pathname = path;
             history.location.state = state;
-            _.each(listeners, (listener) => listener.call(this,history.location))
+            _.each(listeners, listener => listener.call(this, history.location));
         }
     });
 
-    // unlisten when not used anymore !
+    // Unlisten when not used anymore !
 
-    return history
+    return history;
 }
 
-export { createOutletHistory }
+export {createOutletHistory};

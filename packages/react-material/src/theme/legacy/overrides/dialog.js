@@ -3,13 +3,13 @@ const legacyDialogTitle = {
         width: '600px',
         boxSizing: 'border-box',
         padding: '24px 24px 0px 24px',
-        fontSize: '1rem',
+        fontSize: '1rem'
     }
 };
 
 const legacyDialogContent = {
     root: {
-        padding: '4px 24px 10px 24px',
+        padding: '4px 24px 10px 24px'
     }
 };
 
@@ -23,8 +23,8 @@ const legacyDialogActions = {
     root: {
         justifyContent: 'left',
         padding: '0 20px',
-        marginTop: '30px',
+        marginTop: '30px'
     }
 };
 
-export { legacyDialogTitle, legacyDialogContent, legacyDialogContentText, legacyDialogActions }
+export {legacyDialogTitle, legacyDialogContent, legacyDialogContentText, legacyDialogActions};

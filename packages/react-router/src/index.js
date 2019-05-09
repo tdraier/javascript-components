@@ -1,2 +1,2 @@
-export {createOutletHistory} from './createOutletHistory'
-export {OutletRouter} from './OutletRouter'
+export {createOutletHistory} from './createOutletHistory';
+export {OutletRouter} from './OutletRouter';

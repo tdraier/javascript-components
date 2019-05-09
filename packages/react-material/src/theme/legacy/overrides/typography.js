@@ -17,4 +17,4 @@ const legacyTypography = {
     }
 };
 
-export {legacyTypography}
+export {legacyTypography};

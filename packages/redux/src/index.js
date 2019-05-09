@@ -1,2 +1,2 @@
-export {reduxStore} from './reduxStore'
-// export * from './withPathFromSelection'
+export {reduxStore} from './reduxStore';
+// Export * from './withPathFromSelection'

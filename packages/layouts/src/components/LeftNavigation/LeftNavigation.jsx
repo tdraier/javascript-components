@@ -13,7 +13,7 @@ const styles = theme => ({
         minWidth: (styleConstants.screenMargin + styleConstants.leftNavigationWidth) + 'px',
         paddingLeft: theme.spacing.unit * 4,
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     rootOpenDrawer: {
         zIndex: theme.zIndex.modal,

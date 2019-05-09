@@ -1,7 +1,7 @@
 import {Button} from '@jahia/ds-mui-theme';
 import React from 'react';
 import {I18n} from 'react-i18next';
-import {toIconComponent} from './toIconComponent'
+import {toIconComponent} from './toIconComponent';
 
 let buttonRenderer = (buttonProps, showIcon, propagateEvent) => ({context}) => (
     <I18n ns={context.buttonLabelNamespace}>
@@ -13,7 +13,7 @@ let buttonRenderer = (buttonProps, showIcon, propagateEvent) => ({context}) => (
                             e.stopPropagation();
                         }
 
-                        context.onClick(context, e)
+                        context.onClick(context, e);
                     }}
                     {...buttonProps}
             >

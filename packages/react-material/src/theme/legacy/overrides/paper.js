@@ -2,4 +2,4 @@ const legacyPaper = {
     root: {}
 };
 
-export {legacyPaper}
+export {legacyPaper};

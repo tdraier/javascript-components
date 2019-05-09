@@ -1,4 +1,4 @@
-import {colors} from "@material-ui/core";
+import {colors} from '@material-ui/core';
 
 const commonPalette = {
     contrastThreshold: 3,
@@ -68,4 +68,4 @@ const commonPalette = {
     }
 };
 
-export { commonPalette }
+export {commonPalette};

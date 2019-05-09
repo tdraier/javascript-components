@@ -97,6 +97,7 @@ export class PDFViewer extends React.Component {
                 default:
                     break;
             }
+
             return {page: newPage};
         });
     }
@@ -115,6 +116,7 @@ export class PDFViewer extends React.Component {
                 default:
                     break;
             }
+
             clearTimeout(this.scaleTimeout);
             this.scaleTimeout = setTimeout(() => {
                 this.setState({showScale: false});

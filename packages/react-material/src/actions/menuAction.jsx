@@ -57,12 +57,12 @@ let preload = context => {
     context.enabled = context.obs.enabled;
 
     let currentPreloadMenuHandler = context.renderComponent(<DisplayActions target={context.menu}
-                                                                         context={{
+                                                                            context={{
                                                                              ...context.originalContext,
                                                                              displayDisabled: context.menuDisplayDisabled,
                                                                              parent: context
                                                                          }}
-                                                                         render={
+                                                                            render={
                                                                              () => {
                                                                                  context.obs.enabled.next(true);
                                                                                  return false;
