@@ -1,1 +1,1 @@
-export * from './SiteInfo'
+export * from './SiteInfo';

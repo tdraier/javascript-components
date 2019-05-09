@@ -7,13 +7,13 @@ const legacyFormControlLabel = {
 
 const legacyFormControl = {
     root: {
-        width:"100%",
-        "& error": {
+        width: '100%',
+        '& error': {
         },
-        "& message": {
-            display:"none"
+        '& message': {
+            display: 'none'
         },
-        "& label": {
+        '& label': {
         }
     }
 };
@@ -32,12 +32,12 @@ const legacyFormHelperText = {
         zIndex: '99',
         padding: '11px 5px 11px 11px',
         boxSizing: 'border-box',
-        "&:hover message": {
+        '&:hover message': {
             display: 'block'
         },
-        "& error": {
+        '& error': {
         },
-        "& message": {
+        '& message': {
             top: '24px',
             width: '280px',
             right: '0',
@@ -51,9 +51,9 @@ const legacyFormHelperText = {
             padding: '14px',
             lineHeight: 'normal'
         },
-        "& label": {
+        '& label': {
         }
     }
 };
 
-export {legacyFormControlLabel, legacyFormControl, legacyFormHelperText}
+export {legacyFormControlLabel, legacyFormControl, legacyFormHelperText};

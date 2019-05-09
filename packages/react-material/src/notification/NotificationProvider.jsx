@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Snackbar} from "@material-ui/core";
-import {Close} from "@material-ui/icons"
-import {IconButton} from "@material-ui/core"
-import * as _ from "lodash";
+import {Snackbar} from '@material-ui/core';
+import {Close} from '@material-ui/icons';
+import {IconButton} from '@material-ui/core';
+import * as _ from 'lodash';
 let Context = React.createContext();
 
 class NotificationProvider extends Component {
@@ -11,7 +11,7 @@ class NotificationProvider extends Component {
 
         this.state = {
             notification: {
-                message: "",
+                message: '',
                 open: false,
                 predefinedOptions: [],
                 options: {}
@@ -20,19 +20,19 @@ class NotificationProvider extends Component {
 
         this.predefined = {
             closeButton: {
-                action:[<IconButton
+                action: [<IconButton
                     key="close"
                     aria-label="Close"
                     color="inherit"
                     onClick={() => this.notificationContext.closeNotification()}
-                >
+                         >
                     <Close/>
-                </IconButton>]
+                         </IconButton>]
             },
             noAutomaticClose: {
-                onClose:(event, reason) => {}
+                onClose: (event, reason) => {}
             },
-            closeAfter5s : {
+            closeAfter5s: {
                 autoHideDuration: 5000
             }
         };
@@ -43,6 +43,7 @@ class NotificationProvider extends Component {
                     options = predefinedOptions;
                     predefinedOptions = [];
                 }
+
                 this.setState({
                     notification: {
                         message: message,
@@ -60,9 +61,9 @@ class NotificationProvider extends Component {
                         predefinedOptions: [],
                         options: {}
                     }
-                })
+                });
             }
-        }
+        };
     }
 
     render() {
@@ -71,38 +72,46 @@ class NotificationProvider extends Component {
 
         predefinedOptions.forEach(key => this.predefined[key] && _.merge(options, this.predefined[key]));
 
-        return <React.Fragment>
-            <Context.Provider value={this.notificationContext}>
-                {this.props.children}
-            </Context.Provider>
-            <Snackbar
+        return (
+            <React.Fragment>
+                <Context.Provider value={this.notificationContext}>
+                    {this.props.children}
+                </Context.Provider>
+                <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'left',
+                    horizontal: 'left'
                 }}
                 onClose={this.notificationContext.closeNotification}
                 open={this.state.notification.open}
                 ContentProps={{
-                    'aria-describedby': 'message-id',
+                    'aria-describedby': 'message-id'
                 }}
                 message={<span id="message-id">{this.state.notification.message}</span>}
                 {...options}
             />
-        </React.Fragment>;
+            </React.Fragment>
+        );
     }
 }
 
 let NotificationConsumer = Context.Consumer;
 
 function withNotifications() {
-    return (WrappedComponent) => {
+    return WrappedComponent => {
         return class extends React.Component {
             render() {
-                return (<NotificationConsumer>{notificationContext => (<WrappedComponent
-                    notificationContext={notificationContext} {...this.props} />)}</NotificationConsumer>)
+                return (
+                    <NotificationConsumer>{notificationContext => (
+                        <WrappedComponent
+                    notificationContext={notificationContext}
+                    {...this.props}/>
+)}
+                    </NotificationConsumer>
+                );
             }
         };
-    }
+    };
 }
 
-export {NotificationProvider, NotificationConsumer, withNotifications}
+export {NotificationProvider, NotificationConsumer, withNotifications};

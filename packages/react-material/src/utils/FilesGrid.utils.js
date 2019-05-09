@@ -25,4 +25,4 @@ export {
     isBrowserImage,
     isPDF,
     getFileType
-}
+};

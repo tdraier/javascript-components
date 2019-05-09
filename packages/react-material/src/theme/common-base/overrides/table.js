@@ -6,4 +6,4 @@ const commonTablePagination = {
     }
 };
 
-export {commonTablePagination}
+export {commonTablePagination};

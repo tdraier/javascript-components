@@ -102,7 +102,7 @@ class PickerTreeViewMaterial extends React.Component {
                     {
                         sortedEntries.map(entry => {
                             let itemClass = classNames(classes.listItem, {
-                                //[classes.listItemDeleted]: isMarkedForDeletion(entry.node), TODO handle marked for deletion from CMM to be added
+                                // [classes.listItemDeleted]: isMarkedForDeletion(entry.node), TODO handle marked for deletion from CMM to be added
                                 [classes.listItemSelected]: entry.selected
                             });
                             return (
@@ -138,10 +138,10 @@ class PickerTreeViewMaterial extends React.Component {
                                         className={classes.treeEntry}
                                         onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : null}
                                     >
-                                            <ListItemIcon className={classes.listItemNodeTypeIcon}>
-                                                {iconRenderer(entry)}
-                                            </ListItemIcon>
-                                            <ListItemText
+                                        <ListItemIcon className={classes.listItemNodeTypeIcon}>
+                                            {iconRenderer(entry)}
+                                        </ListItemIcon>
+                                        <ListItemText
                                                 disableTypography
                                                 inset
                                                 className={entry.node.primaryNodeType.name === 'jnt:page' && entry.node.publicationStatus && entry.node.publicationStatus.publicationStatus === 'UNPUBLISHED' ? classes.unpublishedEntryLabel : null}
@@ -154,7 +154,7 @@ class PickerTreeViewMaterial extends React.Component {
                                                 }
                                                 data-jrm-role="picker-item-text"
                                             />
-                                        </span>
+                                    </span>
                                 </ListItem>
                             );
                         })
@@ -169,6 +169,7 @@ class PickerTreeViewMaterial extends React.Component {
             const rootNode = this.reconstructNodeHierarchy(JSON.parse(JSON.stringify(pickerEntries)));
             return this.sortAndFlatten(rootNode);
         }
+
         return pickerEntries;
     }
 
@@ -187,6 +188,7 @@ class PickerTreeViewMaterial extends React.Component {
                 if (!top.children) {
                     top.children = [];
                 }
+
                 top.children.push(currentPickerEntry);
                 hierarchyStack.push(currentPickerEntry);
                 pickerEntriesSortedByPath.splice(0, 1);
@@ -212,9 +214,11 @@ class PickerTreeViewMaterial extends React.Component {
                     if (A < B) {
                         return -1;
                     }
+
                     if (A > B) {
                         return 1;
                     }
+
                     return 0;
                 });
 

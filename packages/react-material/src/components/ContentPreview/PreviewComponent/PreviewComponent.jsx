@@ -26,6 +26,7 @@ class PreviewComponent extends React.Component {
                     frameDoc.getElementsByTagName('html')[0].insertBefore(frameDoc.createElement('head'), frameDoc.body);
                     iframeHeadEl = frameDoc.getElementsByTagName('head')[0];
                 }
+
                 assets.forEach(asset => {
                     let linkEl = document.createElement('link');
                     linkEl.setAttribute('rel', 'stylesheet');
@@ -61,7 +62,8 @@ class PreviewComponent extends React.Component {
                         if (isBrowserImage(data.nodeByPath.path)) {
                             return (
                                 <div className={classNames(classes.previewContainer, classes.mediaContainer)}
-                                     data-sel-role="preview-type-image">
+                                     data-sel-role="preview-type-image"
+                                >
                                     <ImageViewer file={file} fullScreen={fullScreen}/>
                                 </div>
                             );
@@ -71,7 +73,8 @@ class PreviewComponent extends React.Component {
                         const isMedia = (type === 'avi' || type === 'mp4' || type === 'video');
                         return (
                             <div className={classNames(classes.previewContainer, isMedia && classes.mediaContainer)}
-                                 data-sel-role="preview-type-document">
+                                 data-sel-role="preview-type-document"
+                            >
                                 <DocumentViewer file={file} type={type} fullScreen={fullScreen}/>
                             </div>
                         );
@@ -83,7 +86,8 @@ class PreviewComponent extends React.Component {
         const assets = data && data.nodeByPath && data.nodeByPath.renderedContent ? data.nodeByPath.renderedContent.staticAssets : [];
         return (
             <div className={classNames(classes.previewContainer, classes.contentContainer)}
-                 data-sel-role="preview-type-content">
+                 data-sel-role="preview-type-content"
+            >
                 <Paper elevation={1} classes={{root: classes.contentPaper}}>
                     <iframe key={data && data.nodeByPath ? data.nodeByPath.path : 'NoPreviewAvailable'}
                             ref={element => this.iframeLoadContent(assets, displayValue, element)}

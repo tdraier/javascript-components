@@ -23,4 +23,4 @@ function composeServices() {
     }, {});
 }
 
-export {composeServices}
+export {composeServices};

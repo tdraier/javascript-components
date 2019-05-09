@@ -4,7 +4,7 @@ import {AppBar, Grid, Toolbar, withStyles} from '@material-ui/core';
 import {Typography, IconButton} from '@jahia/ds-mui-theme';
 import {lodash as _} from 'lodash';
 import {compose} from 'react-apollo';
-import NodeTree from "./NodeTree";
+import NodeTree from './NodeTree';
 
 const styles = theme => ({
     listContainer: {
@@ -84,4 +84,4 @@ NodeTrees = compose(
     withStyles(styles, {withTheme: true})
 )(NodeTrees);
 
-export {NodeTrees}
+export {NodeTrees};

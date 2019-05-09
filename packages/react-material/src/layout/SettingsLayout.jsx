@@ -17,13 +17,12 @@ const styles = theme => ({
         position: 'relative'
     },
     footer: {
-        width: '100%',
+        width: '100%'
     },
     appBar: {
-        // transition: 'all 200ms ease-in-out'
+        // Transition: 'all 200ms ease-in-out'
     }
 });
-
 
 class SettingsLayout extends React.Component {
     constructor(props) {
@@ -31,17 +30,17 @@ class SettingsLayout extends React.Component {
     }
 
     render() {
-        let { classes, appBar, children, footer, appBarStyle } = this.props;
+        let {classes, appBar, children, footer, appBarStyle} = this.props;
         return (
-            <section className={classes.root} >
-                <AppBar position="fixed" classes={{root:classes.appBar}} style={appBarStyle}>
+            <section className={classes.root}>
+                <AppBar position="fixed" classes={{root: classes.appBar}} style={appBarStyle}>
                     {appBar}
                 </AppBar>
                 <section className={classes.main}>
                     {children}
                 </section>
                 <footer className={classes.footer}>
-                    <Typography align={'center'} gutterBottom={true} color={'textSecondary'}>
+                    <Typography align="center" gutterBottom color="textSecondary">
                         {footer}
                     </Typography>
                 </footer>
@@ -50,12 +49,11 @@ class SettingsLayout extends React.Component {
     }
 }
 
-
 SettingsLayout.propTypes = {
     appBar: PropTypes.element,
     footer: PropTypes.string
 };
 
-SettingsLayout = withStyles(styles, {name:"DxSettingsLayout"})(SettingsLayout);
+SettingsLayout = withStyles(styles, {name: 'DxSettingsLayout'})(SettingsLayout);
 
 export {SettingsLayout};

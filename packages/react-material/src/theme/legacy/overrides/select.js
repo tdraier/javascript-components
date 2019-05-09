@@ -14,4 +14,4 @@ const legacySelect = {
     icon: {}
 };
 
-export {legacySelect}
+export {legacySelect};

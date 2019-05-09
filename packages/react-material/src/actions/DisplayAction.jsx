@@ -96,6 +96,7 @@ class DisplayActionComponent extends React.Component {
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
+
         let {context} = this.props;
         if (context.destroy) {
             context.destroy(context);

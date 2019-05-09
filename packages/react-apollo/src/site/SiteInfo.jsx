@@ -1,7 +1,7 @@
 import React from 'react';
 import {Query} from 'react-apollo';
-import gql from "graphql-tag";
-import {PredefinedFragments} from "@jahia/apollo-dx";
+import gql from 'graphql-tag';
+import {PredefinedFragments} from '@jahia/apollo-dx';
 import PropTypes from 'prop-types';
 
 class SiteInfo extends React.Component {
@@ -60,10 +60,10 @@ class SiteInfo extends React.Component {
 
                     if (error || loading) {
                         return renderProp({siteInfo: {}, error, loading});
-                    } else {
+                    }
+
                         let siteInfo = SiteInfo.parseSiteInfo(data);
                         return renderProp({siteInfo: siteInfo, error, loading});
-                    }
                 }}
             </Query>
         );
@@ -103,5 +103,4 @@ SiteInfo.propTypes = {
     displayLanguage: PropTypes.string
 };
 
-
-export {SiteInfo}
+export {SiteInfo};

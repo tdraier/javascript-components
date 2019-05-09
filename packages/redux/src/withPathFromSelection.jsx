@@ -1,4 +1,4 @@
-// import React from 'react';
+// Import React from 'react';
 // import {connect} from 'react-redux'
 //
 // function withPathFromSelection(reduxStoreId) {

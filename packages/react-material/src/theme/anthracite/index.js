@@ -1,34 +1,34 @@
 import {createMuiTheme} from '@material-ui/core';
-import {commonBaseThemeConfig} from "../common-base/config";
+import {commonBaseThemeConfig} from '../common-base/config';
 import * as _ from 'lodash';
 
-import {shape} from "./shape";
-import {typography} from "./typography";
+import {shape} from './shape';
+import {typography} from './typography';
 // Overrides
-import {anthraciteAppBar} from "./overrides/appbar";
-import {anthraciteButton, anthraciteButtonBase, anthraciteIconButton} from "./overrides/button";
-import {anthraciteCard, anthraciteCardContent, anthraciteCardHeader} from "./overrides/card"
-import {anthraciteDialog, anthraciteDialogActions, anthraciteDialogTitle, anthraciteDialogContent} from "./overrides/dialog";
-import {anthraciteCheckbox} from "./overrides/checkbox";
-import {anthraciteInput} from "./overrides/input";
-import {anthraciteMenu, anthraciteMenuItem} from "./overrides/menu";
-import {anthracitePaper} from "./overrides/paper";
-import {anthraciteSelect} from "./overrides/select";
-import {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination} from "./overrides/table";
-import {anthraciteTab, anthraciteTabs} from "./overrides/tabs";
-import {anthraciteToolBar} from "./overrides/toolbar";
+import {anthraciteAppBar} from './overrides/appbar';
+import {anthraciteButton, anthraciteButtonBase, anthraciteIconButton} from './overrides/button';
+import {anthraciteCard, anthraciteCardContent, anthraciteCardHeader} from './overrides/card';
+import {anthraciteDialog, anthraciteDialogActions, anthraciteDialogTitle, anthraciteDialogContent} from './overrides/dialog';
+import {anthraciteCheckbox} from './overrides/checkbox';
+import {anthraciteInput} from './overrides/input';
+import {anthraciteMenu, anthraciteMenuItem} from './overrides/menu';
+import {anthracitePaper} from './overrides/paper';
+import {anthraciteSelect} from './overrides/select';
+import {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination} from './overrides/table';
+import {anthraciteTab, anthraciteTabs} from './overrides/tabs';
+import {anthraciteToolBar} from './overrides/toolbar';
 import {anthraciteListItem, anthraciteListItemSecondaryAction, anthraciteListItemText, anthraciteListSubheader,
-    anthraciteListItemIcon} from "./overrides/list";
-import {anthraciteTypography} from "./overrides/typography";
-import {anthraciteFormControlLabel, anthraciteFormLabel} from "./overrides/form";
-import {anthracitePanel, anthracitePanelActions, anthracitePanelDetails} from "./overrides/panel";
-import {anthraciteChip} from "./overrides/chip";
+    anthraciteListItemIcon} from './overrides/list';
+import {anthraciteTypography} from './overrides/typography';
+import {anthraciteFormControlLabel, anthraciteFormLabel} from './overrides/form';
+import {anthracitePanel, anthracitePanelActions, anthracitePanelDetails} from './overrides/panel';
+import {anthraciteChip} from './overrides/chip';
 
 // Import of Light Anthracite palette
-import {anthraciteLightPalette} from "./light/palette";
+import {anthraciteLightPalette} from './light/palette';
 
 // Import of Dark Anthracite palette
-import {anthraciteDarkPalette} from "./dark/palette";
+import {anthraciteDarkPalette} from './dark/palette';
 
 const anthraciteLightThemeConfig = {
     palette: anthraciteLightPalette,
@@ -36,7 +36,7 @@ const anthraciteLightThemeConfig = {
     typography
 };
 
-const anthraciteLightThemeOverrides = (theme) => ({
+const anthraciteLightThemeOverrides = theme => ({
     MuiAppBar: anthraciteAppBar(theme),
     MuiButton: anthraciteButton(theme),
     MuiButtonBase: anthraciteButtonBase(theme),
@@ -83,7 +83,7 @@ const anthraciteDarkThemeConfig = {
     typography
 };
 
-const anthraciteDarkThemeOverrides = (theme) => ({
+const anthraciteDarkThemeOverrides = theme => ({
     MuiAppBar: anthraciteAppBar(theme),
     MuiButton: anthraciteButton(theme),
     MuiButtonBase: anthraciteButtonBase(theme),
@@ -124,5 +124,4 @@ const anthraciteDarkThemeOverrides = (theme) => ({
 const anthraciteDarkTheme = createMuiTheme(_.merge({}, commonBaseThemeConfig, anthraciteDarkThemeConfig));
 _.merge(anthraciteDarkTheme, {overrides: anthraciteDarkThemeOverrides(anthraciteDarkTheme)});
 
-
-export {anthraciteLightTheme, anthraciteDarkTheme}
+export {anthraciteLightTheme, anthraciteDarkTheme};

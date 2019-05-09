@@ -7,20 +7,20 @@ function composeActions() {
             _.forEach(action, (value, key) => {
                 let previous = acc[key];
                 if (typeof previous === 'function') {
-                    acc[key] = function() {
+                    acc[key] = function () {
                         previous.apply(this, arguments);
                         value.apply(this, arguments);
-                    }
+                    };
                 } else if (Array.isArray(previous)) {
-                    acc[key] = _.concat(previous, value)
+                    acc[key] = _.concat(previous, value);
                 } else {
                     acc[key] = value;
                 }
             });
         }
+
         return acc;
     }, {});
 }
 
-
-export {composeActions}
+export {composeActions};

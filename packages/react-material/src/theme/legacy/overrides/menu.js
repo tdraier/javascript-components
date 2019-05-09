@@ -6,4 +6,4 @@ const legacyMenuItem = {
     }
 };
 
-export {legacyMenuItem}
+export {legacyMenuItem};

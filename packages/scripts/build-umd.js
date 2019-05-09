@@ -3,7 +3,7 @@ const rollup = require('rollup');
 const babel = require('@babel/core');
 const path = require('path');
 const fs = require('fs');
-const UglifyJS = require("uglify-js");
+const UglifyJS = require('uglify-js');
 
 const configCode = babel.transformFileSync(path.resolve('./rollup.config.js'), {presets: ['@babel/env']}).code;
 const config = eval(configCode);

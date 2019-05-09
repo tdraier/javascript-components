@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Picker} from '@jahia/react-apollo';
 import {PredefinedFragments} from '@jahia/apollo-dx';
 import gql from 'graphql-tag';
-import {PickerTreeViewMaterial} from "../../picker/PickerTreeViewMaterial";
+import {PickerTreeViewMaterial} from '../../picker/PickerTreeViewMaterial';
 
 const PickerItemsFragment = {
     mixinTypes: {

@@ -1,20 +1,18 @@
 import React from 'react';
-import {withStyles} from "@material-ui/core";
+import {withStyles} from '@material-ui/core';
 
-let withStylesAction = (styles) => {
-    let Component = withStyles(styles)((props) => props.children(props.classes));
+let withStylesAction = styles => {
+    let Component = withStyles(styles)(props => props.children(props.classes));
 
     return {
-        init(context,props) {
+        init(context, props) {
             context.classes = props.classes;
         },
 
         wrappers: [
-            (component) => <Component>{(classes) => React.cloneElement(component, {classes})}</Component>
+            component => <Component>{classes => React.cloneElement(component, {classes})}</Component>
         ]
-    }
-
+    };
 };
 
-
-export { withStylesAction };
+export {withStylesAction};
