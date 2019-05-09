@@ -8,6 +8,10 @@
   "description": "This Jahia test-framework for React Apps",
   "main": "index.js",
   "license": "MIT",
+  "files": [
+    "./build",
+    "./index.js"
+  ],
   "dependencies": {
     "babel-jest": "^24.7.1",
     "enzyme": "^3.9.0",
