@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Snackbar} from '@material-ui/core';
 import {Close} from '@material-ui/icons';
 import {IconButton} from '@material-ui/core';
@@ -20,17 +21,19 @@ class NotificationProvider extends Component {
 
         this.predefined = {
             closeButton: {
-                action: [<IconButton
+                action: [
+                    <IconButton
                     key="close"
                     aria-label="Close"
                     color="inherit"
                     onClick={() => this.notificationContext.closeNotification()}
-                         >
-                    <Close/>
-                         </IconButton>]
+                    >
+                        <Close/>
+                    </IconButton>
+                ]
             },
             noAutomaticClose: {
-                onClose: (event, reason) => {}
+                onClose: () => {}
             },
             closeAfter5s: {
                 autoHideDuration: 5000
@@ -82,18 +85,28 @@ class NotificationProvider extends Component {
                     vertical: 'bottom',
                     horizontal: 'left'
                 }}
-                onClose={this.notificationContext.closeNotification}
+
                 open={this.state.notification.open}
                 ContentProps={{
                     'aria-describedby': 'message-id'
                 }}
                 message={<span id="message-id">{this.state.notification.message}</span>}
+                onClose={this.notificationContext.closeNotification}
                 {...options}
             />
             </React.Fragment>
         );
     }
 }
+
+NotificationProvider.defaultProps = {
+    children: null
+};
+
+NotificationProvider.propTypes = {
+    children: PropTypes.element
+
+};
 
 let NotificationConsumer = Context.Consumer;
 
@@ -102,11 +115,10 @@ function withNotifications() {
         return class extends React.Component {
             render() {
                 return (
-                    <NotificationConsumer>{notificationContext => (
-                        <WrappedComponent
-                    notificationContext={notificationContext}
-                    {...this.props}/>
-)}
+                    <NotificationConsumer>{
+                        notificationContext => (
+                            <WrappedComponent notificationContext={notificationContext} {...this.props}/>
+                        )}
                     </NotificationConsumer>
                 );
             }

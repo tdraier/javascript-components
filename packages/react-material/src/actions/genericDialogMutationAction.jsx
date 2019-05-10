@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {compose, Mutation} from 'react-apollo';
 import {componentRendererAction} from './componentRendererAction';
 import {composeActions} from './composeActions';
@@ -7,7 +8,7 @@ import {withNotifications} from '../notification/NotificationProvider';
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
 import {translate} from 'react-i18next';
 
-class GenericDialogMutation extends React.Component {
+class GenericDialogMutationCmp extends React.Component {
     onCompleted() {
         let {notificationContext, dialogData: {confirmMessage}} = this.props;
         notificationContext.notify(confirmMessage);
@@ -32,14 +33,14 @@ class GenericDialogMutation extends React.Component {
         const {t, dialogData: {mutation, mutationParams, title, description, beforeMutation}, onClose, onExited, open} = this.props;
         return (
             <Mutation mutation={mutation} onCompleted={() => this.onCompleted()} onError={e => this.onError(e)}>
-                {(mutationCall, {called, loading, data, error}) => (
+                {(mutationCall, {loading}) => (
                     <React.Fragment>
                         {loading && <ProgressOverlay/>}
                         <Dialog open={open}
-                                onClose={onClose}
-                                onExited={onExited}
                                 aria-labelledby="alert-dialog-title"
                                 aria-describedby="alert-dialog-description"
+                                onClose={onClose}
+                                onExited={onExited}
                         >
                             <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
                             <DialogContent>
@@ -49,17 +50,22 @@ class GenericDialogMutation extends React.Component {
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={onClose}
-                                        color="primary"
-                                        data-lsm-role="cancel-button"
+                                <Button
+                                    color="primary"
+                                    data-lsm-role="cancel-button"
+                                    onClick={onClose}
                                 >{t('label.cancel')}
                                 </Button>
-                                <Button onClick={() => {
-                                beforeMutation && beforeMutation();
-                                return mutationCall(mutationParams);
-                            }}
-                                        color="primary"
-                                        data-lsm-role="confirm-button"
+                                <Button
+                                    color="primary"
+                                    data-lsm-role="confirm-button"
+                                    onClick={() => {
+                                        if (beforeMutation) {
+                                            beforeMutation();
+                                        }
+
+                                        return mutationCall(mutationParams);
+                                    }}
                                 >{t('label.confirm')}
                                 </Button>
                             </DialogActions>
@@ -71,26 +77,37 @@ class GenericDialogMutation extends React.Component {
     }
 }
 
-GenericDialogMutation = compose(
+GenericDialogMutationCmp.propTypes = {
+    dialogData: PropTypes.object.isRequired,
+    open: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onExited: PropTypes.func.isRequired,
+    notificationContext: PropTypes.object.isRequired,
+    t: PropTypes.func.isRequired
+};
+
+export const GenericDialogMutation = compose(
     withNotifications(),
     translate()
-)(GenericDialogMutation);
+)(GenericDialogMutationCmp);
 
 let genericDialogMutationAction = composeActions(componentRendererAction, {
 
     init(context) {
         context.openDialogMutation = dialogData => {
-            let handler = context.renderComponent(<GenericDialogMutation dialogData={dialogData}
-                                                                         open
-                                                                         onClose={() => {
-                                                                             handler.setProps({open: false});
-                                                                         }}
-                                                                         onExited={() => {
-                                                                             handler.destroy();
-                                                                             if (context.onExited) {
-                                                                                 context.onExited();
-                                                                             }
-                                                                         }}/>);
+            let handler = context.renderComponent(<GenericDialogMutation
+                                                        open
+                                                        dialogData={dialogData}
+
+                                                        onClose={() => {
+                                                             handler.setProps({open: false});
+                                                         }}
+                                                        onExited={() => {
+                                                             handler.destroy();
+                                                             if (context.onExited) {
+                                                                 context.onExited();
+                                                             }
+                                                         }}/>);
             if (context.onOpen) {
                 context.onOpen();
             }

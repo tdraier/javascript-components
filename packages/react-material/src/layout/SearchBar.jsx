@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Icon, IconButton, Input, InputAdornment, withStyles} from '@material-ui/core';
 import {Close, Search} from '@material-ui/icons';
 import {translate} from 'react-i18next';
@@ -42,7 +43,7 @@ const styles = theme => ({
     }
 });
 
-class SearchBar extends React.Component {
+class SearchBarCmp extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -89,35 +90,52 @@ class SearchBar extends React.Component {
         const {classes, t, placeholderLabel} = this.props;
 
         return (
-            <Input classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: (this.state.focus ? null : classes.input)}}
-                   onChange={this.handleChange}
-                   onBlur={this.onBlur}
-                   onFocus={this.onFocus}
-                   disableUnderline
-                   type="text"
-                   inputRef={input => {
-this.inputSearchBar = input;
-}}
-                   placeholder={placeholderLabel || t('label.searchPlaceholder')}
-                   startAdornment={
-                       <InputAdornment position="start" classes={{root: classes.searchIcon}}>
-                           <IconButton disabled>
-                               <Search/>
-                           </IconButton>
-                       </InputAdornment>}
-                   endAdornment={
+            <Input
+                disableUnderline
+                classes={{root: (this.state.focus ? classes.rootFocus : classes.root), input: (this.state.focus ? null : classes.input)}}
+                type="text"
+                inputRef={input => {
+                        this.inputSearchBar = input;
+                    }}
+                placeholder={placeholderLabel || t('label.searchPlaceholder')}
+                startAdornment={
+                    <InputAdornment position="start" classes={{root: classes.searchIcon}}>
+                        <IconButton disabled>
+                            <Search/>
+                        </IconButton>
+                    </InputAdornment>}
+                endAdornment={
                        this.state.focus ?
                            <InputAdornment position="end" classes={{root: classes.closeIcon}}>
                                <IconButton onClick={this.onClear}>
                                    <Icon><Close/></Icon>
                                </IconButton>
                            </InputAdornment> : null}
-                   style={this.props.style}
+                style={this.props.style}
+                onChange={this.handleChange}
+                onBlur={this.onBlur}
+                onFocus={this.onFocus}
             />
         );
     }
 }
 
-SearchBar = withStyles(styles, {name: 'DxSearchBar'})(translate('react-material')(SearchBar));
+SearchBarCmp.defaultProps = {
+    placeholderLabel: null,
+    onChangeFilter: null,
+    onFocus: null,
+    onBlur: null,
+    style: {}
+};
 
-export {SearchBar};
+SearchBarCmp.propTypes = {
+    placeholderLabel: PropTypes.string,
+    onChangeFilter: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    style: PropTypes.object,
+    classes: PropTypes.object.isRequired,
+    t: PropTypes.func.isRequired
+};
+
+export const SearchBar = withStyles(styles, {name: 'DxSearchBar'})(translate('react-material')(SearchBar));

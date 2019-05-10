@@ -1,4 +1,4 @@
-const anthraciteCheckbox = theme => ({
+const anthraciteCheckbox = () => ({
     root: {
         height: '36px',
         width: '36px'

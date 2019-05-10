@@ -1,4 +1,4 @@
-const anthraciteTable = theme => ({
+const anthraciteTable = () => ({
     root: {
         overflow: 'hidden'
     }
@@ -26,7 +26,7 @@ const anthraciteTableCell = theme => ({
     }
 });
 
-const anthraciteTableRow = theme => ({
+const anthraciteTableRow = () => ({
     root: {
         height: '36px'
     },
@@ -35,12 +35,16 @@ const anthraciteTableRow = theme => ({
     }
 });
 
-const anthraciteTablePagination = theme => ({
-    root: {
-    },
+const anthraciteTablePagination = () => ({
+    root: {},
     select: {
         boxShadow: 'none'
     }
 });
 
-export {anthraciteTable, anthraciteTableCell, anthraciteTableRow, anthraciteTablePagination};
+export {
+    anthraciteTable,
+    anthraciteTableCell,
+    anthraciteTableRow,
+    anthraciteTablePagination
+};

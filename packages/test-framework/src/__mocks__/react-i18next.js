@@ -3,7 +3,8 @@
 const React = require('react');
 const reactI18next = require('react-i18next');
 
-const hasChildren = node => node && (node.children || (node.props && node.props.children));
+const hasChildren = node =>
+    node && (node.children || (node.props && node.props.children));
 
 const getChildren = node =>
     node && node.children ? node.children : node.props && node.props.children;
@@ -26,13 +27,17 @@ const renderNodes = (children, components) => {
             const inner = renderNodes(getChildren(child));
             return React.cloneElement(
                 child,
+                // eslint-disable-next-line react/no-array-index-key
                 {...child.props, key: i},
-                inner,
+                inner
             );
         }
 
         if (typeof child === 'object' && !isElement) {
-            return Object.keys(child).reduce((str, childKey) => `${str}${child[childKey]}`, '');
+            return Object.keys(child).reduce(
+                (str, childKey) => `${str}${child[childKey]}`,
+                ''
+            );
         }
 
         return child;
@@ -41,7 +46,9 @@ const renderNodes = (children, components) => {
 
 module.exports = {
     // This mock makes sure any components using the translate HoC receive the t function as a prop
-    withNamespaces: () => Component => props => <Component t={k => k} {...props}/>,
+    withNamespaces: () => Component => props => (
+        <Component t={k => k} {...props}/>
+    ),
     translate: () => Component => props => <Component t={k => k} {...props}/>,
     Trans: ({children, components}) => renderNodes(children, components),
     NamespacesConsumer: ({children}) => children(k => k, {i18n: {}}),

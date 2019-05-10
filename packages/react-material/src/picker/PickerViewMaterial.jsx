@@ -4,9 +4,7 @@ import {
     List,
     ListItem,
     ListItemIcon,
-    ListItemSecondaryAction,
     ListItemText,
-    SvgIcon,
     withStyles,
     withTheme
 } from '@material-ui/core';
@@ -14,7 +12,7 @@ import {KeyboardArrowDown, KeyboardArrowRight} from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import defaultIconRenderer from './iconRenderer';
 
-let styles = theme => ({
+let styles = () => ({
     root: {
         position: 'relative'
     },
@@ -79,21 +77,23 @@ let PickerViewMaterial = function (props) {
             <List disablePadding classes={{root: loading ? (classes.root + ' ' + classes.loading) : classes.root}}>
                 {pickerEntries.map(entry =>
 					(
-    <ListItem key={entry.path}
-              button
-              className={entry.selected ? (classes.listItem + ' ' + classes.listItemSelected) : classes.listItem}
-              data-jrm-role="picker-item"
-              divider
-              onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : onOpenItem(entry.path, !entry.open)}
+    <ListItem
+        key={entry.path}
+        button
+        divider
+        data-jrm-role="picker-item"
+        className={entry.selected ? (classes.listItem + ' ' + classes.listItemSelected) : classes.listItem}
+        onClick={() => entry.selectable ? onSelectItem(entry.path, !entry.selected) : onOpenItem(entry.path, !entry.open)}
     >
         <ListItemIcon className={entry.selected ? (classes.listItemToggle + ' ' + classes.selectedText) : classes.listItemToggle} style={{paddingLeft: (entry.depth + 1) * 20, opacity: (entry.openable && entry.hasChildren ? 1 : 0)}}>
             <IconButton className={classes.buttonContainer}
-                        onClick={event => {
-onOpenItem(entry.path, !entry.open); event.stopPropagation();
-}}
                         disabled={!(entry.openable && entry.hasChildren)}
                         data-jrm-role="picker-item-toggle"
                         data-jrm-state={entry.open ? 'open' : 'closed'}
+                        onClick={event => {
+                            onOpenItem(entry.path, !entry.open);
+                            event.stopPropagation();
+                        }}
             >
                 {entry.open ?
                     <KeyboardArrowDown className={entry.selected ? (classes.toggleSelected) : classes.toggleUnSelected}/> :
@@ -105,10 +105,11 @@ onOpenItem(entry.path, !entry.open); event.stopPropagation();
             { iconRenderer ? iconRenderer.call(this, entry) : defaultIconRenderer.call(this, entry) }
         </ListItemIcon>
 
-        <ListItemText classes={entry.selected ? {root: classes.listItemLabel, primary: classes.selectedText} : {root: classes.listItemLabel}}
-                      inset
-                      primary={textRenderer ? textRenderer.call(this, entry) : entry.name}
-                      primaryTypographyProps={{'data-jrm-role': 'picker-item-text'}}/>
+        <ListItemText
+            inset
+            classes={entry.selected ? {root: classes.listItemLabel, primary: classes.selectedText} : {root: classes.listItemLabel}}
+            primary={textRenderer ? textRenderer.call(this, entry) : entry.name}
+            primaryTypographyProps={{'data-jrm-role': 'picker-item-text'}}/>
     </ListItem>
 					)
 				)}
@@ -117,11 +118,21 @@ onOpenItem(entry.path, !entry.open); event.stopPropagation();
     );
 };
 
+PickerViewMaterial.defaultProps = {
+    onSelectItem: () => {},
+    onOpenItem: () => {},
+    textRenderer: () => {},
+    iconRenderer: null
+};
+
 PickerViewMaterial.propTypes = {
     pickerEntries: PropTypes.array.isRequired,
     onSelectItem: PropTypes.func,
     onOpenItem: PropTypes.func,
-    textRenderer: PropTypes.func
+    textRenderer: PropTypes.func,
+    iconRenderer: PropTypes.func,
+    loading: PropTypes.bool.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
 PickerViewMaterial = withTheme()(withStyles(styles, {name: 'DxPickerViewMaterial'})(PickerViewMaterial));

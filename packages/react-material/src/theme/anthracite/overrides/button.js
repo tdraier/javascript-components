@@ -1,4 +1,4 @@
-const anthraciteButton = theme => ({
+const anthraciteButton = () => ({
     root: {
         padding: '8px 15px',
         textTransform: 'none',
@@ -6,8 +6,7 @@ const anthraciteButton = theme => ({
     },
     contained: {
         boxShadow: '0px 5px 1px -4px rgba(38, 38, 38, 0.4)',
-        '&:hover': {
-        }
+        '&:hover': {}
     },
     fab: {
         boxShadow: '0px 5px 1px -4px rgba(38, 38, 38, 0.4)'
@@ -33,13 +32,13 @@ const anthraciteButton = theme => ({
     }
 });
 
-const anthraciteIconButton = theme => ({
+const anthraciteIconButton = () => ({
     root: {
         boxShadow: 'none'
     }
 });
 
-const anthraciteButtonBase = theme => ({
+const anthraciteButtonBase = () => ({
     root: {}
 });
 

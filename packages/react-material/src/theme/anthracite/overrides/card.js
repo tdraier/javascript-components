@@ -1,4 +1,4 @@
-const anthraciteCard = theme => ({
+const anthraciteCard = () => ({
     root: {
         '@media (min-width:600px)': {
             paddingLeft: '0px',
@@ -7,7 +7,7 @@ const anthraciteCard = theme => ({
     }
 });
 
-const anthraciteCardContent = theme => ({
+const anthraciteCardContent = () => ({
     root: {
         paddingTop: 16,
         paddingBottom: 0,
@@ -16,7 +16,7 @@ const anthraciteCardContent = theme => ({
     }
 });
 
-const anthraciteCardHeader = theme => ({
+const anthraciteCardHeader = () => ({
     root: {
         paddingTop: 0,
         paddingBottom: 0,
@@ -30,4 +30,3 @@ const anthraciteCardHeader = theme => ({
 });
 
 export {anthraciteCard, anthraciteCardHeader, anthraciteCardContent};
-

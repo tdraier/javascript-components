@@ -1,4 +1,4 @@
-const anthraciteDialogTitle = theme => ({
+const anthraciteDialogTitle = () => ({
     root: {
         paddingBottom: '6px'
     }
@@ -19,7 +19,7 @@ const anthraciteDialog = theme => ({
     }
 });
 
-const anthraciteDialogActions = theme => ({
+const anthraciteDialogActions = () => ({
     root: {
         padding: '10px'
     },
@@ -28,11 +28,15 @@ const anthraciteDialogActions = theme => ({
     }
 });
 
-const anthraciteDialogContent = theme => ({
+const anthraciteDialogContent = () => ({
     root: {
         padding: '0 24px 0 24px'
     }
 });
 
-export {anthraciteDialogTitle, anthraciteDialog, anthraciteDialogActions, anthraciteDialogContent};
-
+export {
+    anthraciteDialogTitle,
+    anthraciteDialog,
+    anthraciteDialogActions,
+    anthraciteDialogContent
+};

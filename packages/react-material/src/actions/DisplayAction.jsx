@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {actionsRegistry} from './actionsRegistry';
 import * as _ from 'lodash';
 import {Observable, combineLatest, of} from 'rxjs';
@@ -33,6 +34,11 @@ class StateActionComponent extends React.Component {
         return false;
     }
 }
+
+StateActionComponent.propTypes = {
+    context: PropTypes.object.isRequired,
+    render: PropTypes.func.isRequired
+};
 
 class DisplayActionComponent extends React.Component {
     constructor(props) {
@@ -104,6 +110,16 @@ class DisplayActionComponent extends React.Component {
     }
 }
 
+DisplayActionComponent.defaultProps = {
+    observerRef: null
+};
+
+DisplayActionComponent.propTypes = {
+    context: PropTypes.object.isRequired,
+    render: PropTypes.func.isRequired,
+    observerRef: PropTypes.func
+};
+
 const shallowEquals = (obj1, obj2) =>
     Object.keys(obj1).length === Object.keys(obj2).length &&
     Object.keys(obj1).every(key => obj1[key] === obj2[key]);
@@ -136,5 +152,16 @@ class DisplayAction extends React.Component {
         return <Component context={enhancedContext} render={render} actionKey={actionKey} observerRef={observerRef}/>;
     }
 }
+
+DisplayAction.defaultProps = {
+    observerRef: null
+};
+
+DisplayAction.propTypes = {
+    actionKey: PropTypes.string.isRequired,
+    context: PropTypes.object.isRequired,
+    render: PropTypes.func.isRequired,
+    observerRef: PropTypes.func
+};
 
 export {DisplayAction};

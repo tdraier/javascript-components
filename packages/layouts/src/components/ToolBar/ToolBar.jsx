@@ -46,8 +46,15 @@ export const ToolBar = ({classes, contextPath, label, title}) => {
     );
 };
 
+ToolBar.defaultProps = {
+    contextPath: '',
+    label: '',
+    title: ''
+};
+
 ToolBar.propTypes = {
     classes: PropTypes.object.isRequired,
+    contextPath: PropTypes.string,
     label: PropTypes.string,
     title: PropTypes.string
 };
