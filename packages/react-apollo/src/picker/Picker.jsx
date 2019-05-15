@@ -390,7 +390,7 @@ Picker.propTypes = {
     queryVariables: PropTypes.object,
 
     hideRoot: PropTypes.bool,
-    children: PropTypes.element,
+    children: PropTypes.func,
     onOpenItem: PropTypes.func,
     onSelectItem: PropTypes.func,
     onLoading: PropTypes.func

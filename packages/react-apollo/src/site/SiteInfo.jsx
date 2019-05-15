@@ -108,7 +108,7 @@ SiteInfo.propTypes = {
      */
     displayLanguage: PropTypes.string,
 
-    children: PropTypes.element
+    children: PropTypes.func
 };
 
 export {SiteInfo};
