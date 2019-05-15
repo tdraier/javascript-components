@@ -8,7 +8,7 @@
         "build": "npm run lint && npm run test && lerna run build",
         "publish": "lerna run publish-script",
         "lint": "eslint --ext js,jsx .",
-        "lint:fix": "eslint --ext js,jsx --fix",
+        "lint:fix": "yarn lint --fix .",
         "test": "jest --coverage",
         "tdd": "jest --watch"
     },
