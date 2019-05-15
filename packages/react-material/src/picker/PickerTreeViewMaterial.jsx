@@ -232,4 +232,4 @@ PickerTreeViewMaterialCmp.defaultProps = {
 export const PickerTreeViewMaterial = compose(
     withTheme(),
     withStyles(styles, {name: 'DxPickerTreeViewMaterial'})
-)(PickerTreeViewMaterial);
+)(PickerTreeViewMaterialCmp);

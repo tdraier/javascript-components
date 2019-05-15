@@ -184,4 +184,4 @@ FilterSelectCmp.propTypes = {
 
 export const FilterSelect = _.flowRight(
     withStyles(styles)
-)(FilterSelect);
+)(FilterSelectCmp);

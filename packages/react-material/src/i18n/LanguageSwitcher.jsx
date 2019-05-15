@@ -56,4 +56,4 @@ LanguageSwitcherCmp.propTypes = {
     t: PropTypes.func.isRequired
 };
 
-export const LanguageSwitcher = translate('react-material')(LanguageSwitcher);
+export const LanguageSwitcher = translate('react-material')(LanguageSwitcherCmp);

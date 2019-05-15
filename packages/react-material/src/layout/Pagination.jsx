@@ -87,7 +87,7 @@ TablePaginationActionsCmp.propTypes = {
     rowsPerPage: PropTypes.number.isRequired
 };
 
-const TablePaginationActions = withStyles(actionsStyles, {name: 'DxPaginationActions', withTheme: true})(TablePaginationActions);
+const TablePaginationActions = withStyles(actionsStyles, {name: 'DxPaginationActions', withTheme: true})(TablePaginationActionsCmp);
 
 class PaginationCmp extends React.Component {
     constructor(props) {
@@ -134,4 +134,4 @@ PaginationCmp.propTypes = {
 
 export const Pagination = _.flowRight(
     translate('react-material')
-)(Pagination);
+)(PaginationCmp);

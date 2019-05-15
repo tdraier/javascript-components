@@ -29,4 +29,4 @@ NotificationCmp.propTypes = {
     notificationContext: PropTypes.object
 };
 
-export const Notification = withNotifications()(Notification);
+export const Notification = withNotifications()(NotificationCmp);

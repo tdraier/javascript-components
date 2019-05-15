@@ -60,4 +60,4 @@ SettingsLayoutCmp.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export const SettingsLayout = withStyles(styles, {name: 'DxSettingsLayout'})(SettingsLayout);
+export const SettingsLayout = withStyles(styles, {name: 'DxSettingsLayout'})(SettingsLayoutCmp);

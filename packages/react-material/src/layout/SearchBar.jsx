@@ -138,4 +138,4 @@ SearchBarCmp.propTypes = {
     t: PropTypes.func.isRequired
 };
 
-export const SearchBar = withStyles(styles, {name: 'DxSearchBar'})(translate('react-material')(SearchBar));
+export const SearchBar = withStyles(styles, {name: 'DxSearchBar'})(translate('react-material')(SearchBarCmp));
