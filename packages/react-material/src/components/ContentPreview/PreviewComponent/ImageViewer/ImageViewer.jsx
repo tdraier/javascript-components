@@ -34,6 +34,10 @@ export class ImageViewer extends React.Component {
     }
 }
 
+ImageViewer.defaultProps = {
+    className: ''
+};
+
 ImageViewer.propTypes = {
     classes: PropTypes.object.isRequired,
     file: PropTypes.string.isRequired,

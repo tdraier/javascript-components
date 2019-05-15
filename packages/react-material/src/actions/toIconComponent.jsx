@@ -9,7 +9,9 @@ function toIconComponent(icon, props) {
     let toComp = function (node, idx) {
         if (node.nodeType === 1) {
             let props = {key: idx};
-            Array.prototype.slice.call(node.attributes).forEach(attr => props[camelCased(attr.name)] = attr.value);
+            Array.prototype.slice.call(node.attributes).forEach(attr => {
+                props[camelCased(attr.name)] = attr.value;
+            });
             let children = Array.prototype.slice.call(node.childNodes).map((child, idx) => toComp(child, idx));
             return React.createElement(node.tagName, props, children);
         }

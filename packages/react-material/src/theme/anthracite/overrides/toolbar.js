@@ -1,4 +1,4 @@
-const anthraciteToolBar = theme => ({
+const anthraciteToolBar = () => ({
     root: {
         display: 'flex',
         '& h1': {

@@ -1,4 +1,5 @@
 import React, {Component, createContext} from 'react';
+import PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
 const ComponentRendererContext = createContext();
@@ -50,6 +51,14 @@ class ComponentRendererProvider extends Component {
         );
     }
 }
+
+ComponentRendererProvider.defaultProps = {
+    children: null
+};
+
+ComponentRendererProvider.propTypes = {
+    children: PropTypes.element
+};
 
 class ComponentRendererConsumer extends Component {
     render() {

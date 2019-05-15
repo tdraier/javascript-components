@@ -1,4 +1,4 @@
-const anthraciteSelect = theme => ({
+const anthraciteSelect = () => ({
     icon: {
         color: '#504e4d'
     }

@@ -12,7 +12,15 @@ const actionsStyles = theme => ({
     }
 });
 
-class TablePaginationActions extends React.Component {
+class TablePaginationActionsCmp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleFirstPageButtonClick = this.handleFirstPageButtonClick.bind(this);
+        this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+        this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
+        this.handleLastPageButtonClick = this.handleLastPageButtonClick.bind(this);
+    }
+
     handleFirstPageButtonClick(event) {
         this.props.onChangePage(event, 0);
     }
@@ -32,37 +40,37 @@ class TablePaginationActions extends React.Component {
     }
 
     render() {
-        const {classes, count, page, rowsPerPage, theme} = this.props;
+        const {classes, count, page, rowsPerPage} = this.props;
 
         return (
             <div className={classes.root}>
                 <IconButton
-                    onClick={this.handleFirstPageButtonClick.bind(this)}
                     disabled={page === 0}
                     aria-label="First Page"
                     data-jrm-role="table-pagination-button-first-page"
+                    onClick={this.handleFirstPageButtonClick}
                 >
                     <FirstPage/>
                 </IconButton>
                 <IconButton
-                    onClick={this.handleBackButtonClick.bind(this)}
                     disabled={page === 0}
                     aria-label="Previous Page"
+                    onClick={this.handleBackButtonClick}
                 >
                     <KeyboardArrowLeft/>
                 </IconButton>
                 <IconButton
-                    onClick={this.handleNextButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Next Page"
                     data-jrm-role="table-pagination-button-next-page"
+                    onClick={this.handleNextButtonClick}
                 >
                     <KeyboardArrowRight/>
                 </IconButton>
                 <IconButton
-                    onClick={this.handleLastPageButtonClick.bind(this)}
                     disabled={page >= Math.ceil(count / rowsPerPage) - 1}
                     aria-label="Last Page"
+                    onClick={this.handleLastPageButtonClick}
                 >
                     <LastPage/>
                 </IconButton>
@@ -71,11 +79,20 @@ class TablePaginationActions extends React.Component {
     }
 }
 
-TablePaginationActions = withStyles(actionsStyles, {name: 'DxPaginationActions', withTheme: true})(TablePaginationActions);
+TablePaginationActionsCmp.propTypes = {
+    onChangePage: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+    count: PropTypes.number.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired
+};
 
-class Pagination extends React.Component {
+const TablePaginationActions = withStyles(actionsStyles, {name: 'DxPaginationActions', withTheme: true})(TablePaginationActions);
+
+class PaginationCmp extends React.Component {
     constructor(props) {
         super(props);
+        this.onChangePage = this.onChangePage.bind(this);
     }
 
     onChangePage(event, page) {
@@ -92,12 +109,12 @@ class Pagination extends React.Component {
                         count={totalCount}
                         rowsPerPage={pageSize}
                         page={currentPage}
-                        onChangePage={this.onChangePage.bind(this)}
-                        onChangeRowsPerPage={event => onChangeRowsPerPage(event.target.value)}
                         ActionsComponent={TablePaginationActions}
                         labelRowsPerPage={t('label.pagination.rowsPerPage')}
                         labelDisplayedRows={({from, to, count}) => `${from}-${to} ` + t('label.pagination.of') + ` ${count}`}
                         data-jrm-role="table-pagination"
+                        onChangePage={this.onChangePage}
+                        onChangeRowsPerPage={event => onChangeRowsPerPage(event.target.value)}
                     />
                     </TableRow>
                 </TableFooter>
@@ -106,16 +123,15 @@ class Pagination extends React.Component {
     }
 }
 
-Pagination.propTypes = {
+PaginationCmp.propTypes = {
     totalCount: PropTypes.number.isRequired,
     pageSize: PropTypes.number.isRequired,
     currentPage: PropTypes.number.isRequired,
     onChangeRowsPerPage: PropTypes.func.isRequired,
-    onChangePage: PropTypes.func.isRequired
+    onChangePage: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired
 };
 
-Pagination = _.flowRight(
+export const Pagination = _.flowRight(
     translate('react-material')
 )(Pagination);
-
-export {Pagination};

@@ -1,7 +1,8 @@
 import React from 'react';
+import {PropTypes} from 'prop-types';
 import {CircularProgress, withStyles} from '@material-ui/core';
 
-const styles = theme => ({
+const styles = () => ({
     loadingOverlay: {
         position: 'fixed',
         left: '50%',
@@ -12,13 +13,15 @@ const styles = theme => ({
     }
 });
 
-class ProgressOverlay extends React.Component {
+class ProgressOverlayCmp extends React.Component {
     render() {
         let {classes} = this.props;
         return <div className={classes.loadingOverlay}><CircularProgress/></div>;
     }
 }
 
-ProgressOverlay = withStyles(styles, {name: 'DxProgressOverlay'})(ProgressOverlay);
+ProgressOverlayCmp.propTypes = {
+    classes: PropTypes.object.isRequired
+};
 
-export {ProgressOverlay};
+export const ProgressOverlay = withStyles(styles, {name: 'DxProgressOverlay'})(ProgressOverlay);

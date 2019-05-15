@@ -38,7 +38,8 @@ export const TwoColumnsContent = ({children, rightCol, classes}) => (
 
 TwoColumnsContent.propTypes = {
     children: PropTypes.element.isRequired,
-    rightCol: PropTypes.element.isRequired
+    rightCol: PropTypes.element.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
 export default compose(

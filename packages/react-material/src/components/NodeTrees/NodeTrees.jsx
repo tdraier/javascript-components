@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {AppBar, Grid, Toolbar, withStyles} from '@material-ui/core';
-import {Typography, IconButton} from '@jahia/ds-mui-theme';
+import {withStyles} from '@material-ui/core';
 import {lodash as _} from 'lodash';
 import {compose} from 'react-apollo';
 import NodeTree from './NodeTree';
@@ -20,11 +19,7 @@ const styles = theme => ({
     }
 });
 
-class NodeTrees extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+class NodeTreesCmp extends React.Component {
     render() {
         const {
             lang, siteKey, path, openPaths, setPath, openPath,
@@ -65,11 +60,13 @@ class NodeTrees extends React.Component {
     }
 }
 
-NodeTrees.propTypes = {
+NodeTreesCmp.defaultProps = {
+    setRefetch: null
+};
+
+NodeTreesCmp.propTypes = {
     classes: PropTypes.object.isRequired,
     closePath: PropTypes.func.isRequired,
-    closeTree: PropTypes.func.isRequired,
-    isOpen: PropTypes.bool.isRequired,
     lang: PropTypes.string.isRequired,
     openPath: PropTypes.func.isRequired,
     openPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -80,8 +77,6 @@ NodeTrees.propTypes = {
     setRefetch: PropTypes.func
 };
 
-NodeTrees = compose(
+export const NodeTrees = compose(
     withStyles(styles, {withTheme: true})
-)(NodeTrees);
-
-export {NodeTrees};
+)(NodeTreesCmp);

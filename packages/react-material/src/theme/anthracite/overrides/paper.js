@@ -1,4 +1,4 @@
-const anthracitePaper = theme => ({
+const anthracitePaper = () => ({
     elevation1: {
         boxShadow: '0px 2px 2px 0px rgba(20, 20, 21, 0.25)',
         marginLeft: '30px',

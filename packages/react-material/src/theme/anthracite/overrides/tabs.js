@@ -1,4 +1,4 @@
-const anthraciteTab = theme => ({
+const anthraciteTab = () => ({
     root: {
         textTransform: 'none',
         minHeight: 'auto',
@@ -17,7 +17,7 @@ const anthraciteTab = theme => ({
     }
 });
 
-const anthraciteTabs = theme => ({
+const anthraciteTabs = () => ({
     root: {
         minHeight: 'unset',
         padding: '0 40px'
@@ -25,4 +25,3 @@ const anthraciteTabs = theme => ({
 });
 
 export {anthraciteTab, anthraciteTabs};
-

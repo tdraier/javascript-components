@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {actionsRegistry} from './actionsRegistry';
 import * as _ from 'lodash';
 import {DisplayAction} from './DisplayAction';
@@ -27,5 +28,16 @@ class DisplayActions extends React.Component {
         return _.map(actionsToDisplay, action => <DisplayAction key={action.key} context={context} actionKey={action.key} render={render} observerRef={obs => this.observerRefs.push(obs)}/>);
     }
 }
+
+DisplayActions.defaultProps = {
+    filter: null
+};
+
+DisplayActions.propTypes = {
+    target: PropTypes.string.isRequired,
+    context: PropTypes.object.isRequired,
+    render: PropTypes.func.isRequired,
+    filter: PropTypes.func
+};
 
 export {DisplayActions};

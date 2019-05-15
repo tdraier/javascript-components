@@ -57,7 +57,7 @@ const styles = theme => ({
     }
 });
 
-class ContentPreview extends React.Component {
+class ContentPreviewCmp extends React.Component {
     render() {
         const {classes, path, workspace, language, templateType, view, contextConfiguration, setRefetch, fetchPolicy} = this.props;
 
@@ -103,7 +103,12 @@ class ContentPreview extends React.Component {
     }
 }
 
-ContentPreview.propTypes = {
+ContentPreviewCmp.defaultProps = {
+    setRefetch: null,
+    fetchPolicy: null
+};
+
+ContentPreviewCmp.propTypes = {
     classes: PropTypes.object.isRequired,
     path: PropTypes.string.isRequired,
     workspace: PropTypes.string.isRequired,
@@ -116,9 +121,7 @@ ContentPreview.propTypes = {
     fetchPolicy: PropTypes.string
 };
 
-ContentPreview = compose(
+export const ContentPreview = compose(
     translate(),
     withStyles(styles)
-)(ContentPreview);
-
-export {ContentPreview};
+)(ContentPreviewCmp);

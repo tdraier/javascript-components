@@ -100,6 +100,10 @@ class PreviewComponent extends React.Component {
     }
 }
 
+PreviewComponent.defaultProps = {
+    fullScreen: false
+};
+
 PreviewComponent.propTypes = {
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,

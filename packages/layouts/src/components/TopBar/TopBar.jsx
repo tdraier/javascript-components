@@ -46,7 +46,7 @@ const styles = theme => ({
     }
 });
 
-export const TopBar = ({classes, title, contextModifiers, path, pathElement, actions}) => (
+export const TopBar = ({classes, title, contextModifiers, path, actions}) => (
     <div className={classes.root} data-sel-role="top-bar">
         <div className={classes.topBarContext}>
             <div>
@@ -85,8 +85,7 @@ TopBar.propTypes = {
 
 TopBar.defaultProps = {
     actions: null,
-    path: null,
-    pathElement: null
+    path: null
 };
 
 export default compose(

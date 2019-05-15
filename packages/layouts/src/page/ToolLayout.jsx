@@ -4,10 +4,6 @@ import {compose} from 'recompose';
 import ToolBar from '../components/ToolBar';
 
 export class ToolLayout extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {children, label, title, contextPath} = this.props;
         return (
@@ -19,9 +15,6 @@ export class ToolLayout extends React.Component {
     }
 }
 
-export default compose(
-)(ToolLayout);
-
 ToolLayout.propTypes = {
     children: PropTypes.element.isRequired,
     contextPath: PropTypes.string,
@@ -30,6 +23,10 @@ ToolLayout.propTypes = {
 };
 
 ToolLayout.defaultProps = {
-    expanded: false
+    contextPath: null,
+    label: null,
+    title: null
 };
 
+export default compose(
+)(ToolLayout);

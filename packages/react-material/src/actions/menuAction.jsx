@@ -204,6 +204,7 @@ let display = (context, anchor) => {
                                                             }
                                                         </ListItemIcon>
                                                     }
+                                                    {/* eslint-disable-next-line react/no-danger */}
                                                     <span dangerouslySetInnerHTML={{__html: t(context.buttonLabel, context.buttonLabelParams)}}/>
                                                     {context.icon}
                                                 </MenuItem>

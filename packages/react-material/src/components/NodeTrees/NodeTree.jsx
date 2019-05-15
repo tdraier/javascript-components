@@ -39,10 +39,6 @@ const PickerItemsFragment = {
 };
 
 class NodeTree extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let {rootPath, path, openPaths, handleOpen, handleSelect, lang, openableTypes, selectableTypes, rootLabel, setRefetch, dataCmRole, classes} = this.props;
         return (
@@ -66,6 +62,10 @@ class NodeTree extends React.Component {
         );
     }
 }
+
+NodeTree.defaultProps = {
+    classes: {}
+};
 
 NodeTree.propTypes = {
     classes: PropTypes.object,

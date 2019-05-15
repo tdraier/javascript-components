@@ -9,12 +9,11 @@ class Picker extends React.Component {
     constructor(props) {
         super(props);
 
-        let {
-            fragments, rootPaths, queryVariables, hideRoot,
-            openableTypes,
+        const {
+            fragments,
+            rootPaths,
             onOpenItem,
             onSelectItem,
-            selectableTypes,
             openPaths,
             selectedPaths,
             defaultSelectedPaths,
@@ -29,7 +28,7 @@ class Picker extends React.Component {
                         name
                         children(typesFilter:{types:$types}, limit:1) {
                             pageInfo {
-                                nodesCount            
+                                nodesCount
                             }
                         }
                         selectable : isNodeType(type: {types:$selectable})
@@ -63,7 +62,7 @@ class Picker extends React.Component {
 
         this.eventsHandlers = {};
 
-        if (openPaths == null) {
+        if (openPaths === null) {
             // Uncontrolled mode
             state.isOpenControlled = false;
             state.openPaths = [];
@@ -85,7 +84,7 @@ class Picker extends React.Component {
             }
         }
 
-        if (selectedPaths == null) {
+        if (selectedPaths === null) {
             // Uncontrolled mode
             state.isSelectControlled = false;
             state.selectedPaths = defaultSelectedPaths ? _.clone(defaultSelectedPaths) : [];
@@ -119,7 +118,7 @@ class Picker extends React.Component {
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-        if ((prevState.isOpenControlled !== (nextProps.openPaths != null)) || (prevState.isSelectControlled !== (nextProps.selectedPaths != null))) {
+        if ((prevState.isOpenControlled !== (nextProps.openPaths !== null)) || (prevState.isSelectControlled !== (nextProps.selectedPaths !== null))) {
             console.warn('Cannot change between controlled/uncontrolled modes');
         }
 
@@ -264,7 +263,7 @@ class Picker extends React.Component {
     render() {
         let selectedPaths = this.state.selectedPaths ? this.state.selectedPaths : this.props.selectedPaths;
         let openPaths = this.state.openPaths ? this.state.openPaths : this.props.openPaths;
-        let {rootPaths, openableTypes, selectableTypes, queryVariables, setRefetch} = this.props;
+        let {setRefetch} = this.props;
 
         openPaths = _.clone(openPaths);
 
@@ -309,6 +308,22 @@ class Picker extends React.Component {
         );
     }
 }
+
+Picker.defaultProps = {
+    onLoading: null,
+    defaultOpenPaths: null,
+    openPaths: null,
+    defaultSelectedPaths: null,
+    selectedPaths: null,
+    setRefetch: null,
+    queryVariables: null,
+    fragments: null,
+    onSelectionChange: null,
+    onOpenItem: null,
+    onSelectItem: null,
+    children: null,
+    hideRoot: false
+};
 
 Picker.propTypes = {
 
@@ -358,11 +373,6 @@ Picker.propTypes = {
     setRefetch: PropTypes.func,
 
     /**
-     * Component to use to do the full rendering of the tree. Should accept : pickerEntries,onSelectItem,onOpenItem . Other properties are passed through.
-     */
-    render: PropTypes.func,
-
-    /**
      * Optional set of fragments to add to the graphQL query. Can be a string that identify a predefinedFragment or a fragment definition
      */
     fragments: PropTypes.arrayOf(PropTypes.oneOfType([
@@ -377,8 +387,13 @@ Picker.propTypes = {
     /**
      * Optional set of variable to pass to the graphQL query, in order to fulfill fragments needs
      */
-    queryVariables: PropTypes.object
+    queryVariables: PropTypes.object,
 
+    hideRoot: PropTypes.bool,
+    children: PropTypes.element,
+    onOpenItem: PropTypes.func,
+    onSelectItem: PropTypes.func,
+    onLoading: PropTypes.func
 };
 
 export {Picker};

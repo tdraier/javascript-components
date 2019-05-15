@@ -90,6 +90,12 @@ class SiteInfo extends React.Component {
     }
 }
 
+SiteInfo.defaultProps = {
+    siteKey: '',
+    displayLanguage: '',
+    children: null
+};
+
 SiteInfo.propTypes = {
 
     /**
@@ -100,7 +106,9 @@ SiteInfo.propTypes = {
     /**
      * The display language for i18n names, titles, labels
      */
-    displayLanguage: PropTypes.string
+    displayLanguage: PropTypes.string,
+
+    children: PropTypes.element
 };
 
 export {SiteInfo};

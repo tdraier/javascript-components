@@ -5,7 +5,10 @@ const path = require('path');
 const fs = require('fs');
 const UglifyJS = require('uglify-js');
 
-const configCode = babel.transformFileSync(path.resolve('./rollup.config.js'), {presets: ['@babel/env']}).code;
+const configCode = babel.transformFileSync(path.resolve('./rollup.config.js'), {
+    presets: ['@babel/env']
+}).code;
+// eslint-disable-next-line no-eval
 const config = eval(configCode);
 
 async function build() {
@@ -24,7 +27,10 @@ async function build() {
         format: 'umd',
         name: getName(json.name),
         sourcemap: true,
-        globals: config.external.reduce((acc, val) => Object.assign(acc, {[val]: getName(val)}), {})
+        globals: config.external.reduce(
+            (acc, val) => Object.assign(acc, {[val]: getName(val)}),
+            {}
+        )
     };
 
     await bundle.write(output);
@@ -37,4 +43,3 @@ async function build() {
 }
 
 build();
-

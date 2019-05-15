@@ -5,7 +5,7 @@ import {ArrowDropDown as ArrowDropDownIcon} from '@material-ui/icons';
 import {Input, MenuItem, ListItemText, ListItemIcon, withStyles} from '@material-ui/core';
 import * as _ from 'lodash';
 
-const styles = theme => ({
+const styles = () => ({
     root: {
         display: 'inline-block',
         minWidth: 200
@@ -53,18 +53,18 @@ class Option extends React.Component {
 
         return (
             <MenuItem
-                onFocus={onFocus}
                 selected={isFocused}
-                onClick={event => {
-this.props.selectOption(this.props.data, event);
-}}
                 component="div"
                 style={{
                     fontWeight: isSelected ? 500 : 400
                 }}
                 title={data.title}
+                onFocus={onFocus}
+                onClick={event => {
+                    this.props.selectOption(this.props.data, event);
+                }}
             >
-                {data.icon != null &&
+                {data.icon !== null &&
                 <ListItemIcon>
                     <img src={data.icon + '.png'}/>
                 </ListItemIcon>
@@ -76,6 +76,21 @@ this.props.selectOption(this.props.data, event);
         );
     }
 }
+
+Option.defaultProps = {
+    children: null,
+    isFocused: false,
+    isSelected: false
+};
+
+Option.propTypes = {
+    children: PropTypes.element,
+    isFocused: PropTypes.bool,
+    isSelected: PropTypes.bool,
+    data: PropTypes.object.isRequired,
+    onFocus: PropTypes.func.isRequired,
+    selectOption: PropTypes.func.isRequired
+};
 
 class DropdownIndicator extends React.Component {
     render() {
@@ -94,13 +109,13 @@ class SelectWrapped extends React.Component {
 
         return (
             <Select
+                isClearable
                 components={{
                     Option,
                     DropdownIndicator,
                     IndicatorSeparator: () => false
                 }}
                 styles={customStyles}
-                isClearable
                 options={options}
                 value={optionValue}
                 {...other}
@@ -109,7 +124,17 @@ class SelectWrapped extends React.Component {
     }
 }
 
-class FilterSelect extends React.Component {
+SelectWrapped.defaultProps = {
+    options: []
+};
+
+SelectWrapped.propTypes = {
+    classes: PropTypes.object.isRequired,
+    value: PropTypes.string.isRequired,
+    options: PropTypes.array
+};
+
+class FilterSelectCmp extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -117,7 +142,7 @@ class FilterSelect extends React.Component {
 
     handleChange(data) {
         let newValue = null;
-        if (data != null) {
+        if (data !== null) {
             newValue = data.value;
         }
 
@@ -130,29 +155,33 @@ class FilterSelect extends React.Component {
         let {classes, options, value, onChange, ...other} = this.props;
 
         return (
-            <Input classes={classes}
-                   fullWidth
-                   inputComponent={SelectWrapped}
-                   onChange={this.handleChange}
-                   value={value}
-                   inputProps={{
-                       options,
-                       ...other
-                   }}
+            <Input
+                fullWidth
+                classes={classes}
+                inputComponent={SelectWrapped}
+                value={value}
+                inputProps={{
+                   options,
+                   ...other
+                }}
+                onChange={this.handleChange}
             />
         );
     }
 }
 
-FilterSelect.propTypes = {
+FilterSelectCmp.defaultProps = {
+    value: null,
+    onChange: null
+};
+
+FilterSelectCmp.propTypes = {
     classes: PropTypes.object.isRequired,
     options: PropTypes.array.isRequired,
     value: PropTypes.string,
     onChange: PropTypes.func
 };
 
-FilterSelect = _.flowRight(
+export const FilterSelect = _.flowRight(
     withStyles(styles)
 )(FilterSelect);
-
-export {FilterSelect};

@@ -2,7 +2,7 @@ import React from 'react';
 import {withNotifications} from './NotificationProvider';
 import PropTypes from 'prop-types';
 
-class Notification extends React.Component {
+class NotificationCmp extends React.Component {
     componentDidMount() {
         let {notificationContext, message, predefinedOptions, options} = this.props;
         if (message && notificationContext) {
@@ -15,12 +15,18 @@ class Notification extends React.Component {
     }
 }
 
-Notification = withNotifications()(Notification);
-
-Notification.propTypes = {
-    message: PropTypes.string,
-    predefinedOptions: PropTypes.arrayOf(PropTypes.string),
-    options: PropTypes.object
+NotificationCmp.defaultProps = {
+    message: '',
+    predefinedOptions: null,
+    options: null,
+    notificationContext: null
 };
 
-export {Notification};
+NotificationCmp.propTypes = {
+    message: PropTypes.string,
+    predefinedOptions: PropTypes.arrayOf(PropTypes.string),
+    options: PropTypes.object,
+    notificationContext: PropTypes.object
+};
+
+export const Notification = withNotifications()(Notification);

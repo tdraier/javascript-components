@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppBar, Toolbar, Typography, withStyles} from '@material-ui/core';
+import {AppBar, Typography, withStyles} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 const styles = theme => ({
@@ -24,11 +24,7 @@ const styles = theme => ({
     }
 });
 
-class SettingsLayout extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+class SettingsLayoutCmp extends React.Component {
     render() {
         let {classes, appBar, children, footer, appBarStyle} = this.props;
         return (
@@ -40,7 +36,7 @@ class SettingsLayout extends React.Component {
                     {children}
                 </section>
                 <footer className={classes.footer}>
-                    <Typography align="center" gutterBottom color="textSecondary">
+                    <Typography gutterBottom align="center" color="textSecondary">
                         {footer}
                     </Typography>
                 </footer>
@@ -49,11 +45,19 @@ class SettingsLayout extends React.Component {
     }
 }
 
-SettingsLayout.propTypes = {
-    appBar: PropTypes.element,
-    footer: PropTypes.string
+SettingsLayoutCmp.defaultProps = {
+    appBar: null,
+    children: null,
+    footer: '',
+    appBarStyle: {}
 };
 
-SettingsLayout = withStyles(styles, {name: 'DxSettingsLayout'})(SettingsLayout);
+SettingsLayoutCmp.propTypes = {
+    appBar: PropTypes.element,
+    children: PropTypes.element,
+    footer: PropTypes.string,
+    appBarStyle: PropTypes.object,
+    classes: PropTypes.object.isRequired
+};
 
-export {SettingsLayout};
+export const SettingsLayout = withStyles(styles, {name: 'DxSettingsLayout'})(SettingsLayout);

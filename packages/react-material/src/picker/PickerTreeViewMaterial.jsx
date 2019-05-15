@@ -70,24 +70,7 @@ let styles = theme => ({
     }
 });
 
-class PickerTreeViewMaterial extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hover: false
-        };
-        this.hoverOn = this.hoverOn.bind(this);
-        this.hoverOff = this.hoverOff.bind(this);
-    }
-
-    hoverOn(path) {
-        this.setState({hover: path});
-    }
-
-    hoverOff() {
-        this.setState({hover: false});
-    }
-
+class PickerTreeViewMaterialCmp extends React.Component {
     render() {
         let {classes, pickerEntries, onOpenItem, onSelectItem, rootLabel, iconRenderer, loading, dataCmRole} = this.props;
         // Sorts entries that are folder types
@@ -111,10 +94,7 @@ class PickerTreeViewMaterial extends React.Component {
                                     data-jrm-role="picker-item"
                                     data-cm-role={dataCmRole}
                                     className={itemClass}
-                                    onClick={() => this.hoverOn(entry.path)}
                                     onDoubleClick={() => onOpenItem(entry.path, !entry.open)}
-                                    onMouseEnter={() => this.hoverOn(entry.path)}
-                                    onMouseLeave={this.hoverOff}
                                 >
                                     <div
                                         style={{
@@ -232,7 +212,7 @@ class PickerTreeViewMaterial extends React.Component {
     }
 }
 
-PickerTreeViewMaterial.propTypes = {
+PickerTreeViewMaterialCmp.propTypes = {
     classes: PropTypes.object.isRequired,
     dataCmRole: PropTypes.string.isRequired,
     iconRenderer: PropTypes.func,
@@ -243,15 +223,13 @@ PickerTreeViewMaterial.propTypes = {
     rootLabel: PropTypes.string.isRequired
 };
 
-PickerTreeViewMaterial.defaultProps = {
+PickerTreeViewMaterialCmp.defaultProps = {
     iconRenderer: defaultIconRenderer,
     onSelectItem: () => {},
     onOpenItem: () => {}
 };
 
-PickerTreeViewMaterial = compose(
+export const PickerTreeViewMaterial = compose(
     withTheme(),
     withStyles(styles, {name: 'DxPickerTreeViewMaterial'})
 )(PickerTreeViewMaterial);
-
-export {PickerTreeViewMaterial};
