@@ -24,4 +24,4 @@ ProgressOverlayCmp.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export const ProgressOverlay = withStyles(styles, {name: 'DxProgressOverlay'})(ProgressOverlay);
+export const ProgressOverlay = withStyles(styles, {name: 'DxProgressOverlay'})(ProgressOverlayCmp);
