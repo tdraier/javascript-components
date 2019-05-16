@@ -18,7 +18,7 @@ const ContentPreview = ({path, workspace, language, templateType, view, contextC
         <Query query={previewQuery}
                errorPolicy="all"
                variables={queryVariables}
-               fetchPolicy={fetchPolicy ? fetchPolicy : 'cache-first'}
+               fetchPolicy={fetchPolicy}
         >
             {({loading, data, refetch}) => {
                 if (setRefetch) {
@@ -45,14 +45,19 @@ const ContentPreview = ({path, workspace, language, templateType, view, contextC
     );
 };
 
+ContentPreview.defaultProps = {
+    setRefetch: null,
+    fetchPolicy: 'cache-first'
+};
+
 ContentPreview.propTypes = {
+    children: PropTypes.node.isRequired,
     path: PropTypes.string.isRequired,
     workspace: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
     templateType: PropTypes.string.isRequired,
     view: PropTypes.string.isRequired,
     contextConfiguration: PropTypes.string.isRequired,
-    fullScreen: PropTypes.bool.isRequired,
     setRefetch: PropTypes.func,
     fetchPolicy: PropTypes.string
 };
