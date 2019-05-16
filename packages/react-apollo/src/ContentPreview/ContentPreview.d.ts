@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export interface ContentPreviewProps {
-    classes: Object;
     path: string;
     workspace: string;
     language: string;
@@ -13,8 +12,5 @@ export interface ContentPreviewProps {
     fetchPolicy?: string;
 }
 
-export class ContentPreview extends React.Component<ContentPreviewProps, any> {
-    render(): JSX.Element;
-
-}
+export const ContentPreview: React.SFC<ContentPreviewProps>;
 

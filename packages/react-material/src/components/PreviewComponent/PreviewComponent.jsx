@@ -1,12 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {getFileType, isBrowserImage, isPDF} from '../../../utils';
+import {getFileType, isBrowserImage, isPDF} from '../../utils';
 import classNames from 'classnames';
-import {Paper} from '@material-ui/core';
+import {Paper, withStyles} from '@material-ui/core';
 import DocumentViewer from './DocumentViewer';
 import PDFViewer from './PDFViewer';
 import ImageViewer from './ImageViewer';
-import {DxContext} from './../../DxContext';
+import {DxContext} from '../DxContext';
+import {translate} from "react-i18next";
+import {compose} from 'react-apollo';
+
+const styles = theme => ({
+    previewContainer: {
+        flex: '1 1 0%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: 0,
+        backgroundColor: theme.palette.background.default
+    },
+    noPreviewContainer: {
+        flex: '1 1 0%',
+        backgroundColor: theme.palette.background.default,
+        display: 'flex'
+    },
+    center: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        textAlign: 'center',
+        color: theme.palette.text.disabled
+    },
+    centerIcon: {
+        margin: '8 auto'
+    },
+    mediaContainer: {
+        backgroundColor: theme.palette.background.dark
+    },
+    contentContainer: {
+        padding: (theme.spacing.unit * 3) + 'px'
+    },
+    contentPaper: {
+        width: '100%',
+        height: '100%',
+        display: 'flex'
+    },
+    contentIframe: {
+        border: 'none',
+        width: '100%'
+    }
+});
 
 class PreviewComponent extends React.Component {
     iframeLoadContent(assets, displayValue, element) {
@@ -112,4 +157,9 @@ PreviewComponent.propTypes = {
     fullScreen: PropTypes.bool
 };
 
-export default PreviewComponent;
+PreviewComponent = compose(
+    translate(),
+    withStyles(styles)
+)(PreviewComponent);
+
+export {PreviewComponent};
