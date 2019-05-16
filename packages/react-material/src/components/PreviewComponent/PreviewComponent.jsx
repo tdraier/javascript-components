@@ -7,7 +7,7 @@ import DocumentViewer from './DocumentViewer';
 import PDFViewer from './PDFViewer';
 import ImageViewer from './ImageViewer';
 import {DxContext} from '../DxContext';
-import {translate} from "react-i18next";
+import {translate} from 'react-i18next';
 import {compose} from 'react-apollo';
 
 const styles = theme => ({
@@ -53,7 +53,7 @@ const styles = theme => ({
     }
 });
 
-class PreviewComponent extends React.Component {
+class PreviewComponentCmp extends React.Component {
     iframeLoadContent(assets, displayValue, element) {
         if (element) {
             let frameDoc = element.document;
@@ -145,11 +145,11 @@ class PreviewComponent extends React.Component {
     }
 }
 
-PreviewComponent.defaultProps = {
+PreviewComponentCmp.defaultProps = {
     fullScreen: false
 };
 
-PreviewComponent.propTypes = {
+PreviewComponentCmp.propTypes = {
     classes: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
     data: PropTypes.object.isRequired,
@@ -157,9 +157,9 @@ PreviewComponent.propTypes = {
     fullScreen: PropTypes.bool
 };
 
-PreviewComponent = compose(
+const PreviewComponent = compose(
     translate(),
     withStyles(styles)
-)(PreviewComponent);
+)(PreviewComponentCmp);
 
 export {PreviewComponent};
