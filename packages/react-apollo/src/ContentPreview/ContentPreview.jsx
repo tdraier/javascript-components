@@ -51,7 +51,7 @@ ContentPreview.defaultProps = {
 };
 
 ContentPreview.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.func.isRequired,
     path: PropTypes.string.isRequired,
     workspace: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
