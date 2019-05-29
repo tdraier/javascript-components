@@ -9,5 +9,5 @@ export const DSProvider = ({children}) => (
 );
 
 DSProvider.propTypes = {
-    children: React.ReactNode
+    children: React.ReactNode.isRequired
 };
