@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {Typography, withStyles} from '@material-ui/core';
 import {compose} from 'recompose';
-import TopBar from '../components/TopBar';
+import TopBar from '../../components/TopBar';
 
 let styles = theme => ({
     root: {

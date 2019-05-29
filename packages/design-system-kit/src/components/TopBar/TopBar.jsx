@@ -3,7 +3,7 @@ import React from 'react';
 import {div, withStyles} from '@material-ui/core';
 import {Typography} from '@jahia/ds-mui-theme';
 import {compose} from 'recompose';
-import styleConstants from '../../styleConstants';
+import styleConstants from '../../theme/styleConstants';
 
 const styles = theme => ({
     root: {

@@ -6,7 +6,7 @@ import BurgerMenuButton from './BurgerMenuButton';
 import {DisplayActions} from '@jahia/react-material';
 import LeftMenuItem from './LeftMenuItem';
 import {compose} from 'recompose';
-import styleConstants from '../../styleConstants';
+import styleConstants from '../../theme/styleConstants';
 
 const styles = theme => ({
     root: {

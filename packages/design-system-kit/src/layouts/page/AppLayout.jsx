@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {withStyles} from '@material-ui/core';
 import {compose} from 'recompose';
-import LeftNavigation from '../components/LeftNavigation';
-import styleConstants from '../styleConstants';
+import LeftNavigation from '../../components/LeftNavigation';
+import styleConstants from '../../theme/styleConstants';
 
 const styles = theme => ({
     root: {
