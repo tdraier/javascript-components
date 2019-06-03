@@ -39,3 +39,18 @@ This can be accomplished using `yarn` with the following command:
     ```
 
 - Also depending on your need your can override some rules in the `.eslintrc.json` file by redefining them
+
+## Migration from local config
+
+If you were using a local config, you can probably cleanup some of your devDependencies, here are the list of dependencies from this packages that you can likely remove from your project unless your are explicitely using them:
+
+```json
+{
+    "babel-eslint": "^10.0.1",
+    "eslint-config-xo": "^0.26.0",
+    "eslint-config-xo-react": "^0.19.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-hooks": "^1.6.0"
+}
+``` 

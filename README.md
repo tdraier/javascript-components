@@ -95,3 +95,6 @@ A router with multiple outlets - it allows to have multiple routes at the same t
 
 Provides common dependencies, configuration, utilities and mocks for testing JavaScript projects.
  
+### [@jahia/eslint-config](packages/eslint-config)
+
+Provide Jahia ESLint shareable config to lint your JS projects.
