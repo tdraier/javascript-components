@@ -22,7 +22,7 @@ the following command:
 - Create a file named `jest.config.js` as a sibling to your `package.json`, with the following content:
 
     ```
-    const jestConfig = require('@jahia/test-framework/jest.config');
+    const jestConfig = require('@jahia/test-framework').jestConfig;
 
     module.exports = jestConfig;
 
