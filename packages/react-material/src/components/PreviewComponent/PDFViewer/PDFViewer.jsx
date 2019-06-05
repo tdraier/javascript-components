@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Pdf from 'react-pdf-js';
 import {translate} from 'react-i18next';
 import {Tooltip, withStyles} from '@material-ui/core';
-import {Typography, IconButton} from '@jahia/ds-mui-theme';
+import {Typography, IconButton} from '@jahia/design-system-kit';
 import {
     ChevronLeft,
     ChevronRight,

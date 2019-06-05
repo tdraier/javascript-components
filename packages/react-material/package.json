@@ -17,11 +17,11 @@
   "sideEffects": false,
   "license": "MIT",
   "peerDependencies": {
-    "react-dom": "^16.4.0",
+    "@jahia/design-system-kit": "^1.0.0-beta.20190605150852",
+    "@jahia/icons": "^1.0.0-beta.20181011112119",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
-    "@jahia/ds-mui-theme": "^1.0.0-beta.20190313104751",
-    "@jahia/icons": "^1.0.0-beta.20181011112119",
+    "react-dom": "^16.4.0",
     "rxjs": "^6.4.0"
   },
   "dependencies": {
