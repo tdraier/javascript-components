@@ -1,4 +1,4 @@
-import {IconButton} from '@jahia/ds-mui-theme';
+import {IconButton} from '@jahia/design-system-kit';
 import {Tooltip} from '@material-ui/core';
 import {I18n} from 'react-i18next';
 import React from 'react';

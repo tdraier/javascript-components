@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {withStyles, AppBar, Toolbar, Button} from '@material-ui/core';
 import {compose} from 'recompose';
-import {Typography} from '@jahia/ds-mui-theme';
+import {Typography} from '../Typography';
 
 const styles = theme => ({
     topBar: {

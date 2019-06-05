@@ -9,7 +9,7 @@ import {ArrowRight} from '@material-ui/icons';
 import {BehaviorSubject, combineLatest} from 'rxjs';
 import {pure} from 'recompose';
 import {toIconComponent} from './toIconComponent';
-import {ListItemIcon} from '@jahia/ds-mui-theme';
+import {ListItemIcon} from '@jahia/design-system-kit';
 
 let styles = {
     modalRoot: {
