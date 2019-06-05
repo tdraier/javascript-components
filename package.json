@@ -9,7 +9,7 @@
         "publish": "lerna run publish-script",
         "lint": "eslint --ext js,jsx .",
         "lint:fix": "yarn lint --fix .",
-        "test": "jest --coverage",
+        "test": "lerna --scope @jahia/test-framework run build && jest --coverage",
         "tdd": "jest --watch"
     },
     "license": "MIT",
