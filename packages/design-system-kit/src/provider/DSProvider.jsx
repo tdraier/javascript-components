@@ -1,6 +1,7 @@
 import React from 'react';
 import {MuiThemeProvider} from '@material-ui/core';
 import {dsGenericTheme} from '../theme';
+import PropTypes from 'prop-types';
 
 export const DSProvider = ({children}) => (
     <MuiThemeProvider theme={dsGenericTheme}>
@@ -9,5 +10,5 @@ export const DSProvider = ({children}) => (
 );
 
 DSProvider.propTypes = {
-    children: React.ReactNode.isRequired
+    children: PropTypes.node.isRequired
 };
