@@ -5,5 +5,5 @@ console.log('Transpiling for esm');
 
 babel('build/esm', {
     presets: [['@babel/env', {modules: false}], '@babel/react'],
-    plugins: ['lodash']
+    plugins: ['lodash', '@babel/plugin-syntax-dynamic-import']
 });

@@ -10,6 +10,7 @@ export * from './IconButton';
 export * from './LeftNavigation';
 export * from './ListItemIcon';
 export * from './Paper';
+export * from './ProgressPaper';
 export * from './Select';
 export * from './ToolBar';
 export * from './TopBar';
