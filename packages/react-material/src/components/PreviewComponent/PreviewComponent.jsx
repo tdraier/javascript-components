@@ -49,7 +49,8 @@ const styles = theme => ({
     },
     contentIframe: {
         border: 'none',
-        width: '100%'
+        width: '100%',
+        height: '100%'
     }
 });
 
@@ -64,7 +65,8 @@ class PreviewComponentCmp extends React.Component {
             frameDoc.open();
             frameDoc.close();
             frameDoc.body.innerHTML = displayValue;
-            frameDoc.body.style = '';
+            frameDoc.body.setAttribute('style', '');
+
             if (assets !== null) {
                 let iframeHeadEl = frameDoc.getElementsByTagName('head')[0];
                 if (!iframeHeadEl) {
