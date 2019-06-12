@@ -2,21 +2,19 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {DSProvider} from '../../provider';
 import {withKnobs} from '@storybook/addon-knobs';
-
-import Badge from "../../../build/esm/components/Badge/Badge";
+import Badge from './Badge';
 
 storiesOf('Badge', module)
     .addDecorator(withKnobs)
     .add('Simple badge', () => (
-            <DSProvider>
-                <Badge badgeContent={"Simple badge"}
-                       variant="normal"
-                />
+        <DSProvider>
+            <Badge badgeContent="Simple badge"
+                   variant="normal"
+            />
 
-                <Badge badgeContent={"Warning badge"}
-                       variant="normal"
-                       color="warning"
-                />
-            </DSProvider>
-        )
-    );
+            <Badge badgeContent="Warning badge"
+                   variant="normal"
+                   color="warning"
+            />
+        </DSProvider>
+    ));
