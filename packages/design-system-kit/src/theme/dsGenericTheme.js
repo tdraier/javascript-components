@@ -35,7 +35,10 @@ import {dsShadows} from './shadows.js';
 const dsGenericThemeConfig = {
     palette: dsGenericPalette,
     shape,
-    typography,
+    typography: {
+        ...typography,
+        useNextVariants: true
+    },
     shadows: dsShadows
 };
 
