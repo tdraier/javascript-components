@@ -5,11 +5,11 @@ import {lodash as _} from 'lodash';
 import {compose} from 'react-apollo';
 import NodeTree from './NodeTree';
 
-const styles = theme => ({
+const styles = () => ({
     listContainer: {
         flex: '1 0 0%',
         overflow: 'auto',
-        width: theme.contentManager.treeDrawerWidth + 'px'
+        width: '260px'
     },
     list: {
         width: 'fit-content',
