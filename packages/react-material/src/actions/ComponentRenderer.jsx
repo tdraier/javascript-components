@@ -26,7 +26,7 @@ class ComponentRendererProvider extends Component {
                 let newState = {
                     componentsProps: {...previous.componentsProps}
                 };
-                newState.componentsProps[key] = {...props};
+                newState.componentsProps[key] = {...previous.componentsProps[key], ...props};
                 return newState;
             }),
             destroy: key => this.setState(previous => {
