@@ -18,13 +18,12 @@ import classNames from 'classnames';
 const styles = theme => ({
     pdfContainer: {
         flex: '1 1 0%',
-        margin: '0 auto',
+        width: '100%',
         overflow: 'auto',
         '& canvas': {
             display: 'block',
             paddingTop: (theme.spacing.unit * 3) + 'px',
             paddingBottom: (theme.spacing.unit * 9) + 'px',
-            maxHeight: '100%',
             margin: '0 auto'
         },
         '&$fullScreen': {
@@ -68,7 +67,7 @@ export class PDFViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: null,
+            page: 1,
             pages: null,
             scaleSize: 6,
             showScale: false
