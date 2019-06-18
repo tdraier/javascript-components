@@ -128,6 +128,17 @@ class DisplayAction extends React.Component {
     constructor(props) {
         super(props);
         this.id = props.actionKey + '-' + (count++);
+
+        let {actionKey} = this.props;
+        let action = actionsRegistry.get(actionKey);
+
+        let Component = DisplayActionComponent;
+
+        if (action.wrappers) {
+            Component = _.reduce(action.wrappers, this.wrap.bind(this), DisplayActionComponent);
+        }
+
+        this.Component = Component;
     }
 
     shouldComponentUpdate(nextProps) {
@@ -135,7 +146,7 @@ class DisplayAction extends React.Component {
     }
 
     wrap(Render, wrapper) {
-        return props => wrapper(<Render {...props}/>);
+        return props => wrapper(<Render key={this.id} {...props}/>);
     }
 
     render() {
@@ -143,13 +154,9 @@ class DisplayAction extends React.Component {
         let action = actionsRegistry.get(actionKey);
         let enhancedContext = {...action, ...context, originalContext: context, id: this.id, actionKey};
 
-        let Component = DisplayActionComponent;
+        let Component = this.Component;
 
-        if (enhancedContext.wrappers) {
-            Component = _.reduce(enhancedContext.wrappers, this.wrap, DisplayActionComponent);
-        }
-
-        return <Component context={enhancedContext} render={render} actionKey={actionKey} observerRef={observerRef}/>;
+        return <Component key={this.id} context={enhancedContext} render={render} actionKey={actionKey} observerRef={observerRef}/>;
     }
 }
 
