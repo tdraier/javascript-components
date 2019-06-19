@@ -142,7 +142,8 @@ export class PDFViewer extends React.Component {
                          classes={{popper: classes.scale}}
                 >
                     <div className={classNames(classes.pdfContainer, fullScreen && classes.fullScreen)}>
-                        <Pdf file={file}
+                        <Pdf key={file}
+                             file={file}
                              scale={scaleSizes[scaleSize]}
                              page={page}
                              onDocumentComplete={this.onDocumentComplete}
