@@ -1439,22 +1439,6 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@jahia/apollo-dx@featureBACKLOG10163":
-  version "1.0.0-featureBACKLOG10163.20190425092910"
-  resolved "http://npm.int.jahia.com:4873/@jahia%2fapollo-dx/-/apollo-dx-1.0.0-featureBACKLOG10163.20190425092910.tgz#c32503f38101e81a74e65d5d3dbb675486da0ff1"
-  integrity sha512-IiitFyVRU5wYwi2Ev/Y8L4JO5H5WTmNycRHCE8mz6m7yed1Co4QgX/XHBNZzMYnT9Iub+7NWPVGWXHQKnDLWXg==
-  dependencies:
-    apollo-cache-inmemory "^1.5.1"
-    apollo-client "^2.5.1"
-    apollo-link "^1.2.11"
-    apollo-link-batch-http "^1.2.11"
-    apollo-link-http "^1.5.14"
-    apollo-utilities "^1.0.13"
-    graphql "^14.0.2"
-    graphql-tag "^2.9.2"
-    lodash "^4.17.10"
-    zen-observable "^0.8.8"
-
 "@jest/console@^24.7.1":
   version "24.7.1"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.7.1.tgz#32a9e42535a97aedfe037e725bd67e954b459545"
