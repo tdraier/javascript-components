@@ -10,7 +10,7 @@ The goal of this module is to provide multiple javascript [packages](https://git
 The packages are built and deployed to a private repository. Use the following command to configure your NPM install so that it 
 can find the packages :
 
-```npm login --registry=http://npm.int.jahia.com:4873 --scope=@jahia```
+```npm login --registry=https://npm.jahia.com --scope=@jahia```
 
 You should then be able to add a package with a simple `npm` or `yarn` command :
 
