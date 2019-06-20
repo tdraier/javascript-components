@@ -1,42 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Picker} from '@jahia/react-apollo';
-import {PredefinedFragments} from '@jahia/apollo-dx';
-import gql from 'graphql-tag';
 import {PickerTreeViewMaterial} from '../../picker/PickerTreeViewMaterial';
-
-const PickerItemsFragment = {
-    mixinTypes: {
-        applyFor: 'node',
-        variables: {
-            lang: 'String!'
-        },
-        gql: gql`fragment MixinTypes on JCRNode {
-            mixinTypes {
-                name
-            }
-        }`
-    },
-    isPublished: {
-        applyFor: 'node',
-        variables: {
-            lang: 'String!'
-        },
-        gql: gql`fragment PublicationStatus on JCRNode {
-            publicationStatus: aggregatedPublicationInfo(language: $lang) {
-                publicationStatus
-            }
-        }`
-    },
-    primaryNodeType: {
-        applyFor: 'node',
-        gql: gql`fragment PrimaryNodeTypeName on JCRNode {
-            primaryNodeType {
-                name
-            }
-        }`
-    }
-};
 
 class NodeTree extends React.Component {
     render() {
@@ -51,7 +16,6 @@ class NodeTree extends React.Component {
                 selectedPaths={[path]}
                 openSelection={false}
                 setRefetch={setRefetch}
-                fragments={[PickerItemsFragment.mixinTypes, PickerItemsFragment.primaryNodeType, PickerItemsFragment.isPublished, PredefinedFragments.displayName]}
                 onOpenItem={(path, open) => handleOpen(path, open)}
                 onSelectItem={path => handleSelect(path)}
             >
