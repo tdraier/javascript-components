@@ -8,6 +8,7 @@ export {Pagination} from './layout/Pagination';
 export {Notification} from './notification/Notification';
 export {NotificationProvider, withNotifications} from './notification/NotificationProvider';
 export {PickerViewMaterial} from './picker/PickerViewMaterial';
+export {PickerTreeViewMaterial} from './picker/PickerTreeViewMaterial';
 export {PickerViewMaterialMultiple} from './picker/PickerViewMaterialMultiple';
 export {anthraciteDarkTheme, anthraciteLightTheme, plainTheme, legacyTheme} from './theme';
 export {PreviewComponent} from './components/PreviewComponent';

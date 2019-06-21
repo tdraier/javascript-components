@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core';
-import {lodash as _} from 'lodash';
 import {compose} from 'react-apollo';
-import NodeTree from './NodeTree';
 
 const styles = () => ({
     listContainer: {
@@ -14,51 +12,33 @@ const styles = () => ({
     list: {
         width: 'fit-content',
         minWidth: '100%'
-    },
-    listItem: {
     }
 });
 
-class NodeTreesCmp extends React.Component {
-    render() {
-        const {
-            lang, siteKey, path, openPaths, setPath, openPath,
-            closePath, classes, nodeTreeConfigs, setRefetch
-        } = this.props;
-        const rootPath = '/sites/' + siteKey;
-        const usedPath = path.startsWith(rootPath) ? path : rootPath;
+const NodeTreesCmp = ({path, siteKey, classes, nodeTreeConfigs, setRefetch, children}) => {
+    const rootPath = '/sites/' + siteKey;
+    const usedPath = path.startsWith(rootPath) ? path : rootPath;
 
-        return (
-            <React.Fragment>
-                <div className={classes.listContainer}>
-                    <div className={classes.list}>
-                        {_.map(nodeTreeConfigs, nodeTreeConfig => {
-                            return (
-                                <NodeTree key={nodeTreeConfig.key}
-                                          siteKey={siteKey}
-                                          path={usedPath}
-                                          rootPath={rootPath + nodeTreeConfig.rootPath}
-                                          openPaths={openPaths}
-                                          selectableTypes={nodeTreeConfig.selectableTypes}
-                                          lang={lang}
-                                          dataCmRole={nodeTreeConfig.key}
-                                          handleOpen={(path, open) => (open ? openPath(path) : closePath(path))}
-                                          handleSelect={path => setPath(path, {sub: false})}
-                                          openableTypes={nodeTreeConfig.openableTypes}
-                                          rootLabel={nodeTreeConfig.rootLabel}
-                                          classes={{
-                                              listItem: classes.listItem
-                                          }}
-                                          setRefetch={refetchingData => setRefetch ? setRefetch(nodeTreeConfig.key, refetchingData) : undefined}
-                                />
-                            );
+    return (
+        <div className={classes.listContainer}>
+            <div className={classes.list}>
+                {nodeTreeConfigs.map(nodeTreeConfig => (
+                    <React.Fragment key={nodeTreeConfig.key}>
+                        {children({
+                            path: usedPath,
+                            rootPath: rootPath + nodeTreeConfig.rootPath,
+                            selectableTypes: nodeTreeConfig.selectableTypes,
+                            dataCmRole: nodeTreeConfig.key,
+                            openableTypes: nodeTreeConfig.openableTypes,
+                            rootLabel: nodeTreeConfig.rootLabel,
+                            setRefetch: refetchingData => setRefetch ? setRefetch(nodeTreeConfig.key, refetchingData) : undefined
                         })}
-                    </div>
-                </div>
-            </React.Fragment>
-        );
-    }
-}
+                    </React.Fragment>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 NodeTreesCmp.defaultProps = {
     setRefetch: null
@@ -66,14 +46,10 @@ NodeTreesCmp.defaultProps = {
 
 NodeTreesCmp.propTypes = {
     classes: PropTypes.object.isRequired,
-    closePath: PropTypes.func.isRequired,
-    lang: PropTypes.string.isRequired,
-    openPath: PropTypes.func.isRequired,
-    openPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
     path: PropTypes.string.isRequired,
-    setPath: PropTypes.func.isRequired,
     siteKey: PropTypes.string.isRequired,
     nodeTreeConfigs: PropTypes.arrayOf(PropTypes.object).isRequired,
+    children: PropTypes.func.isRequired,
     setRefetch: PropTypes.func
 };
 

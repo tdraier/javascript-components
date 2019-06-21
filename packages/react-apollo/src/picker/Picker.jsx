@@ -42,7 +42,7 @@ class Picker extends React.Component {
     constructor(props) {
         super(props);
 
-        let {
+        const {
             fragments,
             rootPaths,
             onOpenItem,
@@ -53,10 +53,6 @@ class Picker extends React.Component {
             onSelectionChange,
             defaultOpenPaths
         } = props;
-
-        if (!fragments) {
-            fragments = [PickerItemsFragment.mixinTypes, PickerItemsFragment.primaryNodeType, PickerItemsFragment.isPublished, PredefinedFragments.displayName];
-        }
 
         this.query = gql`
             query PickerQuery($rootPaths:[String!]!, $selectable:[String]!, $openable:[String]!, $openPaths:[String!]!, $types:[String]!) {
@@ -352,7 +348,7 @@ Picker.defaultProps = {
     selectedPaths: null,
     setRefetch: null,
     queryVariables: null,
-    fragments: null,
+    fragments: [PickerItemsFragment.mixinTypes, PickerItemsFragment.primaryNodeType, PickerItemsFragment.isPublished, PredefinedFragments.displayName],
     onSelectionChange: null,
     onOpenItem: null,
     onSelectItem: null,
