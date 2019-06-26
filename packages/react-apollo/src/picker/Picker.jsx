@@ -5,6 +5,39 @@ import * as _ from 'lodash';
 import {PredefinedFragments, replaceFragmentsInDocument} from '@jahia/apollo-dx';
 import PropTypes from 'prop-types';
 
+const PickerItemsFragment = {
+    mixinTypes: {
+        applyFor: 'node',
+        variables: {
+            lang: 'String!'
+        },
+        gql: gql`fragment MixinTypes on JCRNode {
+            mixinTypes {
+                name
+            }
+        }`
+    },
+    isPublished: {
+        applyFor: 'node',
+        variables: {
+            lang: 'String!'
+        },
+        gql: gql`fragment PublicationStatus on JCRNode {
+            publicationStatus: aggregatedPublicationInfo(language: $lang) {
+                publicationStatus
+            }
+        }`
+    },
+    primaryNodeType: {
+        applyFor: 'node',
+        gql: gql`fragment PrimaryNodeTypeName on JCRNode {
+            primaryNodeType {
+                name
+            }
+        }`
+    }
+};
+
 class Picker extends React.Component {
     constructor(props) {
         super(props);
@@ -271,8 +304,7 @@ class Picker extends React.Component {
 
         return (
             <Query query={this.query} variables={vars} fetchPolicy="cache-first">
-                {
-                ({error, loading, data, refetch}) => {
+                {({error, loading, data, refetch}) => {
                     if (setRefetch) {
                         setRefetch({
                             query: this.query,
@@ -291,7 +323,7 @@ class Picker extends React.Component {
                             return renderProp({pickerEntries: this.previousEntries, loading, ...this.eventsHandlers});
                         }
 
-                            return renderProp({pickerEntries: [], loading, ...this.eventsHandlers});
+                        return renderProp({pickerEntries: [], loading, ...this.eventsHandlers});
                     }
 
                     if (error) {
@@ -302,8 +334,7 @@ class Picker extends React.Component {
                     this.previousEntries = pickerEntries;
 
                     return renderProp({pickerEntries, loading, ...this.eventsHandlers});
-                }
-            }
+                }}
             </Query>
         );
     }
@@ -317,7 +348,7 @@ Picker.defaultProps = {
     selectedPaths: null,
     setRefetch: null,
     queryVariables: null,
-    fragments: null,
+    fragments: [PickerItemsFragment.mixinTypes, PickerItemsFragment.primaryNodeType, PickerItemsFragment.isPublished, PredefinedFragments.displayName],
     onSelectionChange: null,
     onOpenItem: null,
     onSelectItem: null,
