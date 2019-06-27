@@ -22,8 +22,8 @@ export const buttonRenderer = (buttonProps, showIcon, propagateEvent, upperCaseL
                     {/* eslint-disable-next-line react/no-danger */}
                     <span dangerouslySetInnerHTML={{
                         __html: upperCaseLabel ?
-                            t(context.buttonLabel, context.buttonLabelParams).toUpperCase()
-                            : t(context.buttonLabel, context.buttonLabelParams)
+                            t(context.buttonLabel, context.buttonLabelParams).toUpperCase() :
+                            t(context.buttonLabel, context.buttonLabelParams)
                     }}/>
                 </Button>
             )}

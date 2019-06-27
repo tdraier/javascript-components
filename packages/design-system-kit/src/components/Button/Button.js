@@ -62,7 +62,7 @@ let styles = theme => ({
         padding: 'inherit'
     },
     icon: {
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing.unit
     }
 });
 
