@@ -60,6 +60,9 @@ let styles = theme => ({
     paragraph: {},
     text: {
         padding: 'inherit'
+    },
+    icon: {
+        marginRight: theme.spacing.unit,
     }
 });
 
@@ -79,7 +82,7 @@ const getClasses = ({variant, color, size, classes: {root, label, focusVisible, 
 const Button = withStyles(styles, {name: 'DsButton'})(
     ({variant, color, size, classes, icon, children, ...props}) => (
         <MuiButton classes={getClasses({variant, color, size, classes})} {...props}>
-            {icon}
+            <div className={classes.icon}>{icon}</div>
             {children}
         </MuiButton>
     )
