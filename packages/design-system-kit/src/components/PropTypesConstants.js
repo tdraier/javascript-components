@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 
+export const TextColors = ['inherit', 'alpha', 'beta', 'gamma', 'invert'];
+export const TextVariants = ['giga', 'mega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'iota', 'omega', 'caption', 'legal', 'p'];
+
 export default {
-    TextColors: PropTypes.oneOf(['inherit', 'alpha', 'beta', 'gamma', 'invert']),
-    TextVariants: PropTypes.oneOf(['giga', 'mega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'iota', 'omega', 'caption', 'legal', 'p']),
+    TextColors: PropTypes.oneOf(TextColors),
+    TextVariants: PropTypes.oneOf(TextVariants),
     ButtonVariants: PropTypes.oneOf(['ghost', 'primary', 'secondary', 'inline']),
     ButtonColors: PropTypes.oneOf(['default', 'inverted']),
     ButtonSizes: PropTypes.oneOf(['normal', 'compact']),

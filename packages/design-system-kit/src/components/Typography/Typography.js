@@ -3,7 +3,7 @@ import {Typography as MuiTypography, withStyles} from '@material-ui/core';
 import * as _ from 'lodash';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import PropTypeConstants from '../PropTypesConstants';
+import PropTypeConstants, {TextVariants} from '../PropTypesConstants';
 
 let styles = theme => ({
     root: {},
@@ -11,18 +11,12 @@ let styles = theme => ({
     gutterBottom: {},
     paragraph: {},
 
-    giga: theme.typography.giga,
-    mega: theme.typography.mega,
-    alpha: theme.typography.alpha,
-    beta: theme.typography.beta,
-    gamma: theme.typography.gamma,
-    delta: theme.typography.delta,
-    epsilon: theme.typography.epsilon,
-    zeta: theme.typography.zeta,
-    iota: theme.typography.iota,
-    caption: theme.typography.caption,
-    legal: theme.typography.legal,
-    p: theme.typography.p,
+    ...TextVariants.reduce((styles, variant) => {
+        return {
+            ...styles,
+            [variant]: theme.typography[variant]
+        };
+    }, {}),
 
     colorInherit: {
         color: 'inherit'
