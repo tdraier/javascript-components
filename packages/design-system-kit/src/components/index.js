@@ -8,6 +8,7 @@ export * from './ExpansionPanelActions';
 export * from './FormControlLabel';
 export * from './IconButton';
 export * from './LeftNavigation';
+export * from './LanguageSwitcher';
 export * from './ListItemIcon';
 export * from './Paper';
 export * from './ProgressPaper';
