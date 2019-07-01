@@ -89,5 +89,7 @@ LanguageSwitcher.defaultProps = {
     color: 'default'
 };
 
+LanguageSwitcher.displayName = 'LanguageSwitcher';
+
 export default LanguageSwitcher;
 
