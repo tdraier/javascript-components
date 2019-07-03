@@ -47,7 +47,7 @@ const styles = theme => ({
     },
     colorGhost: {
         backgroundColor: theme.palette.ui.alpha,
-        color: theme.palette.font.gamma
+        color: theme.palette.font.beta
     },
     colorWarning: {
         backgroundColor: theme.palette.support.zeta,
