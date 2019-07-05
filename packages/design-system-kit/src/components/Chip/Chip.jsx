@@ -5,7 +5,9 @@ import classnames from 'classnames';
 import PropTypesConstants from '../PropTypesConstants';
 
 let styles = theme => ({
-    root: {},
+    root: {
+        borderRadius: '4px'
+    },
     primary: {
         background: theme.palette.brand.alpha,
         color: theme.palette.invert.beta
@@ -23,6 +25,9 @@ let styles = theme => ({
     colorInverted: {
         color: theme.palette.invert.beta
     },
+    deleteIcon: {
+        color: theme.palette.ui.omega
+    },
     sizeNormal: {
         // Todo normal size CSS
     },
@@ -31,29 +36,39 @@ let styles = theme => ({
     }
 });
 
-const getClasses = ({variant, color, size, classes: {root, icon, ...myClasses}}) => ({
+const getClasses = ({
+    variant,
+    color,
+    size,
+    classes: {root, icon, deleteIcon, ...myClasses}
+}) => ({
     root: classnames(
         root,
         myClasses[variant],
         myClasses['color' + _.capitalize(color)],
         myClasses['size' + _.capitalize(size)]
     ),
-    icon: classnames(
-        icon,
-        myClasses['icon' + _.capitalize(variant)]
-    )
+    icon: classnames(icon, myClasses['icon' + _.capitalize(variant)]),
+    deleteIcon
 });
 
 const Chip = withStyles(styles, {name: 'DsChip'})(
     ({variant, color, size, classes, ...props}) => (
-        <MuiChip classes={getClasses({variant, color, size, classes})} {...props}/>
-    ));
+        <MuiChip
+            classes={getClasses({variant, color, size, classes})}
+            {...props}
+        />
+    )
+);
 
-Chip.propTypes = process.env.NODE_ENV !== 'production' ? {
-    size: PropTypesConstants.ChipSizes,
-    color: PropTypesConstants.ChipColors,
-    variant: PropTypesConstants.ChipVariants
-} : {};
+Chip.propTypes =
+    process.env.NODE_ENV !== 'production' ?
+        {
+            size: PropTypesConstants.ChipSizes,
+            color: PropTypesConstants.ChipColors,
+            variant: PropTypesConstants.ChipVariants
+        } :
+        {};
 
 Chip.defaultProps = {
     color: 'default',
