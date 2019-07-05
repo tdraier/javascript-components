@@ -34,7 +34,9 @@ const styles = theme => ({
         borderRadius: '50%'
     },
     positionInline: {
-        display: 'inline-block'
+        display: 'inline-flex',
+        alignItems: 'center',
+        lineHeight: 'normal'
     },
     positionRelative: {},
     colorSuccess: {
