@@ -43,16 +43,17 @@ const LanguageSwitcher = ({color, lang, languages, onSelectLanguage}) => {
                           open={Boolean(anchorEl)}
                           onClose={handleClose}
                     >
-                        {languages.map(lang => {
+                        {languages.map(language => {
                             return (
                                 <MenuItem
-                                    key={lang.language}
+                                    key={language.language}
+                                    selected={language.language === lang}
                                     onClick={() => {
-                                        onSelectLanguage(lang.language);
+                                        onSelectLanguage(language.language);
                                         handleClose();
                                     }}
                                 >
-                                    {uppercaseFirst(lang.displayName)}
+                                    {uppercaseFirst(language.displayName)}
                                 </MenuItem>
                             );
                         })}
