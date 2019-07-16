@@ -11,8 +11,7 @@ const styles = theme => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '0px ' + (theme.spacing.unit * 3) + 'px',
-        height: styleConstants.topBarHeight + 'px',
-        backgroundColor: theme.palette.ui.gamma
+        height: styleConstants.topBarHeight + 'px'
     },
     typoTitle: {
         whiteSpace: 'nowrap',
