@@ -19,7 +19,7 @@
     "dependencies": {
         "@jahia/apollo-dx": "^1.0.0-beta.1",
         "apollo-client": "^2.5.1",
-        "lodash": "^4.17.10",
+        "lodash": "^4.17.13",
         "prop-types": "^15.6.1",
         "react-apollo": "^2.5.3"
     }
