@@ -1,6 +1,6 @@
 {
   "name": "@jahia/i18next",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "scripts": {
     "babel:js": "jahia-babel-js",
     "babel:module": "jahia-babel-module",
@@ -8,7 +8,8 @@
     "publish-script": "jahia-publish",
     "prepare-build": "jahia-prepare-build",
     "build": "jahia-build",
-    "build-umd": "jahia-build-umd"
+    "build-umd": "jahia-build-umd",
+    "semantic-release": "semantic-release -e semantic-release-monorepo"
   },
   "main": "js/index.js",
   "module": "esm/index.js",
@@ -20,5 +21,10 @@
     "i18next": "^11.3.2",
     "i18next-chained-backend": "^0.1.2",
     "i18next-xhr-backend": "^1.5.1"
+  },
+  "release": {
+    "repositoryUrl" : "https://jahia-ci@github.com/Jahia/javascript-components.git",
+    "branch": "semantic-release",
+    "debug": "true"
   }
 }
